@@ -1,0 +1,3 @@
+<?
+include('responseDataListGet.do');
+?>

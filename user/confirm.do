@@ -1,0 +1,3 @@
+<?
+include('../confirm.do');
+?>

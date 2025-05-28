@@ -1,0 +1,25 @@
+
+
+GUID - 1659516843================================================================
+URL - https://apibankingonesandbox.icicibank.com/api/Corporate/CIB/v1/Registration
+
+HEADER - ["Content-type: application\/json","x-forwarded-for:127.0.0.1","apikey:naGkUZTKnPCNOgvHmTwHk4XQtWlvLacG"]
+
+REQUEST - {
+"AGGRID":"SKYWALK",
+"CORPID":"PRACHICIB1",
+"USERID":"USER3",
+"URN":"sky1001",
+"AGGRNAME":"SKYWALK",
+"ALIASID":""
+}
+
+REQUEST ENCRYPTED - {"requestId":"req_1659516843","service":"","encryptedKey":"HDtHaGdG4Zt+y++EyMS5sIlA2qK+EAY2IOqE4qiYzdLgnrbNRV2TTbyx7vNFCGLHA0eecluRomB\/Y9AZ60BvlWAAc0l9Eqi2l7RcPq0NieBi0bpMuiwcIWE0YTNwZSTmNeJg9mJAfaodinZJcZDUkvwSJcKggXylNjah95OpRp8jDfz+RXWx314YgQLQ90xbWzNQSRTbBhQnqly7YzdKoyTouGTsJxnh1z2wkKAOn1Evft982Y7P9zJHhgmy9USSlZro0sn3LXWxyErR0Rn2au2urtir2CJ+TfCAMPTVhmX2xPphW0X4o95DZJARjKW98Cg5DywfH1T3QJWTpbYmb7z8izBUq1Jxtj1opEvVpafYuDZ+sBldhYpjy+2Pgd0Okqp9+XMIO+IJTUVFNwFBb\/X1R+n7\/iGqRZNpSX5BxuJqk4vBDkxymh4lojQmTBMit4h5\/X6AM8t1We3Tmji+ZAkKfRYQzelalHaPnuMEcjnPk6ZJ8oxilM8vjTTBvcCs1b9OCu3lugOJcH6FQ5FmyebLZeoW4j1M8209c3or1+wTAi8cKjGokqKIkZhr2ytzTXLgW2s21puDxM84i6M9tdAoir97ZLpzWuDJaHMiolNVdffMPpixuDujBdMNRR0StIflbKqFlLpolKg6RZz6OtXkUygMYkJEF81AZXV7Ge4=","oaepHashingAlgorithm":"NONE","iv":"MTIzNDU2Nzg5MDEyMzQ1Ng==","encryptedData":"DnsnTOqqYu7zN2HmxD4wfay\/N9FCAiUsJQoY37cBlOgUSBjJh6Z8h+gvYqYmOWJEGYM4qtdKu09zM4rPguCnYkFdG6Xex5v1EI\/96Fa7oNFvNXGyQvOTyQV4xGD54vcwsFbVs3EPqQ9B4Xl5v9bJsX4bliJzivwatd9PLS9ZKSg=","clientInfo":"","optionalParam":""}
+
+
+
+GUID - 1659516843================================================================ 
+RESPONSE - {"success":false,"response":401,"errormessage":"Unauthorized"}
+
+RESPONSE DECRYPTED - 
+

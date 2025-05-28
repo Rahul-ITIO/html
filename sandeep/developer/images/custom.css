@@ -1,0 +1,34 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans);body{font-family:'PT Sans', sans-serif;font-size:14px}.tocify-wrapper .logo{margin:15px auto;max-width:80px}.method-badge{color:#FFAE48;font-variant:small-caps;font-weight:bold}.method-details{color:darkgrey;font-size:13px}.content blockquote h3{margin:0}.page-wrapper a{color:#2467af;text-decoration:none}.page-wrapper a:hover{color:#2594e1}abbr{cursor:help}ol li{margin:3px 0}
+.blue_r {background: #2a7cd4;color:#fff;padding: 1px 5px;border-radius: 3px;font-size: 11px;letter-spacing: 1px;}
+.col_2>dt {
+    width: 160px;
+    float: left;
+    clear: both;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.col_2>dd{
+    margin-left: 180px;
+}
+.col_2 em {
+    color: #D05;
+}
+.content>ul.col_3{
+	list-style: none;
+}
+.content>ul.col_3>* {
+	float: left;
+    width: 33.333%;
+    list-style: none;
+    padding: 0;
+   
+}
+.titile.success {
+    clear: both;
+    float: left;
+    width: 50%;
+    margin: 20px 0 0 0;
+    padding: 3px 10px;
+    background: #e2e2e2;
+}

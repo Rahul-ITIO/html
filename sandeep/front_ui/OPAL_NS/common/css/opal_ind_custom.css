@@ -1,0 +1,29 @@
+#sidebar.bg-primary, .rounded-pill.bg-primary {
+    background-color: var(--background-1)!important;
+    color: var(--color-1)!important;
+}
+
+#sidebar .text-white, .dropdown .text-white{
+    color: var(--color-1)!important;
+}
+
+.table-responsive th, .table-responsive-sm th {
+    background-color: var(--background-1)!important;
+	color: var(--color-1)!important;
+}
+
+.switcher-box .hiddenbox, .switcher-box-mode .clr-box, .switcher-box .clr-box {
+    --bs-bg-opacity: 1 !important;
+    background-color: rgba(var(--bs-secondary-bg-rgb),var(--bs-bg-opacity))!important;
+}
+
+.zink_id {
+    padding-right: 0!important;
+    padding-left: 0!important;
+}
+.clr-opal{ clear:both !important;}
+.mwidth2fa { border: 0px !important;}
+
+.table-responsive {
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5) !important;
+}

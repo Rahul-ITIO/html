@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+        //Formulate Payload
+        
+        let formulatedPayload = {
+            msisdn: "+254700000000",
+            account_number: "oid39",
+            country_code: "KEN",
+            currency_code: "KES",
+            client_code: "ABCDEXAMPLE",
+            due_date: "2022-12-12 13:00:00",
+            customer_email: "johndoe@mail.com",
+            customer_first_name: "John",
+            customer_last_name: "Doe",
+            merchant_transaction_id: "txn_id_342",
+            preferred_payment_option_code: "",
+            callback_url: "https://webhook.site/6c933f61-d6da-4f8e-8a44-bf0323eb8ad6",
+            request_amount: "100",
+            request_description: "Dummy merchant transaction",
+            success_redirect_url: "https://webhook.site/6c933f61-d6da-4f8e-8a44-bf0323eb8ad6",
+            fail_redirect_url: "https://webhook.site/6c933f61-d6da-4f8e-8a44-bf0323eb8ad6",
+            invoice_number: "",
+            language_code: "en",
+                service_code: "COGCHE189",
+        }
+        
+        
+        //Encrypt Payload
+        const crypto = require("crypto");
+        function LipadEncryption(payload){
+            let jsonStringPayload=JSON.stringify(payload);
+            let key = crypto.createHash("sha256").update(IVKey).digest("hex").substring(0, 16);
+                key = Buffer.from(key);
+                let secret = crypto.createHash("sha256").update(consumerSecret).digest("hex").substring(0, 32);
+                secret = Buffer.from(secret);
+                const cipher = crypto.createCipheriv(algorithm, secret, key);
+                let encryptedData = cipher.update(jsonStringPayload, "utf-8", "hex");
+                encryptedData += cipher.final("hex");
+            let encryptedPayload =  Buffer.from(encryptedData, 'hex').toString('base64');
+            return encryptedPayload;
+        }
+        
+        let encryptedPayload=LipadEncryption(formulatedPayload);
+        
+        
+        //Embed Button
+        </script>
+        
+  </head>
+  <body style="text-align: center;">
+    <div id="LipadPaySection">
+    </div>
+
+   
+    <script src="https://checkout.uat.lipad.io/lipad-checkout-library.js"></script>
+
+    <script>
+      let payNowButtonID="pay_now_button";
+      Lipad.renderButton({id:payNowButtonID});
+      document
+      .getElementById(payNowButtonID)
+      .addEventListener('click', function() {
+        Lipad.makePayment({payload:encryptedPayload,access_key:access_key});
+    });
+    </script>
+
+  </body>
+</html>
+
+

@@ -1,0 +1,12 @@
+[02-Jun-2023 07:49:42 UTC] PHP Warning:  Undefined property: stdClass::$data in /home2/gatewayeast/test.gatewayeast.com/api-test/indus/refund.php on line 173
+[02-Jun-2023 07:49:42 UTC] PHP Fatal error:  Uncaught TypeError: Jose\Component\Encryption\Serializer\JWESerializerManager::unserialize(): Argument #1 ($input) must be of type string, null given, called in /home2/gatewayeast/test.gatewayeast.com/api-test/indus/refund.php on line 195 and defined in /home2/gatewayeast/test.gatewayeast.com/api-test/indus/vendor/web-token/jwt-encryption/Serializer/JWESerializerManager.php:55
+Stack trace:
+#0 /home2/gatewayeast/test.gatewayeast.com/api-test/indus/refund.php(195): Jose\Component\Encryption\Serializer\JWESerializerManager->unserialize(NULL)
+#1 {main}
+  thrown in /home2/gatewayeast/test.gatewayeast.com/api-test/indus/vendor/web-token/jwt-encryption/Serializer/JWESerializerManager.php on line 55
+[02-Jun-2023 07:50:40 UTC] PHP Warning:  Undefined property: stdClass::$data in /home2/gatewayeast/test.gatewayeast.com/api-test/indus/refund.php on line 176
+[02-Jun-2023 07:50:40 UTC] PHP Fatal error:  Uncaught TypeError: Jose\Component\Encryption\Serializer\JWESerializerManager::unserialize(): Argument #1 ($input) must be of type string, null given, called in /home2/gatewayeast/test.gatewayeast.com/api-test/indus/refund.php on line 198 and defined in /home2/gatewayeast/test.gatewayeast.com/api-test/indus/vendor/web-token/jwt-encryption/Serializer/JWESerializerManager.php:55
+Stack trace:
+#0 /home2/gatewayeast/test.gatewayeast.com/api-test/indus/refund.php(198): Jose\Component\Encryption\Serializer\JWESerializerManager->unserialize(NULL)
+#1 {main}
+  thrown in /home2/gatewayeast/test.gatewayeast.com/api-test/indus/vendor/web-token/jwt-encryption/Serializer/JWESerializerManager.php on line 55

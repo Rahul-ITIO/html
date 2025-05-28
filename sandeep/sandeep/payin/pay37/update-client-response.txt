@@ -1,0 +1,44 @@
+Update client response
+
+Request:
+Plain text value of Data 
+
+{
+	"request": {
+		"header": {
+			"requestUUID": "123",
+			"channelId": "IND"
+		},
+		"body": {
+			"updateClientReq": {
+				"transaction": [
+					{
+						"requestId": "",
+						"responseCode": "",
+						"responseDesc": "",
+						"responseId": ""
+					}
+				],
+				"customerTenderId": "FIMPS"
+			}
+		}
+	}
+}
+
+Response
+
+{
+	"response": {
+		"header": {
+			"requestUUID": "123",
+			"channelId": "COR",
+			"status": "success/failure"
+		},
+		"body": {
+			"updateClientRes": {
+				"responseCode": "R000",
+				"responseDescription": "Success"
+			}
+		}
+	}
+}

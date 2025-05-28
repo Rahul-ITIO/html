@@ -1,0 +1,3 @@
+<?
+	include('indian-qr.do');
+?>

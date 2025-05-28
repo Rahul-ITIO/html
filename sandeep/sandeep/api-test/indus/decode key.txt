@@ -1,0 +1,61 @@
+https://github.com/web-token/jwt-doc/blob/v1.x/components/encrypted-tokens-jwe/jwe-loading.md
+
+
+D:\xampp\Tomcat\webapps\indus
+
+AMPLE : UNDUS Collect - CALLBACK - New Key for webhook
+
+f43c6fd122ef1c8e07cb3ca2b6d857302a8569488c9dd92cf11572a29e8b4c08
+
+https://sandbox.indusind.com/security
+
+
+
+$rndEncryptionKey	= 'f43c6fd122ef1c8e07cb3ca2b6d857302a8569488c9dd92cf11572a29e8b4c08';
+$rndEncryptionKey	= '6795e1e3ed3546c801f9d857a113f4b9';
+
+
+
+
+Mailgun Successfully Email has been received
+
+urlpath: https://test.gatewayeast.com/api-test/indus/callback.php
+
+PHP_INPUT: {"data":"eyJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiQTI1NktXIn0.OOmnngKs-bQ5MUumppjGGpA1d2NvridAbRMGNS2c3ak07EVzPxHtDQ.bbbSN9yEgrXxcczF.C3IMAOy7VNFI37kP5jUyHxvp04sucDDPSQV9pPRAnQgjM1d7jtR67Ml528lvbsFZ8pAZMvuFrUCmSimtZgLuOxtkw6z_1hk4xuCj6iCYc-RrlH7Vv7IJ60rM7aI3ACCdB1_2DvR3Yaxyyeqfazer59A_aK9CDjeSFB78mo7VqVMstfwTWXgk9WC98WwwvrtHAVUygXBbaumbNowTnQvqIhl0dO_nXLajXVGlAXWRcsZZkzwkcRCA3niRI0UyZX99cnSXk5qkQ-768YxcEWAnXeyaWvC2FqqDslQFIPYi27f4CYbKdGz-NDX_gdDa43DSZMpb7yXGzvw5ysLBlgSajzkqn7ReoYN4B1uwFKxoMsdh6L7b5M4raAVmRiwAffasAi9nWIfcLCEMx13j-wq_QcpSmBdbXHAH_Ipgmg4c3U2lzgblISItTixFIonKrsbsV1Nx6u1wJX2i0sK71O4ORUihDR6NHdRBA2SeKQCar8TIKBThhsVdFnHP_F3_VCua_y1oIuSXO34hguSM3TOC3OPIleMPSTFLU9vpoT485Z4mimkVk4LJdoTdBXmJ9ZBwaQhGI-T_pH-excbVuF323dJzobOBqTmIXw88QschTJYcEY9VRrC-hxBNnHU1XLfW8KSbAPaldA5XDc0TUtRamqXawmzeXRHJKxKdPpI-ioemw8v5TvLQb1mUZw9_T0oj6cVlUalgaxvKJqdxpgqJwmRcA2KjtYcd_l7OgKUw9apfdzdVtczD7aLbgrTRF7LnqnekyjPJGHxOTCp3iv2MR-MmgDyLvRRQ1SgSfEhggGnCrpbtH7gIrlldx-NjREGKWIS7DJu9lZ4TpnWtfUXIR0rP5OvRr4t5pUy5r5aWt83RwM3gLavkS8_86slwQ7wkZ4g4oFcs5YaEOcN-LGN3KSXrqN51FMwBQCVI8AeJKHDyZwCL6sBZBaqTYnosSreNNAZzEcJcfYoQMJy3Y6g6rdt19brczjqZWaA3iqK3ZY1XOG5B2xOaDe-Kag5HZec9aTqBnJGWBZr1OaeC99Zk9vsycqTtJAwyjtdmo_X5t8nFYoXWpwpFVSQnRMKGVGpQ2MaJuluum-eEwGGmq_b88spnGkR_ny8eMUe-d_l-HKIFvh4EelZ4Umm6TJY_XwCPpFIr7xgIuLDJpTx6pjH-Nu0c-EMp-_PoTQ8_nuo0-WNCnItePhVDDIr4XvRZh1Qd-KcX0xQl6z78BSF64Elgy_esFC2AAWuJesz9jy1_RV2yLcVXz3MIlr_gKKQglayor8Q3M1BTJx5O-HbPntZsly9e1aLa3rTFhakdr9c7K2BB2DZhc-jcu5BoGAY.Qyyum0SqyvE4hBZ0mu_1-Q"}
+
+
+https://test.gatewayeast.com/api-test/indus/status-enq2.php?txnId=INS11111690376638&custRefNo=320718737885
+api-test/indus/status-enq2.php?txnId=INS11111690376638&custRefNo=320718737885
+
+
+http://localhost/gw/api-test/indus/status-enq2.php?txnId=INS11111690376638&custRefNo=320718737885
+http://localhost/gw/api-test/indus/status-enq2_callback.php?txnId=INS11111690376638&custRefNo=320718737885
+
+
+
+Hello, test.gatewayeast.com
+Mailgun Successfully Email has been received
+
+urlpath: https://test.gatewayeast.com/api-test/indus/collect.php?amount=62
+
+gateway_push_notify: {"txnId":"INS11111690376638","ts":"2023-07-26T18:33:59","custRefNo":"320718737885","status":"SUCCESS","errCode":"TXN_ERR_000"}
+
+vpa: viratkohli@indus5
+
+payload: {"pgMerchantId":"IDSM306216001027","txnId":"INS11111690376638","txnNote":"PE_20","ts":"2023-07-26T13:03:58Z","initMode":"00","purposeCode":"00","refId":"INS1690376638","refUrl":"https://shoppingmango.com","refCategory":"NA","expiryTime":"30","amount":"62","minCollectAmount":"12","payerVpa":"viratkohli@indus5","payerName":"Dev Tech","payerType":"PERSON","payerMCC":"00","merchantMobile":"919234567890","merchantDeviceAppName":"NA","merchantDeviceOS":"NA","merchantDeviceId":"OP123456","merchantDeviceType":"INET","merchantDeviceIP":"122.176.92.114","merchantDeviceLocation":"NA","merchantDeviceGeoCode":"17.5221503,78.3045558","addInfo9":"","addInfo10":""}
+
+httpUrl: https://indusapiuat.indusind.com/indusapi-np/uat/eph-upi/Collect/v2
+
+request: {"data":"eyJhbGciOiJBMjU2S1ciLCJlbmMiOiJBMjU2R0NNIiwiemlwIjoiREVGIn0.2HoeDXSeElhAzb4oXjr10y_DS0SD8YdAbmSDKnaZs8Whsbm3-8cw9Q.MXJx5xsOP4pSAQKm.uGujMxV977-Q4kVrDaXDN7deIQw236hO78alWakikWZrTrSbYhOzAdPOQ1XpslWo28Ub0Htw_M8auFXeqn47tzmk9Rm7G9ytk8KS6xjzyxD6H0bbTQIjsCHCx8_3xKXpyCuzKGmzdIo6uePtYXyoIVwPo0tr3AjsPeAwoGx83pdCANlbb-poo4uPJNQrv88Sp_k61dPkWQAbwo-cykkwW_K-ld0dn8_7e6zgK5rVstza8NRXdCnm5O4EZ4dKoDfJLU1o5pgkARIAybrMkx7xGgmHJ_R8ZjxYpBPEQL2Aih0GI6cNnd_Q4pwP-sOqjle6w2ywYNa3dgC7hmbOEav4MwgMaaims1nahrRviKoCUoJvR5d1fYqcX1v_48k8L6vugBMt-oKLgO2Yo1ZzjVHSoRsIBY9883AqfGtdLOrfFTb5ymqA6nFml9qxLFWI_E4QBJa2caLvujlEi4Eo-6rduuBmNUE.gdYgGqpdlSJNERsiAZdKgQ","key":"eyJhbGciOiJSU0EtT0FFUC0yNTYiLCJlbmMiOiJBMjU2R0NNIiwiemlwIjoiREVGIn0.qMU5lpUPhUuuEwfT1ByUzCh_BCUu6fWRP-HEqGnwqenZxZZSgjpBJhbJaP6x5n61hzIksNOPQ_p_ibmrgfcQwOxYAidq0w54yALnlc4umxqRN5LM8qUEag2jzX6zgU4f6z6xxgRV3SZr0YNGI3zDzu7HUj5WFaDBdwcX2y2tGJ7wlV_SUKyWFYq0Ua9ruJxJE9gdf4PedDIYf3gqprLq-hfVxw-c33VddwXNGRd59EObl8kxxY1SymTcchyZe1Irx_qg_8iZYTWYB9QbHZeXjk44ideaLaMKFaH4FKHWO5qNf-RxdVL_MPe8qnk9erSiVwswgjQgUaHxGVsdoPwhsw.-ZxKEvd8opEdFmK1.pI7vDKBVDIkP1ggZh7jUbhLy0j6Be0iUTzXSsT_HlrV_sWcYuYbm1PKos6SGMU-ta3ES.4QnlXt3BvZcI4cDme3Kndg","bit":0}
+
+headers: ["IBL-Client-Id: b1fd42e9f58618f3a93c059290f1a7b9","IBL-Client-Secret: 6795e1e3ed3546c801f9d857a113f4b9","Content-Type: application/json"]
+
+amount: 62
+
+status_url: https://test.gatewayeast.com/api-test/indus/status-enq2.php?txnId=INS11111690376638&custRefNo=320718737885
+
+_POST: []
+
+_GET: {"amount":"62"}
+
+_REQUEST: {"amount":"62"}

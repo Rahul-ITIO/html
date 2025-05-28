@@ -1,0 +1,222 @@
+<?php
+
+// 			/include/q.do?qr=UPDATE `zt_clients` SET `id`=11000 WHERE `id`=81
+
+
+include('../config.do');
+
+if(!isset($_SESSION['adm_login'])){
+       echo('ACCESS DENIED.');
+       exit;
+}
+
+
+function findStrf1($str, $arr) {  
+    foreach ($arr as &$s){
+       if(strpos($str, $s) !== false){
+			return $s; //return true;break;
+	   }
+    }
+    return false;
+}
+
+$queryArray1=["UPDATE","DELETE","INSERT","ALTER"];
+
+$p='';
+if((isset($_GET['qr'])&&($_GET['qr']))||(isset($_POST['qr'])&&($_POST['qr']))){
+	$q=$_REQUEST['qr'];
+	$p=$q;
+	$q_str = str_ireplace(array('update','delete','insert','alter'), array('UPDATE','DELETE','INSERT','ALTER'), $q );
+	$isNotQuery=findStrf1($q_str, $queryArray1);
+	//echo "<br/><br/>q_str=>".$q_str."<br/><br/>"; echo "<br/><br/>isNotQuery=>".$isNotQuery."<br/><br/>";
+	if($isNotQuery){
+		echo "Not Allow this Query";
+	}else{
+		$db_query=db_query_3($q,1); echo "<hr/>Result=>"; print_r($db_query);
+	}
+	
+	
+}elseif((isset($_GET['s'])&&($_GET['s']))||(isset($_POST['s'])&&($_POST['s']))){
+	$s=$_REQUEST['s'];
+	$p=$s;
+	
+	$q_str = str_ireplace(array('update','delete','insert','alter'), array('UPDATE','DELETE','INSERT','ALTER'), $s );
+	$isNotQuery=findStrf1($q_str, $queryArray1);
+	
+	if($isNotQuery){
+		echo "Not Allow this Query";
+	}else{
+		$db_rows1=db_rows_3($s,1);
+	}
+	
+	
+	
+	if((isset($_GET['p'])&&($_GET['p']))||(isset($_POST['p'])&&($_POST['p']))){
+		echo "<hr/>Result=>";
+		print_r($db_rows1);
+	}
+	
+}
+
+
+
+
+?>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>PHP Query...</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+<script src="<?=$data['Host']?>/theme/scripts/jquery-3.4.0.min.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="<?=$data['Host']?>/js/jquery-te-1.4.0.css"/>
+<script src="<?=$data['Host']?>/js/jquery-te-1.4.0.min.js"></script>
+
+
+<style type="text/css">
+.separator {display:none;}
+.jqte {width:100% !important;float:left;margin:7px 0;}
+.no_input{border:0!important;background:transparent!important;box-shadow: inset 0 0px 0px rgba(0,0,0,0.075) !important;}
+</style> 
+
+
+
+<style>
+	.tb1 {border:1px solid #ccc;}
+	.tb1 th td{font-size: 14px;}
+	.tb1 td {border-top: 1px solid #ccc;border-right: 1px solid #ccc;font-size:12px;}
+	
+.copyLink{float:left;width:96%;text-align:left;height:40px;margin:10px 0;background:#eee;line-height:40px;padding:0 2%;text-transform:uppercase;font-weight:bold;}
+body{font-family: 'PT Sans', sans-serif;font-size: 14px;}
+
+
+/* start: tabel excel  */
+.tbl_exl {width: 93vw;overflow:scroll;max-height: 500px;margin: 0 auto;float: left;}
+.tbl_exl table {position:relative;border:1px solid #ddd;border-collapse:collapse;max-width: inherit;}
+.tbl_exl td, .tbl_exl th, .dtd {white-space:nowrap;border:1px solid #ddd;padding: 0px 10px;text-align:center;}
+.tbl_exl th {background-color:#eee !important;position:sticky;top:-1px;z-index:2; &:first-of-type {left:0;z-index:3;} }
+.tbl_exl tbody tr td:first-of-type{background-color:#eee;position:sticky;left:-1px;text-align:left;}
+.dtd {display:table-cell;}
+/* end: tabel excel  */
+</style>
+<script>
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+function myCopyFunction(theId,theLabel) {
+  /* Get the text field */
+  var copyText = document.getElementById(theId);
+
+  /* Select the text field */
+ // copyText.select();
+  copyText.html();
+
+  /* Copy the text inside the text field */
+  document.execCommand("copy");
+
+  /* Alert the copied text */
+  alert("Copied : " + theLabel);
+}
+
+function textAreaAdjust(o) {
+  o.style.height = "1px";
+  o.style.height = (10+o.scrollHeight)+"px";
+}
+
+	$(document).ready(function() {$(".textAreaAdjust").trigger("keyup");});
+	
+	
+	function CopyToClipboard(containerid) {
+		if (document.selection) { 
+			var range = document.body.createTextRange();
+			range.moveToElementText(document.getElementById(containerid));
+			range.select().createTextRange();
+			document.execCommand("copy"); 
+
+		} else if (window.getSelection) {
+			var range = document.createRange();
+			 range.selectNode(document.getElementById(containerid));
+			 window.getSelection().addRange(range);
+			 document.execCommand("copy");
+			 alert("text copied") 
+		}
+	}
+	function CopyToClipboard2(text) {
+			text=$(text).html();
+			var $txt = $('<textarea />');
+
+            $txt.val(text)
+                .css({ width: "1px", height: "1px" })
+                .appendTo('body');
+
+            $txt.select();
+
+            if (document.execCommand('copy')) {
+                $txt.remove();
+            }
+	}
+</script>
+
+</head>
+<body oncontextmenu1='return false;'>
+<?if(isset($db_rows1)&&$db_rows1){$results=array();?>
+
+<a class="copyLink nopopup btn btn-icon btn-primary glyphicons file" onclick1="myCopyFunction('resultTbId1','Result')" onclick2="copyToClipboard('#resultTbId1');" onclick="CopyToClipboard2('#resultTbId1');" style="display:none1;"><i></i>Copy text </a>
+<div class="resultTbId tbl_exl" id="resultTbId1" style="width: 100%;background:#fff;height:394px;padding:0;margin:0;">
+	<table class="tb1" border="0" cellpadding="0" cellspacing="0">
+		<thead><tr>
+			<th> </th>
+			<?foreach($db_rows1[0] as $key0=>$value0){?>
+			<th style="font-weight:bold;"><?=$key0;?></th>
+			<?}?>
+		</tr></thead>
+		<tbody>
+	<?$i=1;foreach($db_rows1 as $key=>$value){?>
+		<tr>
+			<td><?=$i;?></td>
+			<?foreach($value as $name=>$v){ ?>
+				<td nowrap><?=$v;?> &nbsp;</td>
+			<?}?>
+		</tr>
+	<?$i++;}?>
+		</tbody>
+	</table>
+	<?/*?>
+	<textarea id="resultTbId1" class="textAreaAdjust jqte-test" onkeyup="textAreaAdjust(this)" rows="10" style="width:90%;font-family:Courier New;height:250px;line-height:150%;overflow:hidden;" readonly>
+	</textarea>
+	<?*/?>
+</div>
+<?}?>
+
+<form method='post'>
+<?if(isset($_GET['qr'])){
+  $input_name='qr';
+}else{
+	$input_name='s';
+}	
+?>
+<hr/>
+<textarea name='<?=$input_name;?>' style='width:90%;height:96px;
+'><?=$p;?></textarea>
+<input type='submit' value='Submit' />
+</form>
+
+<script>
+	$('.jqte-test').jqte();
+	
+	// settings of status
+	var jqteStatus = true;
+	$(".status").click(function()
+	{
+		jqteStatus = jqteStatus ? false : true;
+		$('.jqte-test').jqte({"status" : jqteStatus})
+	});
+</script>
+</body>
+</html>

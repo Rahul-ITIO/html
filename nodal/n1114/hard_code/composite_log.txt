@@ -1,0 +1,50 @@
+
+
+GUID - 1659953675================================================================
+URL - https://apibankingone.icicibank.com/api/Corporate/CIB/v1/Registration
+
+HEADER - ["Content-type: application\/json","x-forwarded-for:162.222.227.163","apikey:mEyFnBO1vVoSoCkW6osC4qBtBC8yWoDI"]
+
+REQUEST - {
+	"AGGRID":"CUST0813",
+	"CORPID":"584286151",
+	"USERID":"TISUVERM",
+	"URN":"",
+	"AGGRNAME":"SKYWALK",
+	"ALIASID":""
+}
+
+REQUEST ENCRYPTED - {"requestId":"req_1659953675","service":"","encryptedKey":"","oaepHashingAlgorithm":"NONE","iv":"MTIzNDU2Nzg5MDEyMzQ1Ng==","encryptedData":"\/nzJ2wJglZPRwee5acmd32E7DspVynIEayDkRrcZ5kYMEejedENf4ZvBj4lCwYZmrxXDYqN5gZMQkpdQ9bfnoZsBWDHpeNOmwc7iRqNZuSk3D+9kfagv\/mgeCKfIiWtHX1mD09im7qGk4zhxWoT8OYczJ16mY64ybIehZmJuiIY=","clientInfo":"","optionalParam":""}
+
+
+
+GUID - 1659953675================================================================ 
+RESPONSE - {"success":false,"response":401,"errormessage":"Unauthorized"}
+
+RESPONSE DECRYPTED - 
+
+
+
+GUID - 1659953776================================================================
+URL - https://apibankingone.icicibank.com/api/Corporate/CIB/v1/Registration
+
+HEADER - ["Content-type: application\/json","x-forwarded-for:162.222.227.163","apikey:mEyFnBO1vVoSoCkW6osC4qBtBC8yWoDI"]
+
+REQUEST - {
+"AGGRID":"CUST0813",
+"CORPID":"584286151",
+"USERID":"TISUVERM",
+"URN":"",
+"AGGRNAME":"SKYWALK",
+"ALIASID":""
+}
+
+REQUEST ENCRYPTED - {"requestId":"req_1659953776","service":"","encryptedKey":"","oaepHashingAlgorithm":"NONE","iv":"MTIzNDU2Nzg5MDEyMzQ1Ng==","encryptedData":"\/nzJ2wJglZPRwee5acmd32E7DspVynIEayDkRrcZ5kYMEejedENf4ZvBj4lCwYZmrxXDYqN5gZMQkpdQ9bfnoZsBWDHpeNOmwc7iRqNZuSk3D+9kfagv\/mgeCKfIiWtHX1mD09im7qGk4zhxWoT8OYczJ16mY64ybIehZmJuiIY=","clientInfo":"","optionalParam":""}
+
+
+
+GUID - 1659953777 ================================================================ 
+RESPONSE - {"success":false,"response":401,"errormessage":"Unauthorized"}
+
+RESPONSE DECRYPTED - 
+

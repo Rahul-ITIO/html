@@ -1,0 +1,13 @@
+The ID of the pull request (with the --id option).
+
+
+ can generate a new policy based on the access activity for this user, then customize, create, and attach it to this role. AWS uses your CloudTrail events to identify the services and actions used and generate a poli
+
+The name of the approval rule (with the --approval-rule-name option).
+
+
+can generate a new policy based on the access activity for this user, then customize, create, and attach it to this role. AWS uses your CloudTrail events to identify the services and actions used and generate a poli
+
+The name of the approval rule (with the --approval-rule-name option).
+
+//testing date 03/02/2024

@@ -1,0 +1,956 @@
+/*
+:-webkit-full-screen {background-color: yellow;}
+/
+:-moz-full-screen{background-color: yellow;}
+/
+:-ms-fullscreen {background-color: yellow;}
+
+:fullscreen {background-color: yellow;}
+
+*:fullscreen
+*:-ms-fullscreen,
+*:-webkit-full-screen,
+*:-moz-full-screen {
+   overflow: auto !important;
+}
+*/
+body {height:100%;width:100%;margin:0 !important;padding:0;}
+.widget.widget-gray .widget-head {height:35px;}
+.clients .formula{margin:0 auto;clear:both;text-align:center;padding-top: 10px;}
+.clients.bank .glyphicons.ok_2 i::before {left: unset;}
+.clients.tr_info #content {height: auto !important;}
+.clients.bank #content {overflow:unset !important;}
+body, .form-actions {background-color: #fff; background: #fff;}
+.widget.widget-2 .widget-body {background: #fff;border:0;}
+.widget-body{border-bottom-left-radius: 15px;border-bottom-right-radius: 15px;}
+.well {z-index:1;position:relative;background:#fff;border:0 solid #e3e3e3;border-top:1px solid #e3e3e3;padding:0;}
+#content {min-height: inherit;margin: 0 0 0 0px;}
+.form-actions.ok {width:96%;float:left;clear:both;margin:20px 0 0 0;padding-right:0;text-align:center; background:none;}
+
+body a{cursor:pointer !important;}
+
+
+.listActive1, .listActive1 td, .listActive1 td, .listActive1 a, .listActive1 font {
+    background: #EB4E01 !important;
+    color: #fff !important;
+}
+
+.fs18 {font-size:18px;}
+
+.bnav .navbar.main{margin-bottom:5px !important;}
+.admins .content_div {padding-top:5px;width: 95% !important;padding: 20px;
+padding-top: 20px;border-radius: 5px;float: none !important;margin: 0 auto !important;padding-top: 5px;}
+.navbar.main .appbrand{float:left;width:95px;padding:7px 10px 0px 10px;height:53px;font-size:18pt;text-transform:uppercase;font-weight:700;display:inline-block;text-decoration:none;line-height:normal;border-right:0px solid #424243;overflow:hidden;position:relative;z-index:9;margin:-4px 0 0 -4px;border-radius:2px;background:transparent}
+.navbar.main .appbrand img{height:32px;height:auto;max-width:100%;vertical-align:middle;border:0;}
+.admins.login.bnav .content_div{width:320px !important;}
+.admins.login.bnav .error{background-color: red !important;}
+.admins.clients_test .content_div .topnav.pull-right.trs .glyphicons i:before {font-size:11px;line-height:26px;color: #fff;position: relative;left:-11px;}
+
+.admins.clients_test .content_div .topnav.pull-right.trs .dropdown-menu.pull-right .glyphicons i:before {color: #000 !important;top: -5px !important;}
+.menu .appbrand {/* background: #fff; */padding: 3px 7px;width: 113px;float: left;height: 31px;position: relative;top: -5px;left: -10px;border-radius: 5px;}
+.menu .appbrand img {height: 32px;position: relative;}
+
+.radios {text-align: center;}
+.row-fluid .radios .span10 {width:20px;display:inline-block;min-width: 20px;}
+.row-fluid .radios label {display: inline-block;margin: 0px 15px 0 0;position: relative;top: 2px;}
+
+.business_div, #add_partners_divId {display:none;width:100%;float: left;margin: 0 0 0 -15px;padding: 15px;}
+
+.input_col_1 label {width:28%; float:left;margin: 5px 0;line-height: 15px;height: 33px;}
+.input_col_1 input, .input_col_1 button, .input_col_1 select, .input_col_1 textarea, .input_col_1 input[class*="span"] {width:67%; float:left;margin: 5px 15px 8px 0;height: 30px;color: #333;border-radius: 3px;}
+
+.row-fluid .radios label.r1{cursor:inherit;width:auto;margin:5px 0;height: auto;}
+.row-fluid .radios input.r1{float: none;display:inline-block;width:20px;}
+
+.flagtags {background: #d2d2d2;border-radius:3px;margin: 2px 3px;padding:0px 8px;color: #333;display:inline-block;line-height:20px;pointer-events:none;cursor:pointer !important;}
+
+.flagtg.btn-primary {margin: 2px 3px;display: inline-block;border-radius: 3px;padding: 2px;}
+.bdr1 td{border-bottom: 1px solid #e6e6e6 !important;}
+.bdrfull1{border: 1px solid #e6e6e6 !important;margin: 0;padding: 0;float: left;border-radius: 5px !important;width: 100%;}
+.radi3{border-radius: 3px !important;}
+.none1 {display:none;}
+.w24 {float:none;display:block;width:320px;margin:0 auto !important; }
+.w24 input, .input24 {width:97% !important; display:inline-block !important;padding: 2px 1%;}
+.input_col_2 label, .label_2 {width: 12%;float:left;margin: 5px 0;line-height: 15px;height: 33px;text-align: right;padding-right: 2%;}
+.input_col_2 input, .input_col_2 button, .input_col_2 select, .input_col_2 textarea, .input_col_2 input[class*='span10'] {width:34%;float:left;margin: 5px 15px 8px 0;height: 30px;color: #333;border-radius: 3px;border: 1px solid #ccc;}
+.input_col_2 .input {width:34%;float:left; margin: 0px 15px 0px 0;}
+.input_col_2 .input_2 {width: 83%;float:left;margin: 0px 0px 0px 0;}
+.input_col_2 .input_2 label {text-align:left;width: 26.5%;}
+.input_col_2 .col_3 .input_2 label {text-align:left;width: 26%;}
+.input_col_3 label, .label_3 {width: 11%;float:left;margin: 5px 0;line-height: 15px;height: 33px;text-align: right;padding-right: 2%;}
+.input_col_3 input, .input_col_3 button, .input_col_3 select, .input_col_3 textarea, .input_col_3 input[class*='span10'], .input3_div {width: 18%;float:left;margin: 5px 15px 8px 0;height: 30px;color: #333;border-radius: 3px;border: 1px solid #ccc;}
+.input_col_3 select, .input_col_3 textarea {width: calc(18% + 12px);}
+.input3_div {height: 26px !important;border:0 !important;}
+.input_col_3 .input {width:34%;float:left; margin: 0px 15px 0px 0;}
+.input_col_3 .input_2 {width: 83%;float:left;margin: 0px 0px 0px 0;}
+.input_col_3 .input_2 label {text-align:left;width: 24%;}
+.input_col_3 .col_3 .input_3 label {text-align:left;width: 26%;}
+.h2{clear:both;font-size:16px;margin: 0px;}
+.input_col_2 input[class*='span'].sml {width: 24%;}
+.verify_input {width: 8%;float: left;line-height: 27px;background: #fff;text-align: center;margin: 5px 15px 0 0;border: 1px solid #37A6D0;text-transform: uppercase;border-radius: 3px;}
+.modalpopup_body {float:left;width:900px;height: 390px;position: fixed;z-index: 9999999;top: 50%;left: 50%;margin: -195px 0 0 -450px;background: #fff;border-radius: 5px;}
+.modalpopup_cdiv {float:left;width:96%;margin:3%;background:#fff;}
+.btn-primary {color:#fff !important;}
+
+.btn-primary.close_popup {height:30px !important;width:35px !important; margin:-10px -10px 0 0 !important;padding:0; }
+.star1 {color:rgb(255, 14, 14);position:relative;top:-1px;}
+
+.rows.po15{position:relative;top:-15px;}
+.rows.fullbrd{position:relative;top: 5px;border: 1px solid #ccc;margin: 0 0 10px 0;padding: 0;width: 99%;border-radius: 3px;border-top: 0;}
+.rows {float:left;clear:both;width:100%;margin: 5px 0 5px -15px;border-top: 2px solid #ececec;padding: 5px 15px;background: #fff;}
+.dta1 {float:left;width: 15.66%;line-height: 18px;border-top:1px solid #ccc;min-height: 18px;}
+.rows.po15 .dta1{border-top:1px solid #ccc;border-bottom:0px solid #ccc;}
+.dta1.key{font-weight:bold;}
+.dta1.val.w75 {width:84.3%;}
+.dta1.val{text-overflow:ellipsis;white-space:nowrap;overflow:hidden;width:17.66%}
+.dta1 .verify_input{width: 48px;float:none;display:inline-block;line-height: 11px;overflow: hidden;margin: 1px 0 0 0;background: #37a6cd;color: #fff;font-weight:bold;margin-left: 3px;padding: 2px;vertical-align: bottom;}
+
+.bg_div1 {float:left;width:100%;}
+.bg_div2 {clear:both;width:100%;float: left;background: #ccc;/*margin: 0 0 0 -15px;padding: 15px;*/padding-top:10px;}
+
+.checkbox_div_1 {float:left;width:31% !important;margin:2px 15px 0 0;overflow:hidden;}
+.checkbox_div_1 label {width:80% !important;}
+.ab_r{margin-top:-27px;position:absolute;z-index:99999;right:5%;background:#fff;text-align:center;padding:3px 10px; border-radius:3px;}
+.modal_popup3_frame_img_div {display:none;}
+
+.pull_right {float:right;clear:right;width:auto;text-align:right;padding:2px 1%;border-top:2px solid #ccc;;}
+
+.alert.alert-error .close {color:#DA4C4C;width:20px;float:right;position:relative;top:-14px;right:-40px;}
+
+.glyphicons.ok_2 i:before, .glyphicons.green i:before {color:rgb(0, 164, 30); font-size:16px; left:10px;top:-3px;}
+
+.glyphicons.remove_2 i:before, .glyphicons.red i:before {color:rgb(255, 14, 14); font-size:16px; left:10px;top:-3px;}
+.glyphicons.remove_2 i:before {left:0px;top:-3px;}
+.clients.bank td .glyphicons.unlock.red i:before {left:1px;top:-3px;}
+.clients.bank td .glyphicons.remove i:before {left:-13px;top:-4px;}
+.clients .search_textbx, input.search_textbx {width:98%  !important;}
+.clients td .store_status{font-size:10px;display:inline-block;width:100px;height:25px;line-height: 25px;
+}
+.modal_popup_close {position:absolute;z-index:99;float:right;right:-20px;top:-20px;width:40px;height:40px;font:800 40px/40px 'Open Sans';color: #fff !important;    background: #f30606;text-align:center;border-radius:110%;overflow:hidden;cursor:pointer;}
+
+.modalpopup_body.absolute{position:absolute;height:inherit;margin-bottom:50px}
+
+.hrefmodal {cursor:pointer;}
+
+.glyphicons.btn-action.circle_question_mark{height:inherit !important;position:relative;}
+
+.bnav .navbar.main .appbrand {width: auto;padding: 7px 10px 0px 10px; height:36px;	}
+.bnav .navbar.main .appbrand img {height: 32px;}
+.bnav .navbar.main {height:43px;width:100%;box-shadow:0px 3px 8px rgba(0, 0, 0, 0.1);margin:0;position:fixed;z-index:99999999;left:0;top:0;ackground-color: #d0d0d0;} 
+
+.bnav .navbar.main .topnav, .bnav .navbar.main .topnav ul {margin:0;padding:0;list-style:none;}
+.visible-desktop {display:inline-block !important;}
+
+.addrembtn {float:left;width:99%;margin:10px 0 -30px 0;position:relative;   z-index: 99;}
+.tranrow {float:left;width:50%;}
+
+.buyer_row {float:left;width:50%;}
+
+.navbar.main .topnav > li > a.glyphicons i:before, .navbar.main .topnav > li .notif li > a.glyphicons i:before {color: #ec0000 !important;}
+
+.title2 {font-size: 11px !important; padding: 10px 1.5%; margin: 0px 0 0 0; float: left; border-bottom: 2px solid #ccc; width: 97%;}
+.collapsea.active {color: #ab0c0c;}
+
+.padding0 {padding:0 !important; margin:0 !important;}
+.row {clear: both; float: right; width: 99%; padding: 0px 0.5%; font-size: 11px; border-bottom: 0px solid #d7d8da;margin:0;line-height:100%;}
+.row:nth-child(even) {}
+.col_1 {float:left; width:28%;padding:3px 1%;font-size: 11px;}
+.col_2 {float:left; width:68%;padding:3px 1%;word-break:break-all;text-indent: -11px;font-size: 11px;}
+.rightlink {float:right; font-size:11px;}
+.addremarkform {display:none;float:left;padding:20px 4% 0 4%;width:92%;border-bottom:2px solid #ccc;margin: 0 0 20px 0;}
+a{cursor:pointer;}
+
+.fund_3 {width:24%; display:inline-block;}
+.breadcrumb .glyphicons.home.ic i:before {top: -11px;}
+
+.commentrow{float:left;width:100%;}
+.commentrow .title2{border-top:0;margin:12px 0 5px 0 !important;background:#ccc;padding:1px 1.0% 0px 1.0% !important; }
+
+.remarkcoment {width: 75% !important;}
+
+.ip_view {cursor:pointer;color:#6aa6d2;}
+
+.content_holder {float:left;width:100%;overflow:hidden;}
+.w98{width:100%;float: right;}
+
+select{-webkit-appearance:none;-moz-appearance:none;padding: 0px 5px;}
+
+input[type=text], input[type=password], select, textarea, input {line-height:30px; height:30px;}
+
+/* start: table excel  */
+.tbl_exl {width: 94vw;overflow:scroll;max-height: 500px;margin: 0 auto;float: left;}
+.tbl_exl table {position:relative;border:1px solid #ddd;border-collapse:collapse;max-width: inherit;}
+.tbl_exl td, .tbl_exl th, .dtd {white-space:nowrap;border:1px solid #ddd;padding: 8px 18px !important;text-align:center;}
+.tbl_exl th {background-color:#eee !important;position:sticky;top:-1px;z-index:2; &:first-of-type {left:0;z-index:3;} }
+.tbl_exl tbody tr td:first-of-type{background-color: #eee !important;position:sticky;left:-1px;text-align:left;}
+.dtd {display:table-cell;}
+.tbl_exl tr:hover td {background:#dadada;}
+.tbl_exl tr:hover td:first-of-type, .tbl_exl tr td:first-of-type, .tbl_exl td {padding: 5px 18px !important;}
+
+.tbl_exl tr:hover td:first-of-type, .tbl_exl tr:hover td:hover, .tbl_exl tr:hover td, .tbl_exl tr:hover td a, .tbl_exl tr:hover td div {background: #177501 !important;color:#fff !important;}
+.tbl_exl tr:hover td a:hover {color:#f7ff4a !important;}
+.tbl_exl diff {background:#7b0909;color:#fff !important;}
+
+.diff_log {display: inline-block;border-radius:150%;background:red;width: 8px;height: 16px;text-align: center;padding: 0px 0 0 8px;overflow: hidden;color: #fff;vertical-align: middle;line-height: 16px;min-width: 8px;max-width: 8px;margin: 0px 0 0 4px;font-weight: bold;}
+/* end: table excel  */
+
+
+/* start: table excel for transaction  */
+.tbl_exl2 {width: 94vw;overflow:scroll;max-height: 2000px;margin:0 auto;float: left;}
+.tbl_exl2 table {position:relative;border:1px solid #ddd;border-collapse:collapse;max-width: inherit;}
+.tbl_exl2 .trc_1 td {white-space:nowrap;}
+.tbl_exl2 td, .tbl_exl2 th, .dtd {border:1px solid #ddd;padding: 8px 10px !important;text-align:center;}
+.tbl_exl2 th {color:#000;background-color:#eee !important;position:sticky;top:-1px;z-index:93; &:first-of-type {left:0;z-index:95;} }
+.tbl_exl2 tbody tr td:first-of-type{background-color: #eee !important;position:sticky;left:-1px;text-align:left;z-index:9;}
+.dtd {display:table-cell;}
+.tbl_exl2 tr:hover td {background:#dadada;}
+.tbl_exl2 tr:hover td:first-of-type, .tbl_exl2 tr td:first-of-type, .tbl_exl2 td {padding: 0px 1px !important;}
+
+.tbl_exl2 tr:hover td:first-of-type, .tbl_exl2 tr:hover td:hover, .tbl_exl2 tr:hover td, .tbl_exl2 tr:hover td div, .tbl_exl2 tr:hover .hover_tr  {background: #fff !important;}
+.tbl_exl2 tr:hover td a:hover {}
+.tbl_exl2 diff {background:#7b0909;color:#fff !important;}
+
+.rmk_row {clear:both;float:left; width:100%; border-top:1px dotted; padding:10px 0 1px 0; margin:10 0;}
+.rmk_row .rmk_date {font-weight:bold; color:orange; float:left; width:30%;}
+.rmk_row .rmk_msg {float:left; width:70%;line-height:20px;}
+
+.tranrow {float: left;width: 50%;}
+.buyer_row {float: left;width: 50%;}
+.addrembtn {float:left; width:99%; margin:10px 0 -30px 0; position:relative; z-index:99;}
+
+.float3{border:1px solid #ddd;border-radius:5px;width:99% !important;margin:0 0 0 -15px;padding-bottom:10px;}
+.widget-stats{background:#ddd !important;}
+.bank #account-settings .span12{border-radius: 10px;border: 1px solid #d5caca;padding: 10px;background: #F7F7F7;}
+.echeckvt .span12{padding:none;}
+.innerLR  .row-fluid .span12, .row-fluid .span12{border-radius:none;border:none;padding:0;background:none;}
+.well .widget .widget-body{border:none;}
+.bank_accord_div td{padding:5px;}
+.innerLR .row-fluid .span4 .widget-stats .glyphicons i::before{color:#000;}
+#encoded_contact_person_info .h2 h2{color:#000; text-shadow:none;}
+.profile .widget-body{border:1px solid #d1d2d3 !important}
+.profile #add_partners_divId{border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;}
+.profile  .input_col_2 .business_div label{color:#000;}
+td .widget-body{border:none;}
+.bnav .text form .frame{border-radius: 10px;border: 1px solid #d5caca;padding: 10px;}
+#document_no .span5 {width:55%;}
+
+.clients.profile select[name="country"]{border: 1px solid #a29a9a;border-radius: 5px;}
+.clients.profile input[name="updatelogo"]{padding: 3px;width: 74%;margin: 0;height: 23px;float: left;}
+.row-fluid .span12 .ecol4 .span10{border:1px solid #a29a9a; border-radius:5px;}
+.row-fluid .span12 .ecol4 #document_type_2{border:1px solid #a29a9a; border-radius:5px;}
+.row-fluid .span12 .ecol4 .span5{border:1px solid #a29a9a; border-radius:5px;}
+
+.row-fluid .business_div .ecol4 .span10,.row-fluid .business_div .ecol2 .span10{border:1px solid #000;}
+
+.ecol4 label{font-weight:bold !important; color:#67757c;}
+.business_div .ecol4 label,.business_div .ecol2 label{font-weight:bold;color:#000;text-shadow:none;}
+.business_div{border-bottom:1px solid #000;border-top:1px solid #000;}
+#add_partners_divId h2{text-shadow:none;}
+.modalpopup_cdiv .row-fluid .ecol4{width:22%;padding-top:0;}
+.btn-primary:focus, .btn-primary:active {color:#000 !important;text-shadow:none;}
+.dialog_box2, form-actions ok .btn{width: 45%;}
+textarea[class*="span10"],.input_col_2 textarea,.row-fluid .span10{width:34%;}
+.dialog_box2{float: RIGHT;margin: 0 5px 0 0px;}
+.input_col_2 button{
+width: 48%;margin-top: 0;
+}
+.glyphicons.btn-icon i::before {
+margin-top: -1px;
+margin-left: -1px;
+}
+.clients.store .container-fluid.fixed .widget-body td .glyphicons.remove_2 i::before { left:10px;}
+
+
+.clients.store .container-fluid.fixed #wrapper #content .well .widget .widget-body .glyphicons.remove_2.remove_popup i::before {margin-left: -1px !important;top:0 !important; 
+margin-top: 0px !important;}
+
+.clients.store .container-fluid.fixed #wrapper #content .well .widget .widget-body .glyphicons.remove_2 i::before {margin-left: -10px !important;top:0 !important; 
+margin-top: 0px !important;}
+.clients.store .container-fluid.fixed #wrapper #content .well .widget .widget-body .input .glyphicons.remove_2 i::before {
+margin-left: -2px !important;
+margin-top: -3px !important;
+
+}
+/*.pull_right .btn{width:20%;}*/
+.csearch .btn {width:auto;}
+form .add_remark_submit{width:auto;}
+.frame .capc{border:0px !important;}
+.flag_ td,.flag_1 td {}
+
+
+.admins.transactions.bnav .mywrap-collabsible {
+width: 100%;
+padding: 0 !important;
+margin-bottom: 5px;
+}
+.admins.transactions.bnav .toggle:checked + .lbl-toggle + .collapsible-content {width: 100%;}
+
+.admins.transactions.bnav .lbl-toggle::before {margin-left: 15px;}
+.admins.transactions.bnav .mywrap-collabsible .lbl-toggle{
+padding-right:0 !important;width:100%;
+height:auto !important;
+padding-left: 0px !important;
+padding-top: 15px !important;
+padding-bottom: 10px !important;
+font-size: 12px !important;}
+.admins.transactions.bnav .mywrap-collabsible .lbl-toggle .glyphicons.book_open i::before{
+font-size: 15px;
+padding-top: 5px;}
+.mywrap-collabsible .glyphicons i::before{background:unset !important;}
+.admins.transactions.bnav .mywrap-collabsible .content-inner{height:550px;background: #fff;}
+.admins.transactions.bnav .mywrap-collabsible .glyphicons.book_open i::before{background:unset;}
+.admins.transactions.bnav .topnav.pull-right.trs .dropdown span.caret {margin:8px 10px 0 0;top:0;right:0;}
+.admins.transactions.bnav .topnav.pull-right.trs .dropdown span {position:relative;top:-5px;right:5px;font-size:11px;}
+.admins.transactions.bnav .topnav.pull-right.trs {list-style:none;text-align:left;margin:0 5px 0 0px;}
+.admins.transactions.bnav .topnav.pull-right.trs .glyphicons i:before {font-size:11px;line-height:26px;color: #37a6cd;position: relative;left:-15px;top:-23px;}
+
+.admins.transactions.bnav .topnav.pull-right.trs .dropdown-menu.pull-right .glyphicons i::before {top:-5px;}
+
+.admins.transactions.bnav .topnav.pull-right.trs >  li.open> a{height:20px;color:#666;position:relative;top:0;/*! line-height:20px; */border:1px solid #6b6cd4;margin:0 0 -7px 0;background: #6b6cd4;}
+.admins.transactions.bnav .topnav.pull-right.trs >  li > a {}
+
+.admins.transactions.bnav .topnav.pull-right.trs ul a {display: inline-block; width: 60%; color: #37a6cd; font-size: 11px; height:17px;}
+.admins.transactions.bnav .topnav.pull-right.trs .dropdown-menu>li>a:hover {color:#fff !important;}
+.admins.transactions.bnav .topnav.pull-right.trs .dropdown-menu li {border-bottom: 1px solid #dddddd; height:20px;}
+.admins.transactions.bnav .topnav.pull-right.trs .open>.dropdown-menu, .topnav.pull-right.trs >  li.open> ul {background:#f5f5f5;border:1px solid #dddddd;/*! border-top:none !important; */box-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;right:0px;border-radius:0 0 0 0;top: 6px;width:100px!important;min-width:0px !important;}
+.admins.transactions.bnav .topnav.pull-right.trs .dropdown-menu li:last-child {border-bottom:0px solid #dddddd;}
+
+.admins.transactions.bnav .topnav.pull-right.trs.inline > li > a {min-width:100px;width:104px;height:20px;line-height:20px;margin:-1px -9px -1px -2px;border:1px solid #dddddd;background:#fff;padding:0px 0px 0px 0px;overflow:hidden;text-align:center;}
+.admins.transactions.bnav .topnav.pull-right.trs.inline >  li.open> a, .topnav.pull-right.trs.inline > li.open > a.active {background:#f5f5f5 !important;color:#000 !important;}
+.admins.transactions.bnav .topnav.pull-right.trs.inline > li > a.active {background:#2c84a4 !important;color:#ffef1d !important;}
+.admins.transactions.bnav .topnav.pull-right.trs.inline .open>.dropdown-menu, .topnav.pull-right.trs.inline > li.open> ul {min-width:110px;width:110px;left:2px;overflow:hidden;top:19px;}
+.admins.transactions.bnav .topnav.pull-right.trs.inline {float:right;display:inline-block; margin:-26px 13px 0px 400px;}
+
+.admins.transactions.bnav .summary_main_div {width:100%;margin:0 auto;}
+.admins.transactions.bnav .summary_main_div table td .nameofaccount {width:20px;font-weight:bold;text-align:center;}
+.admins.transactions.bnav .summary_main_div table tr:nth-child(1n) td {background:#ddd;text-align:center;white-space:nowrap;}
+.admins.transactions.bnav .summary_main_div table tr:nth-child(2n) td {background:#fff;text-align:center;}
+.admins.transactions.bnav .summary_main_div table tr:nth-child(3n) td {background:#eee;text-align:center;display: none;}
+.admins.transactions.bnav .summary_div {float:left;margin: 0 3px 5px 0; width: 100%;}
+.admins.transactions.bnav a.strlink {color:#666 !important;}
+.admins.transactions.bnav.summary_main_div table tr:nth-child(1n) td:hover, .summary_main_div table tr:nth-child(1n) td:hover a.strlink {color:#0066CC !important;background:#fff;}
+
+
+
+
+.admins.transactions.bnav .frame.echektran .flag_3 td {vertical-align: middle !important;height:35px !important;}
+.admins.transactions.bnav .frame.echektran .flag_ td {vertical-align: middle !important;height:35px !important;}
+.admins.transactions.bnav .frame.echektran .flag_1 td {vertical-align: middle !important;}
+
+
+.tooltip2 {position:relative1;display:inline-block;border-bottom:1px dotted black;}
+.tooltip2 .tooltiptext {display:none;width:100%;background-color:#535353;color:#fff;text-align:center;border-radius:3px;padding:3px 0;
+position:absolute;z-index:11;top:20px;left:0%;margin-left:0px;}
+.tooltip2:hover .tooltiptext {display:block;}
+
+a[href]:hover{opacity: 0.6;}
+.funda a.active_a {font-weight: :bolder !important;font-size: 16px;}
+
+.funda a.active_a::before {
+content: '';width: 0;height: 0;border-top: 8px solid transparent;border-bottom: 8px solid transparent;
+border-left: 8px solid blueviolet;position: relative;right: 0;
+float: left;top: 7px;margin: 0 4px 0 0;
+}
+
+.ulogin .modal_popup_popup_body {width:30% !important; left:35% !important; height:300px !important;}
+.ulogin #modal_popup_iframe_div {height: 300px !important;}
+.ulogin #modal_popup_iframe {overflow:hidden;}
+.popup, .popup .container-fluid.fixed {background: transparent !important;}
+.dotdot{display:block;width:140px;text-overflow: ellipsis;overflow: hidden;}
+.clients.transactions .div_search, .clients.statement .div_search{float:right;position:relative;z-index:99;right:5px;margin-bottom:-35px;white-space:nowrap;}
+input.file.span10{height:25px;background:#fff;}
+.row100.funda{ padding:0px 0 5px 10px;}
+.content_div .btn.btn-icon.btn-primary.glyphicons.search{vertical-align: top;margin-top:11px;}
+.btn.btn-icon.btn-primary.glyphicons.search{vertical-align: top;margin-top:3px;}
+.clients.statement .btn.btn-icon.btn-primary.glyphicons.search{margin-left: 10px;}
+.table.table-bordered.table-condensed{border:none;}
+.table.table-bordered.table-condensed.table-bordered th{border:none;}
+.table.table-bordered.table-condensed.table-bordered td{border-left: 1px solid #ddd !important;}
+.btn_div{width:30%; margin-left:18px; text-align:center; float:left;padding:10px;}
+.submit_div {width:98%; padding:10px; margin:0 auto;height: 35px;}
+.submit_div .submitbtn, .submit_div .submitbck
+{width: 45%;border: 0 !important;float: left;margin-left: 15px;}
+.clients.store .glyphicons.clock i::before{margin-left: -1px !important;left: 0 !important;
+top: 0 !important;margin-top: -2px;}
+.clients.store .radios .label_2{text-align:left;}
+.bank_account{width:500px;}
+.clients.echeckvt .row-fluid .span10, select {width: 19.699%;}
+.admins.clients_test.bnav #edit_bank_primary{width:auto;}
+.clients.bank #show_img img{width:100px;}
+.clients.processall #credit_cards img{width:23.6%;}
+.heading-buttons span.pull_right{border-top:none;}
+.admins.clients_test.bnav .collapsible-content .glyphicons.remove_2 i::before {left: 0;margin-left: 8px;}
+.bank_radio{width:30px; height:30px;float:left;margin:0 auto !important;}
+.bank_name{width:90%;margin-top:2px; float:left;text-align:left;padding-top:4px;}
+.widget-body.input_col_1 .span12 .bank_accord .bank_name label{width:98% !important;font-weight:normal; }
+.clients.echeckvt .well{margin-bottom:0px;}
+.clients.bank .container-fluid.fixed form .well .widget-body-white td .show_img {margin-top:0px;}
+
+.admins #cs_form {margin-top: 0px !important;margin: 0;padding-right:10px;padding-left:10px; padding-top:5px !important; padding-bottom:0px !important;}
+.csearch {
+float: left;
+width: auto;
+left: 18% !important;
+margin-bottom: 10px;
+top: -19px !important;
+height: auto;
+}
+.admins.login.bnav .tranStatDIVbar{width: 98%;}
+.tranStatDIVbar{
+width: 100%;
+border: 0px solid #ccc;
+margin: 0 auto;
+margin-bottom: 0px;
+border-radius: 5px;
+margin-bottom: 2px;
+font-size:12px;
+background:#F0F0F0 !important;
+font-weight:bold;
+float:left;
+height:auto;
+}
+.admins.login .time_space{border-bottom: none;}
+.time_space{width:100%;clear:both;height:1px;border-bottom: 1px solid #ddd5d5;}
+
+.admins.login .tranStatDIVbar .slog_title {
+padding:0!important;}
+.admins.transactions.bnav .row100 {clear:both;width:100%;float:left;text-align:left;background:#fff;height:auto;}
+.admins.transactions.bnav .row100 .w50.grid_led1{width:95% !important;}
+
+.admins.transactions.bnav .w50{height: 30px;vertical-align: middle !important;}
+.admins.transactions.bnav .sub_logins{
+font-size:14px;text-align:center;min-width:56px;
+border-radius:3px;float:right;}
+
+
+.admins.login.bnav .tranStatDIVbar .slog_title {font-size:11px;}
+.tranStatDIVbar .slog_title {
+font-size: 12px;
+font-weight: bold;
+text-align: left;
+width: auto;
+float:left;
+clear: both;
+padding: 10px;
+margin: 0 auto;
+height:15px;}
+/* SAMPLE CSS STYLES FOR JQUERY CLOCK PLUGIN */ 
+.admins.login.bnav .tranStatDIVbar{padding-left:5px;}
+.admins .jqclock {float:right;margin-right:5px;padding:0 10px;width:110px;text-align:center;}
+.admins.transactions.bnav .jqclock { 
+display:block;
+text-align:center;
+margin-top:2px; margin-right:2px;width:110px;
+height:24px;padding:0;border:0;float:right;}
+
+.clockdate { color: DarkRed; font-weight: bold; margin-bottom: 10px; font-size: 18px; display: block; padding: 5px 0; } 
+.clocktime { border: 1px inset gray;padding: 5px 0; font-size: 14px; font-family: "Courier"; color: black; margin: 2px; display: block; font-weight:bold; text-shadow: 1px 1px 1px white; } 
+.clockdate{font-size:12px;color:#eee;display:none !important;}
+
+.clocktime {margin:0px;position:relative;top:0px;margin-bottom:0px;}
+/*.admins .navbar.main .topnav.pull-right li.dropdown{height:22px !important;}*/
+
+.admins .navbar.main .topnav.pull-right li.dropdown{height:auto !important;}
+
+.navbar.main .topnav > li.open .dropdown-menu li ul.dropdown-content {display: none; position:absolute; z-index:2; left:198px; margin:-26px 0 0 0 ; background:#fff; border:1px solid #ccc; border-radius:3px;width:200px; }
+/******	media query css	*************/
+.admins .navbar.main .topnav {border-left:unset;}
+.csearch .select_cs_2,.type_csearch{
+width:15% !important;font-size:11px !important;height: 30px !important;}
+.tranStatDIVbar #cs_form .dt_box{
+font-size: 12px !important;line-height: 15px;height: 30px;width: 120px !important;
+color: #333 !important;min-width: 80px !important;
+}
+.admins #cs_form .btn.search{height:28px;font-size:11px;padding-right:0;overflow:hidden;width:38px;padding:0px;float: left;margin: 1px 0 0 5px;position: absolute;}
+.tranStatDIVbar .search_txt_div {float:right;padding-top: 5px;}
+.tranStatDIVbar .search_txt_div .search_textbx{width:60% !important;height: 30px !important;padding:0 5px;}
+.clients.transactions .widget-cl2 .btn.btn-icon.btn-primary.glyphicons.search{width: 30px;height: 27px;}
+.admins.clients_test.bnav .glyphicons.btn-action {margin:0px;height:auto !important;}
+.admins.login.bnav .tranStatDIVbar .slog_title{height:auto !important; border-bottom:none !important;}
+.admins.login.bnav .tranStatDIVbar {border:1px solid;}
+.admins #search_keyname.select_cs_2{width:60px !important; font-size:11px;}
+.admins.emails.bnav .table.table-bordered.table-condensed.echektran th{font-size: 13px;padding: 0px;
+text-align: center;vertical-align: middle;height: 40px;}
+.admins.listsubadmin.bnav .frame #month_list{width:175px; font-size:11px;}
+.admins.listsubadmin.bnav .glyphicons.remove_2 i::before {top: -1px !important;margin-left:10px;}
+.admins.clients_test.bnav .glyphicons.btn-icon {padding: 1px 7px 5px 42px;}
+.clients.transactions .select_cs_2, .clients.statement .select_cs_2{font-size:12px;height:30px;width:130px;min-width:80px !important;margin:1px 0 0;padding:0;    margin-bottom:10px;line-height:20px;border-radius:0;}
+.clients.transactions .widget-cl2 {width: auto;float:left;}
+.clients.statement .widget-cl2 {width: auto;margin-left:10%; float:left;}
+.admins .database_plus2.flagtg i{float:left;width:20px;height:20px;position:relative;left:-7px;top:3px;}
+.admins .glyphicons.remove_2 i::before, .glyphicons.red i::before {left:10px;}
+.clients.transactions .div_search{float: right; margin-right: 5px;}
+.clients.statement .widget-head .widget-cl2 .btn.btn-icon.btn-primary.glyphicons.search{width:31px;}
+
+.clients .widget-head .widget-cl2{padding: 0 10px; }
+
+.admins.transactions.bnav form .span10{
+min-width:120px;
+margin:0;
+height:30px !important;
+font-size:11px!important;
+padding:0 !important;
+width: 250px;
+float: left;
+padding: 5px !important;
+}
+
+.admins.graph.bnav #search_bar .graph_div{width:99%; float:left;padding-top: 10px;background-color: #f2f2f2;}
+.admins.graph.bnav #search_bar .graph_div .graph_1{float:left;clear:both;width:200px;}
+.admins.graph.bnav .time_div span .time_span{margin-left:5px !important;}
+.admins.graph.bnav #search_bar .time_div{float: right;border-left: 2px solid #B9B5B5;
+height: 34px;margin-right: 1px;}
+
+.admins.graph.bnav #search_bar .transaction_type{width: 150px;font-size: 11px;}
+.admins.graph.bnav #search_bar .time_span{vertical-align: top;font-weight: bold;margin-right: 10px;margin-top: 3px;}
+.admins.graph.bnav .content_div{ overflow:unset !important;}
+.admins.transactions .content_div{padding-top: 5px !important; }
+.admins.clients_test.bnav .collapsible-content #add_partners_html .rows .pull_right {width:100%;}
+.clients.support-ticket .echektran {width:100% !important; margin:0 auto !important;}
+.admins.graph.bnav #time_period{float:left; width: 90px; font-size: 11px;margin-left:5px;margin-right:5px;vertical-align: top;}
+.admins.graph.bnav .datepicker1{font-size:11px;width:110px;}
+.admins.graph.bnav .datepicker2{font-size:11px;width:110px;}
+.admins.graph.bnav #SEARCH{font-weight:bold;padding: 0px; min-width: 84px; font-size: 11px;float: right;
+margin-left: 5px;}
+.glyphicons.log_book i::before,.glyphicons.user i::before
+{font-size:23px; border-radius:20%;margin-left: -6px !important;}
+
+.glyphicons.log_book i::before
+{font-size:15px; border-radius:20%;margin-left: -6px !important;}
+.admins.clients_test.bnav .lbl-toggle .glyphicons.user i::before{font-size:15px;margin-left:0px !important;}
+
+.clients.index .span4{margin-left:10px;margin-top:12px;}
+
+/*.admins.graph.bnav #merchant_details_chosen */
+.admins.graph.bnav #merchant_details_chosen A{color:#000 !important; }
+.ng_input_button_table input, .datepicker1, .datepicker2 {margin: 0px;outline: none;width: 119px;font-size:11px;}
+
+.admins.clients_test.bnav .risk_list {position:absolute;right:-35%;font-size:9px;}
+.clients.store td, th {padding-left:10px;padding-right:10px;padding-top:1px;padding-bottom:1px;font-size:11px !important;}
+.clients.store .glyphicons.edit,.glyphicons.remove,.glyphicons.book_open {padding: 5px 0 5px 20px}
+
+.admins.clients_test.bnav .glyphicons.user,.glyphicons.usd { padding: 5px 0 5px 20px;}
+.admins.clients_test.bnav .tgl_capl{width: 100%;
+font-size: 15px;
+font-weight: bold;
+background-color: #888;
+margin: 0 auto;
+text-align:center;color:#fff;}
+.admins.clients_test.bnav .userlnk {position:relative;z-index:5;top:-9px;}
+.admins.clients_test.bnav .glyphicons i::before {font-size: 15px;}
+
+
+.admins.clients_test.bnav .mywrap-collabsible .lbl-toggle .glyphicons i::before {font-size: 15px;}
+.admins.clients_test.bnav .mywrap-collabsible .lbl-toggle {padding-bottom: 18px ;}
+.admins.clients_test.bnav .mywrap-collabsible .lbl-toggle .glyphicons{padding: 5px 0 5px 23px !important;}
+.admins.clients_test.bnav .mywrap-collabsible .lbl-toggle .glyphicons.user{padding: 5px 0 5px 27px !important;}
+.admins.clients_test.bnav .mywrap-collabsible .lbl-toggle .glyphicons.pin_flag{padding: 5px 0 5px 27px !important;}
+.admins.clients_test.bnav .mywrap-collabsible .lbl-toggle .glyphicons i::before {font-size: 15px;top:-3px;}
+.admins.clients_test.bnav .mywrap-collabsible .lbl-toggle .glyphicons.log_book i::before{left: 7px;top: -3px;}
+.admins.clients_test.bnav .mywrap-collabsible .lbl-toggle .glyphicons.bank i::before {left: 1px;top: -5px;}
+.admins.clients_test.bnav .mywrap-collabsible .lbl-toggle .glyphicons.usd i::before {left: -1px;top: -5px;}
+.admins.clients_test.bnav .titile2.btn.btn-icon.btn-primary.glyphicons {margin-top: -4px;padding: 1px 7px 5px 42px !important;}
+.admins.clients_test.bnav .titile2.btn.btn-icon.btn-primary.glyphicons i::before {top:1px;}
+.admins.clients_test.bnav .glyphicons.new_window{margin-top:12px;}
+.admins.clients_test.bnav .input_col_2.checkbox2{width:18%;5px 15px 8px 0;}
+.admins.clients_test.bnav #notification_to5{ vertical-align:top;margin-top:0px !important;}
+.admins.clients_test.bnav .collapsible-content .content-inner{padding:3px;}
+.clients .widget .widget-head .glyphicons.search i::before {height:31px;padding:0px;}
+.clients .pagination .details{font-weight:bold;}
+.clients.store td span{word-break:break-all !important;}
+.clients.store td span .dotdot{word-break:break-all !important;}
+.admins.transactions.bnav .topnav.pull-right.trs .glyphicons i::before{color:#000 !important;}
+.admins.transactions.bnav .retweet.hkip_status_id.a16.glyphicons{margin-top: -20px;padding:0 !important;z-index: 1;}
+.clients .widget-cl2 form{margin-bottom:0px;}
+.clients .trans_space {width:100%;clear:both;height:10px;}
+.admins .ulmenu_dropdown{position:absolute;}
+.admins .dropdown.open .dropdown-menu.pull-right{margin-top:1px;}
+.clients.store .dotdot {width:auto !important; text-overflow: unset;overflow: unset;word-break:break-all !important; word-wrap:break-word !important;}
+.clients.store .api_token, .clients.store td {text-overflow: unset !important;overflow: unset !important;}
+.admins .sticky-wrap td, .sticky-wrap th {box-sizing: border-box;color: #000;}
+.dropdown.open .dropdown-menu.pull-right .glyphicons.table {width:auto !important;}
+
+.kyc_div {clear:both;float:left;width:100%;}
+.imgVw {cursor:zoom-in;}
+
+.w_98 {float:left;width:98%;}
+.f {display:flex;}
+
+
+.g .w1 {float:left;padding:3px 0;display:table-cell;width:calc(100% - 18px) !important;margin:3px;border:1px solid #ccc;border-radius:3px;}
+.g .w2 {float:left;padding:3px 0;display:table-cell;width:calc(50% - 18px) !important;margin:3px;border:1px solid #ccc;border-radius:3px;}
+.g .w3 {float:left;padding:3px 0;display:table-cell;width:calc(33.33333333333333% - 18px) !important;margin:3px;border:1px solid #ccc;border-radius:3px;}
+.g .w4 {float:left;padding:3px 0;display:table-cell;width:calc(25% - 18px) !important;margin:3px;border:1px solid #ccc;border-radius:3px;}
+.g .w5 {float:left;padding:5px;display:table-cell;width:calc(20% - 18px) !important;margin:3px;border:1px solid #ccc;border-radius:3px;}
+
+.g .w6 {float:left;padding:3px 0;display:table-cell;width:calc(16.66666666666667% - 18px) !important;margin:3px;border:1px solid #ccc;border-radius:3px;}
+.g .w7 {float:left;padding:3px 0;display:table-cell;width:calc(14.28571428571429% - 18px) !important;margin:3px;border:1px solid #ccc;border-radius:3px;}
+.g .w8 {float:left;padding:3px 0;display:table-cell;width:calc(12.5% - 18px) !important;margin:3px;border:1px solid #ccc;border-radius:3px;}
+.g .w9 {float:left;padding:3px 0;display:table-cell;width:calc(11.11111111111111% - 18px) !important;margin:3px;border:1px solid #ccc;border-radius:3px;}
+
+
+
+.g .w10 {float:left;padding:3px 0;display:table-cell;width:calc(10% - 6px) !important;margin:3px;}
+.g .w15 {float:left;padding:3px 0;display:table-cell;width:calc(15% - 6px) !important;margin:3px;}
+.g .w20 {float:left;padding:3px 0;display:table-cell;width:calc(20% - 6px) !important;margin:3px;}
+.g .w25 {float:left;padding:3px 0;display:table-cell;width:calc(25% - 6px) !important;margin:3px;}
+.g .w30 {float:left;padding:3px 0;display:table-cell;width:calc(30% - 6px) !important;margin:3px;}
+.g .w35 {float:left;padding:3px 0;display:table-cell;width:calc(35% - 6px) !important;margin:3px;}
+.g .w40 {float:left;padding:3px 0;display:table-cell;width:calc(40% - 6px) !important;margin:3px;}
+.g .w45 {float:left;padding:3px 0;display:table-cell;width:calc(45% - 6px) !important;margin:3px;}
+.g .w50 {float:left;padding:3px 0;display:table-cell;width:calc(50% - 6px) !important;margin:3px;}
+.g .w55 {float:left;padding:3px 0;display:table-cell;width:calc(55% - 6px) !important;margin:3px;}
+.g .w60 {float:left;padding:3px 0;display:table-cell;width:calc(60% - 6px) !important;margin:3px;}
+.g .w65 {float:left;padding:3px 0;display:table-cell;width:calc(65% - 6px) !important;margin:3px;}
+.g .w70 {float:left;padding:3px 0;display:table-cell;width:calc(70% - 6px) !important;margin:3px;}
+.g .w75 {float:left;padding:3px 0;display:table-cell;width:calc(75% - 6px) !important;margin:3px;}
+.g .w80 {float:left;padding:3px 0;display:table-cell;width:calc(80% - 6px) !important;margin:3px;}
+.g .w85 {float:left;padding:3px 0;display:table-cell;width:calc(85% - 6px) !important;margin:3px;}
+.g .w90 {float:left;padding:3px 0;display:table-cell;width:calc(90% - 6px) !important;margin:3px;}
+.g .w95 {float:left;padding:3px 0;display:table-cell;width:calc(95% - 6px) !important;margin:3px;}
+.g .w100 {float:left;padding:3px 0;display:table-cell;width:calc(100% - 6px) !important;margin:3px;}
+
+
+.g .w_15 {float:left;padding:0px 0;display:table-cell;width:calc(15% - 0px) !important;margin:0px;}
+.g .w_85 {float:left;padding:0px 0;display:table-cell;width:calc(85% - 0px) !important;margin:0px;}
+.g .w_20 {float:left;padding:0px 0;display:table-cell;width:calc(20% - 0px) !important;margin:0px;height:16px;}
+.g .w_80 {float:left;padding:0px 0;display:table-cell;width:calc(80% - 0px) !important;margin:0px;height:16px;}
+
+.active.restartfa .restart, .active.restartfa .restart i {display:none; }
+.restartfa .glyphicons.restart i:before {color: #e99701;font-size:12px !important;top:0px;left:3px;}
+
+
+.deskV{display:inline-block;}
+.mobV{display:none;}
+.searchLinkdiv{white-space:nowrap;position:relative;width:130px;
+    float: right;text-align:left;}
+
+.widget .widget-head .searchLinkdiv .glyphicons i::before {color: #3f51b5;top:-1px;left:-28px;}
+.searchLinkdiv a{float:left;white-space:nowrap;width:auto;}
+
+.userPro {line-height:42px;} 
+
+
+.confirm .widget-head .heading {font-size:14px !important;}
+.confirm .widget.widget-4 .widget-head {float:left;border-bottom: 0px solid #eeeeee;margin: -10px 0 10px 0;}
+.confirm .heading-buttons h3 {margin:0;padding:0;}
+
+form {margin:0 !important;} 
+
+.uploadfile_fullView{width:100%;height:517px;overflow:hidden;overflow-y:auto;}
+
+/*
+.compare td {background:red !important;}
+.compare td.invalid {background:#fff !important;}
+*/		
+
+/*End nom Media  CSS*/
+@media (max-width: 1270px) {
+.csearch .visible-desktop {display: none !important;}
+.modalpopup_cdiv .row-fluid .ecol4{width:22%;padding-top:0;}
+.widget.widget-gray .widget-head {float:left;height:auto;width:99%;clear:both;}
+.clients.transactions .div_search, .clients.statement .div_search { margin-bottom:0px;}
+}
+/* end media 1270*/
+@media (max-width: 1100px) {
+.input_col_3 label, .label_3 {width: 19%;}
+.input_col_3 .input, .input_col_3 input, .input_col_3 button, .input_col_3 select, .input_col_3 textarea, .input_col_3 input[class*='span10'] {width:27%;}
+.widget.widget-gray.widget-body-white{width:100%;}
+.btn_div{width:95%; margin:0 auto; text-align:center;padding:10px;}
+.admins .tranStatDIVbar .search_txt_div {width:200px;}
+.admins .tranStatDIVbar .search_txt_div .search_textbx {width: 60% !important;}
+.clients.statement .widget-head {float:left;}
+}
+/* end media 1100*/	
+@media (max-width: 999px) {
+.deskV{display:none;}
+.mobV{display:inline-block;}
+.admins .tranStatDIVbar .search_txt_div{float:left;}
+.searchLinkdiv{width: 70px;position: relative;top: -30px;margin: 0 -20px -30px;}
+.statement .searchLinkdiv{width: 70px;position: relative;top: 0px;margin: 0 -20px -10px;}
+.searchLinkdiv a{float: right;}
+.addrembtn {margin: 10px 13px -30px 0 !important;}
+.visible-desktop {display: none!important;}
+.modalpopup_cdiv .row-fluid .ecol4{width:22%;padding-top:0;}
+.input_col_3 label, .label_3 {width: 19%;}
+.input_col_3 .input, .input_col_3 input, .input_col_3 button, .input_col_3 select, .input_col_3 textarea, .input_col_3 input[class*='span10'] {width:27%;}
+.span12 #a_submit.btn.btn-icon.btn-primary.glyphicons.circle_ok{ margin:0 auto;}
+.row100.funda{border: 2px solid #fff;margin-top: 5px;margin-bottom: 5px;border-radius: 4px;background-color: #f5f5f5;box-shadow: 2px 2px 0px 0px #bfbfbf;}
+.row100.funda .fund_3{line-height:13px; vertical-align:top;padding-top: 4px;padding-bottom: 5px;}
+.row100.funda .fund_3 b{line-height:15px;}
+img{ text-align:center;}
+.refDiv.btn img{width:16px !important;height:16px !important;}
+.clients.profile .dta1.key {height: 35px;font-size:11px;}
+.clients.profile .dta1.val {height: 35px;font-size:11px;}
+.clients.profile .glyphicons.btn-action i::before {top: 5px !important;left: 2px;}
+.clients.store .container-fluid.fixed #wrapper #content .well .widget .widget-body .glyphicons.remove_2 i::before 
+{top: 0 !important;margin-top: 0px !important;}
+.dotdot{ margin-left: 0px !important;margin-top: 0px !important;}
+.admins .content_div{padding:0px;width:98% !important;}
+.clients .widget-cl2 .btn.btn-icon.btn-primary.glyphicons.search{margin-left: 5px;}
+.clients.statement .widget-cl2 .btn.btn-icon.btn-primary.glyphicons.search{width:30px;margin-right: 12px;}
+.clients.transactions .select_cs_2, .clients.statement .select_cs_2 {width: 76px;}
+.clients.statement .widget-head {float:left;height:auto !important;width: 99.6%;}
+.clients .widget-head .div_search{margin-top:0 auto !important;float:none;}
+.clients.store td{font-size:10px !important; word-break:break-all !important;}
+.clients.store .dotdot {display:block !important; margin:0 auto !important;word-break:break-all;}
+.clients .trans_space {width:100%;clear:both;height:1px;}
+.clients.transactions .widget-head{height:80px;}
+.clients.transactions .widget-head .widget-cl1{color:#fff;height: 31px;width: 100%;clear: both;}
+.clients.transactions .widget-head .widget-cl2{padding-bottom: 0px;float:left;margin-left:7px;height:auto !important;}
+.clients .search_textbx, input.search_textbx {width: auto !important;}
+.clients .widget-head .div_search{float:right; margin-right:5px;}
+.clients .trans_space {width: 100%;clear: both; height: 5px; border-top: 1px solid #cac1c1;}
+.clients.store td a {font-size: 10px;}
+}
+/* end media 900*/
+@media (max-width: 979px){
+.dialog_box2, form-actions ok .btn{width:40%}
+.modalpopup_cdiv .row-fluid .ecol4{width:22%;padding-top:0;}
+.clients.store .container-fluid.fixed #wrapper #content .well .widget .widget-body .glyphicons.remove_2 i::before
+{margin-left: -2px !important;}
+.clients .div_search {width:auto;}
+.clients.store .dotdot {display:block !important; margin:0 auto !important;word-break:break-all;}
+.clients.store td{font-size:10px !important; word-break:break-all !important;}
+.admins.graph.bnav #search_bar .time_div {float: none;border-top: 1px solid #B9B5B5;border-left: none;
+padding-top:10px !important;padding-left:0;margin-left:0}
+.admins.graph.bnav #search_bar .graph_div {width: 98%;float: none;margin: 0 auto;}
+.clients.transactions .widget-head{height:80px;}
+.clients.transactions .widget-head .widget-cl1{color:#fff;height: 31px;width: 100%;clear: both;}
+.clients.transactions .widget-head .widget-cl2{margin:0 auto;height:auto !important;}
+.clients .search_textbx, input.search_textbx {width: 98% !important;}
+.clients .widget-head .div_search{float: right;margin-right: 5px;}	
+}
+/* end media 979*/
+
+@media (max-width: 842px) {
+	.input_col_3 label, .label_3 {width: 23%;}
+	.input_col_3 .input, .input_col_3 input, .input_col_3 button, .input_col_3 select, .input_col_3 textarea, .input_col_3 input[class*='span10'] {width:68%;}
+	.clients.echeckvt .row-fluid .span10 {width: 82.8527914166212%;}
+.clients.echeckvt .widget-body select {width: 82.8527914166212%;height:37px;}
+
+}
+/* end media 842*/
+@media (max-width: 825px) {
+body #wrapper {width: 100% !important;padding: 0 !important;}
+.input_col_2 label, .label_2 {width: 23%;}
+.input_col_2 .input, .input_col_2 input, .input_col_2 button, .input_col_2 select, .input_col_2 textarea, .input_col_2 input[class*='span10'] {width:68%;}
+.input_col_3 label, .label_3 {width: 23%;}
+.input_col_3 .input, .input_col_3 input, .input_col_3 button, .input_col_3 select, .input_col_3 textarea, .input_col_3 input[class*='span10'] {width:68%;}
+.modalpopup_body {position: fixed;width: 90%;display: block;margin: 0 auto;float: none;left: 5%;top: 50%;height: inherit;}
+.tranrow, .buyer_row {width:100%;}
+.input_col_2 .input, .input_col_2 input,  .input_col_2 select, .input_col_2 textarea, .input_col_2 input[class*="span10"] {width: 68%;}
+.input_col_2 button,form-actions ok .btn, .dialog_box2{width: 40%;}
+textarea[class*="span10"],.input_col_2 textarea,.row-fluid .span10{width:68%;}
+.form-actions{padding-left:0px;}
+.pull_right{width:auto; border:0;min-width:265px;}
+.form-actions.ok{width:100%;}
+.input_col_2 input, .input_col_2 button, .input_col_2 select, .input_col_2 textarea, .input_col_2 input[class*="span10"]{float:none;}
+/*.glyphicons.btn-action i::before {top: -14px;left: 32px;}*/
+.input_col_2 .input_2 {width: 93%;}
+.checkbox_div label{width:65% !important;}
+.pull_right .btn{width:40%;}
+.modalpopup_cdiv .row-fluid .ecol4{width:22%;padding-top:0;}
+
+.span12 .bg_div2 .input{width:auto;}
+.api_token,.remark{font-size:10px;}
+
+.clients.store .api_token, .clients.store td,  .clients.store td a{margin: 0 auto;word-break: break-all;font-size:10px;}
+
+.clients.bank td .glyphicons.remove i::before {left: -12px;top: -16px;}
+.clients.bank td .glyphicons.unlock.red i::before {left: -16px;top: -1px;}
+.commentrow .rmk_row,.commentrow .rmk_row .rmk_msg {line-height: 11px !important; font-size: 10px;}
+}
+/* end media 825*/
+@media (max-width: 767px) {
+
+.float3 .span4 {margin-left:0px !important;}
+.modalpopup_cdiv .row-fluid .ecol4{width:31%;padding-top:0;}
+.row-fluid.float3{margin:0 auto !important;padding-top: 10px;}
+.row-fluid.float3 .span4{margin: 0 auto !important;width:98% !important;}
+.span12.bg_div2{width:98%;padding-top:5px;padding-botom:35px;margin:0 auto;}
+.span12 .bg_div2 .label_2{width:auto;padding-left:5px;padding-bottom:5px;}
+.bank_name {
+margin-top: 2px;
+float: left;
+padding-top: 9px;}
+.widget-body.input_col_1 .span12 .bank_accord .bank_name label{font-size:11px;}
+
+.admins .csearch .select_cs_2, .type_csearch {width: 30% !important;}
+.admins #cs_form .btn.search {width:37px !important;float:right;position: relative;}
+.admins .csearch {width:98% !important; }
+.admins #cs_form .dt_box{width:30%!important}
+.admins .tranStatDIVbar .search_txt_div {margin-right: 3%;}	
+
+
+.clients.transactions .widget-head .widget-cl1{color:#fff;
+height: 31px;width: 100%;clear: both;}
+.clients.transactions .widget-head .widget-cl2{margin:0 auto;height:auto !important;}
+.clients .search_textbx, input.search_textbx {width: 98% !important;}
+.clients .widget-head .div_search{float: right;margin-right: 5px;width:120px;}
+}
+/* end media 767*/
+
+@media (max-width: 600px) {
+body.clients  .msearch_1 {
+	text-align:left !important;
+}
+body.clients.statement  .msearch_1 .cole {
+    width: 30% !important;
+    min-width: 30% !important;
+}
+body.clients .msearch_1 .cole {
+    width: 20.5% !important;
+    min-width: 20.5% !important;
+}
+body.clients .widget-cl2.msearch_1  {
+    width: auto !important;
+    margin-left: 0% !important;
+    text-align: left !important;
+    padding-left: 7px;
+}
+
+.admins .csearch .select_cs_2, .type_csearch {width: 30% !important;}
+.admins #cs_form .btn.search {width:37px !important;float:right;}
+.admins .csearch {width:98% !important; }
+.admins #cs_form .dt_box{width:29%!important}
+.admins .tranStatDIVbar .search_txt_div {margin-right: 3%;}	
+.clients .widget.widget-gray.widget-body-white{width:99%;height:auto;}
+.clients .widget-head .div_search {right:0;}
+.clients .widget-head{height:180px;}
+.clients.store .widget-head{height:auto !important;}
+.clients.transactions .widget-head .div_search{float: right;margin-right: 5px;}
+
+.clients.transactions .widget-head .widget-cl1{color:#fff;
+height: 31px;width: 100%;clear: both;}
+.clients.transactions .widget-head .widget-cl2{padding: 0 10px;float:none;margin:0 auto;height:75px;}
+.clients .search_textbx, input.search_textbx {width: 98% !important;}
+
+.clients.transactions .widget-head{height: auto;
+    float: left;
+    width: 100%;}
+.clients.transactions .widget-head .widget-cl1{color:#fff;
+height: 31px;width: 100%;clear: both;}
+.clients.transactions .widget-head .widget-cl2{padding-bottom: 0px;float:none;margin:0 auto;height:auto !important;}
+.clients .search_textbx, input.search_textbx {width: auto !important;float: left;}
+
+}
+/* end media 600*/
+@media (max-width: 500px) {
+.admins.login.bnav .content_div {width: 93% !important;margin: 10 auto !important;}
+.modalpopup_cdiv .row-fluid .ecol4{width:48%;padding-top:0;}
+.addrembtn{margin-top:15px !important;}
+.rmk_row{line-height:15px !important;}
+.input_col_3 label{width: 100% !important;height: inherit;margin: 5px 0;text-align: left;}
+.input_col_3 .input, .input_col_3 input, .input_col_3 button, .input_col_3 select, .input_col_3 textarea, .input_col_3 input[class*='span10'] {width:100% !important;}
+.span12 .bg_div2 .input{width:auto;}
+.ecard_div.evoilatecard_div.pay_div #payment_form_id .ecol2 #credit_cards img{width:20%;}
+.submit_div {width: 90%;height: 80px;}
+.submit_div .submitbtn, .submit_div .submitbck
+{width: 100%;border: 0 !important;float:none;margin:0 auto; margin-top:10px;}
+.submit_div .submitbck{margin-top:25px;}
+.clients.bank td .glyphicons.remove i:before {left:-6px;top:-5px;}
+.clients.store .container-fluid.fixed #wrapper #content .well .widget .widget-body .glyphicons.remove_2 i::before 
+{margin-left:-4px !important;left:0 !important;}
+.container-fluid.fixed .widget-body td .glyphicons i::before {margin-left: -2px !important;}
+.form-actions.ok button{margin-left:0px !important;}
+.form-actions.ok .dialog_box2.btn.btn-icon.btn-primary.glyphicons.remove_2.remove_popup 
+{width:91% !important; text-align:center;margin-bottom:10px;
+padding-left:0px !important;float:none;margin-left:0px !important;margin-top:20px !important;}
+.form-actions.ok a{margin-left:0px !important;}
+.form-actions.ok{
+float:none !important;margin:0 auto !important;test-align:center !important;padding: 10px;
+width: 100%;}
+.btn.btn-icon.btn-primary.glyphicons.circle_plus
+{height:31px;width:91% !important;margin:0 auto !important;padding: 0px !important;}
+.form-actions.ok .btn.btn-icon.btn-primary.glyphicons.circle_plus  i::before
+{margin-left: 0px !important;margin-top: 0px !important;}
+#wrapper #content .well #account-settings .widget.widget-2 .widget-body .row-fluid.input_col_2 .span12 .form-actions.ok .dialog_box2.btn.btn-icon.btn-primary.glyphicons.remove_2.remove_popup i::before{ 
+margin-left: 0px !important;margin-top: 0px !important;}
+.api_token{margin-top: -14px !important;margin-left: -26px !important;}
+.clients.store .radios .label_2{width:90%;}
+.bank_account{width:80%;}
+.clients.profile .dta1.key {height: 35px;font-size: 11px;width:30%;background-color: #eaeaea;}
+.clients.profile .dta1.val {width:70%;height: 35px;font-size: 11px;background-color: #f6eaea;}
+#merchant_details_chosen{width:98%;}
+
+
+.admins.graph.bnav #search_bar .graph_div{height:250px;}
+.admins .search_txt_div {margin-top:0px;}
+.admins .csearch .select_cs_2{width:49% !important;}
+.admins.graph.bnav #search_bar .graph_div .graph_1{width:99%;margin-left:3px;}
+.admins.graph.bnav #storeid{width:99%;margin-left:3px;height:30px;margin-bottom: 10px;}
+.admins.graph.bnav #store_id{width:99%;}
+.admins.graph.bnav #search_bar .transaction_type {width: 150px;margin-left:10px;}
+.admins.graph.bnav #search_bar .time_span{width:100%; text-align-last:center;height:30px;}
+.login.admins .tranStatDIVbar{width: 98% !important;height:auto !important;}
+.admins .tranStatDIVbar{width: 98% !important;height:auto g !important;}
+.admins .tranStatDIVbar .csearch{width: 100% !important;margin-bottom: 2px;}
+.admins .tranStatDIVbar #cs_form .dt_box{width:115px;}
+.admins #cs_form .btn.search {width: 37px !important;float: right !important;}
+.admins #cs_form #dt_box_1, #dt_box_2{width:115px !important;}
+.admins .tranStatDIVbar .search_txt_div { padding-top: 0px;}
+.admins .content_div {padding: 5px;width: 98% !important;}
+.admins.graph.bnav #search_bar .time_div {
+border-top: 1px solid #B9B5B5;border-left: none;padding-top:10px !important;width: 95%;}
+}
+/* end media 500*/
+
+@media (max-width: 460px) {
+	.modalpopup_cdiv .row-fluid .ecol4{width:48%;padding-top:0;}
+	.div_search{float:none;right:0;margin-bottom:0;}
+	
+}
+/* end media 460*/
+@media(max-width: 410px) {
+.input_col_3 label{
+    width: 100% !important;
+    height: inherit;
+    margin: 5px 0;
+    text-align: left;
+}
+.input_col_3 .input, .input_col_3 input, .input_col_3 button, .input_col_3 select, .input_col_3 textarea, .input_col_3 input[class*='span10'] {width:100% !important;}
+	.span12 .bg_div2 .input{width:auto;}
+	
+}
+/* end media 410*/
+
+@media (max-width: 406px) {
+.input_col_2 label, .label_2 {width: 100%;height: inherit;margin: 5px 0;text-align: left;}
+.input_col_2 input, .input_col_2 button, .input_col_2 select, .input_col_2 textarea, .input_col_2 input[class*='span'] {width:100%; margin: 0px 0 5px 0;}
+.input_col_3 label, .label_3 {width: 100%;height: inherit;margin: 5px 0;text-align: left;}
+.input_col_3 input, .input_col_3 button, .input_col_3 select, .input_col_3 textarea, .input_col_3 input[class*='span'] {width:100%; margin: 0px 0 5px 0;}
+.modalpopup_cdiv .row-fluid .ecol4{width:100%;padding-top:0;}
+.content_div{padding-left:1px;width:100% !important;}
+.glyphicons.btn-action i::before {top: -25px !important;}
+#document_no {width:100% !important;}
+.input_col_2 .input, .input_col_2 input, .input_col_2 button, .input_col_2 select, .input_col_2 textarea, .input_col_2 input[class*="span10"] { width: 100%;}
+textarea[class*="span10"],.input_col_2 textarea,.row-fluid .span10{width:100%;}
+.input_col_2 input, .input_col_2 button, .input_col_2 select, .input_col_2 textarea, .input_col_2 input[class*="span"]{width: 100% !important;}
+.btn {margin:0;}
+.form-actions {padding:0;}
+.dialog_box2 {width:84%;margin: 10px 1px 0 0px; float:left;}
+#content{min-width:100%;}
+.glyphicons.btn-action i::before {top: -14px;left: 32px;}
+.input_col_2 .input_2 {width: 93% !important;margin-top:10px;}
+#notification_to1, #notification_to2, #notification_to4{float: right;width: 10px !important;}
+.glyphicons.btn-action i::before {top: -9px !important;left: 2px;}
+.pull_right .btn{width:40%;}
+.checkbox_div label{float: left; width: 80% !important;}
+#notification_to1, #notification_to4, #notification_to2 {float:left;}
+.checkbox_div{clear:both;margin-top:10px;}
+		
+}
+/* end media 406*/
+@media (max-width: 375px) {
+.span12 .bg_div2 .input{width:auto;}
+
+}
+/* end media 375*/
+@media (max-width: 300px) {
+.clients.transactions .widget-head {height: 285px;}
+.clients.transactions .widget-cl2 form {width:90%;}
+.clients.transactions .select_cs_2, .clients.statement .select_cs_2 {width: 100% !important;}
+.clients .search_textbx, input.search_textbx {width: 100% !important; margin:0 auto !important; float:none;}
+.clients.transactions .widget-head .div_search {text-align: center;margin-top: 10px !important;width:99% !important; float:none !important;}
+}

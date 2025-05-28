@@ -1,0 +1,118 @@
+{
+    "key": "QOD594EXO8",
+    "furl": "https://pay.usequickpay.com/status?transID=482136026",
+    "hash": "548701219d0ddb600ec944db54b62eaab3b4137deff540676b768b60ea9dd9532d799f30a5fb88a01c8fc07af416fa6aa36ba6cb516bd2997fbf3a1242d3d86a",
+    "mode": "UPI",
+    "surl": "https://pay.usequickpay.com/status?transID=482136026",
+    "udf1": "",
+    "udf2": "",
+    "udf3": "",
+    "udf4": "",
+    "udf5": "",
+    "udf6": "",
+    "udf7": "",
+    "udf8": "",
+    "udf9": "",
+    "email": "test4348@test.com",
+    "error": "APPROVED OR COMPLETED SUCCESSFULLY",
+    "phone": "919820164348",
+    "txnid": "482136026",
+    "udf10": "",
+    "amount": "2",
+    "status": "success",
+    "upi_va": "9568315028@paytm",
+    "PG_TYPE": "NA",
+    "addedon": "2023-11-20 11:50:26.000000",
+    "cardnum": "NA",
+    "bankcode": "NA",
+    "bank_name": "NA",
+    "card_type": "UPI",
+    "easepayid": "E23112005FDB4J",
+    "firstname": "Test",
+    "productinfo": "Request to Test Product via 482136026",
+    "service_tax": "0",
+    "bank_ref_num": "369028360349",
+    "cardCategory": "NA",
+    "issuing_bank": "NA",
+    "name_on_card": "NA",
+    "discount_code": "NA",
+    "error_Message": "APPROVED OR COMPLETED SUCCESSFULLY",
+    "merchant_logo": "NA",
+    "payment_source": "Easebuzz",
+    "service_charge": "0",
+    "unmappedstatus": "NA",
+    "discount_amount": "0",
+    "net_amount_debit": "2",
+    "payment_category": "DEFAULT",
+    "settlement_amount": "2",
+    "cancellation_reason": "NA",
+    "cash_back_percentage": "50",
+    "deduction_percentage": "0.1"
+}
+
+##############################
+
+Hello, pay.usequickpay.com
+Mailgun Successfully Email has been received
+
+urlpath: http://pay.usequickpay.com/payin/pay48/webhookhandler_48
+
+_POST: {"status":"1","data":"{"hash": "2652b38f5a3fe82527a82162690be59d29d784959df914a4322599213deac300486473251ac1cfe1f736503d905522c17bd9ca4082acb27c0ef6f55de578eb2c", "paid_out": 1, "bank_name": "ICICI Bank", "ifsc_code": "ICIC0000488", "payout_id": "PT9VIVBCF4", "payout_date": "2023-11-13 13:15:13.888116", "name_on_bank": "GOODLEY PUBLIC SCHOOL", "total_amount": 3.02, "payout_amount": 3.02, "refund_amount": 0, "split_payouts": [], "account_number": "048805004543", "service_tax_amount": 0, "bank_transaction_id": "YESB33171720504", "refund_transactions": [], "submerchant_payouts": [], "settled_transactions": [{"txnid": "482134258", "easepayid": "E231110BA7WOBB", "service_tax": 0, "service_charge": 0, "submerchant_id": null, "transaction_type": "UPI", "settlement_amount": 2, "split_transactions": null, "transaction_amount": 2}, {"txnid": "48134342", "easepayid": "E231110TFC5JVI", "service_tax": 0, "service_charge": 0, "submerchant_id": null, "transaction_type": "UPI", "settlement_amount": 1.02, "split_transactions": null, "transaction_amount": 1.02}], "service_charge_amount": 0}"}
+
+_GET: []
+
+_REQUEST: {"status":"1","data":"{"hash": "2652b38f5a3fe82527a82162690be59d29d784959df914a4322599213deac300486473251ac1cfe1f736503d905522c17bd9ca4082acb27c0ef6f55de578eb2c", "paid_out": 1, "bank_name": "ICICI Bank", "ifsc_code": "ICIC0000488", "payout_id": "PT9VIVBCF4", "payout_date": "2023-11-13 13:15:13.888116", "name_on_bank": "GOODLEY PUBLIC SCHOOL", "total_amount": 3.02, "payout_amount": 3.02, "refund_amount": 0, "split_payouts": [], "account_number": "048805004543", "service_tax_amount": 0, "bank_transaction_id": "YESB33171720504", "refund_transactions": [], "submerchant_payouts": [], "settled_transactions": [{"txnid": "482134258", "easepayid": "E231110BA7WOBB", "service_tax": 0, "service_charge": 0, "submerchant_id": null, "transaction_type": "UPI", "settlement_amount": 2, "split_transactions": null, "transaction_amount": 2}, {"txnid": "48134342", "easepayid": "E231110TFC5JVI", "service_tax": 0, "service_charge": 0, "submerchant_id": null, "transaction_type": "UPI", "settlement_amount": 1.02, "split_transactions": null, "transaction_amount": 1.02}], "service_charge_amount": 0}","action":"webhook"}
+
+data_send: {"transID":null,"acquirer_action":1,"acquirer_response":"- Pending","acquirer_status_code":1,"acquirer_transaction_id":"","acquirer_descriptor":"","acquirer":null,"admin":"1","curl_values":"{"status":"1","data":"{\"hash\": \"2652b38f5a3fe82527a82162690be59d29d784959df914a4322599213deac300486473251ac1cfe1f736503d905522c17bd9ca4082acb27c0ef6f55de578eb2c\", \"paid_out\": 1, \"bank_name\": \"ICICI Bank\", \"ifsc_code\": \"ICIC0000488\", \"payout_id\": \"PT9VIVBCF4\", \"payout_date\": \"2023-11-13 13:15:13.888116\", \"name_on_bank\": \"GOODLEY PUBLIC SCHOOL\", \"total_amount\": 3.02, \"payout_amount\": 3.02, \"refund_amount\": 0, \"split_payouts\": [], \"account_number\": \"048805004543\", \"service_tax_amount\": 0, \"bank_transaction_id\": \"YESB33171720504\", \"refund_transactions\": [], \"submerchant_payouts\": [], \"settled_transactions\": [{\"txnid\": \"482134258\", \"easepayid\": \"E231110BA7WOBB\", \"service_tax\": 0, \"service_charge\": 0, \"submerchant_id\": null, \"transaction_type\": \"UPI\", \"settlement_amount\": 2, \"split_transactions\": null, \"transaction_amount\": 2}, {\"txnid\": \"48134342\", \"easepayid\": \"E231110TFC5JVI\", \"service_tax\": 0, \"service_charge\": 0, \"submerchant_id\": null, \"transaction_type\": \"UPI\", \"settlement_amount\": 1.02, \"split_transactions\": null, \"transaction_amount\": 1.02}], \"service_charge_amount\": 0}","action":"webhook"}"}
+
+
+########################################################################
+
+
+{
+    "status": "1",
+    "data": {
+        "hash": "2652b38f5a3fe82527a82162690be59d29d784959df914a4322599213deac300486473251ac1cfe1f736503d905522c17bd9ca4082acb27c0ef6f55de578eb2c",
+        "paid_out": 1,
+        "bank_name": "ICICI Bank",
+        "ifsc_code": "ICIC0000488",
+        "payout_id": "PT9VIVBCF4",
+        "payout_date": "2023-11-13 13:15:13.888116",
+        "name_on_bank": "GOODLEY PUBLIC SCHOOL",
+        "total_amount": 3.02,
+        "payout_amount": 3.02,
+        "refund_amount": 0,
+        "split_payouts": [],
+        "account_number": "048805004543",
+        "service_tax_amount": 0,
+        "bank_transaction_id": "YESB33171720504",
+        "refund_transactions": [],
+        "submerchant_payouts": [],
+        "settled_transactions": [
+            {
+                "txnid": "482134258",
+                "easepayid": "E231110BA7WOBB",
+                "service_tax": 0,
+                "service_charge": 0,
+                "submerchant_id": null,
+                "transaction_type": "UPI",
+                "settlement_amount": 2,
+                "split_transactions": null,
+                "transaction_amount": 2
+            },
+            {
+                "txnid": "48134342",
+                "easepayid": "E231110TFC5JVI",
+                "service_tax": 0,
+                "service_charge": 0,
+                "submerchant_id": null,
+                "transaction_type": "UPI",
+                "settlement_amount": 1.02,
+                "split_transactions": null,
+                "transaction_amount": 1.02
+            }
+        ],
+        "service_charge_amount": 0
+    },
+    "action": "webhook"
+}

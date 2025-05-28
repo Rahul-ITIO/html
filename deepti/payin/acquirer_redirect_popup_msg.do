@@ -1,0 +1,4 @@
+<?
+//Dev Tech:23-01-02 acquirer_redirect_popup_msg = arpm
+$data['arpm']=array("upiAppListForCollect","upiAppListForIntentArray","EasebuzzBankingList","PaytmBankLogo","qrcodeadd","redirect","upiWalletIndiList","scanqr","tetherCoins","CardIcon","IndiaBankTransfer","submitButtonHide","appWalletList","upiaddress","allPayPayuBankingList","ajax","payUwalletLogo","payUwalletList","walletLogo","upiAddressIntent","upiWalletIndiaList");
+?>

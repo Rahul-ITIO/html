@@ -1,0 +1,15 @@
+<form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay">
+  <div>
+    Your order is $71.00
+  </div>
+  <input type="hidden" name="public_key" value="FLWPUBK-532a72a10035679d168b4d32d753915a-X" />
+  <input type="hidden" name="customer[email]" value="devops@itio.in" />
+  <input type="hidden" name="customer[name]" value="Dev Tech" />
+  <input type="hidden" name="tx_ref" value="44103423412" />
+  <input type="hidden" name="amount" value="71.00" />
+  <input type="hidden" name="currency" value="USD" />
+  <input type="hidden" name="redirect_url" value="https://ipg.i15.tech/responseDataList/?urlaction=success" />
+  <input type="hidden" name="meta[source]" value="docs-html-test" />
+  <br>
+  <button type="submit" id="start-payment-button">Pay Now</button>
+</form>

@@ -1,0 +1,64 @@
+<?
+##############################################################################
+//$data['cid']=null;
+function db_connect(){
+	global $data;
+	//mysql_pconnect	mysql_connect
+	$data['cid']=@mysql_connect(
+		$data['Hostname'], $data['Username'], $data['Password']
+	);
+	if(!$data['cid']){
+		echo(
+			'<font style="font:10px Verdana;color:#FF0000">'.mysql_error().
+			".<br>Please contact to site administrator <a href=\"mailto:{$data['AdminEmail']}\">".
+			"{$data['AdminEmail']}</a>.</font>"
+		);
+		exit;
+	}
+	@mysql_select_db($data['Database'], $data['cid']);
+	return (bool)$data['cid'];
+}// End function
+
+
+
+function db_disconnect(){
+	global $data;
+	return (bool)@mysql_close($data['cid']);
+}
+
+function db_query($statement,$print=false){
+	global $data;
+	if($print||(isset($_GET['dtest'])&&$_GET['dtest']==3)) echo("-->{$statement}<--<br>");
+	$msc = microtime(true);
+	$mysql_query = @mysql_query($statement, $data['cid']);
+	$msc = microtime(true)-$msc;
+	if($print||(isset($_GET['dtest'])&&$_GET['dtest']==3)) echo("-->Query took ".($msc * 1000)." ms<--<hr/>");
+	return $mysql_query;
+}
+
+function newid(){
+	global $data;
+	return @mysql_insert_id($data['cid']);
+}
+
+function db_count($result){
+	return (int)@mysql_num_rows($result);
+}
+
+function db_rows($statement,$print=false) {
+	$result=array();global $db_counts;
+	if($print||(isset($_GET['dtest'])&&$_GET['dtest']==2)) echo("-->Default TimeZone=".date_default_timezone_get()."  Date Time=".date('d-m-Y h:i A')."<br>{$statement}<--<br>");
+	$msc = microtime(true);
+	$query=db_query($statement);
+	$count=db_count($query);
+	$db_counts=$count;
+	$msc = microtime(true)-$msc;
+	if($print||(isset($_GET['dtest'])&&$_GET['dtest']==2)) echo("-->{$count} total, Query took {$msc} seconds, ".($msc * 1000)." ms<--<hr/>");
+	for($i=0; $i<$count; $i++){
+		$record=@mysql_fetch_array($query, MYSQL_ASSOC);
+		foreach($record as $key=>$value)$result[$i][$key]=$value;
+	}
+	return $result;
+}
+##############################################################################
+?>

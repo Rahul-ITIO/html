@@ -1,0 +1,79 @@
+Fetch IEC
+Request:
+
+{
+  "request": {
+    "header": {
+      "requestUUID": "NET819203809289830",
+      "channelId": "IND"
+    },
+    "body": {
+      "fetchIECDataReq": {
+        "customerTenderId": "CCAVN"
+      }
+    }
+  }
+}
+
+Response:
+
+When no data found:
+{
+  "response": {
+    "header": {
+      "requestUUID": "123",
+      "channelId": "COR",
+      "status": "success/failure"
+    },
+    "body": {
+      "fetchIECDataRes": {
+        "responseCode": "R000",
+        "responseDescription": "Success",
+        "responseIECData": "NODATA"
+      }
+    }
+  }
+}
+ 
+When data is present:
+{
+  "response": {
+    "header": {
+      "requestUUID": "123",
+      "channelId": "COR",
+      "status": "success/failure"
+    },
+    "body": {
+      "fetchIECDataRes": {
+        "responseCode": "R000",
+        "responseDescription": "Success",
+        "responseIecData": {
+          "transaction": [
+            {
+              "request_ID": "12345",
+              "challanCode": "ABCDE",
+              "challan_no": "100037465",
+              "clientAccountNo": "600123432134",
+              "clientName": "TestABC",
+              "amount": "100",
+              "remitterName": "Vaibhav",
+              "remitterAccountNo": "1000923456783",
+              "remitterIFSC": "ICIC0000091",
+              "remitterBank": "ICIC Bank",
+              "remitterBranch": "",
+              "remitterUTR": "UTR000000000123",
+              "payMethod": "NEFT",
+              "creditAccountNo": "1000000087345",
+              "inwardRefNum": "",
+              "creditTime": "",
+              "reserve1": "",
+              "reserve2": "",
+              "reserve3": "",
+              "reserve4": ""
+            }
+          ]
+        }
+      }
+    }
+  }
+}

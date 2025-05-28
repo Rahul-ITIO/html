@@ -1,0 +1,39 @@
+Array ( [pgMerchantId] => IDSM306216001027 [txnId] => INS11111686134994 [txnNote] => PE_20 [ts] => 2023-06-07T10:49:54Z [initMode] => 00 [purposeCode] => 00 [refId] => INS1686134994 [refUrl] => https://shoppingmango.com [refCategory] => NA [expiryTime] => 30 [amount] => 101 [minCollectAmount] => 100 [payerVpa] => 7905278153@indusuat [payerName] => Rajnesh [payerType] => PERSON [payerMCC] => 00 [merchantMobile] => 919234567890 [merchantDeviceAppName] => NA [merchantDeviceOS] => NA [merchantDeviceId] => OP123456 [merchantDeviceType] => INET [merchantDeviceIP] => 122.176.92.114 [merchantDeviceLocation] => NA [merchantDeviceGeoCode] => 17.5221503,78.3045558 [addInfo9] => [addInfo10] => )
+
+
+
+Response
+{"txnId":"INS11111686134994","ts":"2023-06-07T16:19:56","custRefNo":"315816054140","status":"SUCCESS","errCode":"TXN_ERR_000"}
+
+
+
+Array
+(
+    [pgMerchantId] => IDSM306216001027
+    [txnId] => INS11111686134994
+    [txnNote] => PE_20
+    [ts] => 2023-06-07T10:49:54Z
+    [initMode] => 00
+    [purposeCode] => 00
+    [refId] => INS1686134994
+    [refUrl] => https://shoppingmango.com
+    [refCategory] => NA
+    [expiryTime] => 30
+    [amount] => 101
+    [minCollectAmount] => 100
+    [payerVpa] => 7905278153@indusuat
+    [payerName] => Rajnesh
+    [payerType] => PERSON
+    [payerMCC] => 00
+    [merchantMobile] => 919234567890
+    [merchantDeviceAppName] => NA
+    [merchantDeviceOS] => NA
+    [merchantDeviceId] => OP123456
+    [merchantDeviceType] => INET
+    [merchantDeviceIP] => 122.176.92.114
+    [merchantDeviceLocation] => NA
+    [merchantDeviceGeoCode] => 17.5221503,78.3045558
+    [addInfo9] => 
+    [addInfo10] => 
+)
+<br><br><br /><br />Response<br />{"txnId":"INS11111686134994","ts":"2023-06-07T16:19:56","custRefNo":"315816054140","status":"SUCCESS","errCode":"TXN_ERR_000"} 

@@ -1,0 +1,261 @@
+<? if(isset($data['ScriptLoaded'])){ ?>
+<script>
+$(document).ready(function(){ 
+    $(".document_type").change(function(){
+        document_typef(this,$(this).val());
+    });
+});	
+</script>
+
+<style>
+:root {
+    --gradient-1: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+    --gradient-2: linear-gradient(135deg, #FF6B6B 0%, #FF0000 100%);
+    --gradient-3: linear-gradient(135deg, #36D1DC 0%, #5B86E5 100%);
+    --gradient-4: linear-gradient(135deg, #FF8008 0%, #FFC837 100%);
+    --gradient-5: linear-gradient(135deg, #43E97B 0%, #38F9D7 100%);
+    --card-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    --hover-transform: translateY(-8px);
+}
+
+/* Modern Card Design */
+.dashboard_box {
+    padding: 25px;
+    background: #f8f9fe;
+    border-radius: 20px;
+    margin: 20px 0;
+}
+
+.dashboard_box .col {
+    padding: 12px;
+}
+
+.rounded-tringle {
+    position: relative;
+    height: 160px;
+    border-radius: 20px;
+    padding: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background: var(--gradient-1);
+}
+
+.rounded-tringle:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.1);
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.col:nth-child(2) .rounded-tringle { background: var(--gradient-2); }
+.col:nth-child(3) .rounded-tringle { background: var(--gradient-3); }
+.col:nth-child(4) .rounded-tringle { background: var(--gradient-4); }
+.col:nth-child(5) .rounded-tringle { background: var(--gradient-5); }
+
+.rounded-tringle:hover {
+    transform: var(--hover-transform);
+    box-shadow: var(--card-shadow);
+}
+
+/* Modern Icon Design */
+.icon1 {
+    background: rgba(255,255,255,0.9);
+    padding: 15px;
+    border-radius: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.icon1 i {
+    font-size: 28px;
+    background: linear-gradient(45deg, #2937f0, #9f1ae2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.icon1:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* Text Styling */
+.dashboard_box h3 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 10px 0;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dashboard_box span {
+    color: rgba(255,255,255,0.9);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Chart Containers */
+.highcharts-figure44, .highcharts-figure99 {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    margin: 15px 0;
+}
+
+#container, #container_pie {
+    border-radius: 15px;
+    height: 400px;
+    background: #f8f9fe;
+}
+
+/* Modern Button Design */
+.btn-primary {
+    background: var(--gradient-1);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.2);
+}
+
+/* Date Range Picker Styling */
+.input-icons {
+    position: relative;
+}
+
+.input-icons .field_icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 18px;
+    z-index: 2;
+}
+
+#date_1st_range {
+    padding: 12px 15px 12px 45px;
+    border-radius: 12px;
+    border: none;
+    background: var(--gradient-1);
+    color: white;
+    font-weight: 500;
+    box-shadow: var(--card-shadow);
+}
+
+/* Statistics Buttons */
+.stats-button {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.stats-button:hover {
+    transform: translateY(-3px);
+}
+
+.stats-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2937f0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .dashboard_box .col {
+        flex: 0 0 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .dashboard_box .col {
+        flex: 0 0 100%;
+    }
+    
+    .dashboard_box h3 {
+        font-size: 28px;
+    }
+}
+</style>
+
+{{ ... rest of your existing PHP and HTML code ... }}
+
+<div class="container-fluid px-4">
+    <!-- Stats Summary -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex flex-wrap justify-content-around">
+                <div class="stats-button">
+                    <div class="stats-value"><?=$post['gr2_s']['count_result'];?></div>
+                    <div class="text-muted">Total Results</div>
+                </div>
+                <div class="stats-button">
+                    <div class="stats-value"><?=$default_currency;?> <?=$post['gr2_s']['total_amount'];?></div>
+                    <div class="text-muted">Total Amount</div>
+                </div>
+                <div class="stats-button">
+                    <div class="stats-value"><?=$default_currency;?> <?=(isset($post['gr2_s']['transaction_amount'])?array_sum($post['gr2_s']['transaction_amount']):'');?></div>
+                    <div class="text-muted">Success Amount</div>
+                </div>
+                <div class="stats-button">
+                    <div class="stats-value"><?=$post['gr2_s']['ids'];?></div>
+                    <div class="text-muted">Transactions</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard Cards -->
+    <div class="row text-center dashboard_box">
+        {{ ... rest of your existing card structure ... }}
+    </div>
+
+    <!-- Charts Section -->
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="highcharts-figure44">
+                <div id="container"></div>
+                <div class="text-center mt-4">
+                    <button id="plain" class="btn btn-primary mx-2">Plain View</button>
+                    <button id="inverted" class="btn btn-primary mx-2">Inverted View</button>
+                    <button id="polar" class="btn btn-primary mx-2">Polar View</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="highcharts-figure99">
+                <div id="container_pie"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ ... rest of your existing JavaScript code ... }}
+
+<? } else { ?>
+    <div class="alert alert-danger rounded-3 shadow-sm">
+        <i class="fas fa-exclamation-triangle me-2"></i>
+        SECURITY ALERT: Access Denied
+    </div>
+<? } ?>

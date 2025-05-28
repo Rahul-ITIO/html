@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Deployment has been started ...."
+sudo service apache2 reload
+echo " Deployment has been completed..."

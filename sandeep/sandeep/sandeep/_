@@ -1,0 +1,59 @@
+<IfModule mod_rewrite.c>
+        Options +FollowSymlinks
+        Options -Indexes
+        RewriteEngine On
+        RewriteBase /
+        RewriteRule ^@(.*) payattherate [L]
+        RewriteRule ^payme/(.*)/ /payme/index?user=$1
+        RewriteRule ^quay/(.*)/ /quay/index?user=$1
+        RewriteCond %{HTTP_HOST} ^lbpgi-592033313.ap-south-1.elb.amazonaws.com$
+		RewriteRule .* - [F,L]
+		RewriteCond %{REQUEST_METHOD} ^(delete|head|trace|track) [NC]
+		RewriteRule .* - [F,L]
+        #RewriteCond %{THE_REQUEST} ^(GET|HEAD)\ /([^/]+)\.do(\?|\ |$)
+        #RewriteRule ^ /%2/ [L,R=301]
+        RewriteCond %{HTTP_HOST} ^www\.ipg.i15\.tech$ [OR]
+        RewriteCond %{HTTP_HOST} ^ec2-13-232-229-139.ap-south-1.compute.amazonaws.com$ [OR]
+        RewriteCond %{HTTP_HOST} ^ec2-13-233-167-170.ap-south-1.compute.amazonaws.com$ [OR]
+        RewriteCond %{HTTP_HOST} ^13.233.167.170$ [OR]
+        RewriteCond %{HTTP_HOST} ^www\.gw.paybe\.co$ [OR]
+        RewriteCond %{HTTP_HOST} ^13.232.229.139$
+        RewriteRule ^(.*)$ "https\:\/\/ipg.i15\.tech\/$1" [R=301,L]
+ 
+		#RewriteRule ^([^\.]+)$ $1.do [NC,L]
+		
+		RewriteRule ^(.+)\.do$ /$1 [R,L]
+        RewriteCond %{REQUEST_FILENAME}.do -f
+        RewriteRule ^(.*?)/?$ /$1.do [NC,END]
+        RewriteRule ^([^\.]+)$ /$1.php [NC,L]
+		
+		ErrorDocument 504 /error-code.do
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteCond %{REQUEST_FILENAME} !-d
+		DirectoryIndex /index.do
+		RewriteRule ^ /oops.do [L]
+        <FilesMatch "create_htaccess">
+                ErrorDocument 404 create_htaccess.do
+                ErrorDocument 403 create_htaccess.do
+        </FilesMatch>
+        <FilesMatch "vht|api|charge|payment|paymentflow|processall|payattherate|payme|directapi|checkout|paycheckout">
+                ErrorDocument 403 <h1>Server&nbsp;can&nbsp;not&nbsp;handle&nbsp;your&nbsp;request</h1>
+                Order Allow,Deny
+                Allow from all
+        </FilesMatch>
+		LimitRequestBody 10240000
+</IfModule>
+<IfModule mod_headers.c>
+       # Header always unset X-Frame-Options
+    php_value session.cookie_httponly 1
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+        Header always append X-Frame-Options SAMEORIGIN
+        Header add Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        Header set X-Content-Type-Options nosniff
+        Header set X-Permitted-Cross-Domain-Policies "master-only"
+        Header set X-XSS-Protection "1; mode=block"
+        Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
+        Header set Content-Security-Policy "default-src 'self'; font-src * 'unsafe-inline'; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'; img-src * data: 'unsafe-inline'; connect-src * 'unsafe-inline'; frame-src *; iframe-src *; plugin-types application/pdf;"
+</IfModule>

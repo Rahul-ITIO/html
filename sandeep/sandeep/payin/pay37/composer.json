@@ -1,0 +1,10 @@
+{
+    "require": {
+        "web-token/jwt-encryption-algorithm-aeskw": "^3.1",
+        "web-token/jwt-encryption-algorithm-aesgcm": "^3.1",
+        "web-token/jwt-signature-algorithm-rsa": "^3.1",
+        "web-token/jwt-key-mgmt": "^3.1",
+        "web-token/jwt-signature": "^3.1",
+        "web-token/jwt-encryption-algorithm-rsa": "^3.1"
+    }
+}

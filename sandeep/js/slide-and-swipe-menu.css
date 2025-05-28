@@ -1,0 +1,213 @@
+/**
+ * Sliding swipe menu CSS
+ */
+.is-navOpen{
+ 
+}
+
+
+.ssm-overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1;
+}
+
+
+ 
+.nav {
+	height: 100%;
+	width: 210px;
+	background-color: #0a4a3c;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	position: relative;
+
+	overflow-x: visible;
+	transform: translate(0px,0);
+	float:left;
+	
+	border-radius: 0 5px 5px 0px;
+}
+.navLeftPanel {
+	height: 100%;
+	width: 210px;
+	display: table-cell;
+	vertical-align: top;
+	-webkit-box-shadow: 0 0px 4px 0 rgba(14, 12, 12, 0.85);
+	box-shadow: 0 0px 4px 0 rgba(14, 12, 12, 0.85);
+	border-radius: 0;
+	background: #fff;
+}
+.navLeftPanelSpace {
+	height: 100%;
+	width: 20px;
+	display: table-cell;
+	vertical-align: top;
+}
+body #wrapper {
+	display: table-cell;
+	margin-left:20px;
+	vertical-align: top;
+	/* border-spacing: 10px; */
+	padding: 80px 15px 0px 10px !important;
+}
+#content1 {margin-left:20px;}
+
+.navLeftPanel .glyphicons i:before {
+    font-size: 13px;
+}
+.navLeftPanel .widget-stats {
+    padding: 10px 15px;
+    height: 28px;
+	text-align: left;
+} 
+.navLeftPanel .widget-stats.active_a {background: #3f51b5 !important;color:#fff !important;}
+.navLeftPanel h4 {
+    padding: 10px 10px;
+    margin: 0px 0 0 0;
+    font-size: 16px;
+    font-weight: normal;
+    background: #ccc;
+    border-bottom: 1px solid #fff;
+}
+.a_toggle {
+	float:left;width: 11.9em;
+	padding: 10px 10px;
+    margin: 0px 0 0 0;
+    font-size: 16px;
+    font-weight: normal;
+    background: #ccc;
+    border-bottom: 1px solid #fff; 
+	
+	transition: background .3s ease;
+  
+	&:hover {
+		background: rgba(0, 0, 0, 0.9);
+	}
+}
+.inner1 {display:none;}
+.inner.active_a{
+	display: block;
+}
+.inner {
+	padding-left: 1em;
+	overflow: hidden;
+	display: none;
+  
+	&.show {
+	  /*display: block;*/
+	}
+}
+a.a_toggle1 {
+	width: 100%;
+	display: block;
+	background: rgba(0,0,0,0.78);
+	color: #fefefe;
+	padding: .75em;
+	border-radius: 0.15em;
+	
+	
+} 
+
+.activesh .menu_arrow, .activesh1 .menu_arrow{
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+	margin-top:14px;
+}
+
+.a_toggle:not(.activesh) .site-menu-arrow, .a_toggle:not(.activesh1) .site-menu-arrow {
+    -ms-transform: none;
+    -webkit-transform: none;
+    -o-transform: none;
+    transform: none;
+}
+
+.menu_arrow::before {
+	font: 14px/1em 'Glyphicons';
+	content: '\e118';
+	position: relative;
+	right: 11px;
+	top: 3px;
+}
+.menu_arrow {
+    -webkit-transition: -webkit-transform .35s;
+    -o-transition: -o-transform .35s;
+    transition: transform .35s;
+    position: relative;
+    display: inline-block;
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: auto;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
+    overflow: hidden;
+    position: absolute;
+    right: 3px;
+    width: 20px;
+}
+	
+.leftPanelBody h5 {
+    padding: 10px 10px;
+    margin: 10px 0 0 0;
+    font-size: 18px;
+    font-weight: normal;
+}
+.leftPanelBody .rows {
+    border-top: 0px solid #ececec !important;
+}
+.breadcrumb {display:none !important;}
+
+.container-fluid.fixed {
+    margin: 0px auto !important;
+    border: 0px solid #dddddd !important;
+}
+body .menuLink5Li {
+		position: fixed !important;
+		z-index: 99999999!important;
+		left: 0;
+		float: left;
+		top: 0;
+		width: 110px;
+		height: 60px;
+	}
+.menuLink5Li .glyphicons i::before {
+    top: 13px;
+    color: #3f51b5;
+    left: 30px;
+    font-size: 34px;
+    font-weight: normal;
+}
+
+@media (max-width: 999px) {
+	.nav {
+		height: 100%;
+		width: 210px;
+		background-color: #fff;
+		left: 0;
+		top: 0 !important;
+		z-index: 9999 !important;
+		position: fixed;
+
+		overflow-x: visible;
+		transform: translate(-280px,0);
+	}
+	.navLeftPanelSpace {display:none;}
+	
+	body .widget-stats {
+		margin: 0 0 0px !important;
+	}
+	
+}

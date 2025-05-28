@@ -1,0 +1,37 @@
+process of finobank integration
+
+ For encryption and decryption logic file name is finobank.php
+ encryption and decryption method will be same for all api
+just need to change request and url
+
+1.create vpa
+(open the file FinobankQrRequest.php and there is request for create vpa)
+when we will hit this api will get vpa in response
+for example sky.shivam@fin
+
+2.Qr generate for this we will check the hard code in finobankQrRequest.php file
+we will get the responsedata field in response
+in this field we will get decrypted string 
+we will decrypt the response data field value with decryption method 
+now we will get base64 encode string for qr 
+now we will generate qr from this
+  
+ 3.initiate collect isi ke ander hai, FinobankQrRequest.php
+  "payeraddr": "pravin99@fin",by using this address
+  we will use our upi address in this
+  
+  4.status Api for this Api we will use clienttxnId mobilenumber,refferencenumber,serviceid
+  there is a important note we are using diffrent serviceid for every Api
+  Like qr 9072 please follow the hard code
+  we need to configure webhook in their system 
+  need to change parameter for sending return response according to their requirements
+  
+  there was some problem in acquirer-45 when i was working on this
+  I saved vlaue in data base from the response or request 
+  value was not saving in the database
+  
+  I made function file seperately function_45.do to call in acquirer-45.do
+  but i include this file function was not calling please check this
+  
+  
+  

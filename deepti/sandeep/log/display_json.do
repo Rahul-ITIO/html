@@ -1,0 +1,5 @@
+<?
+##############################
+$display_json='{"transaction_display":["transID","reference","bank_processing_amount","fullname","bank_processing_curr","available_balance","action","bill_amt","trans_amt","tdate","mop","trans_response","trans_status","merID","acquirer_response","bearer_token","json_value","json_log","bill_currency","mer_note","support_note","ccno","source_url","webhook_url","return_url","orderset","system_note","buy_txnfee_amt","rolling_amt","bill_country","mdr_cb_amt","mdr_cbk1_amt","mdr_refundfee_amt","payable_amt_of_txn","settelement_date","risk_ratio","transaction_period","created_date","acquirer_ref","trans_type","bill_phone","terNO","product_name","bill_address","bill_city","bill_state","bill_zip","descriptor","bill_ip","upa","rrn","gst_amt","multiple_check_box"]}';
+##############################
+?>

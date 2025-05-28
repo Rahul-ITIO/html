@@ -1,0 +1,11 @@
+<?
+include('../config.do');
+if(isset($_REQUEST['cb'])&&$_REQUEST['cb']){
+	$cb=$_REQUEST['cb'];
+	$responseBin=card_binf($cb);
+	if(isset($_REQUEST['json'])&&$_REQUEST['json']){
+		$responseBin=$responseBin['josn'];
+	}
+	jsonen($responseBin);
+}
+?>

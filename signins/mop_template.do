@@ -1,0 +1,3 @@
+<?
+include("mop.do");
+?>

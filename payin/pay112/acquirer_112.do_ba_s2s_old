@@ -1,0 +1,222 @@
+<?
+//112 lipad from 108
+
+
+// {"live":{"ConsumerSecret":"GZJECZKhfAJ0rWtPpKXndvPXQYg2DW","ConsumerKey":"9nUfLzIwMCmF0kk4zZCOi8MGSWTFC1","ClientCode":"COGMER-5WXOBTC","ServiceCode":"COGCHE189"},"test":{"ConsumerSecret":"yzw4rOK7ezeI5KYWkKqaQrLRI66w0N","ConsumerKey":"vZgqDzJcNlRmDCVwRSCw8OSONbdn3K","ClientCode":"COGMER-Y6UHY8K","ServiceCode":"COGCHE370"}}
+ 
+	include('function_112.do');	
+	
+	
+	//$tr_upd_order=array(); //function for update the transaction table
+	
+	//first step for token
+	
+	$postData['msisdn']= $post['bill_phone'];
+    $postData['account_number']="N/A";
+    $postData['country_code']="KEN";// by deafault USA
+    $postData['currency_code']= $orderCurrency;
+    $postData['client_code']= @$apc_get['ClientCode'];//client code will fixed 
+	$postData['due_date']=date('Y-m-d');
+	$postData['access_key']= @$apc_get['AccessKey'];//access key provided by lipad
+	$postData['customer_email']=$post['bill_email'];
+    $postData['customer_first_name']= $post['ccholder'];
+    $postData['customer_last_name']= $post['ccholder_lname'];
+	$postData['merchant_transaction_id']= @$transID;
+    $postData['callback_url']= 	$webhookhandler_url;
+    $postData['request_amount']= $total_payment;
+    $postData['request_description']=$post['product'];
+    $postData['success_redirect_url']= $status_url_1."&status=success";
+    $postData['failed_redirect_url']= $status_url_1."&status=fail";
+    $postData['language_code']= "en";
+    $postData['service_code']= @$apc_get['ServiceCode'];//COGCHE189;//you can change service code accordingly
+	//print_r($postData);
+	//exit;
+	//we use for encryption IV Key and consumer secrete key provided by lipad
+	$ivKey =  @$apc_get['IVKey'];//iv key
+	$secretKey= @$apc_get['ConsumerSecret'];//cunsumer secerete for encryption
+	$consumer_key = @$apc_get['consumerKey'];
+	#################################################
+	
+	
+    //The encryption method to be used
+    $encrypt_method = "AES-256-CBC";
+    // Hash the secret key
+    $passphrase = substr(hash('sha256', $secretKey), 0, 32);
+    // Hash the iv - encrypt method AES-256-CBC expects 16 bytes
+	
+    $iv = substr(hash('sha256', $ivKey), 0, 16);
+
+      $encrypted = openssl_encrypt(
+        json_encode($postData,true),
+        $encrypt_method,
+        $passphrase,
+        0,
+        $iv
+    );
+   
+	$accessKey=@$apc_get['AccessKey'];
+  
+   
+   //echo $url= "https://checkout.lipad.io/?access_key=@$apc_get['AccessKey']&payload=$encrypted";
+   
+    $url= "https://checkout.lipad.io/?access_key=$accessKey&payload=$encrypted";
+	
+     
+	$tr_upd_order['url']=$url;
+	$tr_upd_order['request']=$postData;
+	
+		
+	trans_updatesf($_SESSION['tr_newid'],$tr_upd_order);
+	
+	
+	//echo $bank_url;
+	 
+	$consumerSecret= @$apc_get['ConsumerSecret'];
+	$ConsumerKey  =@$apc_get['ConsumerKey'];
+		
+	//echo $consumer_key;
+		
+	$request='{"consumerKey":"'.$ConsumerKey.'","consumerSecret": "'.$consumerSecret.'"}';
+
+	$tr_upd_order['request_key']=$request;	
+
+	$url=$bank_url.'/api/v1/api-auth/access-token';
+	$curl = curl_init();
+
+	curl_setopt_array($curl, array(
+	CURLOPT_URL =>$url,
+	CURLOPT_RETURNTRANSFER => true,
+	CURLOPT_ENCODING => '',
+	CURLOPT_MAXREDIRS => 10,
+	CURLOPT_TIMEOUT => 30,
+	CURLOPT_FOLLOWLOCATION => true,
+	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	CURLOPT_CUSTOMREQUEST => 'POST',
+	CURLOPT_POSTFIELDS =>$request,
+	CURLOPT_HTTPHEADER => array(
+		'Content-Type: application/json'
+	),
+	));
+
+	$response = curl_exec($curl);
+
+	curl_close($curl);
+	$res = json_decode($response,1);
+
+	$tr_upd_order['url_1']=$url;	
+	$tr_upd_order['response_1']=(isset($res)&&is_array($res)?htmlTagsInArray($res):stf($response));
+
+
+	$token=$res['access_token'];//token here
+	$data_pay_load = array(
+		"external_reference" => @$transID,
+		"origin_channel_code" => "API",
+		"client_code" => @$apc_get['ClientCode'],
+		"originator_msisdn" => $post['bill_phone'],
+		"payer_msisdn" => $post['bill_phone'],
+		"service_code" => @$apc_get['ServiceCode'],
+		"account_number" => $post['bill_phone'],
+		"invoice_number" => "gdhss-shgsj-sh",
+		"currency_code" => "KES",
+		"country_code" => "KEN",
+		"amount" => $total_payment,
+		"success_redirect_url"=> $status_url_1."&status=success",
+		"failed_redirect_url"=> $status_url_1."&status=fail",
+		"add_transaction_charge" => false,
+		"transaction_charge" => 0,
+		"payment_method_code" => "CARD",
+		"extra_data" => array(
+			"store_number" => 20,
+			"location" => "Nairobi"
+
+		),
+		"payer_name" => $post['ccholder'],
+		"payer_email" => $post['bill_email'],
+		"description" => "Flight booking payment",
+		"notify_client" => 1,
+		"notify_originator" => 1,
+		"device" => array(
+			"browser" => "MOZILLA",
+			"ipAddress" => $_SESSION['bill_ip'],
+			"browserDetails" => array(
+				"3DSecureChallengeWindowSize" => "FULL_SCREEN",
+				"acceptHeaders" => "application/json",
+				"colorDepth" => 24,
+				"javaEnabled" => true,
+				"language" => "en-US",
+				"screenHeight" => 400,
+				"screenWidth" => 250,
+				"timeZone" => 273,
+				
+			),
+		),
+
+		"card" => @$encryptedData
+	);
+	//echo $_SERVER['HTTP_USER_AGENT'];
+	$requestPayload = json_encode($data_pay_load);
+
+
+		
+	// https://dev.charge.lipad.io/v1/cards/charge
+
+	$curl = curl_init();
+
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => $bank_url,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => '',
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 30,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => 'POST',
+		CURLOPT_POSTFIELDS => $requestPayload,
+		CURLOPT_HTTPHEADER => array(
+			"Content-Type: application/json",
+			"x-access-token: $token"
+			//"x-access-token: test"
+		),
+	));
+
+	$response_2 = curl_exec($curl);
+
+	curl_close($curl);
+	$res_2 = json_decode($response_2, 1);
+
+	//html repsone echo base64 encode via redirect bank OTP page 
+	if(isset($res_2['html'])&&@$res_2['html'])
+	{
+		$htmlScript=@$res_2['html'];
+		unset($res_2['html']);
+
+		$tr_upd_order['htmlScript']=$auth_3ds2_secure=base64_encode(@$htmlScript);
+					
+		$auth_3ds2_base64=1;
+
+	}
+	
+	$tr_upd_order['url_2']=$bank_url;	
+	$tr_upd_order['response_2']=(isset($res_2)&&is_array($res_2)?htmlTagsInArray($res_2):stf($response_2));
+		
+	$tr_upd_order['token']=$token;	
+	$tr_upd_order['encryptedData']=$encryptedData;	
+	$tr_upd_order['data_pay_load']=$data_pay_load;	
+
+	if(isset($data['cqp'])&&$data['cqp']>6)
+    {
+        echo "<br/><hr/><br/><h3>PAYLOAD & RESPONSE</h3><br/>"; 
+        echo "<br/><hr/><br/>tr_upd_order:<br/>"; print_r(@$tr_upd_order);
+        
+        echo "<br/><hr/><br/>";
+
+        exit;
+    }
+	
+	
+	//trans_updatesf($_SESSION['tr_newid'],$tr_upd_order);
+
+	$tr_upd_order_111=$tr_upd_order;
+	
+	
+ ?>

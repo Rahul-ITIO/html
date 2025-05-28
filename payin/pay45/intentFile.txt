@@ -1,0 +1,9 @@
+upi://pay?pa=sky.skywalk@finobank&pn=SkywalkTechnology&mc=5999&tr=FINOUPI821117924&tn=skywalk+technology&am=2.00&mode=04&tid=8268822
+
+tr =txnReference
+pa=payeeVPA
+pn=payeeName
+am = amount
+tid = transactionId
+
+No API was found on the bank's side for the intent. We created the intent by sending some parameters. This is a working intent

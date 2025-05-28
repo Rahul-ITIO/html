@@ -1,0 +1,65 @@
+//53
+
+Issued public api key: a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127
+
+//test
+Issued zone encryption key (ZEK):
+zek: 679942a3636b7b6b5ebf06a05f6a82cd6dc5e21ec88fe4a3c5d2dc676d412998
+auth_ApiKey: a62fe2fc139471ed8cb97fed3cf73424af66d5f1
+
+
+live
+zek: 9fa9218481c470b3678fc73b4268799b741882f9abf15b190001c1818370f6a6
+auth_ApiKey: da3abd5072d1365ed172f836843e2b9a0c192c8c
+
+header_ApiKey : de6e2fa782dd1d1ada601c4291c050ea8f8d58b2d7ca794c33e06fb0a955fe8ddd96e56bc8aca45f79fded92b878d691a87507698500e35c434021e6
+
+
+{"live":{"merchantCode":"EBN00100843D","auth_ApiKey":"da3abd5072d1365ed172f836843e2b9a0c192c8c","header_ApiKey":"de6e2fa782dd1d1ada601c4291c050ea8f8d58b2d7ca794c33e06fb0a955fe8ddd96e56bc8aca45f79fded92b878d691a87507698500e35c434021e6","zek":"9fa9218481c470b3678fc73b4268799b741882f9abf15b190001c1818370f6a6"},"test":{"merchantCode":"TESTUBAPROPHNG","auth_ApiKey":"a62fe2fc139471ed8cb97fed3cf73424af66d5f1","header_ApiKey":"a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127","zek":"679942a3636b7b6b5ebf06a05f6a82cd6dc5e21ec88fe4a3c5d2dc676d412998"}}
+
+
+http://15.207.116.247:8084/webhook55/encode_53?cardNo=5123450000000008&expiryDate=3110&securityCode=564&zek=679942a3636b7b6b5ebf06a05f6a82cd6dc5e21ec88fe4a3c5d2dc676d412998&publicApiKey=a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127&qp=1
+
+
+http://15.207.116.247:8084/webhook55/encode_53?cardNo=4281021015248691&expiryDate=2803&securityCode=111&zek=9fa9218481c470b3678fc73b4268799b741882f9abf15b190001c1818370f6a6&publicApiKey=a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127&qp=1
+
+
+Token generation: 
+https://pr-web-api-gateway.paycontactles.com 
+
+Payment url:
+https://pr-web-payment-gateway.paycontactles.com
+
+
+
+Pease find the url for card date & issue is live mode 
+
+
+$encryptionRequest['cardNo']='4281021015248691';
+$encryptionRequest['expiryDate']='2803'; // yearmonth
+$encryptionRequest['securityCode']='221';
+$encryptionRequest['zek']='9fa9218481c470b3678fc73b4268799b741882f9abf15b190001c1818370f6a6'; 
+$encryptionRequest['publicApiKey']='a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127';
+
+$encryptionUrl='http://15.207.116.247:8084/webhook55/encode_53'.'?'.http_build_query($encryptionRequest);
+
+
+
+http://15.207.116.247:8084/webhook55/encode_53?cardNo=4281021015248691&expiryDate=2803&securityCode=111&zek=9fa9218481c470b3678fc73b4268799b741882f9abf15b190001c1818370f6a6&publicApiKey=a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127&qp=1
+
+
+
+Pease find the url for card date & issue is test mode 
+
+
+$encryptionRequest['cardNo']='5123450000000008';
+$encryptionRequest['expiryDate']='3110'; // yearmonth
+$encryptionRequest['securityCode']='3110';
+$encryptionRequest['zek']='679942a3636b7b6b5ebf06a05f6a82cd6dc5e21ec88fe4a3c5d2dc676d412998'; 
+$encryptionRequest['publicApiKey']='a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127';
+
+$encryptionUrl='http://15.207.116.247:8084/webhook55/encode_53'.'?'.http_build_query($encryptionRequest);
+
+
+
+http://15.207.116.247:8084/webhook55/encode_53?cardNo=5123450000000008&expiryDate=3110&securityCode=3110&zek=679942a3636b7b6b5ebf06a05f6a82cd6dc5e21ec88fe4a3c5d2dc676d412998&publicApiKey=a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127&qp1=1

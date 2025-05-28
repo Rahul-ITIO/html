@@ -1,0 +1,111 @@
+table { 
+    width: 100%; 
+    table-layout: fixed;
+    border-collapse: collapse; 
+    margin: 0 auto;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+    background: #f2f2f2; 
+}
+th { 
+    background: #59595c; 
+    color: #fff; 
+    font-size: 14px !important; 
+}
+td, th { 
+    /*padding: 12px; */
+	/*padding: 4px;
+    border: 1px solid #ccc; 
+    text-align: left; 
+    text-align: center;
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+	word-wrap: anywhere;*/
+	padding: 5px;
+    border: 1px solid rgb(204, 204, 204);
+    text-align: center;
+    overflow-wrap: anywhere;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+	vertical-align: middle !important;
+}
+table thead tr td {font-weight:bold;font-size:14px !important;}
+tr {padding:0 !important;}
+div .show_img{
+		margin-top:-13px;
+		margin-left:-25px;
+		}
+#content a .glyphicons.green i::before {left: -8px !important;}
+td a b span .lock{padding: 5px 0 6px 19px !important;}
+td a b span .glyphicons{padding: 5px 0 6px 19px !important;}
+td a b span .glyphicons.red i::before {left:-6;}
+
+.ok_2{ /*margin-left: -7px !important;margin-top: -7px !important;*/}
+.glyphicons.ok_2 i::before{left:0px;}
+
+
+.glyphicons.ban i::before , .glyphicons.clock i::before {margin-left:0px !important; }
+
+
+/*Mobile View*/
+@media (max-width:999px){
+    .table-responsive td, .table-responsive tr {display: block;}
+	.clients.store td, th {padding-left:49% !important;padding-top:10px; padding-bottom:10px;}
+	<!--td a font{margin-left:-26px!important;}-->
+	td{font-size:14px !important;}
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	tr {
+        border: 1px solid #0080C0; 
+    }
+    tr + tr{
+        margin-top: 10px;
+    }
+	td { 
+		/* make like a "row" */
+		border: none;
+		border-bottom: 1px solid  #eee; 
+		position: relative;
+		padding-left: 49%; 
+       /* background-color: #CBCBCB;*/
+        text-align: left; 
+		/*color:#454545;*/
+		overflow:auto;
+		font-size:14px;
+	}
+	td:before { 
+        content: attr(data-label);
+        display: inline-block;
+        line-height: 1.5;
+	    margin-left: -90%;
+        width: 75%;
+		white-space: nowrap;
+		font-weight:500;
+		color:#000;
+		
+		
+	}
+	
+}
+/*Mobile View*/
+@media 
+only screen and 
+    (max-width: 460px){
+	td:before { 
+        content: attr(data-label);
+        display: inline-block;
+        line-height: 1.5;
+	    margin-left: -95%;
+        width: 85%;
+		white-space: nowrap;
+		font-weight:500;
+		color:#000;
+		
+		
+	}
+}

@@ -1,0 +1,534 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+  <title>CodePen - Resizable Bootstrap Columns</title>
+
+  <link rel="stylesheet" media="screen" href="https://cpwebassets.codepen.io/assets/fullpage/fullpage-9a6f5ffcc359b81b95df109e4b8ce436f472f4f828fcc75227cd5266125d459b.css" />
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+
+
+
+  <title>CodePen - Resizable Bootstrap Columns</title>
+
+  <style>
+    html { font-size: 15px; }
+    html, body { margin: 0; padding: 0; min-height: 100%; }
+    body { height:100%; display: flex; flex-direction: column; }
+    .referer-warning {
+      background: black;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+      padding: 0.75em;
+      color: white;
+      text-align: center;
+      font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, system-ui, Sans-Serif;
+      line-height: 1.2;
+      font-size: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    .referer-warning span { font-family: initial; }
+    .referer-warning h1 { font-size: 1.2rem; margin: 0; }
+    .referer-warning a { color: #56bcf9; }
+  </style>
+</head>
+
+<body class="">
+  <div class="referer-warning">
+    <h1><span>⚠️</span> Do not enter passwords or personal information on this page. <span>⚠️</span></h1>
+      This is a code demo posted by a web developer on <a href="https://codepen.io">CodePen</a>.
+    <br />
+    A referer from CodePen is required to render this page view, and your browser is not sending one (<a href="https://blog.codepen.io/2017/10/05/regarding-referer-headers/" target="_blank" rel="noreferrer noopener">more details</a>).</h1>
+  </div>
+
+  <div id="result-iframe-wrap" role="main">
+    <iframe
+      id="result"
+      srcdoc="<!DOCTYPE html>
+<html lang=&quot;en&quot; >
+
+<head>
+  <meta charset=&quot;UTF-8&quot;>
+  
+
+    <link rel=&quot;apple-touch-icon&quot; type=&quot;image/png&quot; href=&quot;https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png&quot; />
+
+    <meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;CodePen&quot;>
+
+    <link rel=&quot;shortcut icon&quot; type=&quot;image/x-icon&quot; href=&quot;https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico&quot; />
+
+    <link rel=&quot;mask-icon&quot; type=&quot;image/x-icon&quot; href=&quot;https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg&quot; color=&quot;#111&quot; />
+
+
+
+  
+  <title>CodePen - Resizable Bootstrap Columns</title>
+    <link rel=&quot;canonical&quot; href=&quot;https://codepen.io/ericfillipe/pen/RGNaRK&quot; />
+  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;>
+  
+  <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+  
+<style>
+/* Visual Aids */
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.row {
+    background-color: rgba(189, 195, 199, 0.25);
+}
+
+.row:hover {
+    background-color: rgba(189, 195, 199, 0.5);
+}
+
+.row > .col-xs-1,
+.row > .col-xs-2,
+.row > .col-xs-3,
+.row > .col-xs-4,
+.row > .col-xs-5,
+.row > .col-xs-6,
+.row > .col-xs-7,
+.row > .col-xs-8,
+.row > .col-xs-9,
+.row > .col-xs-10,
+.row > .col-xs-11,
+.row > .col-xs-12 {
+    min-height: 100px;
+}
+
+.row > .col-xs-1:before,
+.row > .col-xs-2:before,
+.row > .col-xs-3:before,
+.row > .col-xs-4:before,
+.row > .col-xs-5:before,
+.row > .col-xs-6:before,
+.row > .col-xs-7:before,
+.row > .col-xs-8:before,
+.row > .col-xs-9:before,
+.row > .col-xs-10:before,
+.row > .col-xs-11:before,
+.row > .col-xs-12:before {
+    content: '';
+
+    display: block;
+
+    position: absolute;
+    top: 0;
+    right: 15px;
+    bottom: 0;
+    left: 15px;
+
+    background-color: rgba(52, 152, 219, 0.25);
+}
+
+.row > .col-xs-1:hover:before,
+.row > .col-xs-2:hover:before,
+.row > .col-xs-3:hover:before,
+.row > .col-xs-4:hover:before,
+.row > .col-xs-5:hover:before,
+.row > .col-xs-6:hover:before,
+.row > .col-xs-7:hover:before,
+.row > .col-xs-8:hover:before,
+.row > .col-xs-9:hover:before,
+.row > .col-xs-10:hover:before,
+.row > .col-xs-11:hover:before,
+.row > .col-xs-12:hover:before {
+    background-color: rgba(52, 152, 219, 0.5);
+}
+
+/* Resizable Grid */
+
+.resizable-grid > .resizable-row > .resizable-column > .resizable-column-handle {
+    z-index: 100;
+
+    display: none;
+
+    position: absolute;
+    top: 0;
+
+    height: 100%;
+    width: 6px;
+
+    cursor: col-resize;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -ms-touch-action: none;
+    touch-action: none;
+}
+
+.resizable-grid > .resizable-row > .resizable-column > .resizable-column-handle-w {
+    left: 12px;
+}
+
+.resizable-grid > .resizable-row > .resizable-column > .resizable-column-handle-e {
+    right: 12px;
+}
+
+.resizable-grid > .resizable-row > .resizable-column:first-child:not(:last-child) > .resizable-column-handle-e,
+.resizable-grid > .resizable-row > .resizable-column:not(:first-child):not(:last-child) > .resizable-column-handle-w,
+.resizable-grid > .resizable-row > .resizable-column:not(:first-child):not(:last-child) > .resizable-column-handle-e,
+.resizable-grid > .resizable-row > .resizable-column:last-child:not(:first-child) > .resizable-column-handle-w {
+    display: block;
+}
+
+.resizable-grid-resizing {
+    cursor: col-resize;
+}
+
+.resizable-grid > .resizable-row-resizing > .resizable-column:not(.resizable-column-resizing) {
+    opacity: 0.5;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate=&quot;no&quot;>
+  <div class=&quot;container&quot;>
+    <div class=&quot;grid&quot;>
+        <div class=&quot;row&quot;>
+            <div class=&quot;col-xs-3&quot;></div>
+            <div class=&quot;col-xs-3&quot;></div>
+            <div class=&quot;col-xs-3&quot;></div>
+            <div class=&quot;col-xs-3&quot;></div>
+        </div>
+    </div>
+</div>
+    <script src=&quot;https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js&quot;></script>
+
+  <script src='//code.jquery.com/jquery-1.12.0.min.js'></script>
+<script src='//code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
+<script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+      <script id=&quot;rendered-js&quot; >
+(function ($, window, document, undefined) {
+
+  $.widget('ce.resizableGrid', {
+
+    _create: function () {
+      this.resizing = false;
+
+      this._on({
+        'mousedown .resizable-column-handle': '_resizeStartHandler',
+        'mousemove': '_resizeHandler',
+        'mouseup': '_resizeStopHandler',
+        'mouseleave': '_resizeStopHandler' });
+
+    },
+
+    _init: function () {
+      this._createHelpers();
+    },
+
+    _createHelpers: function () {
+      this.element.addClass('resizable-grid');
+
+      this.element.find('> .row:not(.resizable-row)').each(function (rowIndex, rowElement) {
+        var row = $(rowElement);
+
+        row.addClass('resizable-row');
+
+        row.find('> [class^=&quot;col-&quot;]:not(.resizable-column)').each(function (columnIndex, columnElement) {
+          var column = $(columnElement);
+
+          column.addClass('resizable-column');
+
+          column.append(
+          $('<div>', { class: 'resizable-column-handle resizable-column-handle-w', 'data-is-west': 'true' }),
+          $('<div>', { class: 'resizable-column-handle resizable-column-handle-e', 'data-is-west': 'false' }));
+
+        });
+      });
+    },
+
+    _resizeStartHandler: function (event) {
+      this.resizing = {};
+
+      this.resizing.handle = $(event.currentTarget).addClass('resizable-column-handle-resizing');
+      this.resizing.column = this.resizing.handle.closest('.resizable-column').addClass('resizable-column-resizing');
+      this.resizing.row = this.resizing.column.closest('.resizable-row').addClass('resizable-row-resizing');
+
+      this.resizing.handleIsWest = this.resizing.handle.data('isWest');
+      this.resizing.directionIsWest = this._getResizingDirectionIsWest(event.pageX);
+      this.resizing.columnSize = this._getColumnSize(this.resizing.column);
+      this.resizing.siblings = this._getResizingSiblings(this.resizing.column);
+      this.resizing.offsets = this._getResizingOffsets();
+
+      this.element.addClass('resizable-grid-resizing');
+    },
+
+    _resizeHandler: function (event) {
+      if (!this.resizing) {
+        return;
+      }
+
+      this.resizing.directionIsWest = this._getResizingDirectionIsWest(event.pageX);
+
+      var resizingOffsetSize = this._getResizingOffsetSize(event.pageX);
+
+      if (resizingOffsetSize &amp;&amp; this.resizing.columnSize !== resizingOffsetSize) {
+        if (resizingOffsetSize > this.resizing.columnSize) {
+          var widestColumn = this._getWidestColumn(this.resizing.siblings),
+          widestColumnSize = this._getColumnSize(widestColumn);
+
+          this._setColumnSize(widestColumn, widestColumnSize - 1);
+          this._setColumnSize(this.resizing.column, resizingOffsetSize);
+        } else {
+          var narrowestColumn = this._getNarrowestColumn(this.resizing.siblings),
+          narrowestColumnSize = this._getColumnSize(narrowestColumn);
+
+          this._setColumnSize(narrowestColumn, narrowestColumnSize + 1);
+          this._setColumnSize(this.resizing.column, resizingOffsetSize);
+        }
+
+        this.resizing.columnSize = resizingOffsetSize;
+      }
+    },
+
+    _resizeStopHandler: function (event) {
+      if (!this.resizing) {
+        return;
+      }
+
+      this.resizing.handle.removeClass('resizable-column-handle-resizing');
+      this.resizing.column.removeClass('resizable-column-resizing');
+      this.resizing.row.removeClass('resizable-row-resizing');
+
+      this.element.removeClass('resizable-grid-resizing');
+
+      this.resizing = false;
+    },
+
+    _getResizingDirectionIsWest: function (x) {
+      var resizingDirectionIsWest;
+
+      if (!this.resizing.directionLastX) {
+        this.resizing.directionLastX = x;
+        resizingDirectionIsWest = null;
+      } else {
+        if (x < this.resizing.directionLastX) {
+          resizingDirectionIsWest = true;
+        } else {
+          resizingDirectionIsWest = false;
+        }
+
+        this.resizing.directionLastX = x;
+      }
+
+      return resizingDirectionIsWest;
+    },
+
+    _getResizingSiblings: function (column) {
+      return this.resizing.handleIsWest ? column.prevAll() : column.nextAll();
+    },
+
+    _getResizingOffsetSize: function (x) {
+      var that = this,
+      resizingOffsetSize;
+
+      $.each(this.resizing.offsets, function (index, offset) {
+        if (that.resizing.directionIsWest &amp;&amp; x <= offset.end &amp;&amp; x >= offset.start || !that.resizing.directionIsWest &amp;&amp; x >= offset.start &amp;&amp; x <= offset.end) {
+          resizingOffsetSize = offset.size;
+        }
+      });
+
+      return resizingOffsetSize;
+    },
+
+    _getResizingOffsets: function () {
+      var that = this,
+      row = this.resizing.row.clone(),
+      css = { 'height': '1px', 'min-height': '1px', 'max-height': '1px' };
+
+      row.removeClass('resizable-row resizable-row-resizing').css(css);
+      row.children().empty().removeClass('resizable-column resizable-column-resizing').css(css);
+      this.resizing.row.parent().append(row);
+
+      var column = row.children().eq(this.resizing.row.children().index(this.resizing.column)),
+      totalSize = this._getColumnSize(column);
+
+      this._getResizingSiblings(column).each(function () {
+        totalSize += that._getColumnSize($(this)) - 1;
+        that._setColumnSize($(this), 1);
+      });
+
+      var size = this.resizing.handleIsWest ? totalSize : 1,
+      sizeEnd = this.resizing.handleIsWest ? 1 : totalSize,
+      sizeOperator = this.resizing.handleIsWest ? -1 : 1,
+      offset = 0,
+      offsetOperator = this.resizing.handleIsWest ? 1 : 0;
+
+      var columnGutter = (column.outerWidth(true) - column.width()) / 2,
+      columnWidth = this.resizing.handleIsWest ? false : true;
+
+      var resizingOffsets = [];
+
+      while (true) {if (window.CP.shouldStopExecution(0)) break;
+        this._setColumnSize(column, size);
+        this._setColumnOffset(column, offset);
+
+        var left = Math.floor(column.offset().left) + columnGutter + (columnWidth ? column.width() : 0);
+
+        resizingOffsets.push({ start: left + columnGutter * 3 * -1, end: left + columnGutter * 3, size: size });
+
+        if (size === sizeEnd) {
+          break;
+        }
+
+        size += sizeOperator;
+        offset += offsetOperator;
+      }window.CP.exitedLoop(0);
+
+      row.remove();
+
+      return resizingOffsets;
+    },
+
+    _getWidestColumn: function (columns) {
+      var that = this,
+      widestColumn;
+
+      columns.each(function () {
+        if (!widestColumn || that._getColumnSize($(this)) > that._getColumnSize(widestColumn)) {
+          widestColumn = $(this);
+        }
+      });
+
+      return widestColumn;
+    },
+
+    _getNarrowestColumn: function (columns) {
+      var that = this,
+      narrowestColumn;
+
+      columns.each(function () {
+        if (!narrowestColumn || that._getColumnSize($(this)) < that._getColumnSize(narrowestColumn)) {
+          narrowestColumn = $(this);
+        }
+      });
+
+      return narrowestColumn;
+    },
+
+    _getColumnSize: function (column) {
+      var columnSize;
+
+      $.each($.trim(column.attr('class')).split(' '), function (index, value) {
+        if (value.match(/^col-/) &amp;&amp; !value.match(/-offset-/)) {
+          columnSize = parseInt($.trim(value).replace(/\D/g, ''), 10);
+        }
+      });
+
+      return columnSize;
+    },
+
+    _setColumnSize: function (column, size) {
+      column.toggleClass([['col', 'xs', this._getColumnSize(column)].join('-'), ['col', 'xs', size].join('-')].join(' '));
+    },
+
+    _getColumnOffset: function (column) {
+      var columnOffset;
+
+      $.each($.trim(column.attr('class')).split(' '), function (index, value) {
+        if (value.match(/^col-/) &amp;&amp; value.match(/-offset-/)) {
+          columnOffset = parseInt($.trim(value).replace(/\D/g, ''), 10);
+        }
+      });
+
+      return columnOffset;
+    },
+
+    _setColumnOffset: function (column, offset) {
+      var currentColumnOffset,
+      toggleClasses = [];
+
+      if ((currentColumnOffset = this._getColumnOffset(column)) !== undefined) {
+        toggleClasses.push(['col', 'xs', 'offset', currentColumnOffset].join('-'));
+      }
+
+      toggleClasses.push(['col', 'xs', 'offset', offset].join('-'));
+
+      column.toggleClass(toggleClasses.join(' '));
+    },
+
+    _destroy: function () {
+      this._destroyHelpers();
+    },
+
+    _destroyHelpers: function () {
+      this.element.find('.resizable-column-handle').remove();
+      this.element.find('.resizable-column').removeClass('resizable-column resizable-column-resizing');
+      this.element.find('.resizable-row').removeClass('resizable-row resizable-row-resizing');
+      this.element.removeClass('resizable-grid resizable-grid-resizing');
+    } });
+
+
+})(jQuery, window, document);
+
+$('.grid').resizableGrid();
+//# sourceURL=pen.js
+    </script>
+
+  
+</body>
+
+</html>
+"
+      sandbox="allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation allow-downloads allow-presentation" allow="accelerometer; camera; encrypted-media; display-capture; geolocation; gyroscope; microphone; midi; clipboard-read; clipboard-write" allowTransparency="true"
+      allowpaymentrequest="true" allowfullscreen="true" class="result-iframe">
+      </iframe>
+  </div>
+
+</body>
+
+</html>

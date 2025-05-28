@@ -1,0 +1,122 @@
+{
+	"response": {
+		"header": {
+			"requestUUID": 1677136627,
+			"channelId": "INT"
+		},
+		"body": {
+			"fetchIECDataRes": {
+				"responseCode": "R000",
+				"responseDescription": "Success",
+				"responseIECData": {
+					"transaction": [{
+						"request_ID": "21808",
+						"challanCode": "LASI1",
+						"challan_no": "21808",
+						"clientAccountNo": "200999186871",
+						"clientName": "258600443270",
+						"amount": "1.00",
+						"remitterName": "MGLUM",
+						"remitterAccountNo": "020901510585",
+						"remitterIFSC": "INDB0000015",
+						"remitterBank": "SBI",
+						"remitterBranch": "Kottayam",
+						"remitterUTR": "UTR000000021808",
+						"payMethod": "NEFT",
+						"creditAccountNo": "121212",
+						"inwardRefNum": "test",
+						"creditTime": "31-01-2023 16:01:18",
+						"reserve1": "",
+						"reserve2": "",
+						"reserve3": "",
+						"reserve4": ""
+					}, {
+						"request_ID": "21810",
+						"challanCode": "LASI1",
+						"challan_no": "21810",
+						"clientAccountNo": "200999186871",
+						"clientName": "258600443270",
+						"amount": "1.00",
+						"remitterName": "MGLUM",
+						"remitterAccountNo": "020901510585",
+						"remitterIFSC": "INDB0000015",
+						"remitterBank": "SBI",
+						"remitterBranch": "Kottayam",
+						"remitterUTR": "UTR000000021810",
+						"payMethod": "NEFT",
+						"creditAccountNo": "121212",
+						"inwardRefNum": "test1",
+						"creditTime": "15-02-2023 10:16:47",
+						"reserve1": "",
+						"reserve2": "",
+						"reserve3": "",
+						"reserve4": ""
+					}, {
+						"request_ID": "21811",
+						"challanCode": "LASI1",
+						"challan_no": "21811",
+						"clientAccountNo": "200999186871",
+						"clientName": "258600443270",
+						"amount": "1.00",
+						"remitterName": "MGLUM",
+						"remitterAccountNo": "020901510585",
+						"remitterIFSC": "INDB0000012",
+						"remitterBank": "HDFC",
+						"remitterBranch": "Kottayam",
+						"remitterUTR": "test2",
+						"payMethod": "IMPS",
+						"creditAccountNo": "121111",
+						"inwardRefNum": "test2",
+						"creditTime": "15-02-2023 10:17:39",
+						"reserve1": "",
+						"reserve2": "",
+						"reserve3": "",
+						"reserve4": ""
+					}, {
+						"request_ID": "21812",
+						"challanCode": "LASI1",
+						"challan_no": "21812",
+						"clientAccountNo": "200999186871",
+						"clientName": "258600443270",
+						"amount": "1.00",
+						"remitterName": "MGLUM",
+						"remitterAccountNo": "020901510585",
+						"remitterIFSC": "INDB0000019",
+						"remitterBank": "sbi",
+						"remitterBranch": "Kottayam",
+						"remitterUTR": "UTR000000021812",
+						"payMethod": "RTGS",
+						"creditAccountNo": "1212",
+						"inwardRefNum": "test5",
+						"creditTime": "15-02-2023 10:18:42",
+						"reserve1": "",
+						"reserve2": "",
+						"reserve3": "",
+						"reserve4": ""
+					}, {
+						"request_ID": "21813",
+						"challanCode": "LASI1",
+						"challan_no": "21813",
+						"clientAccountNo": "200999186871",
+						"clientName": "258600443270",
+						"amount": "1.00",
+						"remitterName": "MGLUM",
+						"remitterAccountNo": "020901510585",
+						"remitterIFSC": "INDB0000015",
+						"remitterBank": "INDUSIND BANK",
+						"remitterBranch": "Kottayam",
+						"remitterUTR": "UTR000000021813",
+						"payMethod": "IEFT",
+						"creditAccountNo": "12",
+						"inwardRefNum": "test7",
+						"creditTime": "15-02-2023 10:19:33",
+						"reserve1": "",
+						"reserve2": "",
+						"reserve3": "",
+						"reserve4": ""
+					}]
+				}
+			}
+		}
+	}
+}

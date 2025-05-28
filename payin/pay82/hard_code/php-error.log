@@ -1,0 +1,75 @@
+[31-May-2024 05:13:29 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:93
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(68): Blocktrail\CryptoJSAES\CryptoJSAES::decode('Padding is inva...')
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(168): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt('Padding is inva...', '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 93
+[31-May-2024 05:23:16 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:93
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(68): Blocktrail\CryptoJSAES\CryptoJSAES::decode('Padding is inva...')
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(168): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt('Padding is inva...', '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 93
+[31-May-2024 05:24:24 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:93
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(68): Blocktrail\CryptoJSAES\CryptoJSAES::decode('Padding is inva...')
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(168): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt('Padding is inva...', '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 93
+[31-May-2024 06:11:08 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:95
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(70): Blocktrail\CryptoJSAES\CryptoJSAES::decode('Padding is inva...')
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(174): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt('Padding is inva...', '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 95
+[31-May-2024 06:11:50 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:95
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(70): Blocktrail\CryptoJSAES\CryptoJSAES::decode('Padding is inva...')
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(174): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt('Padding is inva...', '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 95
+[31-May-2024 06:12:37 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:95
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(70): Blocktrail\CryptoJSAES\CryptoJSAES::decode('Padding is inva...')
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(174): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt('Padding is inva...', '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 95
+[31-May-2024 06:12:52 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:95
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(70): Blocktrail\CryptoJSAES\CryptoJSAES::decode('Padding is inva...')
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(174): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt('Padding is inva...', '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 95
+[31-May-2024 06:13:03 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:95
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(70): Blocktrail\CryptoJSAES\CryptoJSAES::decode('Padding is inva...')
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(174): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt('Padding is inva...', '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 95
+[31-May-2024 06:13:24 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:95
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(70): Blocktrail\CryptoJSAES\CryptoJSAES::decode('Padding is inva...')
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(174): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt('Padding is inva...', '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 95
+[31-May-2024 06:20:56 UTC] PHP Deprecated:  base64_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 92
+[31-May-2024 06:20:56 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:95
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(70): Blocktrail\CryptoJSAES\CryptoJSAES::decode(NULL)
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(178): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt(NULL, '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 95
+[31-May-2024 06:22:06 UTC] PHP Deprecated:  base64_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 92
+[31-May-2024 06:22:06 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:95
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(70): Blocktrail\CryptoJSAES\CryptoJSAES::decode(NULL)
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(178): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt(NULL, '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 95
+[31-May-2024 06:22:29 UTC] PHP Deprecated:  base64_decode(): Passing null to parameter #1 ($string) of type string is deprecated in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 92
+[31-May-2024 06:22:29 UTC] PHP Fatal error:  Uncaught InvalidArgumentException in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php:95
+Stack trace:
+#0 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(70): Blocktrail\CryptoJSAES\CryptoJSAES::decode(NULL)
+#1 /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php(178): Blocktrail\CryptoJSAES\CryptoJSAES::decrypt(NULL, '97604492-a0bc-4...')
+#2 {main}
+  thrown in /opt/homebrew/var/www/gw/payin/pay82/hard_code/VpaRegistered.php on line 95

@@ -1,0 +1,16 @@
+
+Array ( [grant_type] => authorization_code [redirect_uri] => https://can-webhook.web1.one/payin/pay83/webhookhandler_83 [state] => acdfgb [code] => LbW6ZhAOfQNSB4Fsa4lo2potf28zKyTk [scope] => ) Array ( [access_token] => [token_type] => Bearer [refresh_token] => [expires_in] => [scope] => [refresh_token_expires_in] => ) Array ( [httpCode] => 400 [httpMessage] => Bad Request [moreInformation] => One or more required API parameters are missing in the API request ) 
+
+
+
+Array ( [access_token] => [token_type] => Bearer [refresh_token] => [expires_in] => [scope] => [refresh_token_expires_in] => ) Array ( [ErrorResponse] => Array ( [metadata] => Array ( [status] => Array ( [code] => GWYCE4107 [desc] => Invalid Request. Please refer Portal API Documentation ) ) ) ) 
+
+
+
+
+
+
+
+https://can-webhook.web1.one/checkout?actionType=&actionUrl=&integration-type=Checkout&terNO=&public_key=MjcyXzEwMzhfMjAyNDA4MTMxMTEwMjk&return_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dsuccess&webhook_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dnotify&product_name=Test+Product&fullname=Test+Full+Name&bill_email=test5134%40test.com&bill_address=161+Kallang+Way&bill_city=New+Delhi&bill_state=Delhi&bill_country=IN&bill_zip=110001&bill_phone=919821125134&bill_currency=INR&bill_amt=112.00&bill_ip=122.176.92.114&ccno=5438898014560229&ccvv=564&month=10&year=31&country_name=&REMOTE_ADDR=122.176.92.114&http_referer=https%3A%2F%2Fcan-webhook.web1.one%2Fp%2Fp&acquirer_id=&product=Test%20Product&bill_amt=112.00&step=2&fullname=Test%20Full%20Name&bill_email=test5134%40test.com&bill_address=161%20Kallang%20Way&bill_city=New%20Delhi&bill_state=Delhi&bill_country=IN&bill_country_name=&bill_zip=110001&bill_phone=919821125134&payment_mode=&bill_fees=&bussiness_url=&status=2&aurl=&source=&actionajax=ajaxQrCode&mop=QRINTENT&acquirer=83?actionType=&actionUrl=&integration-type=Checkout&terNO=&public_key=MjcyXzEwMzhfMjAyNDA4MTMxMTEwMjk&return_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dsuccess&webhook_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dnotify&product_name=Test+Product&fullname=Test+Full+Name&bill_email=test5134%40test.com&bill_address=161+Kallang+Way&bill_city=New+Delhi&bill_state=Delhi&bill_country=IN&bill_zip=110001&bill_phone=919821125134&bill_currency=INR&bill_amt=112.00&bill_ip=122.176.92.114&ccno=5438898014560229&ccvv=564&month=10&year=31&country_name=&REMOTE_ADDR=122.176.92.114&http_referer=https%3A%2F%2Fcan-webhook.web1.one%2Fp%2Fp&acquirer_id=&product=Test%20Product&bill_amt=112.00&step=2&fullname=Test%20Full%20Name&bill_email=test5134%40test.com&bill_address=161%20Kallang%20Way&bill_city=New%20Delhi&bill_state=Delhi&bill_country=IN&bill_country_name=&bill_zip=110001&bill_phone=919821125134&payment_mode=&bill_fees=&bussiness_url=&status=2&aurl=&source=&actionajax=ajaxQrCode&mop=QRINTENT&acquirer=83
+
+

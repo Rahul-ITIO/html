@@ -1,0 +1,282 @@
+
+{
+    "amount": "11.11",
+    "cardNo": "4047457514066090",
+    "monthExpiry": "06",
+    "yearExpiry": "2029",
+    "firstName": "DEV",
+    "lastName": "TECH",
+    "email": "devops@itio.in",
+    "phoneNumber": "935555555555",
+    "city": "Singapore",
+    "state": "Singapore",
+    "country": "SG",
+    "postalCode": "110092",
+    "address": "C-31",
+    "cvNumber": "221",
+    "sessionId": null,
+    "cardinalJwt": null,
+    "userInterface": null
+  }
+
+================================
+
+Body:
+{
+    "amount": "11",
+    "cardNo": "4047457514066090",
+    "monthExpiry": "06",
+    "yearExpiry": "2029",
+    "firstName": null,
+    "lastName": null,
+    "email": null,
+    "phoneNumber": null,
+    "city": null,
+    "state": null,
+    "country": null,
+    "postalCode": null,
+    "address": null,
+    "cvNumber": "221",
+    "sessionId": null,
+    "cardinalJwt": null,
+    "userInterface": null
+}
+2024-12-06 17:29:22.591 [http-nio-auto-1-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log (173) - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-06 17:29:22.592 [http-nio-auto-1-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean (532) - Initializing Servlet 'dispatcherServlet'
+2024-12-06 17:29:22.592 [http-nio-auto-1-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean (554) - Completed initialization in 0 ms
+2024-12-06 17:29:22.735 [http-nio-auto-1-exec-1] WARN  c.c.authsdk.core.MerchantConfig.setMerchantDetails (562) - Provided Connection Timeout Value is Incorrect, Defaulting to 0
+2024-12-06 17:29:22.736 [http-nio-auto-1-exec-1] WARN  c.c.authsdk.core.MerchantConfig.setMerchantDetails (567) - Provided Read Timeout Value is Incorrect, Defaulting to 0
+2024-12-06 17:29:22.736 [http-nio-auto-1-exec-1] WARN  c.c.authsdk.core.MerchantConfig.setMerchantDetails (572) - Provided Write Timeout Value is Incorrect, Defaulting to 0
+2024-12-06 17:29:22.736 [http-nio-auto-1-exec-1] WARN  c.c.authsdk.core.MerchantConfig.setMerchantDetails (577) - Provided Keep Alive Duration Value is Incorrect, Defaulting to 0
+Request :{"clientReferenceInformation":{"code":"202412061729-27f7","reconciliationId":null,"pausedRequestId":null,"transactionId":null,"comments":null,"partner":null,"applicationName":null,"applicationVersion":null,"applicationUser":null},"processingInformation":{"actionList":null,"enableEscrowOption":null,"actionTokenTypes":null,"binSource":null,"capture":true,"processorId":null,"businessApplicationId":null,"commerceIndicator":null,"commerceIndicatorLabel":null,"paymentSolution":null,"reconciliationId":null,"linkId":null,"purchaseLevel":null,"transactionTimeout":null,"intentsId":null,"reportGroup":null,"visaCheckoutId":null,"industryDataType":null,"authorizationOptions":null,"captureOptions":null,"recurringOptions":null,"bankTransferOptions":null,"purchaseOptions":null,"electronicBenefitsTransfer":null,"loanOptions":null,"walletType":null,"nationalNetDomesticData":null,"japanPaymentOptions":null,"mobileRemotePaymentType":null,"extendedCreditTotalCount":null,"networkRoutingOrder":null,"payByPointsIndicator":null,"timeout":null,"isReturnAuthRecordEnabled":null,"networkPartnerId":null,"paymentType":null,"enablerId":null,"processingInstruction":null},"issuerInformation":null,"paymentInformation":{"card":{"number":"4047457514066090","expirationMonth":"06","expirationYear":"2029","type":"001","useAs":null,"sourceAccountType":null,"sourceAccountTypeDetails":null,"securityCode":"221","securityCodeIndicator":null,"accountEncoderId":null,"issueNumber":null,"startMonth":null,"startYear":null,"productName":null,"typeSelectionIndicator":null},"tokenizedCard":null,"directDebit":null,"fluidData":null,"customer":null,"paymentInstrument":null,"instrumentIdentifier":null,"shippingAddress":null,"legacyToken":null,"bank":null,"options":null,"paymentType":null,"initiationChannel":null,"sepa":null,"paymentAccountReference":null,"ewallet":null},"orderInformation":{"amountDetails":{"giftWrapAmount":null,"totalAmount":"11","subTotalAmount":null,"currency":"USD","discountAmount":null,"dutyAmount":null,"gratuityAmount":null,"taxAmount":null,"nationalTaxIncluded":null,"taxAppliedAfterDiscount":null,"taxAppliedLevel":null,"taxTypeCode":null,"freightAmount":null,"foreignAmount":null,"foreignCurrency":null,"exchangeRate":null,"exchangeRateTimeStamp":null,"surcharge":null,"settlementAmount":null,"settlementCurrency":null,"amexAdditionalAmounts":null,"taxDetails":null,"serviceFeeAmount":null,"originalAmount":null,"originalCurrency":null,"cashbackAmount":null,"currencyConversion":null,"octSurcharge":null,"order":null,"anticipatedAmount":null},"billTo":{"firstName":"John","lastName":"Doe","middleName":null,"nameSuffix":null,"title":null,"company":null,"address1":"1 Market St","address2":null,"address3":null,"address4":null,"locality":"Mountain View","administrativeArea":"CA","postalCode":"94043","county":null,"country":"US","district":null,"buildingNumber":null,"email":"null@cybersource.com","emailDomain":null,"phoneNumber":null,"phoneType":null,"verificationStatus":null,"alternatePhoneNumber":null,"alternateEmail":null},"shipTo":null,"lineItems":null,"invoiceDetails":null,"shippingDetails":null,"returnsAccepted":null,"isCryptocurrencyPurchase":null,"cutoffDateTime":null,"preOrder":null,"preOrderDate":null,"reordered":null,"totalOffersCount":null},"buyerInformation":null,"senderInformation":null,"recipientInformation":null,"deviceInformation":null,"merchantInformation":null,"aggregatorInformation":null,"consumerAuthenticationInformation":{"cavv":null,"transactionFlowIndicator":null,"cavvAlgorithm":null,"eciRaw":null,"paresStatus":null,"veresEnrolled":null,"xid":null,"ucafCollectionIndicator":null,"ucafAuthenticationData":null,"strongAuthentication":null,"directoryServerTransactionId":null,"paSpecificationVersion":null,"authenticationType":null,"responseAccessToken":null,"acsTransactionId":null,"acsWindowSize":null,"alternateAuthenticationData":null,"alternateAuthenticationDate":null,"alternateAuthenticationMethod":null,"authenticationDate":null,"authenticationTransactionId":null,"challengeCancelCode":null,"challengeCode":null,"challengeStatus":null,"customerCardAlias":null,"decoupledAuthenticationIndicator":null,"decoupledAuthenticationMaxTime":null,"defaultCard":null,"deviceChannel":null,"installmentTotalCount":null,"merchantFraudRate":null,"marketingOptIn":null,"marketingSource":null,"mcc":null,"merchantScore":null,"messageCategory":null,"networkScore":null,"npaCode":null,"overridePaymentMethod":null,"overrideCountryCode":null,"priorAuthenticationData":null,"priorAuthenticationMethod":null,"priorAuthenticationReferenceId":null,"priorAuthenticationTime":null,"productCode":null,"returnUrl":null,"requestorId":null,"requestorInitiatedAuthenticationIndicator":null,"requestorName":null,"referenceId":null,"sdkMaxTimeout":null,"secureCorporatePaymentIndicator":null,"transactionMode":null,"whiteListStatus":null,"effectiveAuthenticationType":null,"signedParesStatusReason":null,"signedPares":null},"pointOfSaleInformation":null,"merchantDefinedInformation":null,"merchantDefinedSecureInformation":null,"installmentInformation":null,"travelInformation":null,"healthCareInformation":null,"promotionInformation":null,"tokenInformation":null,"invoiceDetails":null,"processorInformation":null,"agreementInformation":null,"riskInformation":null,"acquirerInformation":null,"recurringPaymentInformation":null,"hostedPaymentInformation":null,"watchlistScreeningInformation":null}
+2024-12-06 17:29:22.769 [http-nio-auto-1-exec-1] INFO  Api.PaymentsApi.createPayment (295) - CALL TO METHOD 'createPayment' STARTED
+2024-12-06 17:29:22.792 [http-nio-auto-1-exec-1] INFO  c.c.authsdk.core.MerchantConfig.validateMerchantDetails (317) - Configuration :
+RunEnvironment: apitest.cybersource.com
+AuthenticationType: http_signature
+2024-12-06 17:29:22.794 [http-nio-auto-1-exec-1] INFO  Invokers.ApiClient.buildCall (1345) - Request Header Parameters:
+v-c-merchant-id: dev_tech_visa_it
+Accept: application/hal+json;charset=utf-8
+Digest: SHA-256=7kdo5pf4jXsCEgeb6XaMkDqYGOSLBheXetwiYN8JT3M=
+v-c-client-id: cybs-rest-sdk-java-0.0.71
+Signature: keyid="4a18c8d7-af18-4d79-94a8-8864b131f8ff", algorithm="HmacSHA256", headers="host date request-target digest v-c-merchant-id", signature="xs/1oZIlhkWjH6JnwYbtIJm5l/fHWEHaWPH+SqfjF9A="
+User-Agent: Mozilla/5.0
+Host: apitest.cybersource.com
+Date: Fri, 6 Dec 2024 11:59:22 GMT
+Content-Type: application/json;charset=utf-8
+2024-12-06 17:29:24.823 [http-nio-auto-1-exec-1] INFO  Invokers.ApiClient.execute (1209) - HTTP Response Body :
+class PtsV2PaymentsPost201Response {
+    links: class PtsV2PaymentsPost201ResponseLinks {
+        self: class PtsV2PaymentsPost201ResponseLinksSelf {
+            href: /pts/v2/payments/7334863645196746904951
+            method: GET
+        }
+        reversal: null
+        capture: null
+        customer: null
+        paymentInstrument: null
+        shippingAddress: null
+        instrumentIdentifier: null
+    }
+    id: 7334863645196746904951
+    message: null
+    submitTimeUtc: 2024-12-06T11:59:24Z
+    status: AUTHORIZED
+    reconciliationId: 77283950I3O1RJ47
+    errorInformation: null
+    clientReferenceInformation: class PtsV2PaymentsPost201ResponseClientReferenceInformation {
+        code: 202412061729-27f7
+        submitLocalDateTime: null
+        ownerMerchantId: null
+    }
+    processingInformation: null
+    processorInformation: class PtsV2PaymentsPost201ResponseProcessorInformation {
+        authIndicator: null
+        approvalCode: 888888
+        cardReferenceData: null
+        transactionId: 123456789619999
+        networkTransactionId: 123456789619999
+        responseCode: 100
+        responseCodeSource: null
+        responseDetails: null
+        responseCategoryCode: null
+        forwardedAcquirerCode: null
+        settlementDate: null
+        sequenceNumber: null
+        avs: class PtsV2PaymentsPost201ResponseProcessorInformationAvs {
+            code: X
+            codeRaw: I1
+        }
+        cardVerification: null
+        merchantAdvice: null
+        electronicVerificationResults: null
+        achVerification: null
+        customer: null
+        consumerAuthenticationResponse: null
+        systemTraceAuditNumber: null
+        paymentAccountReferenceNumber: null
+        transactionIntegrityCode: null
+        amexVerbalAuthReferenceNumber: null
+        masterCardServiceCode: null
+        masterCardServiceReplyCode: null
+        masterCardAuthenticationType: null
+        name: null
+        routing: null
+        merchantNumber: null
+        retrievalReferenceNumber: null
+        paymentUrl: null
+        completeUrl: null
+        signature: null
+        publicKey: null
+        sellerProtection: null
+        transactionExpiryDate: null
+        customUrl: null
+        schemeAssignedId: null
+        deviceUrl: null
+        disbursementMode: null
+        updateTimeUtc: null
+        expirationTimeUtc: null
+        orderId: null
+        orderStatus: null
+    }
+    issuerInformation: null
+    paymentAccountInformation: class PtsV2PaymentsPost201ResponsePaymentAccountInformation {
+        card: class PtsV2PaymentsPost201ResponsePaymentAccountInformationCard {
+            suffix: null
+            expirationMonth: null
+            expirationYear: null
+            type: 001
+            prefix: null
+            hashedNumber: null
+        }
+    }
+    paymentInformation: class PtsV2PaymentsPost201ResponsePaymentInformation {
+        card: class PtsV2PaymentsPost201ResponsePaymentAccountInformationCard {
+            suffix: null
+            expirationMonth: null
+            expirationYear: null
+            type: 001
+            prefix: null
+            hashedNumber: null
+        }
+        tokenizedCard: class PtsV2PaymentsPost201ResponsePaymentInformationTokenizedCard {
+            prefix: null
+            suffix: null
+            type: 001
+            assuranceLevel: null
+            expirationMonth: null
+            expirationYear: null
+            requestorId: null
+            assuranceMethod: null
+        }
+        accountFeatures: null
+        bank: null
+        customer: null
+        paymentInstrument: null
+        instrumentIdentifier: null
+        shippingAddress: null
+        scheme: null
+        bin: null
+        accountType: null
+        issuer: null
+        binCountry: null
+        eWallet: null
+    }
+    paymentInsightsInformation: null
+    orderInformation: class PtsV2PaymentsPost201ResponseOrderInformation {
+        amountDetails: class PtsV2PaymentsPost201ResponseOrderInformationAmountDetails {
+            totalAmount: 11.00
+            authorizedAmount: 11.00
+            currency: USD
+            settlementAmount: null
+            settlementCurrency: null
+            originalAmount: null
+            originalCurrency: null
+            processorTransactionFee: null
+            exchangeRate: null
+            foreignCurrency: null
+            foreignAmount: null
+            discountAmount: null
+        }
+        invoiceDetails: null
+        rewardPointsDetails: null
+        billTo: null
+        shipTo: null
+    }
+    pointOfSaleInformation: class PtsV2PaymentsPost201ResponsePointOfSaleInformation {
+        emv: null
+        amexCapnData: null
+        terminalId: 111111
+    }
+    installmentInformation: null
+    tokenInformation: null
+    buyerInformation: null
+    riskInformation: null
+    consumerAuthenticationInformation: null
+    merchantInformation: null
+    embeddedActions: null
+    watchlistScreeningInformation: null
+}
+2024-12-06 17:29:24.823 [http-nio-auto-1-exec-1] INFO  Api.PaymentsApi.createPayment (298) - CALL TO METHOD 'createPayment' ENDED
+ResponseCode :201
+ResponseStatus :Created
+ResponseMessage :{"_links":{"void":{"method":"POST","href":"/pts/v2/payments/7334863645196746904951/voids"},"self":{"method":"GET","href":"/pts/v2/payments/7334863645196746904951"}},"clientReferenceInformation":{"code":"202412061729-27f7","partner":{"developerId":"GJ5IEJBY"}},"id":"7334863645196746904951","orderInformation":{"amountDetails":{"totalAmount":"11.00","authorizedAmount":"11.00","currency":"USD"}},"paymentAccountInformation":{"card":{"type":"001"}},"paymentInformation":{"tokenizedCard":{"type":"001"},"card":{"type":"001"}},"pointOfSaleInformation":{"terminalId":"111111"},"processorInformation":{"approvalCode":"888888","networkTransactionId":"123456789619999","transactionId":"123456789619999","responseCode":"100","avs":{"code":"X","codeRaw":"I1"}},"reconciliationId":"77283950I3O1RJ47","status":"AUTHORIZED","submitTimeUtc":"2024-12-06T11:59:24Z"}
+2024-12-06 17:29:24.824 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (143) - ==========================================================================================
+2024-12-06 17:29:24.824 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (144) - MerchantReferenceCode                 202412061729-27f7
+2024-12-06 17:29:24.824 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (145) - RequestID                             7334863645196746904951
+2024-12-06 17:29:24.824 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (146) - Status (Old Decision)                 AUTHORIZED
+2024-12-06 17:29:24.824 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (147) - ResponseCode (Old ReasonCode)         100
+2024-12-06 17:29:24.824 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (148) - AuthIndicator                         null
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (149) - SystemTraceAuditNumber (Old Receipt)  null
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (150) - PaymentAccountReference               null
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (213) - ReasonCode                                                       not available
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (214) - AuthorizedAmount (Old Amount)                                    11.00
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (215) - TotalAmount                                                      11.00
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (216) - ApprovalCode (Old AuthorizationCode)                             888888
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (217) - AvsCode                                                          X
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (218) - AvsCodeRaw                                                       I1
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (219) - SubmitTimeUtc (Old AuthorizedDateTime)                           2024-12-06T11:59:24Z
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (220) - responseCategoryCode (Old ProcessorResponse)                     null
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (221) - ReconciliationID                                                 77283950I3O1RJ47
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (222) - MerchantAdviceCode                                               null value
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (223) - MerchantAdviceCodeRaw                                            null value
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (224) - ConsumerAuthenticationResponseCode (Old CavvResponseCode)        null value
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (225) - ConsumerAuthenticationResponseCodeRaw (Old CavvResponseCodeRaw)  null value
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (226) - TransactionId (Old PaymentNetworkTransactionID)                  123456789619999
+2024-12-06 17:29:24.825 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (227) - ReconciliationReferenceNumber                                    not available
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (241) - CardBin                        null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (242) - BinCountry                     null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (243) - CardAccountType                null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (244) - CardScheme                     null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (245) - CardIssuer                     null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (286) - ====================PayerAuthEnrollReply==================================
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (287) - AuthenticationTransactionID    null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (288) - Xid                            null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (289) - VeresEnrolled                  null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (291) - PaReq                          null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (292) - AcsURL                         null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (293) - ProofXml                       null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (294) - SpecificationVersion           null
+2024-12-06 17:29:24.826 [http-nio-auto-1-exec-1] DEBUG o.source.service.UtilityServiceImpl.processAuthorizationRequest (300) - ==========================================================================================
+HTTP/1.1 200 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Fri, 06 Dec 2024 11:59:24 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+
+{
+    "merchantReferenceCode": "202412061729-27f7",
+    "decision": "AUTHORIZED",
+    "reasonCode": "888888",
+    "authRequired": "FALSE",
+    "transactionId": "123456789619999",
+    "transactionStatus": "SUCCESS",
+    "technicalMessage": "The card does not require Authentication, hence success",
+    "requestId": "7334863645196746904951",
+    "reconciliationReferenceNumber": "",
+    "paymentNetworkTransactionId": "123456789619999",
+    "reconciliationId": "77283950I3O1RJ47",
+    "currency": "USD"
+}
+
+Process finished with exit code 0

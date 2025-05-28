@@ -1,0 +1,9 @@
+webhook
+https://pay.letspe.com/payin/pay64/status_64?action=webhook
+https://webhook.site/e08f2959-3357-452f-920a-f9e89140dc9c
+\
+
+Login URl: https://www.payubiz.in/
+username: SUPER
+alias: LBmorj
+Pass: Payu@1234

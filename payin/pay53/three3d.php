@@ -1,0 +1,4 @@
+<?
+// http://localhost:8080/gw/payin/pay53/three3d.php
+?>
+<?="<div id=\"threedsChallengeRedirect\" xmlns=\"http://www.w3.org/1999/html\" style=\" height: 100vh\"> <form id =\"threedsChallengeRedirectForm\" method=\"POST\" action=\"https://acs.fssnet.co.in/acsauthserveremv/IDFCCREDIT/V/creqBRW.htm\" target=\"challengeFrame\"> <input type=\"hidden\" name=\"creq\" value=\"eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6IjE0NjEzZmQwLTE3NjgtNDg0MC1iMTQ0LWYzNjYxMDkzYzMwYiIsImFjc1RyYW5zSUQiOiJhYTgzNGFjMS0wZTFkLTRmMDYtYTgyMS1jMTRiMWQzMTdhMGIiLCJjaGFsbGVuZ2VXaW5kb3dTaXplIjoiMDUiLCJtZXNzYWdlVHlwZSI6IkNSZXEiLCJtZXNzYWdlVmVyc2lvbiI6IjIuMi4wIn0\" /> </form> <iframe id=\"challengeFrame\" name=\"challengeFrame\" width=\"100%\" height=\"100%\" ></iframe> <script id=\"authenticate-payer-script\"> var e=document.getElementById(\"threedsChallengeRedirectForm\"); if (e) { e.submit(); if (e.parentNode !== null) { e.parentNode.removeChild(e); } } </script> </div>"?>

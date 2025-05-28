@@ -1,0 +1,5 @@
+<?
+
+$data['SEND_EMAIL_ARR']=['transID','merID','trans_status','mop','trans_response','bill_amt_currency','username','username_rec','password','fullname','buyer','buyer_rec','product','ccode','confcode','chash','confhash','comments','uid','amount_currency','customer_name','customer_email','customer_phone','transaction_id','disputed_reason','enc_mail','dba','bussiness_url','business_url','descriptor','descriptor2','descriptor3','descriptor4','currency_total_amount','currency_amount','cardtype','card_no','ccno_last4','tdate','current_date','customer_service_no','merchant_service_no','customer_service_email','customer_emailadr_and_service_no','merchant_name','status','site_title','bank_name','contact_us_url','merchant_term_condition_url','source_url','attempts','info_status','scrubbedmsg','bussiness_url_descriptor','credit_card_txt','card_no2','descriptor5','text5','text6','merchant_service_no_text','ctable1','ctable2','ctable3','ctable4','ctable5','card_img','descriptor_text','product_name','email','payUrl','dmn','emailadr','create_number','company_name','registered_address','background_gd4','root_text_color'];
+
+?>

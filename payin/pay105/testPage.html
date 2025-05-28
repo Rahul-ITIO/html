@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--    <script src="https://songbirdstag.cardinalcommerce.com/cardinalcruise/v1/songbird.js"></script>-->
+    <script src="https://songbird.cardinalcommerce.com/edge/v1/songbird.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #4caf50;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+    <script>
+
+        var baseUrl='http://13.214.193.127:8080';
+
+        // Function to execute on page load
+        function onLoadFunction() {
+            console.log("Page has fully loaded");
+            // You can add more functionality here, like initializing libraries, etc.
+            Cardinal.configure({
+                logging: {
+                    level: "on"
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", onLoadFunction);
+
+        Cardinal.on('payments.setupComplete', function (setupCompleteData) {
+            // Do something
+            console.log("cardinal setupComplete " + setupCompleteData.sessionId)
+            const requestData = {
+                name: document.getElementById('name').value,
+                cardNo: document.getElementById('cardNumber').value,
+                cvNumber: document.getElementById('cvv').value,
+                expiryDate: document.getElementById('expiryDate').value,
+                amount: document.getElementById('amount').value,
+                sessionId: setupCompleteData.sessionId,
+                browserScreenWidth: window.innerWidth,
+                browserScreenHeight: window.innerHeight,
+                browserLanguage: window.navigator.language,
+                browserUserAgent: window.navigator.userAgent,
+                browserColorDepth: window.screen.colorDepth,
+                browserTZ: new Date().getTimezoneOffset()
+            };
+
+            axios.post(baseUrl+'/requests/payerEnrollment', requestData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    const authRequired = response.data.authRequired;
+
+                    if (authRequired === 'TRUE') {
+                        Cardinal.continue(
+                            'cca',
+                            {
+                                AcsUrl: response.data && response.data.acsUrl,
+                                Payload: response.data && response.data.pareq,
+                            },
+                            {
+                                OrderDetails: {
+                                    TransactionId:
+                                        response.data &&
+                                        response.data.authTransactionId,
+                                    // Add the rest of the Order object
+                                },
+                            },
+                        )
+                    } else if (authRequired === 'FALSE') {
+                        console.log("continuing " + setupCompleteData.sessionId)
+                        const requestData = {
+                            name: document.getElementById('name').value,
+                            cardNo: document.getElementById('cardNumber').value,
+                            cvNumber: document.getElementById('cvv').value,
+                            expiryDate: document.getElementById('expiryDate').value,
+                            amount: document.getElementById('amount').value,
+                            sessionId: setupCompleteData.sessionId,
+                            browserScreenWidth: window.innerWidth,
+                            browserScreenHeight: window.innerHeight,
+                            browserLanguage: window.navigator.language,
+                            browserUserAgent: window.navigator.userAgent,
+                            browserColorDepth: window.screen.colorDepth,
+                            browserTZ: new Date().getTimezoneOffset()
+                        };
+
+                        axios.post(baseUrl+'/requests/capture', requestData, {
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        })
+                            .then(response => {
+                                const decision = response.data.decision;
+                                alert('Payment submitted decision '+decision);
+
+                            })
+                            .catch(error => {
+                                console.error('There was an error submitting the payment!', error);
+                            });
+                    }
+                })
+                .catch(error => {
+                    console.error('There was an error submitting the payment!', error);
+                });
+        });
+
+        Cardinal.on("payments.validated", function (data, jwt) {
+            console.log("cardinal payment validated " + data.ActionCode)
+            console.log(data)
+            switch (data.ActionCode) {
+                case "SUCCESS":
+                    // Handle successful transaction, send JWT to backend to verify
+                    const requestData = {
+                        name: document.getElementById('name').value,
+                        cardNo: document.getElementById('cardNumber').value,
+                        cvNumber: document.getElementById('cvv').value,
+                        expiryDate: document.getElementById('expiryDate').value,
+                        amount: document.getElementById('amount').value,
+                        cardinalJwt: jwt
+                    };
+
+                    // Send the form data using Axios
+                    axios.post(baseUrl+'/requests/capture', requestData, {
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                        .then(response => {
+                            alert('Payment submitted successfully!');
+                        })
+                        .catch(error => {
+                            console.error('There was an error submitting the payment!', error);
+                        });
+                    break;
+
+                case "NOACTION":
+                    // Handle no actionable outcome
+                    alert('Cardinal Outcome NOACTION');
+                    break;
+
+                case "FAILURE":
+                    // Handle failed transaction attempt
+                    alert('Cardinal Outcome FAILURE');
+                    break;
+
+                case "ERROR":
+                    // Handle service level error
+                    alert('Cardinal Outcome Error');
+                    break;
+            }
+        });
+
+        // Function to check if a value exists in local storage and return a boolean
+        function isValueInLocalStorage(key) {
+            const value = localStorage.getItem(key);
+            if (value !== null) {
+                console.log(`Value for key "${key}" exists.`);
+                return true;
+            } else {
+                console.log(`No value found for key "${key}".`);
+                return false;
+            }
+        }
+        
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            let sessionIdPresent = isValueInLocalStorage("sessionId");
+
+            if (sessionIdPresent === false) {
+                payerAuthenticationInit();
+            } else {//skip payer authentication
+                const requestData = {
+                    name: document.getElementById('name').value,
+                    cardNo: document.getElementById('cardNumber').value,
+                    cvNumber: document.getElementById('cvv').value,
+                    expiryDate: document.getElementById('expiryDate').value,
+                    amount: document.getElementById('amount').value
+                };
+
+                // Send the form data using Axios
+                axios.post(baseUrl+'/requests/capture', requestData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then(response => {
+                        const decision = response.data.decision;
+                        alert('Payment submitted decision '+decision);
+                    })
+                    .catch(error => {
+                        console.error('There was an error submitting the payment!', error);
+                    });
+            }
+        }
+
+
+        function payerAuthenticationInit() {
+            console.log('Payer Authentication Init =======================');
+            const requestData = {
+                amount: document.getElementById('amount').value
+            };
+
+            axios.post(baseUrl+'/requests/payerAuthInit', requestData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    const initJwt = response.data.jwt;
+
+                    Cardinal.setup("init", {
+                        jwt: initJwt
+                    });
+                })
+                .catch(error => {
+                    console.error('There was an error submitting the payment!', error);
+                });
+        }
+
+    </script>
+</head>
+<body>
+<h1>Payment Information</h1>
+<form onsubmit="submitForm(event)">
+    <div>
+        <label for="name">Name on Card:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+        <label for="cardNumber">Card Number:</label>
+        <input type="text" id="cardNumber" name="cardNumber" pattern="\d{16}" required>
+    </div>
+    <div>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" pattern="\d{3}" required>
+    </div>
+    <div>
+        <label for="expiryDate">Expiry Date:</label>
+        <input type="month" id="expiryDate" name="expiryDate" required>
+    </div>
+    <div>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" min="0" step="0.01" required>
+    </div>
+    <button type="submit">Submit Payment</button>
+</form>
+</body>
+</html>

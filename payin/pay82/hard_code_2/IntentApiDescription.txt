@@ -1,0 +1,57 @@
+1.I created new vpa for intent Api
+This is the payload
+$VapRequest='{
+    "clientTxnId": "132072023112165",
+    "serviceId": "9001",
+    "mobilenumber": "918788693162",
+    "vpasubstring": "arun",
+    "firstname": "arun",
+    "lastname": "UPITest",
+    "accountnumber": "6411978921",
+    "ifsc": "KKBK0000638",
+    "accounttype": "SAVINGS",
+    "mcccode": "7407",
+    "franchisename": "TV Showroom - Kharghar",
+    "brandname": "FINO UPI",
+    "Settlement_Account": "232132322424212",
+    "Settlement_IFSC": "FINO0011112",
+    "Bank_Name": "Fino payments Bank",
+    "Bene_Name": "Rahul Shetty",
+    "MDR_Per": "1",
+    "Minimum_Charge": "0.01",
+    "MDR_Type": "P"
+}
+2. after creation vpa i executed request for intent
+This is the payload
+$IntentRequest='{
+    "clientTxnId": "8267897854347",
+    "serviceId": "9075",
+    "mobilenumber": "918303344556",
+    "txnAmount": "2",
+    "txnNote": "FINOIntent",
+    "payeeVPA": "sky.arun@fin",
+    "txnReference": "REF20240528058987",
+    "ExpiryTime": "25"
+}';
+
+3.After initiate intent i check status
+this is payload
+$intentStatus ='{
+"clientTxnId": "8267897854347",
+"serviceId": "9071",
+"mobileno": "918303344556",
+"referenceid": "REF20240528058987"
+}';
+
+Note:
+
+Process will be same will encrypt header with header key and request will encrypt with request encryption key
+
+I uploaded three file for intent
+finobankHeader.php=>in This file header request encyption
+finobankRequest.php=>payload request encryption
+intentStatus.php=>status request encyption
+
+
+
+

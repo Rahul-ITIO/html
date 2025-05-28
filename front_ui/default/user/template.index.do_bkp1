@@ -1,0 +1,253 @@
+<?php if(isset($data['ScriptLoaded'])){ ?>
+<script>
+$(document).ready(function(){
+    $(".document_type").change(function(){
+        document_typef(this,$(this).val());
+    });
+});
+</script>
+
+<style>
+.dashboard-container {
+    background: #f8f9fa;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.metric-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.metric-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.metric-label {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.chart-container {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.date-filter {
+    background: white;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.highcharts-title {
+    font-weight: 600 !important;
+    color: #2c3e50 !important;
+}
+</style>
+
+<div class="dashboard-container">
+    <div class="row">
+        <!-- Metrics Row -->
+        <div class="col-12 col-sm-6 col-xl-2">
+            <div class="metric-card" onClick="ajaxf1(...)">
+                <div class="metric-icon bg-primary">
+                    <i class="<?=$data['fwicon']['transaction'];?>"></i>
+                </div>
+                <div class="metric-value" id="noOfTransaction_3"><?=@$total_transactions_d;?></div>
+                <div class="metric-label">Transactions</div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-2">
+            <div class="metric-card" onClick="ajaxf1(...)">
+                <div class="metric-icon bg-success">
+                    <i class="<?=$data['fwicon']['amount'];?>"></i>
+                </div>
+                <div class="metric-value" id="trans_amt_3"><?=@$post['transactionAmt'];?></div>
+                <div class="metric-label">Transaction Amount</div>
+            </div>
+        </div>
+
+        <? if(isset($post['settlement_optimizer'])&&trim($post['settlement_optimizer'])&&$post['settlement_optimizer']=='manually'){ ?>
+        <div class="col-12 col-sm-6 col-xl-2">
+            <div class="metric-card" onClick="ajaxf1(...)">
+                <div class="metric-icon bg-warning">
+                    <i class="<?=$data['fwicon']['settlement'];?>"></i>
+                </div>
+                <div class="metric-value" id="settlements_amt_3"><?=@$post['settlementsAmt'];?></div>
+                <div class="metric-label">Settlements</div>
+            </div>
+        </div>
+        <? } ?>
+
+        <div class="col-12 col-sm-6 col-xl-2">
+            <div class="metric-card" onClick="ajaxf1(...)">
+                <div class="metric-icon bg-danger">
+                    <i class="<?=$data['fwicon']['refund'];?>"></i>
+                </div>
+                <div class="metric-value" id="refund_amt_3"><?=str_replace_minus(@$post['refundAmt']);?></div>
+                <div class="metric-label">Refund</div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-2">
+            <div class="metric-card" onClick="ajaxf1(...)">
+                <div class="metric-icon bg-info">
+                    <i class="<?=$data['fwicon']['sales-volume'];?>"></i>
+                </div>
+                <div class="metric-value" id="total_current_balance_3">
+                    <?= isset($_SESSION['uid_wv2'.$uid]['summ_total']) ? @$_SESSION['uid_wv2'.$uid]['summ_total'] : '<i class="'.$data['fwicon']['view'].'"></i>' ?>
+                </div>
+                <div class="metric-label">Balance</div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-xl-2">
+            <div class="metric-card">
+                <div class="metric-icon bg-dark">
+                    <i class="<?=$data['fwicon']['deshboard-website'];?>"></i>
+                </div>
+                <div class="dropdown mt-2">
+                    <a class="btn btn-dark btn-sm dropdown-toggle w-100" data-bs-toggle="dropdown">
+                        <?= prntext(substr($post['company_name'] ?? '',0,15)) ?: "Business" ?>
+                    </a>
+                    <div class="dropdown-menu shadow">
+                        <? foreach($post['terminals'] as $value): ?>
+                        <a class="dropdown-item" onclick="ajaxf1(...)">
+                            <i class="<?=$data['fwicon']['hand'];?> me-2"></i>
+                            <?= $value['ter_name'] ?>
+                        </a>
+                        <? endforeach ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters and Stats -->
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <div class="date-filter">
+                <i class="<?=$data['fwicon']['calender'];?> me-2"></i>
+                <input type="text" id="date_1st_range" class="form-control" 
+                       value="<?= isset($_REQUEST['date_1st']) ? date('m/d/Y', strtotime($_REQUEST['date_1st'])) : '' ?> - <?= isset($_REQUEST['date_2nd']) ? date('m/d/Y', strtotime($_REQUEST['date_2nd'])) : '' ?>">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stats-summary">
+                <span class="badge bg-primary me-2">Results: <?= $post['gr2_s']['count_result'] ?></span>
+                <span class="badge bg-success me-2">Total: <?= $default_currency ?> <?= $post['gr2_s']['total_amount'] ?></span>
+                <span class="badge bg-info">Success: <?= $default_currency ?> <?= array_sum($post['gr2_s']['transaction_amount']) ?></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="row mt-4">
+        <div class="col-lg-8">
+            <div class="chart-container">
+                <div id="container"></div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="chart-container">
+                <div id="container_pie"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Original Scripts Preserved -->
+<script type="text/javascript" src="<?=$data['Host']?>/thirdpartyapp/date_range/moment.min.js"></script>
+<script type="text/javascript" src="<?=$data['Host']?>/thirdpartyapp/date_range/daterangepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="<?=$data['Host']?>/thirdpartyapp/date_range/daterangepicker.css" />
+
+<script>
+// Preserved Original Date Range Functionality
+$(function() {
+    var start = moment().subtract(29, 'days');
+    var end = moment();
+    
+    $('#date_1st_range').daterangepicker({
+        startDate: start,
+        endDate: end,
+        ranges: {
+           'Today': [moment(), moment()],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        }
+    }, function(start, end) {
+        window.location.href = "<?=$data['USER_FOLDER']?>/dashboard<?=$data['ex'];?>?gid=range&date_1st="+start.format('YYYY-MM-DD')+"&date_2nd="+end.format('YYYY-MM-DD');
+    });
+});
+
+// Preserved Highcharts Configuration
+Highcharts.chart('container', {
+    chart: { type: 'column' },
+    title: { text: '<?= $activeGraph ?>' },
+    xAxis: { categories: <?= json_encode($post['gr2_s']['date_transaction']) ?> },
+    series: [{
+        name: 'Transactions',
+        data: <?= json_encode(array_map('round', $post['gr2_s']['transaction_amount'])) ?>,
+        color: '#4361ee'
+    }]
+});
+
+Highcharts.chart('container_pie', {
+    chart: { type: 'pie', options3d: { enabled: true, alpha: 45 } },
+    title: { text: 'Transaction By Country' },
+    series: [{
+        name: 'Transactions',
+        data: <?= $getdata ?>,
+        colors: ['#4361ee', '#3f37c9', '#06d6a0', '#ffd166', '#ef476f']
+    }]
+});
+</script>
+
+<?php 
+// Preserved Original PHP Code
+include('../include/country_state'.$data['iex']);
+$result_select = db_rows("...original SQL query...");
+$data['selectdatas'] = $result_select;
+$getdata = "[ ";
+foreach($data['selectdatas'] as $ind=>$value) {
+    $country2 = trim($value['bill_country']);
+    $country3 = get_country_code($country2,3);
+    $ct = trim($value['ct']);
+    $getdata .= "['$country3' , $ct , 10],";
+}
+$getdata = substr($getdata,0,-1)."]";
+?>
+
+<?php } else { ?>
+SECURITY ALERT: Access Denied
+<?php } ?>

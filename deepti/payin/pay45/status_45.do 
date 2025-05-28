@@ -1,0 +1,23 @@
+<?
+$is_curl_on=true;
+
+if(isset($_REQUEST['orderId'])){
+	$_REQUEST['transID']=$_REQUEST['orderId'];
+}
+
+if(!isset($data['STATUS_ROOT'])){
+	include('../../../config_db.do');
+	include($data['Path'].'/payin/status_top'.$data['iex']);
+}
+
+
+echo "<hr/><br/>abcd123";
+echo "<hr/><br/>deepti123";
+
+
+if(!isset($data['STATUS_ROOT'])){
+	include($data['Path'].'/payin/status_bottom'.$data['iex']);
+}
+
+
+?>

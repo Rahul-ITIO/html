@@ -1,0 +1,8 @@
+Status 	
+Merchant Ref 	reference861717
+Gateway Reference 	e3c2794d-8473-474d-a5a5-dfeeb6d74f61
+Transaction ID 	e3c2794d-8473-474d-a5a5-dfeeb6d74f61
+Payment Type 	
+Payment Response 	Payment Timed Out
+Success 	false
+  	make another payment

@@ -1,0 +1,79 @@
+/* 
+ * dragtable
+ *
+ * @Version 2.0.15
+ *
+ * default css
+ *
+ */
+/*##### the dragtable stuff #####*/
+.dragtable-sortable { 
+    list-style-type: none; margin: 0; padding: 0; -moz-user-select: none;
+}
+.dragtable-sortable li {
+    margin: 0; padding: 0; float: left; font-size: 1em; background: white; 
+}
+
+.dragtable-sortable th, .dragtable-sortable td{
+    border-left: 0px;
+}
+
+.dragtable-sortable li:first-child th, .dragtable-sortable li:first-child td {
+    border-left: 1px solid #CCC; 
+}
+
+.ui-sortable-helper {
+    opacity: 0.7;filter: alpha(opacity=70);
+}
+.ui-sortable-placeholder { 
+    -moz-box-shadow: 4px 5px 4px #C6C6C6 inset;
+    -webkit-box-shadow: 4px 5px 4px #C6C6C6 inset;
+    box-shadow: 4px 5px 4px #C6C6C6 inset;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    visibility: visible !important;
+    background: #EFEFEF !important; 
+    visibility: visible !important;
+}
+.ui-sortable-placeholder * { 
+    opacity: 0.0; visibility: hidden; 
+}
+.some-handle1 {
+    background-image:url("handle_col.png");
+    background-repeat:repeat-x;
+    height: 14px;
+    margin: 0 1px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 99;
+    cursor: move;
+    overflow: hidden;
+}
+
+.some-handle {
+     height: 10px;
+    margin: 0 1px;
+    position: absolute;
+    width: 100%;
+    top: -1px;
+    left: -1px;
+    z-index: 99;
+    cursor: move;
+    overflow: hidden;
+
+  background-color: var(--background-1);
+  background-image: radial-gradient(circle, var(--color-1) 20%, transparent 10%), radial-gradient(circle, var(--color-1) 20%, transparent 10%);
+  background-size: 4px 4px;
+  background-position: 0 0, 50px 50px;
+  
+  
+ 
+}
+
+.some-handle:hover {
+  background-color: var(--color-1);
+  background-image: radial-gradient(circle, var(--background-1) 20%, transparent 10%), radial-gradient(circle, var(--background-1) 20%, transparent 10%);
+  background-size: 4px 4px;
+  background-position: 0 0, 50px 50px;
+}

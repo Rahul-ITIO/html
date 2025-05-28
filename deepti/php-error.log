@@ -1,0 +1,5 @@
+[23-Mar-2023 09:22:35 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Connection timed out in /var/www/html/t_i_live_11.php:20
+Stack trace:
+#0 /var/www/html/t_i_live_11.php(20): mysqli_connect()
+#1 {main}
+  thrown in /var/www/html/t_i_live_11.php on line 20

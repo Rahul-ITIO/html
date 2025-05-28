@@ -1,0 +1,114 @@
+//http://localhost:8084/webhook55/pay_load_112_v2?external_reference=unique_reference&origin_channel_code=API&originator_msisdn=254100000000&payer_msisdn=254100000000&payer_email=test@payer.com&payer_name=John%20Doe&client_code=DEMO&service_code=DEMO2&account_number=ACCOUNT234&invoice_number=test&currency_code=KES&country_code=KEN&amount=100&add_transaction_charge=false&transaction_charge=0&payment_method_code=CARD&description=Payment%20by%20254100000000&ip_address=10.10.10.10&name_on_card=John%20Doe&number=4111111111111111&security_code=539&expiry_month=12&expiry_year=2031
+
+
+
+{
+    "external_reference": "unique_reference",
+    "origin_channel_code": "API",
+    "originator_msisdn": "254100000000",
+    "payer_msisdn": "254100000000",
+    "payer_email": "test@payer.com",
+    "payer_name" : "John Doe",
+    "client_code": "DEMO",
+    "service_code": "DEMO2",
+    "account_number": "ACCOUNT234",
+    "invoice_number": "test",
+    "currency_code": "KES",
+    "country_code": "KEN",
+    "amount": 100,
+    "add_transaction_charge": false,
+    "transaction_charge": 0,
+    "payment_method_code": "CARD",
+    "extra_data": {},
+    "description": "Payment by 254100000000",
+    "notify_client": 1,
+    "notify_originator": 1,
+    "device": 
+    {
+        "ip_address": "10.10.10.10",
+        "browser": "Mozilla",
+        "browserDetails": 
+        {
+            "javaEnabled": true,
+            "jsEnabled": true,
+            "language": "fr",
+            "colorDepth": 24,
+            "screenHeight": 1440,
+            "screenWidth": 2560,
+            "timezone": 3
+        }
+    },
+    "card": 
+    {
+        "name_on_card": "John Doe",
+        "number": "4111111111111111",
+        "security_code": "539",
+        "expiry": {
+            "month": "12",
+            "year":"2031"
+        }
+    }
+}
+
++ "\"amount\":" + Integer.parseInt(request.getParameter("amount")) + ","
+
+String payload = "{"
+		        + "\"external_reference\":\"" + request.getParameter("external_reference") + "\","
+		        + "\"origin_channel_code\":\"API\","
+		        + "\"originator_msisdn\":\"" + request.getParameter("originator_msisdn") + "\","
+		        + "\"payer_msisdn\":\"" + request.getParameter("payer_msisdn") + "\","
+		        + "\"payer_email\":\"" + request.getParameter("payer_email") + "\","
+		        + "\"payer_name\":\"" + request.getParameter("payer_name") + "\","
+		        + "\"client_code\":\"" + request.getParameter("client_code") + "\","
+		        + "\"service_code\":\"" + request.getParameter("service_code") + "\","
+		        + "\"account_number\":\"" + request.getParameter("account_number") + "\","
+		        + "\"invoice_number\":\"" + request.getParameter("invoice_number") + "\","
+		        + "\"currency_code\":\"" + request.getParameter("currency_code") + "\","
+		        + "\"country_code\":\"" + request.getParameter("country_code") + "\","
+		        + "\"amount\":" + Integer.parseInt(request.getParameter("amount")) + ","
+		        + "\"add_transaction_charge\":false,"
+		        + "\"transaction_charge\":0,"
+		        + "\"payment_method_code\":\"CARD\","
+		        + "\"extra_data\":{},"
+		        + "\"description\":\"Payment by " + request.getParameter("payer_msisdn") + "\","
+		        + "\"notify_client\":1,"
+		        + "\"notify_originator\":1,"
+		        + "\"device\":{"
+		        + "   \"ip_address\":\"" + request.getParameter("ip_address") + "\","
+		        + "   \"browser\":\"" + request.getParameter("browser") + "\","
+		        + "   \"browserDetails\":{"
+		        + "       \"javaEnabled\":true,"
+		        + "       \"jsEnabled\":true,"
+		        + "       \"language\":\"fr\","
+		        + "       \"colorDepth\":24,"
+		        + "       \"screenHeight\":1440,"
+		        + "       \"screenWidth\":2560,"
+		        + "       \"timezone\":3"
+		        + "   }"
+		        + "},"
+		        + "\"card\":{"
+		        + "   \"name_on_card\":\"" + request.getParameter("name_on_card") + "\","
+		        + "   \"number\":\"" + request.getParameter("number") + "\","
+		        + "   \"security_code\":\"" + request.getParameter("security_code") + "\","
+		        + "   \"expiry\":{"
+		        + "       \"month\":\"" + request.getParameter("expiry_month") + "\","
+		        + "       \"year\":\"" + request.getParameter("expiry_year") + "\""
+		        + "   }"
+		        + "}"
+		        + "}";
+
+
+
+
+
+{
+    "status_code": 176,
+    "status_description": "Request to charge customer was successfully placed.",
+    "total_amount": 10.5,
+    "service_amount": 10.5,
+    "transaction_charge": 0,
+    "charge_request_id": "22401",
+    "external_reference": "1121106195036",
+    "auth_available": true,
+    "auth_url": "https://pay.cross-switch-pay.com/pwthree/launch?payload=%7B%22timestamp%22%3A1736941364%2C%22merchantAccount%22%3A%22SMARTHOST%22%2C%22mode%22%3A%22PROXY%22%2C%22poId%22%3A29072718%2C%22chargeId%22%3A%225e2e40b1e1f1418f867618e93feec98f%22%2C%22customerLocale%22%3A%22en_US%22%7D&signature=53a0a4cb8c7e8c0eb677700def543abe25a37e6339e5ad7895babc5b671da4a9&redirect_url=https://webhook.site/db79c979-7e3f-49be-8c62-85a25bb5ba5f"
+}

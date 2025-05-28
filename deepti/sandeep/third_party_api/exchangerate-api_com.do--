@@ -1,0 +1,152 @@
+<?
+function currencyConverter($from_Currency='USD',$to_Currency='CAD',$amount=1,$getway=false,$results=false) {
+	//paid api
+	// Login Url: https://app.exchangerate-api.com/sign-in
+	// Login Email : accounts@bigit.io
+	
+	global $data;$qprint=0; $dbf=1;
+	
+	
+	try {
+	
+		if(isset($_GET['f'])&&$_GET['f']=='c'){
+			$qprint=1;
+		}
+	
+	
+		$result=array();
+		$from_Currency = urlencode($from_Currency);
+		$to_Currency = urlencode($to_Currency);
+		
+		$result['from_Currency']=$from_Currency;
+		$result['to_Currency']=$to_Currency;
+		$result['amount']=$amount;
+		$result['digit_after_dot']="4";
+		
+		
+		//select db -------------------------------------------- 
+		if($dbf){
+
+			$exchange_rate_select_db=db_rows(
+				"SELECT * FROM `{$data['DbPrefix']}currency_exchange_table`".
+				" WHERE ( `currency_from`='{$from_Currency}' OR `currency_from`='{$to_Currency}' ) ORDER BY `id` DESC LIMIT 1 ",$qprint
+			);
+			$exchange_rate_size=sizeof($exchange_rate_select_db);
+			$exchange_rate_select=$exchange_rate_select_db[0];
+			
+			$current_date_2h=date('YmdHis', strtotime("-2 hours"));
+			$db_timestamp=date('YmdHis', strtotime($exchange_rate_select['timestamp']));
+
+			$response_json=$exchange_rate_select['currency_josn'];
+
+			
+			if($qprint){
+				
+				echo "<br/>$exchange_rate_size=>".$exchange_rate_size; 
+				
+				echo "<br/>db_timestamp=>".(int)$db_timestamp; 
+				echo "<br/>current_date_2h=>".(int)$current_date_2h;
+				
+				echo "<br/><br/>commentTime=>".date('d-m-Y H:i:s', $exchange_rate_select['comments']);
+				echo "<br/>db_timestamp=>".date('d-m-Y H:i:s', strtotime($db_timestamp));
+
+				echo "<br/><br/>(current_date) - 2=> ".date('d-m-Y H:i:s A', strtotime($current_date_2h));
+				echo "<br/>(current_date) + 0=>".date('d-m-Y H:i:s A');
+				
+				$time1 = new DateTime($db_timestamp);
+				//$time2 = new DateTime($current_date_2h);
+				$time2 = new DateTime(date('Y-m-d H:i:s'));
+				$timediff = $time1->diff($time2);
+				echo "<br/><br/>diff (db_timestamp - current_date)=>".$timediff->format('%y year %m month %d days %h hour %i minute %s second')."<br/>";
+			}
+				
+			//update db -------------------------------------------- 
+			if(($db_timestamp<$current_date_2h)||($exchange_rate_size==0)){
+				$response_api_get=file_get_contents('https://v6.exchangerate-api.com/v6/b5aa60779b04ba9d2075573a/latest/'.$from_Currency);
+				$response_json=$response_api_get;
+				if(false !== $response_api_get){
+					
+					$response_api_object = json_decode($response_api_get,true);
+					
+					if('success' === $response_api_object['result']) {
+						
+						$timestamp=date('Y-m-d H:i:s');
+						db_query(
+							"INSERT INTO `{$data['DbPrefix']}currency_exchange_table`(".
+							"`currency_from`,`timestamp`,`currency_josn`,`comments`".
+							")VALUES(".
+							"'{$response_api_object['base_code']}','{$timestamp}','{$response_api_get}','{$response_api_object['time_next_update_unix']}'".
+							")",$qprint
+						);
+					}
+				} 
+			}
+			
+		} //--------------------------------------
+		else{
+
+			$response_json = file_get_contents('https://v6.exchangerate-api.com/v6/b5aa60779b04ba9d2075573a/latest/'.$from_Currency);
+		}
+		
+		
+		// currency calculation ----------------------------
+		if(false !== $response_json) {
+			if($qprint){ echo '<br/><br/>'.$response_json .'<br/><br/>'; }
+			$response_object = json_decode($response_json,true);
+			if($qprint){  echo '<br/><br/>response_object=>';print_r($response_object); }
+			 if(isset($response_object['conversion_rates'][$to_Currency]) && 'success' === $response_object['result']) {
+				
+				$rates=$response_object['conversion_rates'][$to_Currency];
+				if($qprint){ echo '<br/><br/>rates_get=>'.$rates .''; }
+				if(($dbf)&&$to_Currency==$response_object['base_code']){
+					$rates=(1/(double)$response_object['conversion_rates'][$from_Currency]);
+					if($qprint){ echo "<br/>rates {$to_Currency}=>".$rates .'<br/><br/>'; }
+				}
+				
+				$per_rates=number_format((double)(1 * $rates), $result['digit_after_dot'], '.', '');
+				
+				$result['rates_accurate']="1 ".$result['from_Currency']." to ".($per_rates). " ".$to_Currency;
+				
+				$result['per_rates']=$per_rates;
+				
+				
+				$currency = ($amount * $rates); 
+				
+				$result['converted_amount_accurate']=$currency;
+				
+			}
+		}
+		
+		
+		if($getway){
+			$currency_g=(($currency*2.676)/100); // 2.676%
+			$currency_f=($currency + $currency_g); // +2.676%
+			$result['cal_rate']="+2.676%";
+		}else{
+			$currency_35=(($currency*1.553)/100); // 3.553%
+			$currency_f=($currency - $currency_35); // -3.553%
+			$result['cal_rate']="-1.553%";
+		}
+		
+		$currency_f=number_format((double)$currency_f, '2', '.', '');
+		
+		$per_rates_cal=($currency_f/$amount);
+		$result['per_rates_cal']=number_format((double)$per_rates_cal, $result['digit_after_dot'], '.', '');
+		
+		$result['rates']="1 ".$result['from_Currency']." to ".($result['per_rates_cal']). " ".$to_Currency;
+
+		$result['converted_amount']=$currency_f;
+		
+		if($results){
+			return $result;
+		}else{
+			return $currency_f;
+		}
+
+	}
+	catch(Exception $e) {
+	  echo '<=currencyConverter=> ' .$e->getMessage();
+	}
+}
+
+?>

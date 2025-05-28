@@ -1,0 +1,42 @@
+
+Pease find the url for card date & issue is live mode. This is not working .
+
+
+$encryptionRequest['cardNo']='4281021015248691';
+$encryptionRequest['expiryDate']='2803'; // yearmonth
+$encryptionRequest['securityCode']='221';
+$encryptionRequest['zek']='9fa9218481c470b3678fc73b4268799b741882f9abf15b190001c1818370f6a6'; 
+$encryptionRequest['publicApiKey']='a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127';
+
+$encryptionUrl='http://15.207.116.247:8084/webhook55/encode_53'.'?'.http_build_query($encryptionRequest);
+
+
+Live card payload url : -----------
+
+http://15.207.116.247:8084/webhook55/encode_53?cardNo=4281021015248691&expiryDate=2803&securityCode=111&zek=9fa9218481c470b3678fc73b4268799b741882f9abf15b190001c1818370f6a6&publicApiKey=a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127&qp=1
+
+Error of card payload : -----------
+Error : Error during decryption
+
+############################################################################
+
+
+Pease find the url for card date & issue is test mode. This is working .
+
+
+$encryptionRequest['cardNo']='5123450000000008';
+$encryptionRequest['expiryDate']='3110'; // yearmonth
+$encryptionRequest['securityCode']='3110';
+$encryptionRequest['zek']='679942a3636b7b6b5ebf06a05f6a82cd6dc5e21ec88fe4a3c5d2dc676d412998'; 
+$encryptionRequest['publicApiKey']='a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127';
+
+$encryptionUrl='http://15.207.116.247:8084/webhook55/encode_53'.'?'.http_build_query($encryptionRequest);
+
+
+Testing card payload url : -----------
+
+http://15.207.116.247:8084/webhook55/encode_53?cardNo=5123450000000008&expiryDate=3110&securityCode=3110&zek=679942a3636b7b6b5ebf06a05f6a82cd6dc5e21ec88fe4a3c5d2dc676d412998&publicApiKey=a98a7967053c85aa413ffe3bab0a0e3dd11541b775acfee8e958f3f44cd947263d13f2a4f69d6807d58e3a2317f1093b5ed1e5082bbbe01240cb3127&qp1=1
+
+Result of card payload : -----------
+
+df9e8a06a5293fff56956735fc6ebc6ead2b6be496921fab7707afaefc392a64ea22225d054e00f9f538ed19a279424fa38c250ee25ace77c746522830589981548a7540048c6b6bdf2dc65dca7012a31bd480d92e10f86c923921e4f5d7a7c221ba

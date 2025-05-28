@@ -1,0 +1,141 @@
+
+
+
+
+#################################################################################
+
+
+Generate Token URL
+
+https://can-webhook.web1.one/checkout?actionType=&actionUrl=&integration-type=Checkout&terNO=&public_key=MjcyXzEwMzhfMjAyNDA4MTMxMTEwMjk&return_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dsuccess&webhook_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dnotify&product_name=Generate+Token&fullname=Create+VPA+Request&bill_email=test5134%40test.com&bill_address=161+Kallang+Way&bill_city=New+Delhi&bill_state=Delhi&bill_country=IN&bill_zip=110001&bill_phone=919821125134&bill_currency=INR&bill_ip=122.176.92.114&status=2&aurl=&source=&actionajax=ajaxQrCode&bill_amt=1.01&acquirer=83&mop=QRINTENT&dtest=1&generatTokenPost=1
+
+
+
+#################################################################################
+
+Refresh Token URL
+
+https://can-webhook.web1.one/checkout?actionType=&actionUrl=&integration-type=Checkout&terNO=&public_key=MjcyXzEwMzhfMjAyNDA4MTMxMTEwMjk&return_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dsuccess&webhook_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dnotify&product_name=Refresh+Token&fullname=Refresh+Token&bill_email=test5134%40test.com&bill_address=161+Kallang+Way&bill_city=New+Delhi&bill_state=Delhi&bill_country=IN&bill_zip=110001&bill_phone=919821125134&bill_currency=INR&bill_ip=122.176.92.114&ccno=5438898014560229&ccvv=564&month=10&year=31&country_name=&REMOTE_ADDR=122.176.92.114&http_referer=https%3A%2F%2Fcan-webhook.web1.one%2Fp%2Fp&payment_mode=&bill_fees=&bussiness_url=&status=2&aurl=&source=&actionajax=ajaxQrCode&bill_amt=1.01&acquirer=83&mop=QRINTENT&dtest=1&refreshTokenPost=1
+
+
+#################################################################################
+
+
+For Token:
+https://oauth.canarabank.in/v1/oauth2/authorize?client_id=NADcfT80Mw2fDBtor0869Jo0dtDLixPi&redirect_uri=https://can-webhook.web1.one/payin/pay83/webhookhandler_83&response_type=code&state=acdfgb&scope=upi
+
+
+oauth username - letspe
+password - Skywalk@2025
+
+
+
+
+https://can-webhook.web1.one/checkout?actionType=&actionUrl=&integration-type=Checkout&terNO=&public_key=MjcyXzEwMzhfMjAyNDA4MTMxMTEwMjk&return_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dsuccess&webhook_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dnotify&product_name=Test+Product&fullname=Create+VPA+Request&bill_email=test5134%40test.com&bill_address=161+Kallang+Way&bill_city=New+Delhi&bill_state=Delhi&bill_country=IN&bill_zip=110001&bill_phone=919821125134&bill_currency=INR&bill_ip=122.176.92.114&ccno=5438898014560229&ccvv=564&month=10&year=31&country_name=&REMOTE_ADDR=122.176.92.114&http_referer=https%3A%2F%2Fcan-webhook.web1.one%2Fp%2Fp&product=Test%20Product&step=2&fullname=Test%20Full%20Name&bill_email=test5134%40test.com&bill_address=161%20Kallang%20Way&bill_city=New%20Delhi&bill_state=Delhi&bill_country=IN&bill_country_name=&bill_zip=110001&bill_phone=919821125134&payment_mode=&bill_fees=&bussiness_url=&status=2&aurl=&source=&actionajax=ajaxQrCode&bill_amt=1.01&acquirer=83&mop=QRINTENT&dtest=1&vpaEnqRequestPost=1&sid=LETSPE0023&batch_id=172482312266806189
+
+
+
+https://can-webhook.web1.one/checkout?actionType=&actionUrl=&integration-type=Checkout&terNO=&public_key=MjcyXzEwMzhfMjAyNDA4MTMxMTEwMjk&return_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dsuccess&webhook_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dnotify&product_name=Test+Product&fullname=Create+VPA+Request&bill_email=test5134%40test.com&bill_address=161+Kallang+Way&bill_city=New+Delhi&bill_state=Delhi&bill_country=IN&bill_zip=110001&bill_phone=919821125134&bill_currency=INR&bill_ip=122.176.92.114&ccno=5438898014560229&ccvv=564&month=10&year=31&country_name=&REMOTE_ADDR=122.176.92.114&http_referer=https%3A%2F%2Fcan-webhook.web1.one%2Fp%2Fp&product=Test%20Product&step=2&fullname=Test%20Full%20Name&bill_email=test5134%40test.com&bill_address=161%20Kallang%20Way&bill_city=New%20Delhi&bill_state=Delhi&bill_country=IN&bill_country_name=&bill_zip=110001&bill_phone=919821125134&payment_mode=&bill_fees=&bussiness_url=&status=2&aurl=&source=&actionajax=ajaxQrCode&bill_amt=1.01&acquirer=83&mop=QRINTENT&dtest=1&vpaEnqRequestPost=1&sid=LETSPE0022&batch_id=172482245333722228
+
+
+g9Qt4uIk0TF3rDG649vSazqeenG6Qb2P
+
+Token response:
+{"access_token":"n2GhZ2HOpp9JM6zDVADWmI7uer75Lsfd","token_type":"Bearer","refresh_token":"2HDfaJqpnVLL2aoLRIGvJgi8tL4akGeG","expires_in":"86399","scope":"upi","refresh_token_expires_in":"604799"}
+
+tokenResponse:
+Array ( [access_token] => n2GhZ2HOpp9JM6zDVADWmI7uer75Lsfd [token_type] => Bearer [refresh_token] => 2HDfaJqpnVLL2aoLRIGvJgi8tL4akGeG [expires_in] => 86399 [scope] => upi [refresh_token_expires_in] => 604799 ) 
+
+#################################################################################
+
+canara_vpa
+
+Mobile - 809550197
+MID - Ankitesh
+Company - Skywalk Ankitesh
+MCC - 6012
+
+83131070406727=>
+
+#################################################################################
+
+83131070406727=>
+
+
+VPA POST
+
+
+
+VpaUrl:
+https://apibanking.canarabank.in/v1/upi/vpa-creation
+
+encryptedData:
+eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiQTI1NktXIn0.cFrX9w6KXyy9VXBqNsZkiB3fmU7vuL-gKmtrg51MhokR7hLmBlg80A._sPDOWQkntroNi7S91pAeQ.iq8w21cIydff0k7fBH9BeIkCdsf10AybUIGa3VFglREaQ8tvbYzEvAcip0iH6GS1RWVsjYFyPL7XGmYGJGwdVmRXHARg3yBqcmnDk95uoLC-yMPMF8nv3qtiUCglvpdUcBfmfT1j3ag8BEAT2Jbix1SWs9Dp6AwtEtprkgVS-S0wZbli-rBR4OhWH-UkjngPH3ilxgaLZGxr2CxcLf3Hk4KMfEKAgsKcTBdtOdJMj1wF2-xr24j7Ye1IJMzWlMCteEwiFN_rncA1bVXcARVUpc2xCL1cCO_Q9aq-450ZY5UBGU7DvAT2S_b_Zl_HXj9udSRyJfCKGHopLugzL79KX181a9HUcagfwF35xA7UZOtYcQGz5mMzqLR4esf1lpzNbCSme3Hx5Vl-5QFF0MvhLZt6-qEh-9I7680lst2fEvwck1RLi4nKMjTJO-dj2ukWKipSrfQc5HanoZU3p4S35Q.pdhxc0tuqB2IEKtAVY1ibg
+
+VpaEnqSignature:
+PYE4z+tUjx4JJLMaNJF+xATmvK7Mc02hJa3nv6MYXampWJDiP23lVsHHj4tlcozWXXT2kznZIULFW1J6XxufLMf95NcmuYxsvxio2o3brr/YD/kvVsVOpDAKKY4gc6KomZDcV/dgAWkmn1uCyvE+QGjYpZo1UqPxa91xI7K5H8Wd+WBSMWZ+W1wonVGawQUOc2EYbr0t3tpNdJPBkfUvbUYEQ8FoLW8N7NccdaRvrjxrBqnenKqOLECUrn6a/Izf8d5HtdkcyG/IHrgAAGrM+XWaUKT9mMuAWWvLRKFcwxQObsXRFOXHORlLA7eaVfER5/V/C34Z/zlIwiJxaxlC/A==
+
+Vpa HTTPHEADER:
+Array ( [0] => x-client-id: NADcfT80Mw2fDBtor0869Jo0dtDLixPi [1] => x-client-secret: HxubC0zGPxgRgclSXHuW9HmmeFR9pdt3 [2] => x-client-certificate: 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 [3] => x-api-interaction-id: 993836276 [4] => x-timestamp: 1724679447 [5] => Cookie: test [6] => Content-Type: application/json [7] => x-signature: PYE4z+tUjx4JJLMaNJF+xATmvK7Mc02hJa3nv6MYXampWJDiP23lVsHHj4tlcozWXXT2kznZIULFW1J6XxufLMf95NcmuYxsvxio2o3brr/YD/kvVsVOpDAKKY4gc6KomZDcV/dgAWkmn1uCyvE+QGjYpZo1UqPxa91xI7K5H8Wd+WBSMWZ+W1wonVGawQUOc2EYbr0t3tpNdJPBkfUvbUYEQ8FoLW8N7NccdaRvrjxrBqnenKqOLECUrn6a/Izf8d5HtdkcyG/IHrgAAGrM+XWaUKT9mMuAWWvLRKFcwxQObsXRFOXHORlLA7eaVfER5/V/C34Z/zlIwiJxaxlC/A== [8] => Authorization: Bearer JKsd42vVGEVMs50vwrLBNbtlkcgknnMD )
+
+
+
+Vpa response:
+{"Response":{"body":{"encryptData":"eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiQTI1NktXIn0.2g8PG4z7cisFdDglMMcBRgQky1q36iY9qtNdjHMqqQx75yC9UeNb8Q.bYxfsKsYdeRlMI7ibHSC-Q.clac8eJFwNCM4IFeWOy_hx1BCnNSEjS8Otz6pTDoN-EfKsvgqQeKSt8o4rig2kEhonw7QpzgPawxA6rwGMWUaB3Tzcq5SVdM3P3wQBq7Mlz8cXOGGKy-erUyGqCTwNuzIGb4lO6RHvUlzA4qlee5TpE6WmjUO3gUyGB2Wys_X8OLw_wdLA0IVce12rasnhjjVUH6NBuI9MJE7BPdIQm0G_XxAp0yjEmwg_ote-fGt8tMmrJF5_Mr03BbLUwDXYjgA7Gle4HArMjvNi1CA6yH0-3J8O9teeT4YtmvHaSoo7WYiZ2ewPbnfnrSLZcN3veE.HDkwGGTSeJU-O-smjhg7oA"}}}
+
+VpaResponse:
+Array ( [Response] => Array ( [body] => Array ( [encryptData] => eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiQTI1NktXIn0.2g8PG4z7cisFdDglMMcBRgQky1q36iY9qtNdjHMqqQx75yC9UeNb8Q.bYxfsKsYdeRlMI7ibHSC-Q.clac8eJFwNCM4IFeWOy_hx1BCnNSEjS8Otz6pTDoN-EfKsvgqQeKSt8o4rig2kEhonw7QpzgPawxA6rwGMWUaB3Tzcq5SVdM3P3wQBq7Mlz8cXOGGKy-erUyGqCTwNuzIGb4lO6RHvUlzA4qlee5TpE6WmjUO3gUyGB2Wys_X8OLw_wdLA0IVce12rasnhjjVUH6NBuI9MJE7BPdIQm0G_XxAp0yjEmwg_ote-fGt8tMmrJF5_Mr03BbLUwDXYjgA7Gle4HArMjvNi1CA6yH0-3J8O9teeT4YtmvHaSoo7WYiZ2ewPbnfnrSLZcN3veE.HDkwGGTSeJU-O-smjhg7oA ) ) )
+
+$VpaResDecrypt = $VpaResponse['Response']['body']['encryptData'];
+
+    #################################################################################
+
+http://15.207.116.247:8080/api/VpaEncryption/decrypt?encryptedData=eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiQTI1NktXIn0.2g8PG4z7cisFdDglMMcBRgQky1q36iY9qtNdjHMqqQx75yC9UeNb8Q.bYxfsKsYdeRlMI7ibHSC-Q.clac8eJFwNCM4IFeWOy_hx1BCnNSEjS8Otz6pTDoN-EfKsvgqQeKSt8o4rig2kEhonw7QpzgPawxA6rwGMWUaB3Tzcq5SVdM3P3wQBq7Mlz8cXOGGKy-erUyGqCTwNuzIGb4lO6RHvUlzA4qlee5TpE6WmjUO3gUyGB2Wys_X8OLw_wdLA0IVce12rasnhjjVUH6NBuI9MJE7BPdIQm0G_XxAp0yjEmwg_ote-fGt8tMmrJF5_Mr03BbLUwDXYjgA7Gle4HArMjvNi1CA6yH0-3J8O9teeT4YtmvHaSoo7WYiZ2ewPbnfnrSLZcN3veE.HDkwGGTSeJU-O-smjhg7oA
+
+Decrypted Data: {"channel":"api","mid":"SKYWALK001","terminalId":"","sid":"LETSPE0014","status":"SUCCESS","respCode":"0","respMessge":"Merchant onboarding request initiated successfully","checksum":"","response":{"batch_id":"172467944733424112"}}
+
+
+
+
+https://can-webhook.web1.one/checkout?actionType=&actionUrl=&integration-type=Checkout&terNO=&public_key=MjcyXzEwMzhfMjAyNDA4MTMxMTEwMjk&return_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dsuccess&webhook_url=https%3A%2F%2Fcan-webhook.web1.one%2FresponseDataList%2F%3Furlaction%3Dnotify&product_name=Test+Product&fullname=Create+VPA+Request&bill_email=test5134%40test.com&bill_address=161+Kallang+Way&bill_city=New+Delhi&bill_state=Delhi&bill_country=IN&bill_zip=110001&bill_phone=919821125134&bill_currency=INR&bill_ip=122.176.92.114&ccno=5438898014560229&ccvv=564&month=10&year=31&country_name=&REMOTE_ADDR=122.176.92.114&http_referer=https%3A%2F%2Fcan-webhook.web1.one%2Fp%2Fp&product=Test%20Product&step=2&fullname=Test%20Full%20Name&bill_email=test5134%40test.com&bill_address=161%20Kallang%20Way&bill_city=New%20Delhi&bill_state=Delhi&bill_country=IN&bill_country_name=&bill_zip=110001&bill_phone=919821125134&payment_mode=&bill_fees=&bussiness_url=&status=2&aurl=&source=&actionajax=ajaxQrCode&bill_amt=1.01&acquirer=83&mop=QRINTENT&dtest=1&batch_id=172467944733424112&vpaEnqRequestPost=1
+
+
+DECRYP AFTER RESPONSE OF VPA ENQ.
+
+
+
+response:
+Decrypted Data: {"channel":"API","mid":"SKYWALK001","sid":"LETSPE0014","status":"FAILURE","respCode":"3","respMessge":"Unable to process your request, please try after some time.","checksum":"","response":{"qr_string":"","error_code":"MB01","error_desc":"Your request failed due to invalid mobile number","suggestedVpa":"","upiId":"","mobile_number":"809550197","additionalNo":"","mercName":"Skywalk Ankitesh"}}
+
+
+#################################################################################
+
+Dear sir 
+
+I am sending keys 
+oauth username - letspe
+password - Skywalk@2025
+
+client_key - NADcfT80Mw2fDBtor0869Jo0dtDLixPi
+client_secret - HxubC0zGPxgRgclSXHuW9HmmeFR9pdt3
+
+Symmetric_key - 0d113e69b524db3a4fd7584affa7465c262cc03d89fe09ac75d1445141481f2b
+
+certificate - 
+
+MIIDYTCCAkmgAwIBAgIUDhT4IbwmqR/JwhYMAZ30IawQtwkwDQYJKoZIhvcNAQELBQAwNzE1MDMGA1UEAwwsaXAtMTcyLTMxLTE0LTE4OC5hcC1zb3V0aC0xLmNvbXB1dGUuaW50ZXJuYWwwHhcNMjMwMzIxMDY0MjU0WhcNMzMwMzE4MDY0MjU0WjA3MTUwMwYDVQQDDCxpcC0xNzItMzEtMTQtMTg4LmFwLXNvdXRoLTEuY29tcHV0ZS5pbnRlcm5hbDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAI5hMhRNThvFLs3HuT1ATc1jpnvFCEDKRc1iYaTot87l+ZRe5D2z0Kl5/LAtNECAIHL8gkVkuCNUcP0XVuFol1ph08LcU6QdRMivuD8E3h+yS87tome4CuQLyte9dT4uJA/CpQU3gdyU3hcYYxpxQbMWIjL3vZxgsXyuM2S1EMBOe7NYdaPKLwIQmCgVlJ6o4fPxTgqrYQFPWhTf+rcJ+nHdQ6k+/easQGBLu9+3Q2nTqRIdyXt6Qt3e95VvLtfPnk7iO99LRm4Kz7wmlteGU5GbTKwzxY0pAgJSf92mUeFd8iu2LN5+EMQbD0d6qywq/Rx5cZO8FHy8nyzlgIn+mY0CAwEAAaNlMGMwCQYDVR0TBAIwADA3BgNVHREEMDAugixpcC0xNzItMzEtMTQtMTg4LmFwLXNvdXRoLTEuY29tcHV0ZS5pbnRlcm5hbDAdBgNVHQ4EFgQUmI82HCF8k/Phqb016uUQjDcPl/cwDQYJKoZIhvcNAQELBQADggEBAGfsYwL/yvCahS2bdMKGi44b+MYUTa6RWuIUECQWfmT99f3Buq5qn8TNvvcULKBjoxuhyrqYZhjVMc90B/xkCJ7keOPG6cJ9jCDHAkF4tUWAAaNqBbjDjUm3/LBCeM0rRKPCgKcU1SJ9sDGfo7TtdcoeWutSyZzZ3NovJOkkj+f3HB3XRbWNSftzCiH4WlWWp0CfqUERrDaLnnmNscahoutkImlthzGk/Mqe4QufOGbhIjuPiYWfmacxx2nEyfvh48siGIeWlY9dOUPLmhD2Yu8bJRXvoT0IuVA8HE4Dl/fU5ioGwKZbVfwLwZtIcsRjRsj+kOvfol6XT0r4RkKBZlU=
+
+callback - https://can-webhook.web1.one/payin/pay83/webhookhandler_83
+
+
+
+
+#################################################################################
+#################################################################################
+
+Private -
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwZ+K+Ux2kRpHjDP2SgvCkSEaMuS8mot8H5qJzBSghyyXy2IosuyrbQpGrmSEKCgamJuGJqRBUgZXsdal0QpinTizaYdDRaPP+DCnylK9yAEyTEGU6dmTHRUMe1ae/Y3EnTWSsYHAAlPHPVJ5+pJLkuqNHIXZnZHqyPKAXzejcY3vlOD6w6qpPKCv3dGvv7sqpwnhB67TGYn0zEhm7tnjcQ6oZGrjNVIZZ9IAmtfiNJPe5h+XysuKQ6sy5egAXYuF0JDIHW2Y5JaHqjtrWzA3xxunj9fAq10FhQ37kVVHC3N+Y9sXYxYHp4zHog58zx+21ZYPyKuW8JX8uyhBpj4LtAgMBAAECggEAL7lLLHZL9J9q5GQlTbfC5o7vFy8aRHeXowmQNVHV056j+5j9eLCCHaNayXO57n9b4SNvrNBiLJqKNth2KY/CwLBzjfkchyq/p6Ee0BPNiyftj3PGDxTsmsRwLi1bHnoGqL1VWRUV9/JToOWho11eqCad+aZh5ALY9tNT9FyufMCyTinpg117Bdr723HsAl9WjUZgtT/3+p8OcqKKSJ7kvoEyW8VIdVnYq7L5hN2AP8ceiEnp3uDvaUd18gGIUVz4V+TbIcyeC++Wle0be1NY3cSfSXvBcRzaXAYTFPQP2/2uFEQjPltGEuS1PtOSToq6w7O0roWXiGEhjWkCGxW7QQKBgQDVFeOupYExcLUEXltt72lTZ0go40hSdLzMUb8WeJEo7hWFHrVW9QB9sNWdcNTlPeBKWmRjWsWB8Ueh5Ac+FmI+Y8MKk7+MSsEXhrL02deLhAs8sFDYM5OKFKhh8F8ssHYSVo01mYGvd9piuwUkag54Tr/YKA18121Dh+jBF74VKQKBgQDT7uPx1agLWIPvzODcrEt3XchWa9NU/3JUw9rW+eUnxTQq2uyzCiqm4zo+dPn7EBfazf5QP5Q6YvPy/f/+WF4W0mQOUZDSgG6cgNtFibFO+0UIOPF9i3XMIt8amVseOiTQwR/JywZsCwRGBAr7UhHOIrhg0ehrJXQj/kjX0p1UJQKBgElTNv4qRcLVnfTa42t5Ly1cJSCs1X5KXY2Rs8fvxUPoac9dOdmqhXi7GUcMRLZ+DGiJonHuEnkcpiG3biaXXUdK3RsOrKOCNd/6oipPrDR+Q7+mjKtZVDP319mb9aRTNM4qqnz/TfkrrSK8aJCXTlNoBexEHCARoa/TXOzVVrvBAoGBAMnzUD64K8Nz+3Vcs8FUZS0/rpG7ecv7BwWDBFvqENVO86EKsJcDTxVsXan6aeM1uKWFuZramvLwLCoWpAPITRBON431Z51PSRfVKh0fUlhC08s8B9JsPDnj2NlN3Sf2m/JYtWPjFSGLde0KGTTXRaQ6LZwFKgY/0GYj/2G5jrYJAoGAfVCuCPgyIjXEGWhTwBbW0szjQZrGAyBJnonKKLgH4ehEIlZJcfxiEORVTCSY7zkfK4wARJujSW/b6HXN8MpaKIbuZTwaIYXGZCQxWyGq7J7m7VJZR6DKnWlLHpzlL1pBghC4qsDyR6Og7zZPlVl/ZaM1u0G/RtPwh6LJ0YJ47Ko=
+
+
+Public -
+MIIDkDCCAngCCQDyXxxC5oRTgjANBgkqhkiG9w0BAQsFADCBiTELMAkGA1UEBhMCSU4xCzAJBgNVBAgMAktMMRIwEAYDVQQHDAlCQU5HQUxPUkUxDzANBgNVBAoMBkNBTkFSQTEPMA0GA1UECwwGQ0FOQVJBMQ8wDQYDVQQDDAZDQU5BUkExJjAkBgkqhkiG9w0BCQEWF3JlbmppdGhnQGNhbmFyYWJhbmsuY29tMB4XDTIzMDcyNTA1Mjc1OVoXDTI0MDcyNDA1Mjc1OVowgYkxCzAJBgNVBAYTAklOMQswCQYDVQQIDAJLTDESMBAGA1UEBwwJQkFOR0FMT1JFMQ8wDQYDVQQKDAZDQU5BUkExDzANBgNVBAsMBkNBTkFSQTEPMA0GA1UEAwwGQ0FOQVJBMSYwJAYJKoZIhvcNAQkBFhdyZW5qaXRoZ0BjYW5hcmFiYW5rLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALBn4r5THaRGkeMM/ZKC8KRIRoy5Lyai3wfmonMFKCHLJfLYiiy7KttCkauZIQoKBqYm4YmpEFSBlex1qXRCmKdOLNph0NFo8/4MKfKUr3IATJMQZTp2ZMdFQx7Vp79jcSdNZKxgcACU8c9Unn6kkuS6o0chdmdkerI8oBfN6Nxje+U4PrDqqk8oK/d0a+/uyqnCeEHrtMZifTMSGbu2eNxDqhkauM1Uhln0gCa1+I0k97mH5fKy4pDqzLl6ABdi4XQkMgdbZjkloeqO2tbMDfHG6eP18CrXQWFDfuRVUcLc35j2xdjFgenjMeiDnzPH7bVlg/Iq5bwlfy7KEGmPgu0CAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAlIB7CyTDUF5R+q2/OEs/WHFTwnOoTbTeg3LTeTnbPVcn8LT0n36xZTHNHcDnjj2B4lS5W91fp5q8DFnTK1d8mmTD1a9wSZaTIR1t0nvFIacmxR+yP7QljaQ4KiFTD+saRFWM/4yatvzqCDvNlJpkuOlIG9KtlAOxbxKQgF50Jmst2dGWFtrX9mNUhhVvfSuVOdxOqiunVXYTJwVHc+IHw33RkNiEEiPtH7kk8iYzb845+KbDv9GhQPiNgf682QQLZJmh2wtQ1ZR+DY4cR7V/eblb+2RmEPV6HpvMLV9TvcXgE8RpFmB7YSNj+rmah1JHjak/COQYcgrPzeFRDyr34Q==

@@ -1,0 +1,2689 @@
+<? if(isset($data['ScriptLoaded'])){	
+
+
+$post['ViewMode']=='summary';
+if(isset($post['ViewMode']) && $post['ViewMode']=='select'){ 
+if(isset($_REQUEST['page'])) $curr_pg = $_REQUEST['page'];else $curr_pg=0;
+}
+
+function remove_string($removestr)
+{
+
+	$removestr=str_replace('<font color="green">','',$removestr);
+	$removestr=str_replace("<font color='green'>","",$removestr);
+	$removestr=str_replace('</font>','',$removestr);
+	$removestr=str_replace("</font>","",$removestr);
+
+	return $removestr;
+}
+?>
+<? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_action_checkbox_csv'])&&$_SESSION['transaction_action_checkbox_csv']==1)||(isset($_SESSION['csv_multiple_merchant'])&&$_SESSION['csv_multiple_merchant']==1)){?>
+<? if(isset($_REQUEST['date_1st'])&&$_REQUEST['date_1st']&&isset($_REQUEST['date_2nd'])&&$_REQUEST['date_2nd']) { 
+	
+	if(isset($data['DB_CON'])&&isset($data['GW_CSV_DATA_FILTER_MORE_CONNECTION_WISE'])&&@$data['GW_CSV_DATA_FILTER_MORE_CONNECTION_WISE']=='Y')
+		$gw_csv_data_filter='gw_csv_data_filter_more_connection_wise';
+
+	else $gw_csv_data_filter='gw_csv_data_filter';
+	
+?>
+
+<div class="modal" id="myModa30">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+	<form name="csvdwndata" method="post" action="<?=$data['Host']?>/include/<?=@$gw_csv_data_filter?><?=@$data['ex']?>?bid=<?=@$post['bid'];?>" target="_blank" >
+		<input type="hidden" class="form-control" name="date_2nd" value="<?=@$_REQUEST['date_2nd'];?>"  />
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">
+			Download Filter Transaction in CSV Format
+			&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" value="1" name="is_view_screen" id="is_view_screen" class="form-check-input" /> <label for="is_view_screen">View on Screen</label> 
+			
+			&nbsp;&nbsp;<input type="checkbox" value="1" name="csv_slct_all" id="csv_slct_all"  class="form-check-input csv_slct_all" /> <label for="csv_slct_all" class="csv_slct_all_txt"> Select All</label>
+	&nbsp;
+		</h4>
+        <button type="button" class="btn-close myModal_close" value="myModa30" data-bs-dismiss="modal88"></button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body csv_input_all">
+        <? include("../include/transaction-field-list".$data['iex']);?>
+      </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary myModal_close" value="myModa30" data-bs-dismiss="modal88">Close</button>
+      </div>
+	   </form>
+    </div>
+  </div>
+</div>
+<script>
+$('.csv_slct_all').click(function (e) { 
+  if($(this).hasClass('active')){ 
+	$(this).removeClass('active');
+	$('.csv_slct_all_txt').html('Select All');
+	$(".csv_input_all :checkbox").attr("checked", false);
+  } else {
+	$(this).addClass('active');
+	$('.csv_slct_all_txt').html('Deselect All');
+	$(".csv_input_all :checkbox").attr("checked", true);
+  }
+});
+</script>
+<? } ?>
+<? } ?>
+<?
+if(isset($_GET['bid']))		$get_bid 	= $_GET['bid'];else $get_bid 		= 0;
+if(isset($_GET['acquirer']))	$get_type 	= $_GET['acquirer'];else $get_type 		= 0;
+if(isset($_GET['status']))	$get_status = $_GET['status'];else $get_status 	= 0;
+if(isset($_GET['page'])) 	$get_page	= $_GET['page'];else $get_page 		= 0;
+if(isset($_GET['order']))	$get_order	= $_GET['order'];else $get_order 	= 0;
+
+?>
+<script src="<?=$data['TEMPATH']?>/common/js/jquery-ui.min.js"></script>
+<script>
+$('#sidebarCollapse').trigger("click"); // add for trigger left menu small by vikash 15052023
+<?php /*?> // remove old code add new trigger by vikash 15052023
+// js function for window width and height adjust 
+//$( document ).ready(function() {
+$(window).bind("load resize scroll",function(){
+	$('body').addClass("remove_leftPanel");
+
+	if ($( window ).width() < 769) {
+	  //alert('screen width : '+$( window ).width());
+	  //$('#sidebar').removeClass("active");  // disable on 12102022 by vikash
+	}else{
+		$('#sidebar').attr('class','bg-primary active');
+		$('#content').attr('class','active');
+		$('body').removeClass("is_leftPanel");
+	}
+});
+
+<?php */?>
+</script>
+<style>
+
+/*
+// remove old code add new trigger by vikash 15052023
+#sidebar { width: 160px !important;}
+#sidebar.active { min-width: 40px; }
+#content.active { width: calc(100% - 40px) !important;}*/
+/*#content { width:97% }*/
+
+.mop_icon_dynamic img {height:13px !important;padding:0 2px;}
+.mop_icon_dynamic i {font-size:16px!important;padding:0 2px;}
+
+.pagination a.current.new {float:right;}
+
+.paginationx {display: flex !important;}
+.pagination ul>li>a, .pagination ul>li>span {
+    float: left;
+    padding: 4px 12px;
+    line-height: 20px;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-left-width: 0;
+}
+ul.pagination2 li a.current, ul.pagination li a.current { 
+
+}
+.is_leftPanel #content {width:89% !important;}
+
+a.hrefmodal.mt-2.mx-2.text-decoration-none {
+    width: 100px;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+a.hrefmodal.mt-2.mx-2.text-decoration-none {
+    width: 99px;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+    float: left;
+    margin: 0;
+    margin-left: 6px !important;
+    margin-top: 0 !important;
+}
+
+input.echeckid.mt-1.mx-2.float-start.form-check-input {
+    float: left !important;
+    max-width: 14px;
+    min-width: 14px;
+    margin-right: 0 !important;
+    padding: 0;
+}
+.rowd2 {width: 93% ;}
+
+.listActive1 a.hrefmodal { color:#CC0000;font-weight: 500;}
+
+.is_leftPanel #content.active {
+    width: 97% !important;
+}
+.dropdown-menu{ font-size:14px !important;}
+@media (max-width: 999px) {
+	.is_leftPanel #total_record_result {width: 91% !important;}
+}
+@media only screen and (max-width: 768px){
+is_leftPanel .td_relative {width:100% !important;}
+.is_leftPanel #content {width:100% !important;}
+/*#content {width:100% !important;}*/
+.is_leftPanel .td_relative { padding-right:0px !important;}
+.is_leftPanel #transaction_display_divid {width:94% !important;}
+.hk_sts .dta1 { width: 50% !important;}
+}
+
+@media only screen and (max-width: 400px){
+.is_leftPanel #content { width: 100% !important; margin-left: 8px !important;}
+.remove_leftPanel #content.active { width: calc(100% - 40px) !important;}
+}
+
+@media only screen and (max-width: 500px) and (min-width: 464px)  {
+.rowd1  { clear:both !important;}
+.hk_sts .dta1 { width: 100% !important; }
+}
+
+
+</style>
+<style>
+.tbl_exl2, .table-responsive {overflow-y: auto;min-height: 1000px;}
+<?php if($data['themeName']!='LeftPanel'){ ?>
+#transaction_display_divid {position:absolute;width:84%;float:right;z-index:999;right:2.5%;background:#fff;border-radius:3px;padding:10px;/*top:30px;*/left:0;}
+<? } else { ?>
+#transaction_display_divid {position:absolute;width:94%;float:right;z-index:999;right:2.5%;background:#fff;border-radius:3px;padding:10px;/*top:30px;*/left:0;}
+<? } ?>
+
+#transaction_display_divid .chosen-container {width: 100% !important;min-width: 300px !important;}
+
+img.wltcf {width:24px !important;}
+
+.modal_popup_popup_body hr {margin:0;height:1px;max-height:1px;display:block;color:#c61a1a;}
+
+.flag_ td {height: inherit !important;}
+	.hkip_status_id.a16 {float:left;margin:0px 0 0 -17px;background:#ccc;height:13px; position:relative;z-index:999999;}
+.hkip_status_id.a16.glyphicons i:before {font-size:16px;margin:9px 0 0 8px !important;}
+body .daterangeform, body #daterangediv {display:none1 !important;}
+/*.rmk_row .rmk_msg {max-width: 900px;}*/
+.admins.transactions.bnav #tr_cal_id .row100 {width:96%;}
+
+
+
+#modal_popup_iframe_div {overflow:hidden;overflow-y: auto;height:100%;width:100%;}
+/*.hk_sts {width:99%;padding:10px 5%;}
+.hk_sts .rows {float:left;clear:both;width:100%;margin:14px 0;}
+.hk_sts .dta1 {float:left;width:25%;line-height:18px;border-bottom:1px solid #ccc;}
+.hk_sts .dta1.key{font-weight:bold;}
+.hk_sts .dta1.key.h1 {width:100%;clear:both;background:#2d790d;border:0;font-size:14px;text-transform:uppercase;text-align:center;color:#fff;}
+.hk_sts .notfound_status {background-color:#ffdede;font-size:14px;}*/
+
+.reply_supports {margin:0px 0 3px 30%;text-transform:uppercase;font-weight:bold;background:#f00;color:#fff!important;padding:3px 10px;border-radius:3px;display:inline-block;}
+.glyphicons.btn-icon i:before {width:36px;padding:5px 0 0;}
+
+#payoutdaterange.glyphicons.btn-icon i:before {font-size:14px; width:30px; height:16px;}
+#daterangediv {margin:5px 0; text-align:center; float:left; width:100%; display:black;}
+.glyphicons.btn-icon{padding: 2px 7px 5px 35px;}
+.payoutpdf_0 {display:inline-block;background: #e8e8e8;padding:5px 10px;border-radius:3px;margin: 5px 0;}
+.payoutpdf:hover, .payoutpdf.active{background: #2c84a4;color: #ffef1d !important;}
+
+.field {text-align:right; padding:0 20px 0 0;}
+.nomanditory {display:black;}
+
+ body input.search_textbx[type=text] {display:inline-block; }
+select {width:83%;}
+/*label {float: left;font-size: 14px !important;width: 30%;text-align: right;padding: 5px 2% 0 0;}*/
+.mand {color:red;}
+
+.leftsideadmin {display:none !important ;}
+
+.ti {float:left; margin:0 10px 0 0; height:20px; }
+.menuchk_div2 {position:relative;top:-3px;display:inline-block;margin:-6px 0 -5px 9px;}
+.menuchk_div {padding:0;position:relative; }
+
+.lead_div {position:relative;}
+
+.lead_title {position:absolute;top:17px;z-index:99;color:#222222;font-family:"Raleway", sans-serif;text-shadow:none;padding:0;margin:0;height:25px;font-weight:bold;font-size:14px;}
+.progressbar {width:100%;margin-top:5px;margin-bottom:35px;position:relative;background-color:#EEEEEE;box-shadow:inset 0px 1px 1px rgba(0,0,0,.1);}
+.proggress{height:8px;width:10px;background-color:#3498db;}
+.percentCount{float:right;margin-top:0px;clear:both;font-weight:bold;font-family:Arial}
+
+
+.check .daterangeform .btn-primary {background:#cab23d;color:#fff;}
+.check .daterangeform .btn-primary:hover {background:#ffd60b;color:#fff;}
+.card .daterangeform .btn-primary,.card .daterangeform .btn-primary:hover {background:#6de400;color:#fff;}
+
+.card .topnav.pull-right.trs.inline > li > a {background:#ddffbd;}
+.check .topnav.pull-right.trs.inline > li > a {background:#ffffb6;}
+
+.commentrow{float:left;width:100%;}
+.commentrow .title2{border-top:0;margin:12px 0 5px 0 !important;background:#ccc;padding:1px 1.0% 0px 1.0% !important; }
+
+.ip_view {cursor:pointer;color:#6aa6d2;}
+
+.flagtag{background:#e6e6e6;border-radius:3px;margin:0 3px;padding:0px 8px;color:#333;display:inline-block;line-height:20px;pointer-events:none;}
+
+.content_holder {float:left;width:100%;overflow:hidden;}
+.w981{width:100%;float: right;}
+/*.w98 {width:92vw;float:left;padding:0 0 0 0;}*/
+
+.strlink.active{background:red;color:#fff !important;}
+.summary_main_div table tr:nth-child(1n) td.active{background: #f00;}
+
+.prompt_dialog {display:none;position:fixed;z-index:9999999;width:300px;    height:150px;background:#fff;opacity:1;border-radius:5px;left:50%;top:50%;    margin:-75px 0 0 -150px;border:2px #d2d2d2 solid;}
+
+.ip_count {float:left;width:26%;}
+.ip_count .opn_tkt {float:inherit;text-align:center;margin:0;position:relative;  top:5px;background:red !important;color:#fff !important;}
+.riskdivid {float:left;width:66%;}
+
+</style>
+<script>
+var is_account="<?=$post['is_account'];?>";
+function filteraction0(e){
+	$('.payoutpdf0').removeClass('active');
+	$(e).addClass('active');
+	//alert($(e).parent().find('.pdfreportcl').attr('href'));
+	//newWindow=window.open($(e).parent().find('.pdfreportcl').attr('href')+"&json=1", 'newWindow');
+	
+	$(e).next().attr('style','display:block !important;left:-3px !important;top:18px !important;');
+	
+	$.ajax({
+		url: $(e).parent().find('.pdfreportcl').attr('href')+"&json=1",
+		type: "POST",
+		dataType: 'json', 
+		data: 'action=pdfreport',
+		success: function(results){
+			$(e).parent().find('.pdfreportcl span').html(""+results["available_payout"]);
+			if(results["settlement_link_view"]=="no"){
+			$(e).parent().find('.settledcl').parent().remove();
+			}
+			if(results["completed_count"]=="0"){
+				$(e).parent().find('.settledcl').parent().remove();
+			}else{
+				$(e).parent().find('.settledcl').parent().attr('data-completed',results["completed_trid"]);
+				$(e).parent().find('.settledcl span').html("SETTLED <b>"+results["completed_count"]+"</b>");
+			}
+			//alert(results["completed_count"]);
+		}
+	});
+	
+	$.ajax({
+		url: $(e).parent().find('.pdfreportcl_tr').attr('href')+"&json=1",
+		type: "POST",
+		dataType: 'json', 
+		data: 'action=pdfreport',
+		success: function(results){
+			$(e).parent().find('.pdfreportcl_tr span').html(""+results["available_payout"]);
+			if(results["settlement_link_view"]=="no"){
+				$(e).parent().find('.settledcl').parent().remove();
+			}
+			if(results["completed_count"]=="0"){
+				$(e).parent().find('.settledcl').parent().remove();
+			}else{
+				$(e).parent().find('.settledcl').parent().attr('data-completed',results["completed_trid"]);
+				$(e).parent().find('.settledcl span').html("SETTLED <b>"+results["completed_count"]+"</b>");
+			}
+			//alert(results["completed_count"]);
+		}
+	});
+	
+	$.ajax({
+		url: $(e).parent().find('.pdfreportcl_1').attr('href')+"&json=1",
+		type: "POST",
+		dataType: 'json', 
+		data: 'action=pdfreport',
+		success: function(results){
+			$(e).parent().find('.pdfreportcl_1 span').html(""+results["available_payout"]);
+			setTimeout(function(){ 
+				if($(e).parent().find('.pdfreportcl b').text()==$(e).parent().find('.pdfreportcl_1 b').text()){
+					$(e).parent().find('.tfcupdate span').html("EQUAL");
+				}
+			}, 200);
+			
+		}
+	});
+			
+}
+function filteraction(e){
+	$('.payoutpdf').removeClass('active');
+	$(e).addClass('active');
+	
+	if($(e).hasClass('settledcl')){
+	
+		var subparameter7 = $(e).attr('data-href');
+		
+		//alert(subparameter7);
+		
+		var promptmsg = prompt("Are you Sure to "+$(e).attr('data-label')+"!", "");
+			if (promptmsg == null || promptmsg == ""){
+				return false;
+			} else {
+				var thisurls = subparameter7+"&promptmsg="+$(e).attr('data-reason')+": "+promptmsg;
+				//top.window.location.href=thisurls;
+				$('#modal_popup_form_popup').slideDown(900);
+				$.ajax({url: thisurls, success: function(result){
+					//$("#modal_popup_iframe_div").html(result);
+					$('#modal_popup_form_popup').slideUp(70);
+				}});
+				//return false;
+			}
+	}
+	//settledcl
+}
+
+ var subparameter4 = "<?php echo $data['cmn_action'];?>";
+ 
+function activeslide(){
+	var active_a=$(".collapsea.atablink.active");
+	var active_html=active_a.parent().parent().next().find('.collapseitem');
+	var ids = active_a.attr('data-href');
+	//var tabfullname = active_a.attr('data-tabname');
+	var dataurl = active_a.attr('data-url');
+	var dataturl = active_a.attr('data-turl');
+	//alert(active_a+"\r\n"+active_html+"\r\n"+ids+"\r\n"+dataurl+"\r\n"+dataturl);  
+	if(dataturl !== undefined){
+		//ajaxf2(dataturl+"&action=details",active_html.find('.content_holder'));
+		loading_url(dataturl+"&action=details&admin=1",active_html.find('.content_holder'));
+	}
+	   
+	   <? if(!isset($post['bid'])){?>
+	   if(dataurl !== undefined){
+		//$('.risk_main').remove();
+		if(active_html.hasClass('riskactive')){
+		
+		}else{
+			setTimeout(function(){
+				$.ajax({url: dataurl, success: function(result){
+					//$('#'+ids+' .'+tabfullname).before(result);
+					//$('#'+ids+' .riskdivid').prepend(result);
+					active_html.find('.riskdivid').prepend(result); 
+					active_html.addClass('riskactive');
+				 }});
+			 },300);
+			
+		}
+	   }
+	  <? }?>
+	  
+	 active_html.slideDown(900); 
+	 //active_html.slideUp(100); 
+}
+ 
+var wn_force=0;
+<? if(isset($data['DBCON_DEFAULT'])) {?>
+	//wn_force=1;
+<? }?>
+ 
+function dialog_f(){
+	var email_confirm="";
+	if($('#dialog #email_confirm').is(':checked')){
+		email_confirm="&email_confirm="+$('#dialog #email_confirm').is(':checked');
+	}
+	var data_active = $('.dialog_open.active');
+	var datahref = $('.dialog_open.active').attr('data-href');
+	if(datahref !== undefined){	
+		data_active.attr('data-href',data_active.attr('data-href')+"&promptmsg="+data_active.attr('data-reason')+": "+$('#dialog #prompt_msg_input').val()+email_confirm);
+		/*
+		$('#modal_popup_popup').slideDown(900);
+		
+		$.ajax({url: data_active.attr('data-href'), success: function(result){
+			//$("#modal_popup_iframe_div").html(result);
+			$('#modal_popup_form_popup').slideUp(70);
+		}});
+		*/ 
+		if(wn==1 || wn_force==1)
+		{
+			window.open(data_active.attr('data-href'), '_blank');popupclose();return false;
+		}else{
+			$('#modal_popup_form_popup').slideUp(70);
+			newWindow=window.open(data_active.attr('data-href'), 'hform');
+		}
+		
+	}
+	
+	$("#dialog").slideUp(200);
+
+}
+ 
+function dialog_box2f(){
+	//data-amount
+	var confirm_amount="";
+	
+	var data_active = $('.dialog_refunded.active');
+	var data_amount	= data_active.attr('data-amount');
+	var datahref 	= $('.dialog_refunded.active').attr('data-href');
+	var datatype 	= $('.dialog_refunded.active').attr('data-type');
+	
+	//alert('gggg33'); prompt_msg_input_refund promptmsg
+	
+	
+	
+	if(datahref !== undefined){	
+		data_active.attr('data-href',data_active.attr('data-href')+"&promptmsg="+data_active.attr('data-reason')+": "+$('#dialog_box2 #prompt_msg_input_refund').val()+"&confirm_amount="+$('#dialog_box2 #confirm_amount').val());
+		
+		if(wn==1){
+			window.open(data_active.attr('data-href'), '_blank');popupclose();return false;
+		}
+		
+		
+		if($('.dialog_refunded.active').hasClass('new_tab')){
+			$('#modal_popup_popup').slideDown(70); 
+			newWindow=window.open(data_active.attr('data-href'), 'hform');
+			popupclose();
+			return false;
+		}
+		
+		if($('.dialog_refunded.active').hasClass('open_pop')){
+		
+		}else{
+			popuploadig();
+		}
+		
+			 
+		$("#modal_popup_iframe_div").html("<div class='loading'>Now loading url is : "+data_active.attr('data-href')+".<br/><br/>Please wait...</div>");
+		$('#modal_popup_popup').slideDown(70);
+		$.ajax({url: data_active.attr('data-href'), success: function(result){
+			
+			$("#modal_popup_iframe_div").html(result);
+			
+			if($('.dialog_refunded.active').hasClass('open_pop')){
+			
+			}else{
+				$('#modal_popup_popup').slideUp(70);
+				popupclose();
+			}
+		
+			
+			
+		}});
+		
+		//$('#modal_popup_popup').slideDown(900);	
+		
+		
+			
+		
+		
+
+	}
+	
+	//alert('666');
+	$("#dialog_box2").slideUp(200);
+	//popupclose();
+
+	
+ }
+			
+ var vc="1";
+ 
+$(document).ready(function(){
+	
+	
+	<? if(isset($_GET['cl'])){?>
+		vc="2";
+		$('#collapsible1_id').trigger('click');
+	<? }?>
+	
+	$('.topnav_tr').click(function(){
+		var collapsea_a= $(this).parent().parent().find('.collapsea.trids');
+		if(collapsea_a.hasClass('active')){
+		
+		}else{
+		 collapsea_a.trigger("click");
+		}
+	}); 
+    $('.echektran .collapsea, .atablink').click(function(){
+	   $('.addremarkform, .comtabdiv').slideUp(100);
+	   var ids = $(this).attr('data-href');
+	   var tabfullname = $(this).attr('data-tabname');
+	   var dataurl = $(this).attr('data-url');
+	   var dataturl = $(this).attr('data-turl');
+	  
+	  if(dataturl !== undefined){
+		if($('#'+ids).hasClass('turlactive')){
+		
+		}else{
+		  //alert(dataturl+"&action=details");
+		  //ajaxf2(dataturl+"&action=details",$('#'+ids+' .content_holder'));
+		  loading_url(dataturl+"&action=details&admin=1",$('#'+ids+' .content_holder'));
+		  $('#'+ids).addClass('turlactive');
+		}
+	   }
+	   
+	   <? if(!isset($post['bid'])){?>
+	   if(dataurl !== undefined){
+		//$('.risk_main').remove();
+		if($('#'+ids).hasClass('riskactive')){
+		
+		}else{
+			setTimeout(function(){
+				$.ajax({url: dataurl, success: function(result){
+					//$('#'+ids+' .'+tabfullname).before(result);
+					//$('#'+ids+' .riskdivid').prepend(result);
+					$('#'+ids+' .riskdivid').prepend(result); 
+					$('#'+ids).addClass('riskactive');
+				 }});
+			},300);
+		}
+	   }
+	  <? }?>
+	  
+	  
+	  
+		if($(this).hasClass('active')){
+			$('.collapseitem').removeClass('active');
+			$('.collapsea, .atablink').removeClass('active');
+			
+			$('#'+ids).slideUp(150);
+			$('#'+ids+' .'+tabfullname).slideUp(200);
+		} else {
+		  $('.collapseitem').removeClass('active');
+		  $('.collapsea, .atablink').removeClass('active');
+		  //$('#'+ids).addClass('active');
+		  $(this).addClass('active');
+		  
+		  $('.collapseitem').slideUp(100);
+		  $('#'+ids).slideDown(600);
+		  if(tabfullname !== undefined){
+			$('#'+ids+' .'+tabfullname).slideDown(800);
+		  }
+		}
+        
+    });
+	
+	
+	
+		
+	
+	$(".echeckid, .echeckidall").click(function(){
+		var valuesArray = $('.echeckid:checked').map(function () {  
+			return this.value;
+		}).get().join(",");
+		
+		if(valuesArray =="") {
+			$('.menuchk_div').slideUp(100);
+		}else{
+		  //$('.menuchk_div').slideDown(600);
+		  $('.menuchk_div').css('display','inline');
+		}		
+	});
+	
+	$(".actionlnk_xxx").click(function(){
+		var valuesArray = $('.echeckid:checked').map(function () {  
+			return this.value;
+		}).get().join(",");
+		
+		var sub_qr_2 =  "<?=http_build_query(@$_GET)?>";
+		
+		var subparameter2 = "<?=$data['Admins'];?>/<?=$data['trnslist'];?><?=$data['ex']?>?action="+$(this).attr('data-action')+"&trange="+valuesArray+sub_qr_2;
+		var promptTxt="";
+		if($(this).attr('data-label')==="Completed List"){
+		   promptTxt="Sent to Bank by Batch no <?=date('Ymd')?> (Check Printed)";
+		}else if($(this).attr('data-label')==="Settled List"){
+		   promptTxt="Settled by SWIFT Reference";
+		}else if($(this).attr('data-label')==="System will send reminder email to customer about the transaction"){
+		   promptTxt="Reminder Reason";
+		}else if($(this).attr('data-label')==="System will send authorization email to customer about the transaction"){
+		   promptTxt="Reason of Authorization Email ";
+		}else{
+			promptTxt="";
+		}
+		
+		var promptmsg = prompt("Are you Sure to "+$(this).attr('data-label')+"!", promptTxt);
+			if (promptmsg == null || promptmsg == "") {
+				//txt = "User cancelled the prompt.";
+				//alert($(this).attr('data-href'));
+				return false;
+			} else {
+				//txt = "Hello " + promptmsg + "! How are you today?";
+				var thisurls = subparameter2+"&promptmsg="+$(this).attr('data-reason')+": "+promptmsg;
+				
+					$('#modal_popup_form_popup').slideDown(900);
+					$.ajax({url: thisurls, success: function(result){
+						//$("#modal_popup_iframe_div").html(result);
+						$('#modal_popup_form_popup').slideUp(70);
+					}});
+				
+				//top.window.location.href=thisurls;
+				//return false;
+			}
+		
+		
+	});
+	
+	
+	$(".actionlnk").click(function(){
+		var valuesArray = $('.echeckid:checked').map(function () {  
+			return this.value;
+		}).get().join(",");
+		
+		var sub_qr_2 =  "<?=http_build_query(@$_GET)?>";
+		
+		//Creating Array to execute one by one
+		var ary=new Array();
+		ary = valuesArray.split(",");
+		var count=ary.length;
+		my_value="<center>Total Length: "+count+"</center>";
+		my_value="<br><br><center>"+$(this).val()+" Total Length: "+count+"</center>";
+		$('#modal_popup_iframe_div').html(my_value);
+		
+		var data_action=$(this).attr('data-action');
+
+		var promptTxt="";
+		
+		var datareason = $(this).attr('data-reason');
+		if(datareason !== undefined){ promptTxt=datareason; }
+		
+		var alertType="prompt";
+		var dataAlert = $(this).attr('data-alert');
+		if(dataAlert !== undefined){ alertType=dataAlert; }
+		
+		if($(this).attr('data-label')==="Completed List"){
+		   promptTxt="Sent to Bank by Batch no <?=date('Ymd')?> (Check Printed)";
+		}else if($(this).attr('data-label')==="Settled List"){
+		   promptTxt="Settled by SWIFT Reference";
+		}else if($(this).attr('data-label')==="System will send reminder email to customer about the transaction"){
+		   promptTxt="Reminder Reason";
+		}else if($(this).attr('data-label')==="System will send authorization email to customer about the transaction"){
+		   promptTxt="Reason of Authorization Email ";
+		}else{
+			//promptTxt="";
+		}
+		
+		if(alertType==="confirm"){
+			var promptmsg = confirm("Are you Sure to "+$(this).attr('data-label')+"!");
+		} else {
+			var promptmsg = prompt("Are you Sure to "+$(this).attr('data-label')+"!", promptTxt);
+		}
+		
+			if (promptmsg == null || promptmsg == "") {
+				//txt = "User cancelled the prompt.";
+				//alert($(this).attr('data-href'));
+				return false;
+			} else {
+				//txt = "Hello " + promptmsg + "! How are you today?";
+				var thisurl = "&promptmsg="+$(this).attr('data-reason')+": "+promptmsg;
+					$('#modal_popup_popup').slideDown(900);
+					popuploadig();
+				var i=0;
+				
+				if(count>0){
+									
+				function f() {
+					c=i+1;
+					//alert("ary=>"+ary[i]+", i=>"+i+", c=>"+c);
+					if(data_action==='sendtobank' || data_action==='utrnstatus'){
+						var subparameter2 = "<?=$data['Host'];?>/nodal/"+data_action+"<?=$data['ex']?>?action="+data_action+"&transID="+ary[i]+"&admin=1&actionurl=admin_direct&"+sub_qr_2;
+					}else{
+						var subparameter2 = "<?=$data['Admins'];?>/<?=$data['trnslist'];?><?=$data['ex']?>?action="+data_action+"&trange="+ary[i]+"&"+sub_qr_2;
+					}
+					
+					thisurls=subparameter2+thisurl;
+					
+					
+					
+					response="<center><br>In Process... "+c+"<br><br><b>Do not close the window. Please wait...</b></center><br>";
+					if (c==count){response="<center><br>All Process completed.<BR><BR>You may close the Window.</center>";}
+					
+					if(wn){
+						popupclose();window.open(thisurls, '_blank');return false;
+					}
+					
+					$.ajax({url: thisurls, success: function(result){
+						//alert(thisurls);
+						results="<center><br>Result=> <b>"+result+"</b><br></center><br>";
+						$('#modal_popup_iframe_div').html(my_value+response+results);
+						if( i < count ){setTimeout( f, 2000 );}
+						
+						if (c==count){
+							setTimeout(function(){
+								$('#modal_popup_popup').slideUp(70);
+								popupclose();
+							 }, 3000 );
+						}
+						
+					}});
+					
+					i++;
+					
+				}// End Fnction F
+
+				
+				f();
+				
+				}
+			}
+	});
+	
+	
+	$('.transactions .search_textbxXXX').on('keyup',function(event){
+	  if(event.keyCode == 13){
+	   var keyname = $('#search_keyname').val();
+		//alert(subparameter4);
+		if(keyname==="9"){
+			top.window.location.href="<?=$data['Admins']?>/<?=$data['MER']?><?=$data['ex']?>?action=detail&type=active&id="+$(this).val(); // +"&type=-1&status=-1";
+		}else if(keyname==="10"){
+			top.window.location.href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?action=select&status=-1&type=-1&bid="+$(this).val(); // +"&type=-1&status=-1";
+		}else{
+			top.window.location.href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?"+"action=select&keyname="+keyname+"&searchkey="+$(this).val()+subparameter4; // +"&type=-1&status=-1";
+		}
+		$(this).click();
+	  }
+	});
+	
+	$(".viewthistrans").click(function(){
+		var thisText = $(this).text().replace("R","");
+		top.window.location.href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?"+"action=select&keyname=17&searchkey="+thisText+"&type=-1&status=-1";//+subparameter4;
+	});
+	
+	$('.add_remark_submit').click(function(){
+		$('#modal_popup_popup').slideDown(900);
+	});
+	
+	$('.ip_view').each(function(){	
+		$(this).replaceWith($('<a class="ip_viewa" target="geojson" href="http://www.geoplugin.net/json.gp?jsoncallback=' + $.trim($(this).text()) + '">' + $.trim($(this).text()) + '</a>'));
+	});
+	
+	$('.ip_view1').click(function(){	
+		var subqry=$.trim($(this).text());
+		//var urls="http://www.geoplugin.net/json.gp?bill_ip="+subqry;
+		var urls="http://www.geoplugin.net/json.gp?jsoncallback="+subqry;
+		$("#modal_popup_iframe_div").html("<div class='loading'>Now loading url is : "+urls+".<br/><br/>Please wait...</div>");
+		
+		$("#modal_popup_iframe_div").html('<iframe src='+urls+' width="100%" height="350" scrolling="no" frameborder="0" marginwidth="0" marginheight="0" style="width:98%!important;height:350px!important;display:block;margin:20px auto;" ></iframe>');
+		/*
+		$.ajax({type:"GET",async:false,url:urls,dataType:'jsonp', success: function(result){
+			$("#modal_popup_iframe_div").html(result);
+		}});
+		*/
+		$('#popup').slideDown(900);
+    });
+	
+	$('.dialog_open').click(function() {
+		var prompt_msg_value="";
+		var datavalue = $(this).attr('data-value');
+		if(datavalue !== undefined){
+			prompt_msg_value=datavalue;
+		}
+		$('#dialog #prompt_msg_input').val(prompt_msg_value);
+		$('#dialog #email_confirm').prop('checked', true);
+		
+		
+		$('.dialog_open').removeClass('active');
+		$("#dialog").removeClass('active');
+		$(this).addClass('active');
+		$("#dialog").addClass('active');
+		$("#dialog").slideDown(700);
+		var datalabel = $(this).attr('data-label');
+		if(datalabel !== undefined){
+			$("#dialog #ui_id_1").html(datalabel);
+		}
+	});
+	
+	$('#dialog #prompt_msg_input').on('keyup',function(event){
+		if(event.keyCode == 13){
+			dialog_f();
+			$(this).click();
+		}
+	});
+	
+	$('#dialog #email_confirm_submit').click(function() {
+		dialog_f();
+	});
+	
+	$('#dialog .email_confirm_close').click(function() {
+		$("#dialog").removeClass('active');
+		$('.dialog_open').removeClass('active');
+		$("#dialog").slideUp(200);
+	});
+	
+	
+	
+	
+	$('.dialog_refunded').click(function() {
+		//alert('gggg00');
+		$('#dialog_box2 #prompt_msg_input').val('');
+		
+		$('.dialog_refunded').removeClass('active');
+		$("#dialog_box2").removeClass('active');
+		$(this).addClass('active');
+		$("#dialog_box2").addClass('active');
+		$("#dialog_box2").slideDown(700);
+		var datalabel = $(this).attr('data-label');
+		
+		var data_active = $('.dialog_refunded.active');
+		var data_amount	= data_active.attr('data-amount');
+		var datarefund = $(this).attr('data-refund');
+		
+		
+		$('#dialog_box2 #confirm_amount').val(data_amount);
+		$('#dialog_box2 #order_amount').html(data_amount);
+	
+		if(datalabel !== undefined){
+			$("#dialog_box2 #ui_id_1").html(datalabel);
+		}
+		if(datarefund !== undefined && datarefund){
+			$("#refund_req_id").html('');			
+		}
+		else
+		{
+			if($(this).hasClass('withdraw')||$(this).hasClass('type_2')||$(this).hasClass('type_3')){
+				
+			}else{
+
+				$("#refund_req_id").html('Refund for this acquirer is not available. Do you want to proceed manual');
+				$("#confirm_amount").hide();
+				$("#prompt_msg_input_refund").hide();
+			}
+		}
+	});
+	$('#dialog_box2 #prompt_msg_input').on('keyup',function(event){
+		//alert('gggg11');
+		if(event.keyCode == 13){
+			//alert('gggg22');
+			dialog_box2f();
+			$(this).click();
+		}
+	});
+	$('#dialog_box2 #confirm_amount_submit').click(function() {
+		dialog_box2f();
+	});
+	$('.dialog_box2').click(function() {
+		$("#dialog_box2").removeClass('active');
+		$('.dialog_refunded').removeClass('active');
+		$("#dialog_box2").slideUp(200);
+	});
+	
+	$('#dialog_box2 #confirm_amount').on('keyup',function(event){
+		var order_amt=parseFloat($('#dialog_box2 #order_amount').text());
+		if ($(this).val() > order_amt){
+			alert("Please enter the amount less than or equal to "+order_amt);
+			$(this).val(order_amt);
+		}
+		if ($(this).val() < 0){
+			alert("Can not enter the amount not less than 0");
+			$(this).val(order_amt);
+		}
+	});
+
+
+		
+	
+	
+	
+});
+
+var wn="";
+
+function check_statusf(e,statusUrl='') {
+	var transID=$(e).attr('data-transID');
+	var acctype=$(e).attr('data-type');
+	
+	if(wn==1){
+		popupclose();nw(statusUrl); return false;
+	}
+	
+	$("#modal_popup_iframe_div").html("<div class='loading'>Now loading url is : "+statusUrl+" <br/><br/>Please wait...</div>");
+	
+	$.ajax({url: statusUrl, success: function(result){
+		$("#modal_popup_iframe_div").html(result);
+	}});
+	
+	$('#modal_popup_popup').slideDown(900);	
+	
+	
+}
+
+function checkwithdrawMin(e)
+{
+	var payout_amount = parseFloat($('.formDiv #payout_amount').val());
+	var withdrawMin = parseFloat($('.formDiv #withdrawMin').val());
+	var network_fee = parseFloat($('.formDiv #network_fee').val());
+	
+	
+	
+	if(payout_amount<withdrawMin && withdrawMin>0)
+	{
+		alert("Minimum Payout Amount is : "+withdrawMin);
+		return false;
+	}
+	else if(payout_amount<network_fee && network_fee>0)
+	{
+		alert("Payout Amount should be more than Network Fee ("+parseFloat(network_fee).toFixed(2)+")");
+		return false;
+	}
+	else
+		document.getElementById('modal_popup_form').style.display='none';
+	
+	
+	document.getElementById('modal_popup_popup').style.display='block';
+	
+	e.preventDefault();
+	//return true;
+}
+
+
+function hkipstatus(e,theValue='') {
+	
+	var mhoids=$(e).attr('data-mhoid');
+	var acctype=$(e).attr('data-type');
+	var dataaction=$(e).attr('data-action');
+	 //alert(mhoids);
+	var site_id=mhoids.split("_");
+	 site_id=site_id[4];
+	//alert(site_id);
+	
+	
+	var actionurl = "by_admin";
+	if(dataaction !== undefined){
+		actionurl = dataaction;
+	}
+	
+	
+	var subqry="?mh_oid="+mhoids+"&actionurl="+actionurl+"&type="+acctype;
+	
+	//subqry="";
+	var urls="";
+	if(acctype==22||acctype==21){
+		urls="<?php echo $data['Host'];?>/update_status<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==26||acctype==27||acctype==28){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		urls="<?php echo $data['Host'];?>/status<?=@$data['ex']?>"+subqry;
+		
+		//window.open(urls, '_blank');
+	}
+	else if(acctype==14||acctype==15||acctype==16){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		urls="<?=$data['Host'];?>/api/pay15/status_15<?=@$data['ex']?>"+subqry;
+		
+		//window.open(urls, '_blank');
+	}
+	else if(acctype==24){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		urls="<?php echo $data['Host'];?>/update_status24<?=@$data['ex']?>"+subqry;
+	}else if(acctype==9||acctype==10||acctype==11){
+		urls="<?php echo $data['Host'];?>/include/update_status_ch<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==999929){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1&limit1=1&pop=2";
+		popuploadig();
+		urls="<?php echo $data['Host'];?>/api/3d29/processed_list<?=@$data['ex']?>"+subqry;
+		popupclose();
+		window.open(urls, '_blank');
+		return false;
+	}else if(acctype==29){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1&limit1=1&pop=2";
+		urls="<?php echo $data['Host'];?>/api/3d29/processed_list<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==30){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay30/processed<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==31||acctype==32){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/3d31/processed4<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==34||acctype==341||acctype==342){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/34/processed_url<?=@$data['ex']?>"+subqry;
+	}
+	else if((acctype==35)||(acctype>350&&acctype<375)){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay35/processed<?=@$data['ex']?>"+subqry;
+	}
+	else if((acctype==43)){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay43/status<?=@$data['ex']?>"+subqry;
+	}else if((acctype==44)){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay44/status<?=@$data['ex']?>"+subqry;
+	}else if((acctype==46)){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		
+		urls="<?php echo $data['Host'];?>/api/pay46/status46<?=@$data['ex']?>"+subqry;
+	}else if((acctype==48)){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay48/status_48<?=@$data['ex']?>"+subqry;
+	}else if((acctype==52)||(acctype>520&&acctype<590)){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/3d52/processed<?=@$data['ex']?>"+subqry;
+	}
+	else if((acctype==60)){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay60/status<?=@$data['ex']?>"+subqry;
+	}else if((acctype==601 || acctype==602|| acctype==603|| acctype==604)){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay60/status601<?=@$data['ex']?>"+subqry;
+	}
+	else if((acctype==61)||(acctype>610&&acctype<690)){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay61/status<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==37){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pro37/processed<?=@$data['ex']?>"+subqry;
+	}
+	else if((acctype==38)||(acctype>380&&acctype<410)){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/proc38/processed<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==18){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay18/processed<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==42){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay42/processed<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==19){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pay19/processed<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==343){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/pro343/processed<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype==17||acctype==171){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/api/cont17/processed<?=@$data['ex']?>"+subqry;
+	}
+	else if(acctype>=1113){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		
+		urls="<?php echo $data['Host'];?>/nodal/n"+acctype+"/status_"+acctype+"<?=$data['ex']?>"+subqry;
+	}
+	else if(acctype==2){
+		subqry="?transID="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		if(theValue=='binance'){
+			urls="<?php echo $data['Host'];?>/nodal/binance_status<?=@$data['ex']?>"+subqry;
+		}else{
+			urls="<?php echo $data['Host'];?>/nodal/utrnstatus<?=@$data['ex']?>"+subqry;
+		}
+	}else{
+		subqry="?transID="+mhoids+"&transIDi="+mhoids+"&actionurl="+actionurl+"&type="+acctype+"&admin=1";
+		if(acctype==345 || acctype==346 || acctype==347){
+			acctype=34;
+		}
+		urls="<?=$data['Host'];?>/payin/pay"+acctype+"/status_"+acctype+"<?=$data['ex']?>"+subqry;
+		
+		//window.open(urls, '_blank');
+	}
+	
+	
+	
+	//alert(urls); return false;
+	//window.open(urls, '_blank');
+	if(wn==1){
+		window.open(urls, '_blank');popupclose(); return false;
+	}
+	
+	//$("#modal_popup_iframe_div").html("<div class='loading'>Now loading url is : "+urls+" <br/><br/>Please wait...</div>");
+	
+	$.ajax({url: urls, success: function(result){
+		//$("#modal_popup_iframe_div").html(result);
+		$('#myModal .modal-body').html(result);
+		$('#myModal .modal-body').addClass("text-break");
+		$('#myModal .modal-dialog').css({"max-width":"90%"});
+		$('#myModal .modal-title').html("");
+		$('#myModal').modal('show');
+	}});
+	
+	//$('#modal_popup_popup').slideDown(900);	
+
+}
+
+/////////////// post_Withdraw - start (Function for send request as per MID - 
+
+function post_Withdraw(e,theValue='') {
+	//alert("post_Withdraw : theValue=>"+theValue);
+	var transID=$(e).attr('data-transid');
+	var payout_id=$(e).attr('data-payout_id');
+	var dataaction=$(e).attr('data-action');
+	
+	var actionurl = "by_admin";
+	if(dataaction !== undefined){
+		actionurl = dataaction;
+	}
+
+	var subqry="?transID="+transID+"&admin=1&actionurl="+actionurl+"&payout_id="+payout_id;
+
+	var urls="";
+
+	//subqry="?actionurl="+actionurl+"&payout_id="+payout_id+"&admin=1";
+
+	if(theValue.length>0) subqry=subqry+'&method='+theValue;
+
+	urls="<?=$data['Host'];?>/nodal/n"+payout_id+"/payment_"+payout_id+"<?=$data['ex']?>"+subqry;
+
+
+	if(wn==1){
+		window.open(urls, '_blank');popupclose(); return false;
+	}
+	
+	$.ajax({url: urls, success: function(result){
+		$('#myModal .modal-body').html(result);
+		$('#myModal .modal-body').addClass("text-break");
+		$('#myModal .modal-dialog').css({"max-width":"90%"});
+		$('#myModal .modal-title').html("");
+		$('#myModal').modal('show');
+	}});
+}
+//////////////post_Withdraw - end
+
+function confirm2(e) {
+	//alert($(e).attr('data-href')+"\r\n"+top.window.location.href);
+    var txt;
+	var promptvar = $(e).attr('data-prompt');
+	
+	var promptTxt = $(e).attr('data-reason');
+	 
+	if(promptvar !== undefined){
+		var promptmsg = "noprompt";
+	 }else{
+	 //Are you Sure to
+	    var promptmsg = prompt(" "+$(e).attr('data-label')+"!", promptTxt);
+	}
+    if (promptmsg == null || promptmsg == "") {
+        //txt = "User cancelled the prompt.";
+		//alert($(e).attr('data-href'));
+		return false;
+    } else {
+        //txt = "Hello " + promptmsg + "! How are you today?";
+		if(promptmsg=="noprompt"){
+			
+		}else{
+			$(e).attr('data-href',$(e).attr('data-href')+"&promptmsg="+promptmsg);
+		}
+		//alert($(e).attr('data-href'));
+		
+		if(wn==1){
+			window.open($(e).attr('data-href'), '_blank');popupclose(); return false;
+		}
+		
+		if($(e).hasClass('ajxstatus')){
+			  $('#modal_popup_form_popup').slideDown(900);
+				$.ajax({url: $(e).attr('data-href'), success: function(result){
+					//$("#modal_popup_iframe_div").html(result);
+					$('#modal_popup_form_popup').slideUp(70);
+					activeslide();
+				}});
+		}else{
+			top.window.location.href=$(e).attr('data-href');
+		}
+		//return false;
+    }
+   // document.getElementById("demo").innerHTML = txt;
+   
+}
+function supportNoteCon(e) {
+    var retVal = confirm("This will be visible to Merchant");
+    if (retVal) {
+       // alert("Do you want Support Note ?");
+        return true;
+    } else {
+        $(e).prop('checked',false);
+		$(e).parent().find('.systemNote').prop('checked',true);
+        return false;
+    }
+}
+
+function view_calc1(e) {
+    <? if(!isset($_GET['cl'])){?>
+		if(vc=="1"){
+			vc=2;
+			$('#collapsible1_id').trigger('click');
+			window.location.href=window.location.href+'&cl=1';
+			popuploadig();
+		}
+	<? }?>
+}
+function view_calc(e) {
+    
+	if(vc=="1"){
+		vc=2;
+		popuploadig();
+		
+	var thisUrls1='<?=$cl=str_replace("/{$data['trnslist']}","/transaction_list_calc","{$data['urlpath']}");?>';
+
+		$.ajax({url: thisUrls1, success: function(result){
+			$(".tr_cal_id").html(result);
+			popupclose();
+		}});
+
+		
+	}
+	
+}
+</script>
+<div class="container border bg-primary my-1 rounded" >
+<?  if(isset($_SESSION['action_success'])&&$_SESSION['action_success']) { ?>
+<div class="alert alert-success alert-dismissible fade show my-2" role="alert"> <strong>Success !</strong>
+  <?=prntext($_SESSION['action_success']);?>
+  .
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<? unset($_SESSION['action_success']); } ?>
+<div class="table-responsive-sm00 vkg">
+  <? if($post['ViewMode']=='select'){ ?>
+  <div id="dialog" class="hide prompt_dialog">
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" style="height:24px;line-height:24px;"><span id="ui_id_1" class="ui-dialog-title ms-2" style="color: #0071bc;margin: 0px 0 0;font-size: 14px !important;">Submit</span><a class="ui-dialog-titlebar-close ui-corner-all email_confirm_close" role="button" style="float:right;"><span class="ui-icon ui-icon-closethick mx-3"><i class="<?=$data['fwicon']['circle-cross'];?>"></i></span></a></div>
+    <div  class="mx-2">
+      <input type="text" value="" name="prompt_msg_input" id="prompt_msg_input" class="form-control  my-2" style="min-width:275px!important;" />
+      <input type="checkbox" id="email_confirm" name="email_confirm" value="Yes" class="r2 form-check-input mb-2" />
+      <label class="l2" for="email_confirm"> Email</label>
+      <div class="ui-dialog-buttonset">
+        <button id="email_confirm_submit" type="submit" name="cardsend" value="CHECKOUT" class="submit btn btn-icon btn-primary btn-sm" ><i class="<?=$data['fwicon']['check-circle'];?>"></i><b class="contitxt"> Submit</b></button>
+        <button type="submit" name="cardsend" value="CHECKOUT" class="email_confirm_close btn btn-icon btn-primary btn-sm" ><i class="<?=$data['fwicon']['circle-cross'];?>"></i><b class="contitxt"> Cancel</b></button>
+      </div>
+    </div>
+  </div>
+  <div id="dialog_box2" class="hide prompt_dialog" style="height:210px;margin: -95px 0 0 -150px;">
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" ><span id="ui_id_1" class="ui-dialog-title ms-2" style="color: #0071bc;margin: 0px 0 0;font-size: 14px !important;">Refunded</span><a class="ui-dialog-titlebar-close ui-corner-all dialog_box2" role="button" style="float:right;"><span class="ui-icon ui-icon-closethick mx-3" ><i class="<?=$data['fwicon']['circle-cross'];?>"></i></span></a></div>
+    <div  class="mx-2"> Order Amount : <b id="order_amount">0.00</b>
+      <input type="text" id="confirm_amount" name="confirm_amount" value="" class="form-control mt-2" style="min-width:275px!important;" placeholder="Enter Partial Refund" />
+      <input type="text" value="" class="form-control mt-2" name="prompt_msg_input" id="prompt_msg_input_refund" style="min-width:275px!important;" placeholder="Enter Comment" />
+      <div id="refund_req_id"></div>
+      <div class="ui-dialog-buttonset my-2" >
+        <button id="confirm_amount_submit" type="submit" name="cardsend" value="CHECKOUT" class="submit btn btn-icon btn-primary btn-sm" ><i class="<?=$data['fwicon']['check-circle'];?>"></i><b class="contitxt"> Submit</b></button>
+        <button type="submit" name="cardsend" value="CHECKOUT" class="dialog_box2 btn btn-icon btn-primary btn-sm" ><i class="<?=$data['fwicon']['circle-cross'];?>"></i><b class="contitxt"> Cancel</b></button>
+      </div>
+    </div>
+  </div>
+  <table class="frame echektran" >
+    <tr>
+      <td class="row" style="position:relative;" ><div class="container col-sm-12 text-start my-2" >
+          <!--style="width:82vw;"-->
+          <div class="float-start">
+            <form method="post" name="displayOption" id="displayOption" style="margin:0; padding:0;" action="<?=$data['trnslist'];?><?=$data['ex'];?>" >
+              <input type="hidden" name="action" value="transaction_display"  />
+              <input type="hidden" name="rurl" value='<?=$data['urlpath'];?>'  />
+              <div class="" style="margin-top: -2px;">
+                <? if(isset($post['status']) && $post['status']<0){?>
+                <span  class="text-warning">All Transactions</span>
+                <? }else{?>
+                <span  class="text-warning">
+                <?=ucwords($data['TransactionStatus'][$post['status']])?>
+                </span>
+                <? } ?>
+                <? if($data['tr_count']>0){?>
+                :
+                <?=@$data['result_count'];?>
+                of
+                <?=@$data['tr_count'];?>
+                <? } ?>
+                <a title="Transaction Display Option" data-bs-toggle="tooltip" data-bs-placement="right" class="btn btn-primary btn-sm" onClick="view_next3(this,'')"><i class="<?=$data['fwicon']['transaction-display-option'];?>"></i></a>
+                <? //$_SESSION['transaction_display'];?>
+                <? //print_r($_SESSION['transaction_display_arr']);?>
+                <?
+$a1=array_keys($data['trnslist_listorder']);
+$a2=$_SESSION['transaction_display_arr'];
+
+if(empty($_SESSION['transaction_display_arr'])){
+$other_trnslist_listorder=$a1;
+}else{
+$other_trnslist_listorder=array_diff($a1,$a2);
+}
+
+?>
+                <div id="transaction_display_divid" class="hide" style="float:right;right:0;">
+                  <select id="transaction_display" data-placeholder="Transaction Display Option" title="Transaction Display Option" multiple class="chosen-select chosen-rtl1 form-select" name="transaction_display[]">
+                    <? 
+		
+		foreach($_SESSION['transaction_display_arr'] as $val){ ?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION["tr_{$val}"])&&$_SESSION["tr_{$val}"]==1)){?>
+                    <option value="<?=$val;?>" data-placeholder="<?=$val;?>" title="<?=$data['trnslist_listorder'][$val];?>"><?=$data['trnslist_listorder'][$val];?></option>
+                    <? } ?>
+                    <? } ?>
+                    <? foreach($other_trnslist_listorder as $val){ ?>
+                    <option value="<?=$val;?>" data-placeholder="<?=$val;?>" title="<?=$data['trnslist_listorder'][$val];?>"><?=$data['trnslist_listorder'][$val];?></option>
+                    <? } ?>
+                  </select>
+                  <script>
+					$("#transaction_display").val([<?=($_SESSION['transaction_display']);?>]).trigger("change"); 
+					$("#transaction_display").trigger("chosen:updated");
+				  </script>
+                  
+                  <button class="input_s btn btn-primary btn-sm search multch select my-2" type="button" id="display_select_all" name="select_all" value="Select All" title="Select All" data-bs-toggle="tooltip" data-bs-placement="top"><i class="<?=$data['fwicon']['square-plus'];?>" ></i></button>
+                  <button class="input_s btn btn-primary btn-sm search multch deselect my-2" type="button" id="display_deselect_all" name="deselect_all" value="Deselect All" title="Deselect All" data-bs-toggle="tooltip" data-bs-placement="top"><i class="<?=$data['fwicon']['square-minus'];?>" ></i></button>
+                  <button class="btn btn-primary btn-sm search my-2" type="button" id="update_selected_chosen" title="Update" data-bs-toggle="tooltip" data-bs-placement="top"><i class="<?=$data['fwicon']['submit'];?>" ></i></button>
+				  
+				  <button class="input_s btn btn-primary btn-sm search multch select my-2" type="button" id="reset_sorting" name="reset_sorting" value="Reset Sorting" title="Reset Sorting" data-bs-toggle="tooltip" data-bs-placement="top"><i class="fa-solid fa-circle-half-stroke fa-fw" onclick="javascript:window.sessionStorage.setItem('tableorder','{}');reset_sortingf();" ></i></button>
+				  
+<script>
+$('.multch').each(function(index) {
+//console.log(index);
+	$(this).on('click', function(){
+		//console.log($(this).parent().find('option').text());
+		$(this).parent().find('option').prop('selected', $(this).hasClass('select')).parent().trigger('chosen:updated');
+	});
+});
+</script>
+</div>
+                <!--Button for Download Filter Transaction in CSV Format-->
+                <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_action_checkbox_csv'])&&$_SESSION['transaction_action_checkbox_csv']==1)||(isset($_SESSION['csv_multiple_merchant'])&&$_SESSION['csv_multiple_merchant']==1)){?>
+                <? 
+		if(isset($_REQUEST['date_1st'])&&$_REQUEST['date_1st']&&isset($_REQUEST['date_2nd'])&&$_REQUEST['date_2nd'])
+		{?>
+                <button type="button"  data-bs-toggle="modal" data-bs-target="#myModa30" name="downloadcvs" value="filterTrCSV" class="btn btn-icon btn-primary btn-sm " style="" title="Download Transaction in CSV Format" ><i class="<?=$data['fwicon']['download'];?>" title="Download Transaction in CSV Format" data-bs-toggle="tooltip" data-bs-placement="right"></i></button>
+                <? }?>
+                <? }?>
+              </div>
+              <!--</div>-->
+            </form>
+          </div>
+          <div class="rowd1 float-start" style="margin-top: -10px !important;margin-left: 0.25rem!important;">
+            <?php /*?><? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_action_checkbox_csv'])&&$_SESSION['transaction_action_checkbox_csv']==1)||(isset($_SESSION['csv_multiple_merchant'])&&$_SESSION['csv_multiple_merchant']==1)){?>
+                    <? 
+		if(isset($_REQUEST['date_1st'])&&$_REQUEST['date_1st']&&isset($_REQUEST['date_2nd'])&&$_REQUEST['date_2nd'])
+		{?>
+                    <button type="button"  data-bs-toggle="modal" data-bs-target="#myModa30" name="downloadcvs" value="filterTrCSV" class="btn btn-icon btn-primary btn-sm  mx-1 " style="" title="Download Transaction in CSV Format"><i class="<?=$data['fwicon']['download'];?>"></i></button>
+                    <? }?>
+                    <? }?><?php */?>
+            <? if(isset($post['MemberInfo']) && $post['MemberInfo']){?>
+            <label class="lbl-toggle btn btn-primary  btn-sm" id="collapsible3" onClick="vnext(this,'#collapsible3_content_html');<? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_calculation_details'])&&$_SESSION['t_calculation_details']==1)){?>ajaxf1(this,'<?=$cl=str_replace("/{$data['trnslist']}",'/trans_list_calc_new',$data['urlpath']);?>','#tr_cal_id3',false);<? }?>"><i class="<?=$data['fwicon']['calculator'];?> me-1" title="Calculations" data-bs-toggle="tooltip" data-bs-placement="top"></i></label>
+            <?php 
+if((isset($_SESSION['login_adm']))||((isset($_SESSION['transaction_payout_manual'])&&$_SESSION['transaction_payout_manual']==1)||(isset($_SESSION['transaction_payout'])&&$_SESSION['transaction_payout']==1))){
+	/*
+?>
+            <label id="collapsible2" class="lbl-toggle btn btn-primary btn-sm" onClick="ajaxf1(this,'','#collapsible2_html')" title="Payout Filter Date Wise" data-bs-toggle="tooltip" data-bs-placement="top"><i class="<?=$data['fwicon']['money-check-dollar'];?>"></i> </label>
+            <? */} ?>
+            <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['check_missing_calc'])&&$_SESSION['check_missing_calc']==1)){?>
+            <a href="<?=$data['Host']?>/include/check_missing_calc<?=@$data['ex']?>?bid=<?=$post['bid'];?>" target="_blank" value="Check Missing Calculations" class="downloadcvs btn btn-primary btn-sm" style="display:inline-block;" title="Check Missing Calculations" data-bs-toggle="tooltip" data-bs-placement="top"><i class="<?=$data['fwicon']['search'];?>"></i></a>
+            <? } ?>
+            <?  if((isset($_SESSION['login_adm']))||(isset($_SESSION['merchant_action_login'])&&$_SESSION['merchant_action_login']==1)){?>
+            <form method="post" target="_blank" action="<?=$data['Host'];?>/admin-merchant/login<?=@$data['ex']?>" style="padding: 0;margin: 0;display: inline-block;">
+              <input type="hidden" name="bid" value="<?=$_GET['bid'];?>" />
+              <button type="submit" name="login" value="login" class="sub_logins11 btn btn-primary btn-sm my-2" title="Login" data-bs-toggle="tooltip" data-bs-placement="top" />
+              <i class="<?=$data['fwicon']['login'];?> fa-fw"></i>
+              </button>
+            </form>
+            <? } ?>
+            <? } ?>
+            <span class="menuchk_div hide">
+            <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_action_checkbox_csv'])&&$_SESSION['transaction_action_checkbox_csv']==1)){?>
+            <? if($post['acquirer']>8 && $post['acquirer']<12){?>
+            <button type="button" name="downloadcvs" value="Download CSV" class="downloadcvs btn btn-icon btn-primary btn-sm" style="display:inline-block;"><i class="<?=$data['fwicon']['circle-down'];?>"></i> CSV</button>
+            <? }?>
+            <? }?>
+            <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_action_checkbox_completed'])&&$_SESSION['transaction_action_checkbox_completed']==1)){?>
+            <? if(@$_REQUEST['status']!=13){?>
+            <? /*?><button type="button" name="COMPLETEDALL" value="COMPLETED ALL"  data-action="completedall" data-label="Completed List" data-reason="" class="completedall actionlnk btn btn-icon btn-primary my-2 me-0" style="display:inline-block;"><i class="<?=$data['fwicon']['check-circle'];?>"></i> Completed</button> <? */ ?>
+            <? }}?>
+            <? if(@$_REQUEST['status']!=13){?>
+            <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_action_checkbox_reminder'])&&$_SESSION['transaction_action_checkbox_reminder']==1)){?>
+            <span >
+            <button type="button" name="REMINDERSALL" value="REMINDERS ALL" data-action="reminders_range" data-label="System will send reminder email to customer about the transaction" data-reason="Reminder Reason" class=" remindersall actionlnk btn btn-icon btn-primary btn-sm my-2" style="display:inline-block;"><i class="<?=$data['fwicon']['share'];?>"></i> Reminders</button>
+            </span>
+            <? }?>
+            <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_action_checkbox_surprise'])&&$_SESSION['transaction_action_checkbox_surprise']==1)){?>
+            <span >
+            <button type="button" name="AUTHORIZATIONALL" value="AUTHORIZATION ALL" data-action="authorization_range" data-label="System will send authorization email to customer about the transaction" data-reason="Reason of Authorization Email " class=" authorizationall actionlnk btn btn-icon btn-primary btn-sm my-2" style="display:inline-block;"><i class="<?=$data['fwicon']['share'];?>"></i> Surprise</button>
+            </span>
+            <? }?>
+            <? }?>
+            <? if($data['con_name']=='clk'){?>
+            <span >
+            <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_action_checkbox_settled'])&&$_SESSION['transaction_action_checkbox_settled']==1)){?>
+            <?/*?>
+		 <button type="button" name="SELLTEDAll" value="SELLTED ALL" data-action="selltedall" data-label="Settled List" data-reason="Settled by SWIFT Reference" class="returnedall actionlnk btn btn-icon btn-primary btn-sm" style="display:inline-block;"><i class="<?=$data['fwicon']['dollar-sign'];?>"></i>Sellted</button>
+		 <?*/?>
+            <? if(@$_REQUEST['status']==13){?>
+            <button type="button" name="SendtoNodalBank" value="SendtoNodalBank" data-action="sendtobank" data-label="Send to Bank" data-alert="confirm"  data-reason="Settled by SWIFT Reference" class="returnedall actionlnk btn btn-icon btn-primary btn-sm" style="display:inline-block;"><i class="<?=$data['fwicon']['bank'];?>"></i>Send to Bank</button>
+            <? }?>
+            <? }?>
+            <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_action_checkbox_utrn_status'])&&$_SESSION['transaction_action_checkbox_utrn_status']==1)){?>
+            <button type="button" name="UTRNStatus" value="UTRN Status" data-action="utrnstatus" data-label="UTRN Status" data-alert="confirm" data-reason="UTRN Status" class="returnedall actionlnk btn btn-icon btn-primary my-2 btn-sm" style="display:inline-block;"><i class="<?=$data['fwicon']['circle-info'];?>"></i>UTRN Status</button>
+            <? }?>
+            </span>
+            <? }?>
+            </span> </div>
+          <?//link end  ?>
+          <div class="row w-100"> <span class="mywrap-collabsible tog1" >
+            <? 
+			//if(isset($post['MemberInfo']) && $post['MemberInfo'] && $post['MemberInfo']['settlement_optimizer']=='weekly')
+			if(isset($post['MemberInfo']) && $post['MemberInfo'])
+			{?>
+            <div id="collapsible3_content_html" class="collapsible-content border bg-light rounded text-start hide" style="float:left;width:100%;overflow:inherit;max-height:inherit;display1:none;">
+              <div id="collapsible3_html" class="content-inner" style="height:auto;float:left;width:97.6%;display:block;">
+                <!-- start Content-->
+                <div class="m-2"> <b style="margin:0 0 0 0px;"><i><?=label_namef($post['MemberInfo']['settlement_optimizer']);?></i> Transaction For Account:</b> <a <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['merchant_action_view'])&&$_SESSION['merchant_action_view']==1)){?> href="<?=$data['Admins']?>/<?=$data['MER']?><?=$data['ex']?>?id=<?=$post['MemberInfo']['id']?>&action=detail" <? }?> >
+                  <?=@$post['MemberInfo']['username']?>
+                  |
+                  <?=@$post['MemberInfo']['available_balance']?>
+				   
+                  |
+                  <? if(isset($post['mfee'])) echo $post['mfee']?>
+                  | <b>
+                  <?=@$post['MemberInfo']['available_balance']-@$post['mfee']?>
+                  </b></a> | </div>
+                <br>
+                <!-- end Content-->
+                <div id="tr_cal_id3" class="tr_cal_id3 w-100 ps-4 hide" style="display:block !important;"> <img class="loading_img" src="<?=$data['Host'];?>/images/icons/ajax-loader.gif" style="display:none;margin:5px auto 15px auto;height:25px;"> </div>
+              </div>
+            </div>
+            <?php 
+if((isset($_SESSION['login_adm']))||((isset($_SESSION['transaction_payout_manual'])&&$_SESSION['transaction_payout_manual']==1)||(isset($_SESSION['transaction_payout'])&&$_SESSION['transaction_payout']==1))){
+?>
+            <div class="collapsible-content">
+              <div id="collapsible2_html" class="content-inner border bg-light p-2 hide" style=" display1:none;height:inherit;min-height:70px;float:left;width:100%;margin:4px 0 0 0;border-radius:8px;">
+                <?
+if(!empty($_GET['pfdate'])){
+	$pfdate  = date('Y-m-d',strtotime($_GET['pfdate']));
+}else{ 
+	 $pfdate = date("Y-m-d",strtotime("-36 day",strtotime(date("Y-m-01",strtotime("now") ) )));
+}
+
+if(!empty($_GET['ptdate'])){
+	$ptdate  = date('Y-m-d',strtotime($_GET['ptdate']));
+	if(isset($payoutdays)&&$payoutdays){
+		$fpdate = date("Y-m-d",strtotime("-{$payoutdays} day",strtotime($ptdate)));
+		$ptdate = date("Y-m-d",strtotime("+6 day",strtotime($fpdate)));
+	}	
+}else{ 
+  $ptdate = date('Y-m-d',strtotime("0 day",strtotime("now")));
+}
+
+?>
+                <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_payout'])&&$_SESSION['transaction_payout']==1)){?>
+                <div style="width:100%;float:left;">
+                  <div class="daterangeform row" > <span style="display:none;">
+                    <input type="radio" id="settled_query" checked="checked" name="fillter" class="echeckid_f fillter" value="settled_query" style="display:inline-block;min-width:24px;width:24px;float:none;box-shadow:0 0 0;margin:-3px 0 0 0;">
+                    <label for="settled_query" style="width:auto;float:none;display:inline-block;">Settled</label>
+                    <input type="radio" id="pdf_report" name="fillter" class="echeckid_f fillter" value="pdf_report" style="display:inline-block;min-width:24px;width:24px;float:none;box-shadow:0 0 0;margin:-3px 0 0 0;">
+                    <label for="pdf_report" style="width:auto;float:none;display:inline-block;">Report</label>
+                    </span>
+                    <div class="col-md-4">
+                      <input id="pfdate" name="pfdate" type="date" class="form-control  my-2" placeHolder="From dd-mm-yyyy" value="<?=$pfdate;?>" max="<?=date('Y-m-d');?>">
+                    </div>
+                    <div class="col-md-4">
+                      <input id="ptdate" name="ptdate" type="date" class="form-control my-2" placeHolder="To dd-mm-yyyy" value="<?=$ptdate;?>" >
+                    </div>
+                    <div class="col-md-2">
+                      <button id="payoutdaterange2" type="submit" name="payoutdaterange2" value="Payout" class="payoutdaterange2 btn btn-icon btn-primary my-2" ><i class="<?=$data['fwicon']['circle-down'];?>" title="Payout Date"></i> </button>
+                    </div>
+                    <div class="col-md-2 my-2" id="daterangediv2">
+                      <ul class="topnav pull-right trs inline" style="padding-left:0px;list-style-type: none;">
+                        <li class="dropdown text-start">
+                          <!--<a  class="glyphicons hand_down payoutpdf0 dropdown-toggle" onclick="filteraction0(this)" style="width:auto;margin-left:-3px;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Payout11
+                      <?
+					if(isset($_GET['ptdate'])&&$_GET['ptdate']){
+						echo ": ".date('d-m-Y',strtotime($_GET['ptdate']));
+					}
+			?>
+                      </a>-->
+                          <a class="btn btn-primary hand_down payoutpdf0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"  aria-expanded="false">
+                          <!--onclick="filteraction0(this)"-->
+                          Payout
+                          <?
+					if(isset($_GET['ptdate'])&&$_GET['ptdate']){
+						echo ": ".date('d-m-Y',strtotime($_GET['ptdate']));
+					}
+			?>
+                          <i class="<?=$data['fwicon']['circle-down'];?>"></i></a>
+                          <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenuButton1">
+                            <li><a onClick="filteraction(this)" target="selltedview" href="<? if(isset($trans_href)) echo $trans_href;?>?action=select<? if(isset($type)){?>&type=<?=$type?><? }?>&status=-1&keyname=223&searchkey=<? if(isset($post['TransactionDetails']['transaction_period'])) echo $post['TransactionDetails']['transaction_period'];?>&bid=<? if(isset($post['TransactionDetails']['merID'])) echo $post['TransactionDetails']['merID'];?>"  class="payoutpdf viewedcl dropdown-item"><i class="<?=$data['fwicon']['eye-solid'];?>"></i> <span>View </span></a></li>
+                            <? if(isset($paydLink)&&$paydLink){?>
+                            <li><a onClick="filteraction(this)" target="selltedview" data-action="selltedall" data-label="Settled List" data-reason="Settled by SWIFT Reference" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?>/?bid=<?=$post['TransactionDetails']['merID']?>&tp=<?=$post['TransactionDetails']['transaction_period']?>&id=<?=$post['TransactionDetails']['id']?><?php echo $common_get; ?>&action=payoutsellted&querytype=sellted" class="payoutpdf settledcl dropdown-item"><i class="<?=$data['fwicon']['check-circle'];?>"></i> <span>Settled</span></a></li>
+                            <? }?>
+                            <li title="Acquirer Table: Calculations"><a onClick="filteraction(this)" target="pdfreport" href="<?=$data['Host']?>/payout_report_fee_dynamic_ac_db<?=@$data['ex']?>?bid=<?=$post['bid']?>&pfdate=<? if(isset($_GET['pfdate'])) echo $_GET['pfdate']?>&ptdate=<? if(isset($_GET['ptdate'])) echo $_GET['ptdate']?>" class="payoutpdf pdfreportcl dropdown-item"><i class="<?=$data['fwicon']['pdf'];?>"></i> <span>PDF Report-A/c.</span></a></li>
+                            <li title="Acquirer Transaction Flied: Calculations"><a onClick="filteraction(this)" target="pdfreport_dy" href="<?=$data['Host']?>/payout_report_fee_dynamic_tr_db<?=@$data['ex']?>?bid=<?=$post['bid']?>&pfdate=<? if(isset($_GET['pfdate'])) echo $_GET['pfdate']?>&ptdate=<? if(isset($_GET['ptdate'])) echo $_GET['ptdate']?>" class="payoutpdf pdfreportcl_tr dropdown-item"><i class="<?=$data['fwicon']['pdf'];?>"></i> <span>PDF Report-D.Tr.</span></a></li>
+                            <li title="Payout Transaction Flied: Calculations"><a onClick="filteraction(this)" target="pdfreport_1" href="<?=$data['Host']?>/payout_report_transaction_db<?=@$data['ex']?>?bid=<?=$post['bid']?>&pfdate=<? if(isset($_GET['pfdate'])) echo $_GET['pfdate']?>&ptdate=<? if(isset($_GET['ptdate'])) echo $_GET['ptdate']?>" class="payoutpdf pdfreportcl_1 dropdown-item"><i class="<?=$data['fwicon']['pdf'];?>"></i> <span>PDF Report-TR.</span></a></li>
+                            <li title="Multiple Report Not Match than Update "><a onClick="filteraction(this);popuploadig();" target="hform" href="<?=$data['Host']?>/transaction_fee_calculation<?=@$data['ex']?>?bid=<? if(isset($post['TransactionDetails']['merID'])) echo $post['TransactionDetails']['merID'];?>&id=<? if(isset($post['TransactionDetails']['id'])) echo $post['TransactionDetails']['id'];?>&tp=<? if(isset($post['TransactionDetails']['transaction_period'])) echo $post['TransactionDetails']['transaction_period']; ?><?php if(isset($common_get)) echo $common_get; ?>&action=select&querytype=tfcupdate" class="payoutpdf tfcupdate dropdown-item"><i class="<?=$data['fwicon']['setting'];?>"></i> <span>Update </span></a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <script>
+	$(".payoutdaterange2").click(function(){
+	  //alert($('#fpdate').val()+"\r\n"+$('#tpdate').val());
+	    var is_account= "<?php echo $post['is_account'];?>";
+	    var subparameter = "<?php echo "&bid=".@$_GET['bid']."&type=".@$_GET['acquirer']."&status=".@$_GET['status']."&page=".@$_GET['page']."&action=".@$_GET['action']."&order=".@$_GET['order']?>";
+		//alert(subparameter);
+		
+		var pdate_url="<?=$data['trnslist'];?><?=$data['ex']?>?pfdate="+$('#pfdate').val()+"&ptdate="+$('#ptdate').val()+"&fillter="+$('.fillter:checked').val()+"&bid=<?=$post['bid']?>"+subparameter;
+		
+		newWindow2=window.open(pdate_url, 'newWindow2');
+		newWindow2.focus();
+		
+	});
+</script>
+                  <? }?>
+				 
+                  <?
+$transaction_payout_manual=1;
+$post['is_account']="card";
+if(((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_payout_manual'])&&$_SESSION['transaction_payout_manual']==1))&&($transaction_payout_manual)){?>
+                  <div style="clear:both;width:100%;float:left;">
+                    <div class="daterangeform" style="margin:14px 0 0 0;float: none;display: block;margin: 0 auto;width: 575px;">
+                      <input id="fpdate" name="fpdate" type="date" placeHolder="From dd-mm-yyyy" value="<?=@$fpdate;?>" max="<?=date('Y-m-d');?>" style="min-width:120px;margin:0px;height: 35px;font-size: 14px;line-height: 20px;border-radius: 6px;" >
+                      <input id="tpdate" name="tpdate" type="date" placeHolder="To dd-mm-yyyy" value="<?=@$tpdate;?>"  style="min-width:120px;margin:0px;height: 35px;font-size: 14px;line-height: 20px;border-radius: 6px;">
+                      <button id="payoutdaterange" type="submit" name="payoutdaterange" value="Payout" class="payoutdaterange btn btn-icon btn-primary" style="display:inline-block; font-size:11px;text-transform:capitalize;"><i class="<?=$data['fwicon']['circle-down'];?>"></i>
+                      
+                      Payout Date</button>
+                    </div>
+					<style>
+			.settled_date_rw li.nav-item.dropdown {list-style: none;width: 200px;margin: 3px 0;}
+			</style>
+			
+                    <div id="daterangediv" class="collapse navbar-collapse  text-white settled_date_rw" style="display:block;float: left;clear:both;width:100%;margin:14px 0 0 0;">
+					
+			
+                      <?php	
+				
+			function getMondaysInRange1($dateFromString, $dateToString, $is_account='')
+			{
+				$dateFrom = new \DateTime($dateFromString);
+				$dateTo = new \DateTime($dateToString);
+				$dates = array();
+				//$is_account = $post['is_account'];
+
+				if ($dateFrom > $dateTo) {
+					return $dates;
+				}
+				
+				if ((3 != $dateFrom->format('N'))) {
+					//$dateFrom->modify('next Wednesday');
+				}
+				
+				if (($is_account=="check")&&(3 != $dateFrom->format('N'))) {
+					$dateFrom->modify('next Wednesday');
+				}elseif(($is_account=="card")&&(1 != $dateFrom->format('N'))) {
+					$dateFrom->modify('next Monday');
+				}else{
+					// $dateFrom->modify('next Wednesday');
+				}
+
+				while ($dateFrom <= $dateTo) {
+					$dates[] = $dateFrom->format('Y-m-d');
+					$dateFrom->modify('+1 week');
+				}
+
+				return $dates;
+			}
+			
+			
+			$fromDate 	= date("Y-m-d",strtotime("0 day",strtotime(date("Y-01-01",strtotime("now") ) )));
+			$toDate 	= date("Y-m-d",strtotime("0 day",strtotime(date("Y-12-31",strtotime("now") ) )));
+			
+			$alldate	= array();
+
+
+				$alldate 	= getMondaysInRange1($fromDate,$toDate,$post['is_account']);
+
+
+			$common_get = "&type=".@$_GET['acquirer']."&status=".@$_GET['status']."&page=".@$_GET['page']."&order=".@$_GET['order']."&is_account=".@$post['is_account'];
+
+			if(isset($post['is_account']) && ($post['is_account']=="card")){
+				$report_file_name="cardreport";
+			}else{
+				$report_file_name="echeckreport";
+			}
+
+
+			if(!empty($_GET['pdate'])){
+				echo " <a class='payoutpdf payoutpdf_0 active' >".date("D d-m-Y",strtotime($_GET['pdate']))."</a>  ";
+			}else{ ?>
+			
+                      <ul class="Xnavbar-nav me-auto mb-2 mb-lg-0  justify-content-start bd-highlight mb-3" style="margin:0;text-align:left;float:left;width:100%;">
+                        <?php foreach($alldate as $key=>$value){ 
+							$payDate=date("Ymd",strtotime($value));
+							$currentDate=date("Ymd");
+							if($payDate<=$currentDate){
+								$paydLink=1;
+							}else{
+								$paydLink=0;
+							}
+					 ?>
+                        <li class="nav-item dropdown " style="max-width: 120px;float:left;" > <a data-toggle="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="dropdown-togglex glyphicons hand_down payoutpdf0" onClick="filteraction0(this)"><?php echo date("D d-m-Y",strtotime($value)); ?> </a>
+                          <ul class="dropdown-menu pull-right">
+                            <li><a onClick="filteraction(this)" target="selltedview" href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?bid=<?php echo $_GET['bid'];?>&pdate=<?php echo date("Y-m-d",strtotime($value));?><?php echo $common_get; ?>&action=select&querytype=selltedview" class="payoutpdf viewedcl"><i class="<?=$data['fwicon']['eye-solid'];?>"></i><span>View </span></a></li>
+                            <? if($paydLink){?>
+                            <li><a onClick="filteraction(this)" target="selltedview" data-action="selltedall" data-label="Settled List" data-reason="Settled by SWIFT Reference" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?bid=<?php echo $_GET['bid'];?>&pdate=<?php echo date("Y-m-d",strtotime($value));?><?php echo $common_get; ?>&action=payoutsellted&querytype=sellted" class="payoutpdf settledcl "><i class="<?=$data['fwicon']['check-circle'];?>"></i><span>Settled</span></a></li>
+                            <? }?>
+                            <li><a onClick="filteraction(this)" target="pdfreport" href="<?=$data['Host']?>/<?=$report_file_name?><?=$data['ex']?>?bid=<?=@$_GET['bid'];?>&pdate=<?php echo date("Y-m-d",strtotime($value));?>&type=<?=@$_GET['acquirer'];?>" class="payoutpdf pdfreportcl"><i class="<?=$data['fwicon']['pdf'];?>"></i><span>PDF Report</span></a></li>
+                            <li><a onClick="filteraction(this)" target="pdfreport_1" href="<?=$data['Host']?>/<?=$report_file_name?>_1<?=@$data['ex']?>?bid=<?php echo $_GET['bid'];?>&pdate=<?php echo date("Y-m-d",strtotime($value));?>&type=<?=@$_GET['acquirer'];?>" class="payoutpdf pdfreportcl_1"><i class="<?=$data['fwicon']['pdf'];?>"></i><span>PDF Report</span></a></li>
+                            <li><a onClick="filteraction(this);popuploadig();" target="hform" href="<?=$data['Host']?>/transaction_fee_calculation<?=@$data['ex']?>?bid=<?php echo $_GET['bid'];?>&pdate=<?php echo date("Y-m-d",strtotime($value));?><?php echo $common_get; ?>&action=select&querytype=tfcupdate" class="payoutpdf tfcupdate"><i class="<?=$data['fwicon']['setting'];?>"></i><span>Update </span></a></li>
+                          </ul>
+                        </li>
+                        <?php } ?>
+                      </ul>
+                      <? } ?>
+                    </div>
+                    <?
+					
+			 $subparameter="&bid=".@$_REQUEST['bid']."&type=".@$_REQUEST['acquirer']."&status=".@$_REQUEST['status']."&action=".@$_REQUEST['action']."&order=".@$_REQUEST['order']."&ex={$data['ex']}&is_account=".@$post['is_account']."&report_file_name=".@$report_file_name." ";
+			?>
+                    <script>
+					//alert("<?=$subparameter;?>");
+			$(".payoutdaterange").click(function(){
+			  //alert($('#fpdate').val()+"\r\n"+$('#tpdate').val());
+				var is_account= "<?=$post['is_account'];?>";
+				var subparameter = "<?=$subparameter;?>";
+				//alert(subparameter);
+				if(is_account==""){
+					alert("Please filter the Account");
+					document.csearch.type_csearch.focus();
+				}else{
+					$.ajax({url: "payout_date_range<?=@$data['ex']?>?fpdate="+$('#fpdate').val()+"&tpdate="+$('#tpdate').val()+"&fillter="+$('.fillter:checked').val()+"&bid=<?=$post['bid']?>"+subparameter, success: function(result){
+						$("#daterangediv").html(result);
+					}});
+				}
+			});
+			</script>
+                  </div>
+                  <? }?>
+                </div>
+              </div>
+              <? if(isset($_REQUEST['pfdate'])&&$_REQUEST['pfdate']){?>
+              <script>
+	setTimeout(function(){ $('#collapsible2').trigger('click'); }, 1000);
+</script>
+              <? }?>
+              <? 
+		
+		} 
+		
+		?>
+              <? }?>
+            </div>
+          </div>
+        </div></td>
+    </tr>
+  </table>
+  <script>
+  function toggle(source) {
+  checkboxes = document.getElementsByName('echeckid[]');
+  var checkBox = document.getElementById("vcheckid");
+   if (checkBox.checked == true){
+   //alert("display");
+   //document.getElementById("bid").style.display = '';
+   $(".echeckid").css("display", "");
+   }
+   else {
+   //alert("hide");
+   //$(".echeckid").css("display", "none");
+   }
+  
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+  checkboxes[i].checked = source.checked;
+  }
+}
+</script>
+
+<style>
+html .echektran thead  {position:sticky  !important;top:0;z-index:99;}
+html .echektran thead th  {position: sticky !important;top:0;}
+
+table.sar-table th {cursor:move;}
+table.resize_drag_col th {position:relative;}
+</style>
+  <?
+//start: Dev Tech : 23-04-17 drag table Columns 
+
+?>
+	<?/*?>
+	<script src="<?=$data['Host']?>/thirdpartyapp/dragtablecolumn/jquery-ui.min.js"></script>
+  <?*/?>
+  <link rel="stylesheet" type="text/css" href="<?=$data['Host']?>/thirdpartyapp/dragtablecolumn/dragtable.css" />
+  <script src="<?=$data['Host']?>/thirdpartyapp/dragtablecolumn/jquery.dragtable.js"></script>
+  
+  <script type="text/javascript">
+//	Dev Tech : 23-04-17 drag table Columns  
+function dragtablef(theUiName,sufixIc='tra_'){
+	//$(theUiName).addClass('sar-table');
+	$(theUiName).addClass('resize_drag_col');
+	$(theUiName+' thead>tr').each(function () {  
+        $('th', this).each(function () { 
+			var thisThId=$(this).text().trim();
+				thisThId=thisThId.replace(/ (\s|&nbsp;)\s+[\s\uFEFF\xA0][` ~!@#$%^&*()_+\-=?:'",.<>\{\}\[\]\\\/](\r||\r)/g,'').trim().toLowerCase();
+				thisThId=thisThId.replace(/ /g, '');
+				thisThId=thisThId.replace(/\./g, '');
+				thisThId=thisThId.replace(new RegExp(/\//g), '');
+				thisThId=thisThId.replace(/&nbsp;/g, '');
+				thisThId=thisThId.replace(/\n|\r|\W/g, "");
+				$(this).attr('id',sufixIc+thisThId);
+				
+				$(this).attr('data-type','text-long');
+				$(this).append('<span class="some-handle"></span>');
+				$(this).append('<span class="resize-handle"></span>');
+        });  
+    }); 
+	
+	
+	$(theUiName).dragtable({
+       // dragaccept:'.capc',
+		dragHandle:'.some-handle',
+		persistState: function(table) {
+          if (!window.sessionStorage) return;
+          var ss = window.sessionStorage;
+          table.el.find('th',this).each(function(i) {
+            if(this.id != '') {table.sortOrder[this.id]=i;}
+          });
+		 // alert(JSON.stringify(table.sortOrder));
+		  ss.setItem('tableorder',JSON.stringify(table.sortOrder));
+        },
+		restoreState: eval('(' + window.sessionStorage.getItem('tableorder') + ')')
+    });
+	
+}
+$(document).ready(function() {
+	dragtablef('table#content22');	 
+});
+//window.sessionStorage.setItem('tableorder','{}');
+</script>
+<?
+
+//end: Dev Tech : 23-04-17 drag table Columns 
+?>
+<? if(isset($_SESSION['transaction_display_arr'])&&is_array($_SESSION['transaction_display_arr']))
+{ ?>
+  <div style="overflow: auto;">
+    <!--padding-right:246px;width: 100vw;float: left;-->
+    <div class="table-responsive vkg">
+	<?//print_r($_SESSION);?>
+      <table id="content22"  class="table table-striped" >
+        <!--frame22 echektran22-->
+        <thead>
+          <tr class="bg-dark-subtle">
+            <?
+
+// For Display Data By ASC/DESC Order
+$listing_order=(isset($_REQUEST['d_order'])&&$_REQUEST['d_order']?$_REQUEST['d_order']:'DESC');
+if(isset($_REQUEST['d_order'])&&$_REQUEST['d_order']=="DESC"){$listing_order="ASC";}else{$listing_order="DESC";}
+
+
+$twice=1;
+$h_css="h1";
+
+	foreach($_SESSION['transaction_display_arr'] as $val){ 
+		if((isset($_SESSION["login_adm"]))||(isset($_SESSION["tr_{$val}"])&&$_SESSION["tr_{$val}"]==1)){
+
+			if($data['trnslist_listorder'][$val]=="Action" ){ 
+			$twice=1;
+			?>
+				<th scope="col" valign="top" >
+					<div class="transaction-h1">
+						<?=@$data['trnslist_listorder'][$val];?>
+					</div>
+				</th>
+			<? }elseif($data['trnslist_listorder'][$val]=="Multiple Check Box"){ $twice=1; ?>
+				<th class="text-center" valign="top" scope="col" style="width:80px"> 
+					<input type="checkbox" name="echeckid[]" id="vcheckid" onClick="toggle(this)" class="form-check-input echeckid1 echeckidall " />
+				</th>
+			<? }elseif($data['trnslist_listorder'][$val]=="Available Balance"){ $twice=1; ?>
+				<th scope="col" valign="top" >
+					<div class="transaction-h1"> 
+						<a href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>page=<?=$curr_pg?>&type=<?=$post['acquirer']?>&status=<?=$post['status']?>&action=select&order=<?=$val;?>&d_order=<?=$listing_order;?>" class="text-link" title="<?=$data['trnslist_listorder'][$val];?>">
+							<?=@$data['trnslist_listorder'][$val];?>
+						</a> 
+					</div>
+				</th>
+			<? }elseif($data['trnslist_listorder'][$val]=="Username"){ $twice=1; ?>
+				<th scope="col" valign="top" > 
+					<div class="transaction-h1"> 
+						<a href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>page=<?=$curr_pg?>&type=<?=$post['acquirer']?>&status=<?=$post['status']?>&action=select&order=<?=$val;?>&d_order=<?=$listing_order;?>" class="text-link" title="<?=$data['trnslist_listorder'][$val];?>">
+							<?=@$data['trnslist_listorder'][$val];?>
+						</a> 
+					</div>
+				</th>
+			<? }else{ if($twice==1){ echo '<th scope="col" valign="top">'; $h_css="h1";  }else{ $h_css="h2";}  ?>
+						  <div class="transaction-<?=$h_css;?>"> <a href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>page=<?=$curr_pg?>&type=<?=$post['acquirer']?>&status=<?=$post['status']?>&action=select&order=<?=$val;?>&d_order=<?=$listing_order;?>" class="text-link" title="<?=$data['trnslist_listorder'][$val];?>">
+							<?=@$data['trnslist_listorder'][$val];?>
+							</a> </div>
+						  <? $twice++;
+			if($twice==3){ echo '</th>'; $twice=1;}
+			}
+
+		}
+	} 
+
+?>
+          </tr>
+	</thead>
+	<? $idx=0; if($data['TransactionsList'])
+	{
+		foreach($data['TransactionsList'] as $key=>$value)
+		{ ?>
+			<? if(isset($value['json_log_history'])&&trim($value['json_log_history']))
+			{
+				$acquirer_response1=jsonencode1($value['json_log_history'],'',1);
+			}
+			?>
+          <tr>
+            <?
+				$twice=1;
+				$h_css="h1";
+				foreach($_SESSION['transaction_display_arr'] as $val){ 
+				if((isset($_SESSION["login_adm"]))||(isset($_SESSION["tr_{$val}"])&&$_SESSION["tr_{$val}"]==1)){
+				if(strtolower($data['trnslist_listorder'][$val])=="action" ){ 
+				$twice=1;
+			?>
+            <td valign="top" ><div style="position:relative">
+                <div class=""> <a  class="dropdown-toggle7" data-bs-toggle="dropdown" aria-expanded="false"><i class="<?=$data['fwicon']['circle-down'];?>"></i></a>
+                  <ul class="dropdown-menu text-white">
+                    <? if(isset($_SESSION['transaction_display_arr'])&&in_array("action",$_SESSION['transaction_display_arr'])&&((isset($_SESSION['login_adm'])))||(isset($_SESSION['tr_action'])&&$_SESSION['tr_action']==1)){?>
+                    <li><a class="dropdown-item" href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?bid=<?=$value['merID']?>&id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?>&type=<?=$post['acquirer']?>&status=<?=$post['status']?>&action=select" ><i class="<?=$data['fwicon']['eye-solid'];?>"></i> View </a></li>
+                    <? }?>
+                    <? if(($value['typenum']=="279999"&&$value['ostatus']==2)){?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_status_confirm'])&&$_SESSION['t_status_confirm']==1)){?>
+                    <li><a data-reason="Are you Sure to Confirm" data-label="Why do you want to complete this transaction" onClick="confirm2(this);" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><? if($post['acquirer']){?>&type=<?=$post['acquirer']?><? }?>&action=confirm2" class="ajxstatus dropdown-item"><i class="<?=$data['fwicon']['check-circle'];?>"></i> Confirm</a></li>
+                    <? }?>
+                    <? }?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['edit_trans'])&&$_SESSION['edit_trans']==1)){?>
+                    <li><a class="iframe_open11 dropdown-item" data-mid="<?=$value['merID']?>" data-href="<?=$idx;?>_toggle" data-tabname="" data-url="" data-ihref="<?=$data['Host'];?>/include/edit_trans<?=@$data['ex']?>?id=<?=$value['id']?>&admin=1<?=(isset($value['dbad_link'])?$value['dbad_link']:"");?><?=(isset($value['csov3'])?$value['csov3']:"");?>" title="Edit|Delete|Cancelled Trans." onClick="iframe_open_modal(this);" ><i class="<?=$data['fwicon']['edit'];?>"></i> Edit Trxn.</a></li>
+                    <? }?>
+                    <? 
+						$acquirer_response_array = json_decode($value['acquirer_response'],1);
+						if($value['typenum']==2){
+							if($value['ostatus']==13){
+								if(isset($acquirer_response_array['coins_network'])&&$acquirer_response_array['coins_network'])	//CHECK WITHDRAW REQUEST IS FOR Crypto Wallet or not - 
+								{
+								?>
+                    <li class='g_validate 16'><a data-mhoid="<?=$value['transID'];?>_<?=@$value['id'];?>" data-type="<?=$value['typenum'];?>" onClick="hkipstatus(this,'binance');" class="hkip_status_id dropdown-item" title="Withdraw Binance Cold Wallet Status"><i class="<?=$data['fwicon']['retweet'];?>"></i> Binance Post</a></li>
+                    <?
+								}
+								else
+								{
+								  //Dev Tech : 23-05-29 modify code for  FETCH ALL AVAILABLE ACTIVE BANK LIST IN CASH OF BANK NODAL 
+									
+								  if(isset($_SESSION['data_bank_payout_table'])&&is_array($_SESSION['data_bank_payout_table']))
+								  {
+									foreach($_SESSION['data_bank_payout_table'] as $b_key=>$b_val)
+									{
+										$payout_json	= json_decode($b_val['payout_json'],1);
+										$encode_processing_creds		= json_decode(decode_f($b_val['encode_processing_creds']),1);
+
+										//CHECK AVAILABLE PAYMENT METHOD IF EXISTS
+										if(isset($encode_processing_creds['payment_method_limit_setup'])&&$encode_processing_creds['payment_method_limit_setup']) {
+											//$post_method = explode(",",$encode_processing_creds['method']);
+											$post_method = $encode_processing_creds['payment_method_limit_setup'];
+											?>
+  <li class='g_validate 17'><a class="hrefmodal mt-2 ms-1 text-decoration-none" style="white-space:nowrap;" data-tid="<?=$value['transID']?>" data-href="<?=($data['Host']."/include/post_method".$data['ex']."?id=".$b_val['id']."&payout_id=".$b_val['payout_id']."&transID=".$value['transID']."&tid=".$value['id']."&uid=".((isset($post['bid'])&&$post['bid']>0)?$post['bid']:$value['merID'])."&bid=".((isset($post['bid'])&&$post['bid']>0)?$post['bid']:$value['merID']));?>&order_amt=<?=$value['bill_amt']?>&checkout_level_name=<?=$payout_json['checkout_level_name'];?>&action=details&admin=1&tempui=<?=$data['frontUiName']?>" title="<?=$value['transID'];?>"> <i class="<?=$data['fwicon']['bank'];?>"></i>
+    <?=@$payout_json['checkout_level_name'];?>
+    Post</a></li>
+  <?
+											}
+										else
+										{
+										//IF PAYMENT METHOD NOT AVAILABLE THEN NORMAL NODAL POST 
+										?>
+  <li class='g_validate 18'><a data-tid="<?=$value['id'];?>" data-transid="<?=$value['transID'];?>" data-payout_id="<?=$b_val['payout_id'];?>" onClick="post_Withdraw(this);" class="hkip_status_id dropdown-item" title="<?=$payout_json['checkout_level_name'];?> Post"><i class="<?=$data['fwicon']['bank'];?>"></i>
+    <?=@$payout_json['checkout_level_name'];?>
+    Post</a></li>
+  <?
+										}
+									}
+								  }
+								}
+							}
+							else
+							{
+								if(isset($acquirer_response_array['coins_network'])&&$acquirer_response_array['coins_network'])
+								{
+								?>
+                    <li class='g_validate 19'><a data-mhoid="<?=$value['transID'];?>_<?=@$value['id'];?>" data-type="<?=$value['typenum'];?>" onClick="hkipstatus(this,'binance');" class="hkip_status_id dropdown-item" title="Withdraw Binance Cold Wallet Status"><i class="<?=$data['fwicon']['retweet'];?>"></i> Binance Status</a></li>
+                    <? 
+								}
+								else
+								{
+									$bank_status=@$acquirer_response_array['bank_status'];
+									
+									if($bank_status)
+									{
+										?>
+                    <li class='g_validate 11'><a class="hrefmodal mt-2 ms-1 text-decoration-none" style="white-space:nowrap;" data-tid="<?=$value['transID']?>" data-href="<?=$data['Host'].'/'.$bank_status;?>&actionurl=details&admin=1&tempui=<?=$data['frontUiName']?>" title="<?=$value['transID'];?>"> <i class="<?=$data['fwicon']['bank'];?>"></i>Status</a></li>
+                    <?
+									}
+									else
+									{
+									?>
+                    <li class='g_validate 12'><a data-mhoid="<?=$value['transID'];?>_<?=@$value['id'];?>" data-type="<?=$value['typenum'];?>" onClick="hkipstatus(this);" class="hkip_status_id dropdown-item" title="Withdraw Nodal Status"><i class="<?=$data['fwicon']['retweet'];?>"></i> Nodal Status</a></li>
+                    <?php
+									}
+								}
+							}
+						}?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_bal_upd'])&&$_SESSION['t_bal_upd']==1)){?>
+                    <li> <a class="dropdown-item" data-mid="<?=$value['merID']?>" data-href="<?=$idx;?>_toggle" data-tabname="" data-url="" data-ihref="<?=$data['Admins'];?>/<?=$data['trnslist'];?><?=$data['ex']?>?action=tran_bal_upd&bid=<?=$value['merID']?>&id=<?=$value['id']?>&admin=1" title="Balance Field Re-update from this Transaction to Latest Transaction" data-opt="confirm|prompt" data-confirm="Balance Field Re-update" onClick="iframe_open_modal(this);" ><i class="<?=$data['fwicon']['balance'];?>"></i> T. Bal. Upd.</a> </li>
+                    <? }?>
+					<? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_bal_upd'])&&$_SESSION['t_bal_upd']==1)){?>
+                    <li> <a class="dropdown-item" data-mid="<?=$value['merID']?>" data-href="<?=$idx;?>_toggle" data-tabname="" data-url="" data-ihref="<?=$data['Admins'];?>/<?=$data['trnslist'];?><?=$data['ex']?>?action=refresh_tran_available_balance&bid=<?=$value['merID']?>&id=<?=$value['id']?>&admin=1" title="Re-update  the Available Balance for Latest Transaction" data-opt="confirm|prompt" data-confirm="Re-update the Available Balance" onClick="iframe_open_modal(this);" ><i class="<?=$data['fwicon']['check-double'];?>"></i> Refresh</a> </li>
+                    <? }?>
+					
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_resub_echeck'])&&$_SESSION['t_resub_echeck']==1)){?>
+                    <? if((isset($value['trans_type'])&&$value['trans_type']=="ch") && (isset($value['wstatus'])&&$value['wstatus']==0)){ ?>
+                    <li><a class="iframe_open99 dropdown-item" data-mid="<?=$value['merID']?>" data-href="<?=$idx;?>_toggle" data-tabname="" data-url=""  data-ihref="<?=$data['Host'];?>/user/echeckvt<?=@$data['ex']?>?id=<?=$value['tableid']?>&bid=<?=$value['merID']?>&admin=1&action=update&hideAllMenu=1" title="ReSubmit eCheck" onClick="iframe_open_modal(this);" ><i class="<?=$data['fwicon']['primary'];?>"></i> ReSub. eCheck</a></li>
+                    <? }?>
+                    <? }?>
+                    <? if($value['ostatus']==8){?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_refund_accept'])&&$_SESSION['t_refund_accept']==1)){?>
+                    <li><a  data-amount="<?=$value['oamount']?>" data-reason="Refund Approved" data-label="Refunded Reason" data-type="<?=$value['typenum'];?>" data-refund="<?=(isset($data['acquirer_refund'][$value['typenum']])?'payin/pay'.$value['typenum'].'/refund_'.$value['typenum']:'')?>"  data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?bid=<?=$value['merID']?>&id=<?=$value['id']?>&acquirer=<?=$value['typenum']?>&acquirer_ref=<?=$value['acquirer_ref'];?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?>&action=refund" data-cond="1" class="dialog_refunded open_pop dropdown-item"><i class="<?=$data['fwicon']['rotate-right'];?>"></i> Accept</a></li>
+                    <? }?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_refund_reject'])&&$_SESSION['t_refund_reject']==1)){?>
+                    <li><a data-reason="Refund Request Rejected" data-label="Why do you want to complete this transaction" onClick="confirm2(this);" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?bid=<?=$value['merID']?>&id=<?=$value['id']?>&acquirer=<?=$value['typenum']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?>&action=confirm" class="ajxstatus dropdown-item"><i class="<?=$data['fwicon']['reject'];?>"></i> Reject</a></li>
+                    <? }?>
+                    <? }elseif($value['ostatus']==13||$value['ostatus']==14)
+					{ // withdraw accept 
+						?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_withdraw_accept'])&&$_SESSION['t_withdraw_accept']==1)){?>
+                    <li><a data-amount="<?=$value['oamount']?>" data-reason="<?=$value['acquirer']?> Approved" data-label="<?=$value['acquirer']?> Approved" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?bid=<?=$value['merID']?>&id=<?=$value['id']?>&type=<?=$value['typenum']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><?=(isset($value['csov3'])?$value['csov3']:"");?>&action=confirm" data-cond="1" class="dialog_refunded dropdown-item withdraw type_<?=@$value['typenum']?> "><i class="<?=$data['fwicon']['rotate-right'];?>"></i> Accept</a></li>
+                    <? }?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_withdraw_reject'])&&$_SESSION['t_withdraw_reject']==1)){?>
+                    <li><a data-reason="<?=$value['acquirer']?> Request Rejected" data-label="<?=$value['acquirer']?> Reason" onClick="confirm2(this);" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?bid=<?=$value['merID']?>&id=<?=$value['id']?>&type=<?=$value['typenum']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><?=(isset($value['csov3'])?$value['csov3']:"");?>&action=cancel" class="ajxstatus dropdown-item"><i class="<?=$data['fwicon']['reject'];?>"></i> Reject</a></li>
+                    <? }?>
+                    <? }elseif($value['ostatus']==15||$value['ostatus']==16||$value['ostatus']==17){?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_fund_reject'])&&$_SESSION['t_fund_reject']==1)){?>
+                    <li><a data-reason="This Fund Rejected" data-label="Fund Reason" onClick="confirm2(this);" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?bid=<?=$post['bid']?>&id=<?=$value['id']?>&type=<?=$value['typenum']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?>&action=cancel" class="ajxstatus dropdown-item"><i class="<?=$data['fwicon']['reject'];?>"></i> Reject</a></li>
+                    <? }?>
+                    <? }else{?>
+                    <? if($value['ostatus']==0){?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_status_confirm'])&&$_SESSION['t_status_confirm']==1)){?>
+                    <li><a data-reason="Are you Sure to Confirm" data-label="Why do you want to complete this transaction" onClick="confirm2(this);" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><? if($post['acquirer']){?>&type=<?=$post['acquirer']?><? }?>&action=confirm" class="ajxstatus dropdown-item"><i class="<?=$data['fwicon']['check-circle'];?>"></i> Confirm</a></li>
+                    <? }?>
+                    <? }?>
+                    <? 
+						//IF STATUS=1 THEN DON'T CANCEL, SO COMMENT ['ostatus']==1 -- 
+						if($value['ostatus']==0 || /*$value['ostatus']==1 ||*/ $value['ostatus']==8){?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_status_cancel'])&&$_SESSION['t_status_cancel']==1)){?>
+                    <li><a data-reason="Cancel Reason" data-label="Why do you want to cancel" onClick="confirm2(this);" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><? if($post['acquirer']){?>&type=<?=$post['acquirer']?><? }?>&action=cancel" class="ajxstatus dropdown-item"><i class="<?=$data['fwicon']['circle-cross'];?>"></i> Cancel</a></li>
+                    <? }?>
+                    <? }?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_status_return'])&&$_SESSION['t_status_return']==1)){?>
+                    <? if($value['ostatus']==1 || $value['ostatus']==4  || $value['ostatus']==6 || $value['ostatus']==8){?>
+                    <? if($value['trans_type']=="ch"){?>
+                    <li><a data-reason="Returned Reason" data-label="RETURNED"  data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><? if($post['acquirer']){?>&type=<?=$post['acquirer']?><? }?>&action=returned" class="dialog_open dropdown-item"><i class="<?=$data['fwicon']['return'];?>"></i> Return</a></li>
+                    <? }?>
+                    <? }?>
+                    <? }?>
+                    <? if($value['ostatus']==1 || $value['ostatus']==4  || $value['ostatus']==6 || $value['ostatus']==8){?>
+                    <? if($value['trans_type']==11){?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_status_chargeback'])&&$_SESSION['t_status_chargeback']==1)){?>
+                    <li><a data-reason="Chargeback Reason" data-label="Chargeback" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><? if($post['acquirer']){?>&type=<?=$post['acquirer']?><? }?>&action=chargeback<?=(isset($value['dbad_link'])?$value['dbad_link']:"");?>" class="dialog_open dropdown-item"><i class="<?=$data['fwicon']['chargeback'];?>"></i> Chargeback</a></li>
+                    <? }?>
+                    <? }?>
+                    <? }?>
+                    <? if($value['ostatus']!=1&&(isset($_SESSION['login_adm']))||(isset($_SESSION['t_a_require'])&&$_SESSION['t_a_require']==1)){?>
+                    <li><a data-reason="Transaction documents has been requested from the merchant" data-label="System will send the email to merchant to request documents" onClick="confirm2(this);" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><? if($post['acquirer']){?>&type=<?=$post['acquirer']?><? }?>&action=action_require<?=(isset($value['dbad_link'])?$value['dbad_link']:"");?>" class="ajxstatus dropdown-item"><i class="<?=$data['fwicon']['retweet'];?>"></i> A. Require</a></li>
+                    <? }?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_add_remark'])&&$_SESSION['t_add_remark']==1)){?>
+                    <li><a data-href="<?=$idx;?>_toggle" data-tabname="addremarkform_tab" class="atablink dropdown-item"><i class="<?=$data['fwicon']['add-remark'];?>"></i> Add Remark</a></li>
+                    <? }?>
+                    <? if($value['typenum']!=2&&((isset($_SESSION['login_adm']))||(isset($_SESSION['t_cs_trans'])&&$_SESSION['t_cs_trans']==1))){?>
+                    <li><a class="iframe_open99 dropdown-item" data-mid="<?=$value['merID']?>" data-href="<?=$idx;?>_toggle" data-tabname="" data-url="" data-ihref="<?=$data['Host'];?>/include/similar_trans<?=@$data['ex']?>?id=<?=$value['id']?>&admin=1<?=(isset($value['dbad_link'])?$value['dbad_link']:"");?>" title="Create Similar Transaction" onClick="iframe_open_modal(this);"><i class="<?=$data['fwicon']['database'];?>"></i>&nbsp;C. S. Trxn.</a></li>
+                    <? }?>
+                    <? 
+						//TEST TRANSACTION NOT ACTIVE IN CASE OF WITHDRAW - $value['typenum']!=2 CONDITION SET BY 
+						if($value['typenum']!=2&&$value['ostatus']!=1&&((isset($_SESSION['login_adm']))||(isset($_SESSION['t_status_test'])&&$_SESSION['t_status_test']==1))){?>
+                    <li><a data-reason="Test Transaction" data-label="Do you want to Test this Transaction" onClick="confirm2(this);" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><? if($post['acquirer']){?>&type=<?=$post['acquirer']?><? }?>&action=testransaction<?=(isset($value['dbad_link'])?$value['dbad_link']:"");?>" class="ajxstatus dropdown-item"><i class="<?=$data['fwicon']['test'];?>"></i> Test</a></li>
+                    <? }?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_status_refunded'])&&$_SESSION['t_status_refunded']==1)){?>
+                    <? if($value['typenum']!=2&&($value['ostatus']==1 || $value['ostatus']==4  || $value['ostatus']==6 || $value['ostatus']==8)){?>
+                    <li><a data-amount="<?=$value['oamount']?>" data-reason="Refund Reason" data-label="Refund Reason" data-refund="<?=(isset($data['acquirer_refund'][$value['typenum']])?'payin/pay'.$value['typenum'].'/refund_'.$value['typenum']:'')?>" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?bid=<?=$value['merID']?>&id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?>&type=<?=$value['typenum']?>&action=refund_request<?=(isset($value['dbad_link'])?$value['dbad_link']:"");?>" class="dialog_refunded open_pop dropdown-item type_<?=@$value['typenum']?>"><i class="<?=$data['fwicon']['rotate-right'];?>"></i>
+                      <?=@$value['typenum']?>
+                      Refund Req.</a></li>
+                    <? }?>
+                    <? }?>
+                    <? if(empty($value['transaction_flag']) || $value['transaction_flag']=="2"  || $value['transaction_flag']=="3"){ ?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_status_flag'])&&$_SESSION['t_status_flag']==1)){?>
+                    <? }?>
+                    <? }else {?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_status_unflag'])&&$_SESSION['t_status_unflag']==1)){?>
+                    <li><a data-reason="UnFlag Reason" data-label="UnFlag Reason" onClick="confirm2(this);" data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><? if($post['acquirer']){?>&type=<?=$post['acquirer']?><? }?>&action=unflagransaction<?=(isset($value['dbad_link'])?$value['dbad_link']:"");?><?=(isset($value['dbad_link'])?$value['dbad_link']:"");?><?=(isset($value['csov3'])?$value['csov3']:"");?>" class="ajxstatus dropdown-item"><i class="<?=$data['fwicon']['flag'];?>"></i> Unflag</a></li>
+                    <? }?>
+                    <? } ?>
+                    <? if($value['ostatus']==1 || $value['ostatus']==4  || $value['ostatus']==6 || $value['ostatus']==8){?>
+                    <? if($value['trans_type']==11){?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['t_status_pre_dispute'])&&$_SESSION['t_status_pre_dispute']==1)){?>
+                    <li><a data-reason="Pre Dispute Reason" data-value="Pre-Dispute Alert Received"  data-href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$value['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?><? if($post['acquirer']){?>&type=<?=$post['acquirer']?><? }?>&action=cbk1<?=(isset($value['dbad_link'])?$value['dbad_link']:"");?>" class="dialog_open dropdown-item"><i class="<?=$data['fwicon']['rotate-right'];?>"></i> Pre Dispute</a></li>
+                    <? }?>
+                    <? }?>
+                    <? }?>
+                    <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['transaction_status_update'])&&$_SESSION['transaction_status_update']==1)){    
+  if(!($value['ostatus']==10)){	//if status not 10 means Status not scrubbed then execute following section -- added on 09-05
+						
+  ?>
+                    <? if((isset($value['json_value_de']['status_'.$value['typenum']]))&&($value['json_value_de']['status_'.$value['typenum']])){?>
+                    
+                    <li><a class="hrefmodal dropdown-item status dynamic" data-tid="<?=@$data['acquirer_name'][$value['typenum']];?> Status - <?=@$value['transID']?>" data-mid="<?=@$value['merID']?>" data-href="<?=($data['Host']);?>/<?=(@$value['json_value_de']['status_'.$value['typenum']]);?>&actionurl=by_admin&admin=1&type=<?=(@$value['typenum']);?><?=(isset($value['dbad_link'])?$value['dbad_link']:"");?>" title="<?=@$data['acquirer_name'][$value['typenum']];?> Status" ><i class="<?=@$data['fwicon']['retweet'];?>"></i>
+                      <?=@$data['acquirer_name'][$value['typenum']];?>
+                      Status</a></li>
+                    <? }else{?>
+						<? if($value['typenum']>4  ){?>
+							
+						  <?
+							$default_acquirer_id=default_acquirer_id_fetch($value['typenum']);
+
+							//$acquirer_payin_file=@$value['json_value_de']['acquirer_payin_file'];
+
+							//Dev Tech: 25-01-16 bug fix for getting dynamic path from root status v2 also
+						  ?>
+						  
+						  <?/*?>
+						  <li><a class="hrefmodal dropdown-item root_status dynamic <?=@$acquirer_payin_file?>" data-tid="<?=@$data['acquirer_name'][$value['typenum']];?> Status - <?=@$value['transID']?>" data-mid="<?=@$value['merID']?>" data-href="<?=($data['Host']);?>/payin/pay<?=(@$default_acquirer_id);?>/status_<?=(@$default_acquirer_id);?><?=($data['ex']);?>?transID=<?=@$value['transID']?>&transIDi=<?=@$value['transID']?>&actionurl=by_admin&admin=1&type=<?=(@$value['typenum']);?><?=(isset($value['dbad_link'])?$value['dbad_link']:"");?>" title="<?=@$data['acquirer_name'][$value['typenum']];?> Status" ><i class="<?=@$data['fwicon']['retweet'];?>"></i> <?=@$data['acquirer_name'][$value['typenum']];?> Status</a></li>
+							<?*/?>
+
+							<li><a class="hrefmodal dropdown-item root_status dynamic <?=@$acquirer_payin_file?>" data-tid="<?=@$data['acquirer_name'][$value['typenum']];?> Status - <?=@$value['transID']?>" data-mid="<?=@$value['merID']?>" data-href="<?=($data['Host']);?>/status<?=($data['ex']);?>?transID=<?=@$value['transID']?>&transIDi=<?=@$value['transID']?>&actionurl=by_admin&admin=1&type=<?=(@$value['typenum']);?><?=(isset($value['dbad_link'])?$value['dbad_link']:"");?>" title="<?=@$data['acquirer_name'][$value['typenum']];?> Status" ><i class="<?=@$data['fwicon']['retweet'];?>"></i> <?=@$data['acquirer_name'][$value['typenum']];?> Status</a></li>
+					  
+						<? }?>
+                    <? }?>
+                    
+                    <? }?>
+                    <? }?>
+                    <? }?>
+                  </ul>
+                </div>
+              </div></td>
+            <? }elseif($data['trnslist_listorder'][$val]=="Multiple Check Box"){ $twice=1; ?>
+            <td  valign="top"><input type="checkbox" name="echeckid[]" class="echeckid  float-start form-check-input" data-value="<?=$value['transID']?>" value="<?=(($value['typenum']==2)?$value['transID']."_".$value['id']:$value['id']);?>" style="display:none;"></td>
+            <? }elseif($data['trnslist_listorder'][$val]=="Available Balance"){ $twice=1; ?>
+            <td  valign="top"><div class="transaction-list-h1">
+                <?=@$value['available_balance']?>
+              </div></td>
+            <? }elseif($data['trnslist_listorder'][$val]=="Username"){ $twice=1; ?>
+            <td  valign="top"><? if($value['merID']<0){?>
+              <div class="transaction-list-h1">
+                <?=@$value['recvuser']?>
+              </div>
+              <? }else{?>
+              <div class="transaction-list-h1"> <a <? if((isset($_SESSION['login_adm']))||(isset($_SESSION['merchant_action_view'])&&$_SESSION['merchant_action_view']==1)){?> class="collapsea atablink mprofile text-link" data-mid="<?=$value['merID']?>" data-href="<?=$idx;?>_toggle" data-tabname=""  data-url="<?=$data['Host'];?>/include/riskratioall<?=@$data['ex']?>?uid=<?=$value['merID']?>"   data-mhref="clients<?=@$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$value['merID']?>&action=detail<?=(isset($value['dbad_link'])?$value['dbad_link']:"");?>" <? }?> data-bs-toggle="tooltip" data-bs-placement="top" title="View Merchant Details" >
+                <?=@$value['recvuser']?>
+                </a> </div>
+              <? }?></td>
+            <? }else{ if($twice==1){ echo '<td valign="top">'; $h_css="h1";  }else{ $h_css="h2";}  ?>
+            <? if($data['trnslist_listorder'][$val]=="Role" ){ ?>
+            <div class="transaction-list-<?=$h_css;?>">
+              <? $get_role=select_tablef($where_pred="`id`={$value['access_id']}", $tbl="access_roles", $prnt=0, $limit=1, $select="`rolesname`");
+echo $get_role['rolesname'];
+?>
+            </div>
+            <? }elseif($data['trnslist_listorder'][$val]=="TransID" ){ ?>
+            <a class="hrefmodal ms-1 text-link transaction-list-h1" data-tid="<?=$value['transID']?>" data-href="<?=($data['Host']."/{$data['trnslist']}_get".$data['ex']."?id=".$value['id']."&uid=".((isset($post['bid'])&&$post['bid']>0)?$post['bid']:$value['merID'])."&bid=".((isset($post['bid'])&&$post['bid']>0)?$post['bid']:$value['merID'])).(isset($_GET['keyname'])?"&keyname={$_GET['keyname']}":"").(isset($_GET['bid'])?"&mview=admin":"");?>&action=details&admin=1&tempui=<?=$data['frontUiName']?><?=(isset($value['dbad_link'])?$value['dbad_link']:"");?><?=(isset($value['csov3'])?$value['csov3']:"");?>" title="<?=$value['transID'];?>" >
+            <? 
+			
+			if($value['typenum']==2){ echo (isset($value['csov3'])?'W3':"W"); }
+			elseif($value['typenum']==3){ echo (isset($value['csov3'])?'R3':"R"); }
+			elseif($value['ostatus']=="3" || $value['ostatus']=="5" || $value['ostatus']=="6" || $value['ostatus']=="11" || $value['ostatus']=="12"){ echo 'R'; }?>
+            <?=$value['transID'];?>
+            </a>
+            <? }elseif($data['trnslist_listorder'][$val]=="Json Log" ){ ?>
+            <div class="transaction-list-h1"  data-mid="<?=$value['id']?>" data-ihref="<?=$data['Admins']?>/json_log_all<?=@$data['ex']?>?tablename=<?=$data['MASTER_TRANS_TABLE']?>&clientid=<?=$value['merID']?>&action_name=<?=$value['bearer_token']?>" onClick="iframe_open_modal(this);" style="cursor:pointer;" title="Json Log History" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="<?=$data['fwicon']['circle-info'];?> text-info"></i></div>
+            <? }elseif($data['trnslist_listorder'][$val]=="Bearer Token" ){ ?>
+            <? if(isset($value['bearer_token'])&&$value['bearer_token']){ ?>
+            <a onClick="load_popup_jsonf('<?=$data['Admins'];?>/json_pretty_print<?=@$data['ex']?>','<?=encryptres(@$acquirer_response1);?>','jsonLogHisotry');" class="transaction-list-h2 nomid btn btn-outline-danger btn-sm my-2"  title="<?=$value['bearer_token']?>" id="acqresp" style="padding: 1px 5px;margin:1px !important;">
+            <?=@$value['bearer_token']?>
+            </a>
+            <? }else{ ?>
+            -
+            <? } ?>
+            <? }elseif($data['trnslist_listorder'][$val]=="MOP" ){ 
+				
+				// dynamic and manual mop icon list 
+				$typenum=$value['typenum'];
+				$get_mop=@$value['mop'];
+				include($data['Path'].'/include/mop_icon_list'.$data['iex']);
+
+            }elseif($data['trnslist_listorder'][$val]=="Bill IP" ){ ?>
+            <a onClick="iframe_open_modal(this);" class="dotdot nomid" data-ihref='<?=$data['Host'];?>/include/ips<?=@$data['ex']?>?remote=<?=$value['bill_ip']?>' title='IP: <?=prntext($value['bill_ip']);?>' >
+            <?=prntext(lf($value['bill_ip'],15,1));?>
+            </a>
+            <? }elseif( ($data['trnslist_listorder'][$val]=="Product Name") || ($data['trnslist_listorder'][$val]=="Bill Address") || ($data['trnslist_listorder'][$val]=="Json Value") || ($data['trnslist_listorder'][$val]=="Acquirer Response") || ($data['trnslist_listorder'][$val]=="Source Url") || ($data['trnslist_listorder'][$val]=="Webhook Url") || ($data['trnslist_listorder'][$val]=="Return Url") || ($data['trnslist_listorder'][$val]=="Trans Response") ){ ?>
+            <div class="transaction-list-<?=$h_css;?>" ><a href='<?=$data['Admins'];?>/json_pretty_print<?=@$data['ex']?>?json=<?=encryptres($value[$val]);?>' class="modal_from_url" title="<?=$data['trnslist_listorder'][$val];?>" >
+              <?=lf($value[$val],20)?>
+              </a></div>
+            <? }elseif( ($data['trnslist_listorder'][$val]=="Support Note") || ($data['trnslist_listorder'][$val]=="System Note")){ ?>
+            <div class="transaction-list-<?=$h_css;?>" ><a href='<?=$data['Admins'];?>/json_pretty_print<?=@$data['ex']?>?json=<?=encryptres($value[$val]);?>&vtype=1' class="modal_from_url" target="_blank">
+              <? if(isset($value[$val])&&!empty($value[$val])){ echo $data['trnslist_listorder'][$val]; }else{ ?>
+              <? } ?>
+              </a></div>
+            <? }else{ ?>
+            <? if($data['trnslist_listorder'][$val]=="Created Date"){ ?>
+            <div class="transaction-list-<?=$h_css;?>">
+              <?=prndate($value[$val])?>
+            </div>
+            <? }else{ ?>
+            <div class="transaction-list-<?=$h_css;?>">
+              <? if(isset($value[$val])){echo $value[$val];}else{ echo "&nbsp;";} ?>
+            </div>
+            <? } ?>
+            <? } ?>
+            <? $twice++;
+if($twice==3){ echo '</td>'; $twice=1;}
+}
+} 
+}
+?>
+          </tr>
+	<? 
+		$idx++; 
+	  } 
+	}
+	?>
+      </table>
+      <div class="container pagination text-center" id="total_record_result">
+        <?php
+	//if(!isset($_SESSION['total_record_result']))
+	//if(isset($_SESSION['DB_DURATION_NAME'])) echo $_SESSION['DB_DURATION_NAME'];
+	more_db_conf_pages('prev_pg');
+	if(!isset($_GET['tscount']))
+	{
+		
+		include("../include/pagination_new".$data['iex']);
+		
+		
+		
+		if(isset($_REQUEST['cl'])){unset($_REQUEST['cl']);}
+		
+		if(isset($_REQUEST['page'])){$page=$_REQUEST['page'];unset($_REQUEST['page']);}else{$page=1;}
+		if(isset($_REQUEST['last_page'])) unset($_REQUEST['last_page']);
+
+		$get=http_build_query($_REQUEST);
+
+//		$url="transactions".$data['ex']."?".$get;
+		$url=$_SERVER['PHP_SELF']."?".$get;
+		
+		$total = (int)$data['tr_count'];
+		
+		//pagination(50,$page,$url,$total);
+		
+		if(isset($_GET['last_page']))
+		{
+			$page = $post['StartPage'];
+		}
+		
+		short_pagination($data['MaxRowsByPage'],$page,$url,$data['last_record'],1);
+	}
+	else
+	{
+		include("../include/pagination_pg".$data['iex']);
+	
+		if(isset($_REQUEST['cl'])){unset($_REQUEST['cl']);}
+		
+		if(isset($_REQUEST['page'])){$page=$_REQUEST['page'];unset($_REQUEST['page']);}else{$page=1;}
+		
+		if(isset($_REQUEST['tscount'])){$tscount=$_REQUEST['tscount'];unset($_REQUEST['tscount']);}else {$tscount=0;}
+		
+		if(isset($_REQUEST['last_page'])) unset($_REQUEST['last_page']);
+		
+		$get=http_build_query($_REQUEST);
+
+		$url=$data['trnslist'].$data['ex']."?".$get;
+			
+		if(isset($post['bid'])){$url.="&bid=".$post['bid'];}
+		//if(isset($post['acquirer'])){$url.="&type=".$post['acquirer'];}
+		//if(isset($post['status'])){$url.="&status=".$post['status'];}
+		//if(isset($post['action'])){$url.="&action=select";}
+		//if(isset($post['order'])){$url.="&order=".$post['order'];}
+		if(isset($post['searchkey'])){$url.="&searchkey=".$post['searchkey'];}
+		
+		if(isset($_GET['page'])){$page=$_GET['page'];}else{$page=1;}
+	
+		pagination(50,$post['StartPage'],$url,$tscount);
+		
+	}
+	more_db_conf_pages('next_pg');
+?>
+      </div>
+	  <div class="text-center hide" id="total_record_result_db">
+		<? //more_db_conf_pages();?>
+      </div>
+      <table class="frame" width="100%" border="0" cellspacing="1" cellpadding="4">
+        <tr>
+          <td class="capc" width="1%" valign="top" nowrap><? if($post['acquirer']>8 && $post['acquirer']<12){?>
+            <script>
+			$("<?=$data['ex']?>wnloadcvs").click(function(){
+				var valuesArray = $('.echeckid:checked').map(function () {  
+					//return this.value;
+					return $(this).attr('data-value');
+					//alert($(this).attr('data-value'));
+				}).get().join(",");
+				
+				//alert(valuesArray);
+				if(valuesArray =="") {
+					alert("Please Select any one checkbox !");
+				}else{
+					newWindow=window.open("<?=$data['Host']?>/csv_data<?=@$data['ex']?>?id="+valuesArray, 'newDocument');
+				}
+
+			});
+			</script>
+            <span class="dwn" id="dwn" style="display:none;"> </span>
+            <? }?>
+          </td>
+        </tr>
+      </table>
+      <? }elseif($post['ViewMode']=='details'){?>
+      <table class="frame" width="400" border="0" cellspacing="1" cellpadding="2">
+        <tr>
+          <td class="capl" colspan="2"><?=strtoupper($data['acquirer_name'][$post['typenum']])?>
+            Transaction Detail</td>
+        </tr>
+        <tr>
+          <td>Date:</td>
+          <td><?=$post['TransactionDetails']['tdate']?></td>
+        </tr>
+        <tr>
+          <td>Type:</td>
+          <td><?=$post['TransactionDetails']['acquirer']?></td>
+        </tr>
+        <tr>
+          <td>Status:</td>
+          <td><?=$post['TransactionDetails']['status']?></td>
+        </tr>
+        <tr>
+          <td>Username:</td>
+          <td><? if($post['TransactionDetails']['userid']<0){?>
+            <?=@$post['TransactionDetails']['username']?>
+            <? }else{?>
+            <a href="<?=$data['Admins']?>/<?=$data['MER']?><?=$data['ex']?>?id=<?=$post['TransactionDetails']['userid']?>&action=select&order=<?=$post['order']?>">
+            <?=@$post['TransactionDetails']['username']?>
+            </a>
+            <? }?></td>
+        </tr>
+        <tr>
+          <td>Bill Amt.:</td>
+          <td><?=$post['TransactionDetails']['bill_amt']?></td>
+        </tr>
+        <tr>
+          <td>Fee:</td>
+          <td><?=prnpays($post['TransactionDetails']['fees'])?></td>
+        </tr>
+        <tr>
+          <td>Paid:</td>
+          <td><?=$post['TransactionDetails']['nets']?></td>
+        </tr>
+        <tr>
+          <td>Comments:</td>
+          <td><?=$post['TransactionDetails']['comments']?></td>
+        </tr>
+        <tr>
+          <td>Details:</td>
+          <td><pre class="comms"><?=$post['TransactionDetails']['ecomments']?>
+</pre>
+          </td>
+        </tr>
+        <? if($post['wtype']){?>
+        <? if($post['wtype']=='paypal'){?>
+        <form method="post" action="https://www.paypal.com/cgi-bin/webscr" target=new>
+        
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="<?=$post['payee']?>">
+        <input type="hidden" name="item_name" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <input type="hidden" name="no_shipping" value="1">
+        <input type="hidden" name="no_note" value="1">
+        <input type="hidden" name="amount" value="<?=prnsumm($post['total'])?>">
+        <? }elseif($post['wtype']=='stormpay'){?>
+        <form method="post" action="https://www.stormpay.com/stormpay/handle_gen.php" target=new>
+        
+        <input type="hidden" name="generic" value="1">
+        <input type="hidden" name="payee_email" value="<?=$post['payee']?>">
+        <input type="hidden" name="product_name" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <input type="hidden" name="amount" value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="quantity" value="1">
+        <input type="hidden" name="require_IPN" value="1">
+        <? }elseif($post['wtype']=='netpay'){?>
+        <form method="post" action="https://www.netpay.tv/cgi-bin/merchant/mpay.cgi" target=new>
+        
+        <input type="hidden" name="PAYEE_ACCOUNT" value="<?=$post['payee']?>">
+        <input type="hidden" name="PAYEE_NAME" value="<?=$data['SiteName']?>">
+        <input type="hidden" name="PAYMENT_AMOUNT" value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="MEMO" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <input type="hidden" name="PRODUCT_NAME" value="Withdraw Funds">
+        <? }elseif($post['wtype']=='egold'){?>
+        <form method="post" action="https://www.e-gold.com/sci_asp/payments.asp" target=new>
+        
+        <input type="hidden" name="PAYEE_ACCOUNT" value="<?=$post['payee']?>">
+        <input type="hidden" name="PAYEE_NAME" value="<?=$data['SiteName']?>">
+        <input type="hidden" name="PAYMENT_UNITS" value="1">
+        <input type="hidden" name="PAYMENT_METAL_ID" value="1">
+        <input type="hidden" name="PAYMENT_AMOUNT" value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="MEMO" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <input type="hidden" name="HASH" value="<?=md5("abdo".time().$data['sid'])?>">
+        <input type="hidden" name="CHECKSUM" value="<?=time()?>">
+        <input type="hidden" name="BAGGAGE_FIELDS" value="">
+        <input type="hidden" name="PAYMENT_URL" value="<?=$data['Host']?>">
+        <input type="hidden" name="NOPAYMENT_URL" value="<?=$data['Host']?>">
+        <? }elseif($post['wtype']=='moneybookers'){?>
+        <form method="post" action="https://www.moneybookers.com/app/payment.pl" target=new>
+        
+        <input type="hidden" name="pay_to_email" value="<?=$post['payee']?>">
+        <input type="hidden" name="return_url" value="<?=$data['Host']?>">
+        <input type="hidden" name="language" value="EN">
+        <input type="hidden" name="amount" value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="currency" value="USD">
+        <input type="hidden" name="detail1_description" value="Transaction Description:">
+        <input type="hidden" name="detail1_text" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <? }elseif($post['wtype']=='intgold'){?>
+        <form method="post" action="https://intgold.com/cgi-bin/webshoppingcart.cgi" target=new>
+        
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="SELLERACCOUNTID" value="<?=$post['payee']?>">
+        <input type="hidden" name="METHOD" value=POST>
+        <input type="hidden" name="RETURNPAGE" value=CGI>
+        <input type="hidden" name="RETURNURL" value="<?=$data['Host']?>">
+        <input type="hidden" name="CANCEL_RETURN" value="<?=$data['Host']?>">
+        <input type="hidden" name="AMOUNT" value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="ITEM_NUMBER" value="1">
+        <input type="hidden" name="ITEM_NAME" value="<?=$data['SiteName']?>">
+        <input type="hidden" name="HASH" value="<?=md5("abdo".time().$data['sid'])?>">
+        <? }elseif($post['wtype']=='ebullion'){?>
+        <form method="post" name="atip" action="https://www2.e-bullion.com/atip/process.php" target=new>
+        
+        <input type="hidden" name="ATIP_PAYEE_ACCOUNT" value="<?=$post['payee']?>">
+        <input type="hidden" name="ATIP_PAYMENT_UNIT" value="1">
+        <input type="hidden" name="ATIP_PAYMENT_METAL" value="0">
+        <input type="hidden" name="ATIP_PAYMENT_FIXED" value="0">
+        <input type="hidden" name="ATIP_PAYMENT_AMOUNT" value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="ATIP_PAYER_FEE_AMOUNT" value="">
+        <input type="hidden" name="ATIP_FORCED_PAYER_ACCOUNT" value="">
+        <input type="hidden" name="ATIP_PAYEE_NAME" value="<?=$data['SiteName']?>">
+        <input type="hidden" name="ATIP_SUGGESTED_MEMO" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <input type="hidden" name="ATIP_BAGGAGE_FIELDS" value="">
+        <? }elseif($post['wtype']=='pecunix'){?>
+        <form method="post" action="https://pri.pecunix.com/money.refined" target=new>
+        
+        <input type="hidden" name="PAYEE_ACCOUNT" value="<?=$post['payee']?>">
+        <input type="hidden" name="PAYMENT_AMOUNT" value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="PAYMENT_UNITS" value="USD">
+        <input type="hidden" name="SUGGESTED_MEMO" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <? }elseif($post['wtype']=='epaydirect'){?>
+        <form method="post" action="https://www.epaydirect.net/handle.php" target=new>
+        
+        <input type="hidden" name="merID" value="<?=$post['payee']?>">
+        <input type="hidden" name="amount" value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="item_name" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <? }elseif($post['wtype']=='evocash'){?>
+        <form method="post" action="https://www.evocash.com/evoswift/index.cfm" target=new>
+        
+        <input type="hidden" name="receivingaccountid" value="<?=$post['payee']?>">
+        <input type="hidden" name="pay_yes_url" value="<?=$data['Host']?>">
+        <input type="hidden" name="pay_no_url" value="<?=$data['Host']?>">
+        <input type="hidden" name="merchant_check_url" value="<?=$data['Host']?>">
+        <input type="hidden" name="reference" value="<?=$data['SiteName']?>">
+        <input type="hidden" name="memo" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <input type="hidden" name="amount" value="<?=prnsumm($post['total'])?>">
+        <? }elseif($post['wtype']=='goldmoney'){?>
+        <form method="post" action="https://www.goldmoney.com/omi/omipmt.asp" target=new>
+        
+        <input type="hidden" name="OMI_MERCHANT_HLD_NO" value="<?=$post['payee']?>">
+        <input type="hidden" name="OMI_MERCHANT_REF_NO" value="<?=md5("abdo".time().$data['sid'])?>">
+        <input type="hidden" name="OMI_CURRENCY_CODE" value="840">
+        <input type="hidden" name="OMI_CURRENCY_AMT" value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="OMI_SIM_MODE" value="0">
+        <input type="hidden" name="OMI_MERCHANT_MEMO" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <input type="hidden" name="OMI_SUCCESS_URL" value="<?=$data['Host']?>">
+        <input type="hidden" name="OMI_SUCCESS_URL_METHOD" value="LINK">
+        <input type="hidden" name="OMI_FAIL_URL" value="<?=$data['Host']?>">
+        <input type="hidden" name="OMI_FAIL_URL_METHOD" value="LINK">
+        <? }elseif($post['wtype']=='virtualgold'){?>
+        <form method="post" action="https://virtualgold.net/sci_interface.php" target="new">
+        
+        <input type="hidden" name="ACCOUNT_NO" value="<?=$post['payee']?>">
+        <input type="hidden" name="PAYMENT_TYPE" value="ONETIME">
+        <input type="hidden" name="PRODUCT_NAME" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <input type="hidden" name="PAYMENT_AMOUNT" value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="RETURN_URL" value="<?=$data['Host']?>">
+        <input type="hidden" name="CANCEL_URL" value="<?=$data['Host']?>">
+        <? }elseif($post['wtype']=='payemo'){?>
+        <form method="post" action="https://www.emocorp.com/s/action/PaymentAction" target="new">
+        
+        <input type="hidden" name="merchant_email" value="<?=$post['payee']?>">
+        <input type="hidden" name="merchant_name" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <input type="hidden" name="amoun"t value="<?=prnsumm($post['total'])?>">
+        <input type="hidden" name="return_url" value="<?=$data['Host']?>">
+        <input type="hidden" name="cancel_url" value="<?=$data['Host']?>">
+        <input type="hidden" name="reference" value="Withdraw from my <?=@$data['SiteName']?> account">
+        <? }elseif($post['wtype']=='western'){?>
+        <form method="post" action="https://wumt.westernunion.com/asp/qcReceiver.asp" target="new">
+        
+        <? }elseif($post['wtype']=='coinbase'){?>
+        <form method="post" action="https://www.coinbase.com/signin" target="blank">
+        
+        <? }elseif($post['wtype']=='moneygram'){?>
+        <form method="post" action="https://www.emoneygram.com/" target="new">
+          <? }?>
+          <tr>
+            <td>&nbsp;</td>
+            <td align="center"><input type="submit" class="submit" value="PAY NOW"></td>
+          </tr>
+        </form>
+        <? }?>
+        <tr>
+          <td class="capc" colspan="2"><a href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?><? if($post['StartPage']){?>page=<?=$post['StartPage']?><? }?>&type=<?=$post['acquirer']?>&status=<?=$post['status']?>&action=select&order=<?=$post['order']?>">Back</a>
+            <? if($post['TransactionDetails']['ostatus']==0){?>
+            | <a href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$post['TransactionDetails']['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?>&action=confirm" onClick="return cfmform()">Confirm</a>
+            <? }?>
+            <? if($post['TransactionDetails']['ostatus']==0||$post['TransactionDetails']['ostatus']==1){?>
+            | <a href="<?=$data['Admins']?>/<?=$data['trnslist'];?><?=$data['ex']?>?<? if(isset($post['bid']) && $post['bid']){?>bid=<?=$post['bid']?>&<? } ?>id=<?=$post['TransactionDetails']['id']?><? if($post['StartPage']){?>&page=<?=$post['StartPage']?><? }?>&action=cancel" onClick="return cfmform()">Cancel</a>
+            <? }?></td>
+        </tr>
+      </table>
+      <? }elseif($post['ViewMode']=='summary'){?>
+      <form method="post">
+        <input type="hidden" name="action" value="summary">
+        <? if($post['day']>0&&$post['month']>0){?>
+        <table class="table" width="100%" border="0" cellspacing="1" cellpadding="2">
+          <tr>
+            <td class="capl" colspan="30">Transaction Summary For
+              <?=@$post['day']?>
+              <?=@$data['StatMonth'][$post['month']]?>
+              <?=@$post['year']?></td>
+          </tr>
+          <tr>
+            <? foreach($data['TransactionType'] as $value){ ?>
+            <td class="capc" colspan="2"><?=strtoupper($value)?></td>
+            <? }?>
+          </tr>
+          <tr>
+            <? foreach($data['TransactionType'] as $value){ ?>
+            <td class="capr" width="7%">SUMM</td>
+            <td class="capr" width="7%">FEE</td>
+            <? }?>
+          </tr>
+          <tr>
+            <? foreach($post['Daily'] as $value){?>
+            <td align="right" nowrap><?=$value['Summ']?></td>
+            <td align="right" nowrap><?=$value['Fees']?></td>
+            <? }?>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <? }?>
+        <? if($post['month']>0){ ?>
+        <table class="table">
+          <tr>
+            <td class="capl" colspan="30">Transaction Summary For
+              <?=@$data['StatMonth'][$post['month']]?>
+              <?=@$post['year']?></td>
+          </tr>
+          <tr>
+            <? foreach($data['TransactionType'] as $value){ ?>
+            <td class="capc" colspan="2"><?=strtoupper($value)?></td>
+            <? } ?>
+          </tr>
+          <tr>
+            <? foreach($data['TransactionType'] as $value){ ?>
+            <td class="capr" width="7%">SUMM</td>
+            <td class="capr" width="7%">FEE</td>
+            <? } ?>
+          </tr>
+          <tr>
+            <? foreach($post['Monthly'] as $value){ ?>
+            <td align="right" nowrap><?=$value['Summ']?></td>
+            <td align="right" nowrap><?=$value['Fees']?></td>
+            <? } ?>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <? }?>
+        <table class="frame" width="100%" border="0" cellspacing="1" cellpadding="2">
+          <tr>
+            <td class="capl" colspan="30">Transaction Summary For
+              <?=@$post['year']?>
+              YEAR</td>
+          </tr>
+          <tr>
+            <? foreach($data['TransactionType'] as $value){ ?>
+            <td class="capc" colspan="2"><?=strtoupper($value)?></td>
+            <? }?>
+          </tr>
+          <tr>
+            <? foreach($data['TransactionType'] as $value){ ?>
+            <td class="capr" width="7%">SUMM</td>
+            <td class="capr" width="7%">FEE</td>
+            <? }?>
+          </tr>
+          <tr>
+            <? foreach($post['Yearly'] as $value){ ?>
+            <td align="right"><?=$value['Summ']?></td>
+            <td align="right"><?=$value['Fees']?></td>
+            <? } ?>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <table class="table" width="100%" border="0" cellspacing="1" cellpadding="2">
+          <tr>
+            <td class="capc"><select name="day" onChange="submit()" >
+                <?=showselect($data['StatDays'], $post['day'])?>
+              </select>
+              /
+              <select name="month" onChange="submit()">
+                <?=showselect($data['StatMonth'], $post['month'])?>
+              </select>
+              /
+              <select name="year" onChange="submit()">
+                <?=showselect($data['StatYear'], $post['year'])?>
+              </select></td>
+          </tr>
+        </table>
+      </form>
+      <? } ?>
+    </div>
+  </div>
+ 
+ <? } ?>
+</div>
+
+<!-- for chosen selected fields dragable Added -->
+<script>
+var reset_sorting='false';
+function reset_sortingf(){
+	$('#display_deselect_all').trigger('click');
+	$('#display_select_all').trigger('click');
+	//$('#update_selected_chosen').trigger('click');
+	update_selected_chosenf();
+}
+
+function update_selected_chosenf(){
+	var arr = []; 
+	/*
+	if(reset_sorting=='false'){
+		$("#transaction_display_chosen span").each(function(){
+			var str = $(this).text();
+			str = ($.trim(str.replace(/[\t\n]+/g, '')));
+			arr.push(str); 
+		});
+	}
+	else if(reset_sorting=='true'){
+		arr.push('reset');
+	}
+	*/
+	$("#transaction_display_chosen span").each(function(){
+		var str = $(this).text();
+		str = ($.trim(str.replace(/[\t\n]+/g, '')));
+		arr.push(str); 
+	});
+	
+	jlog=arr;
+	
+	if(arr.length > 0)
+	{
+	//salert(arr);
+	var admin_id =1;
+	//var arr=2;
+			$.ajax({
+			type: "POST",
+			url: "<?=$data['Host'];?>/include/update_translist_listing_order<?=@$data['ex']?>",
+			data:'titlelist='+arr+'&admin_id='+admin_id,
+			success:function(data){
+				//alert(data);
+				data = ($.trim(data.replace(/[\t\n]+/g, '')));
+				if(wn) { jlog['done']=data; alert("data=>"+data); }
+				if(data.match('done|Error|error')){
+					//alert("redirect");
+					setTimeout(function(){ 
+						top.window.location.href=top.window.location.href;
+						
+					//location.reload(true);
+					},300); 
+				}
+			},
+			error:function (){}
+			});
+
+	}
+}
+$(document).ready(function () {
+	
+	
+	$('#update_selected_chosen').click(function(){ 
+	    update_selected_chosenf(this);   
+    });
+	
+	$('.restartfa').click(function(){ 
+	    $('#total_record_result_db').slideDown(1500);
+    });
+	
+	
+	
+    $("#transaction_display_chosen .chosen-choices").sortable({
+        revert: true,
+        /*update: function (event, ui) {
+            // Some code to prevent duplicates
+        }*/
+    });
+	
+	
+    $(".draggable").draggable({
+        connectToSortable: '#transaction_display_chosen .chosen-choices',
+        cursor: 'pointer',
+        helper: 'clone',
+        revert: 'invalid'
+    });
+	
+	
+});
+</script>
+<?
+//start: Dev Tech : 23-05-12 Resizable Table Columns With Drag and Slide
+?>
+<link rel="stylesheet" type="text/css" href="<?=$data['Host']?>/thirdpartyapp/resize_col/resize_col_style.css" />
+<script src="<?=$data['Host']?>/thirdpartyapp/resize_col/resize_col_function.js"></script>
+<?
+//end: Dev Tech : 23-05-12 Resizable Table Columns With Drag and Slide
+?>
+<? }else{?>
+SECURITY ALERT: Access Denied
+<? }?>

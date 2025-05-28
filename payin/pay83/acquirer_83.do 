@@ -1,0 +1,167 @@
+<?
+$tokenPost['grant_type']= "authorization_code";
+$tokenPost['redirect_uri']= "https://aws-cc-uat.web1.one/payin/pay83/webhookhandler_83";
+$tokenPost['state']= "acdfgb";
+$tokenPost['code']= "ui3oEP2KS8vejImHovVkjt3xakfq5ZRo";
+$tokenPost['scope']= "upi";
+ $tokenString = http_build_query($tokenPost);
+
+ $tokenUrl = $bank_url."/oauth2/token";
+ 
+ 
+ $curl = curl_init();
+ curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://uat-apibanking.canarabank.in/v1/oauth2/token',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS =>  $tokenString,
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/x-www-form-urlencoded',
+    'Authorization: Basic ZW10V0lJNkRhNGF2VUE0aUppQUJzRFlaeUs5VktlUlQ6MG9ISHhPQkIxS1ZJS0xQUkFubW02UzhsSTBOTmdjWWk=',
+    'Cookie: TS0144dd86=01aee676791a1adb9fe113dae9253aa215530d3df7fd008cbda42203cc24d6ab840a7da333d484ed6ad88726eb3742388ac9fc7ece; TS0144dd86028=0192426cf8b39af3d9ddd4d11ea4192149a28ebc0fe860573c3ceafdba6855062841b256ffe4832bfae4d6e03d808f33aba89d66c8'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+//echo $response;
+
+$accessToken = "1kEAYm0D5WOj8e6thUlx7nJm3Cp1ND6v";
+
+$postVpa['x-client-id'] = $apc_get['x-client-id'];
+$postVpa['x-client-secret'] = $apc_get['x-client-secret'];
+$postVpa['x-client-certificate'] = $apc_get['x-client-certificate'];
+$postVpa['x-api-interaction-id'] = rand();
+$postVpa['x-timestamp'] =time();
+$postVpa['Cookie'] = "test";
+//print_r($postVpa);
+//exit;
+
+$VpaUrl = $bank_url."/upi/vpa-creation";
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://uat-apibanking.canarabank.in/v1/upi/vpa-creation',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS =>'{
+    "Request": {
+        "body": {
+            "encryptData": "eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiQTI1NktXIn0.IUQXEMbhpqhwOI81wlH2RBaZhhoUfTiwQ1TkJCTpCQXb3sMw58Ysvw.A9yQEz0vj2wXpmRiuDq0tQ.241NOItgaxzCblMmIpTa1Cq75By73SWLegTS3vbA4-kCDRB9Z4DootsnIz0KZqfpEf1gn7NjeV-iwgdAIMIoBPzjognzmm9f3W43z8_muosb_kIyQiP6lgQ1hkJy6E251XEBaM-mi2mqD_GIBcwenO6cSnO8Qj0s7OIulQ3nU71KXXEAYos4sUr845YobA7x301zXXD3d29hmdVZ7GXgV9GIo4zFKj7rojxgIa6i1WvC1l-RE476SjIUOxyf8448yfzk20e37o7EgtvJCdR7z4zvu5vQ8yEyCqlIXYAzsSnUxZaWd8R42phkHWBIvzeZqx5O-cGLTKQKGYrAH8hzt398o44WyREhgsi0zf5svMcBLHqGOiWtozvVUly8sMk2oSb38rtqXffj9zDja9a0ZUqPUC7qbLQvrYHifunecwuX5BJx8emcTYsTzFyyEJa6pcV7zOEWltxkZF0eRyKj7cmng4t-IOgeWITYhFd4NSU.4AzpU6TMPH6L6VwCiX4zcw"
+        }
+    }
+}',
+  CURLOPT_HTTPHEADER => array(
+    'x-client-id: '.$apc_get['x-client-id'],
+    'x-client-secret: '.$apc_get['x-client-secret'],
+    'x-client-certificate: '.$apc_get['x-client-certificate'],
+    'x-api-interaction-id: '.$postVpa['x-api-interaction-id'],
+    'x-timestamp: '.$postVpa['x-timestamp'],
+    'Cookie: test',
+    'Content-Type: Application/json',
+    'x-signature: P7u/lK2TKvilLMnadu2Z6yPyaMUnKU8JyAsGmvh/udVdUeb65eBRo1MKSsEbUWD16xstg3pWp0+GVASmlfzOhhswusq/+TP1X1VO0wau5GlHKog1FU9Kbc4C2UD3VpRx5dYL2v1IsZDrpVeJxuGJiYDjenfpu4Ij7xn3bVzZagGnFuvCCzVhPdXgenAwsVK/DjD2TqN/haG7scA74OU2dXZtfX37tBZqltclUkIkiQ32bJ3QLm9NkAhbT7AwcGtsdhaxZL6FxtxcDSyi4yAC3820BXuD17tEGOkbJ6B15LRC2OVx+yvptxKumd2lQY23+j7sjxXkI3dxdl3R8/PTHw==',
+    ': ',
+    'Authorization: Bearer 1kEAYm0D5WOj8e6thUlx7nJm3Cp1ND6v'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+//echo $response;
+//exit;
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://uat-apibanking.canarabank.in/v1/upi/vpa-creation-enq',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS =>'{
+"Request": {
+"body": {
+"encryptData":"eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiQTI1NktXIn0.G_KfFZAgDtChtu6yH996HLzy_cy85hZGdXdr6QwZTO5TEgmeWboSDg.7ykkyk3Q4VqYPS5uR7Tnog.SZqoFxkNFnyI4VXwTqwBT7-qaamw7QT8FiD1I67L8zW2wF62kTrlZZtY_j-Xo7Eb9qf1fS1zylMQwth_3Y70bFJTvxA39QzIwBmLEgIGuFbboU7dwxZu3TKFxGrZ3spgcv6ydV2lIexLKyteUmxtuEvBLOu-Sn5mdBJlrwr3XJPH5xawdm-SJziC19HIe-sbfabgiTfrFbddTDzwPXIBpfy8lrGWIo6uyueHQPZhL1uGy_f-TXXmVgjIyRYC_eMaXGS9BAzBLbyhkokB7pOXQQ.4fT9VZVU8jGuVIhHOuzhLA"
+}
+}
+}',
+  CURLOPT_HTTPHEADER => array(
+    'x-client-id: '.$apc_get['x-client-id'],
+    'x-client-secret: '.$apc_get['x-client-secret'],
+    'x-client-certificate: '.$apc_get['x-client-certificate'],
+    'x-api-interaction-id: '.$postVpa['x-api-interaction-id'],
+    'x-timestamp: '.$postVpa['x-timestamp'],
+    'Cookie: test',
+    'Content-Type: Application/json',
+    'x-signature: QchizawsC1Te6I6cR3SyMw0jlAVxJ2oZEryQxvYAerGKumYa8vb+Fj9L+Z056szP/wm2l9+AgcSqC2po1P0/unC1TN4GxEWgl4ELzwZm7sxnlaXHKM9G05QFLkPTwT7p8FQcfHwmCNEoL1ynmMX99NHUpz/sLfnUNfcPzBlRaL1fgvKMREEIETfPGgc9I0EW1rH/5koMHQ6Q2TVRTeTGuZ0xwZ5Uvxv0IoYVx3HTihY2nlM7EliSZVY6k6bIozvBoy1eXMeEnEMVBaZHVYPIvkyEXFSLt+SjwSUilxy/lVD3t+yssv20tg8IrKrEB7FfzB3JmAOFw9rAa5z0hJrfBw==',
+    'Authorization: Bearer kLvqBco0rgmbm59IFLSG2CKzJkzehOrW'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+//echo $response;
+//raise collect
+
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://uat-apibanking.canarabank.in/v1/upi/raise-collect',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS =>'{
+"Request": {
+"body": {
+"encryptData":"eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiYWxnIjoiQTI1NktXIn0.cJ9RM56g-ufyxCsssWtgQTAZxL5uNJXpMYoN2E2o-0XzFFTM-bLcyg.befiVmGa4AKVR0ZfNAKN2g.vr5eZkBk3Aiq6ZnYMlM9jzyRfW64lKf_mzdY1csI4S65VN-iH_W16uZ2iQqOeFF1EEReexR9xwYSKh7mnnZYo8Dr9d1Bkon80E49UNq0Oy1hfdHzSLA4LX5A1TGT8c00Pxe6AjALB5MCR-CHTsGsWhGXkFlqB_nqt9bE6m4oxFaywyRqYQ2Z8jX9krq4Dd0ObTzEtfBA5Z1wFFkCCF83BlSBx3HwJHTMZhDRVfJ42mMxaGQgpooSu3D46dIw8lYiFjnV1WX396wa2m6f3uB_s8glWqqPhP8rHevEJNOMArP00uFNJ-NWyLpQcQN6AlMpSmWaDlZDCfNeOv9UsQimnnbDRUuqZ4A1XW6x9qerEtQibU19Pw-3YaDWdeVSD25dw1a8fID0EbK7LCCOF_r9aE2i4daiA_IFSD-GLqDexgnDFpaGtcZWJBSXInSfLncpJa2zoNP-fkNoj5e-UAss85mRsNf_AkbJCADJQ42Lz4vRmkgUTBF2PHv-Asz2yS8L7amt1U4n6L00hHpLCsGqp-OQXh1HtLw3dMZGHV_c65yzxlK63oEscxBgQSroEPiGiIH07Sw_dimpJ4DQM2LddG6rXqUjp0P0DYXgsXYjk-A9OW6g8Qt4RvZxo4uqdt7Ob1_jy0qUs6A6dAERBkCTjw.FO2bMDym7Wz52LQQiAazrw"
+}
+}
+}',
+  CURLOPT_HTTPHEADER => array(
+   'x-client-id: '.$apc_get['x-client-id'],
+    'x-client-secret: '.$apc_get['x-client-secret'],
+    'x-client-certificate: '.$apc_get['x-client-certificate'],
+    'x-api-interaction-id: '.$postVpa['x-api-interaction-id'],
+    'x-timestamp: '.$postVpa['x-timestamp'],
+    'Cookie: test',
+    'Content-Type: Application/json',
+    'x-signature: Lk3SsBJRdut3wu0sYAk1GEuFj2BKsP4euA3ENxlah4KoMk+9n24cpPGaP1xeOPSR3JMin6TFxMe+YROJD2DrZxubbvptIknJUGdyfO2wkLbgQUgbUS1+PP1MVYjD0JKa5Xm5zEwsfg2msFpbxYyDXJ2hkbUSw65U59USmZ61btDTSLkqlge6ngg6XYdpgOTSFOrpHgRz/Vz3ZZLcRcSCYD/FVUY8p7t6yxcux5WJmIFtlOi2UzcC+vdbh0HumZLZk3bx7kkSJZ0lKbeVXw3v7IgAoRaKghBQIGrDaC05qDh/Bno6NV7V1CcQygQeZxRQAs0yEkgEvWjRVynv8pp/xQ==',
+    'Authorization: Bearer kLvqBco0rgmbm59IFLSG2CKzJkzehOrW'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+echo $response;
+
+
+
+
+?>
+
+
+
+CloudShell
+Feedback

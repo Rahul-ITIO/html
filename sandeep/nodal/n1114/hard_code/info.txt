@@ -1,0 +1,23 @@
+channel-code: MICICI
+
+merchant-type: ENTITY
+
+payer-va for Test: lets.pe@icici
+
+
+Kindly find below the IMPS credentials
+
+BC ID: IBCSky01110
+BC Name: Skywalk Technologies Private Limited
+Passcode: 737b679493cf40949ee5493d2058e0a7
+
+
+
+parameter for upi status
+
+"mobile"=> "7988000014",
+"device-id"=> "400438400438400438400438",
+"seq-no"=> "PMC123459",				//realtime unique new
+"channel-code"=>"MICICI",
+"profile-id"=> "2996304",
+"ori-seq-no"=> "PMC123457"		// at tiem of trans - transID

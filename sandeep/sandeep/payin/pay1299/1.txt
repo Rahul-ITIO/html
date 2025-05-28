@@ -1,0 +1,4 @@
+121-BtcAdv,122-TetherCoin 
+Source : 
+121-BtcAdv 		: 34 - api/34/CreateBitcoinInvoiceExample.php | Default Acquier : 12199
+122-TetherCoin 	: 342 - api/34/CreateCryptoCurrencyInvoice.do | Default Acquier : 12299
